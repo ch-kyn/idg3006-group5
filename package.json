@@ -12,6 +12,8 @@
   "dependencies": {
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "sass": "^1.93.3",
+    "sass-embedded": "^1.93.3",
     "socket.io": "^4.8.1",
     "socket.io-client": "^4.8.1"
   },

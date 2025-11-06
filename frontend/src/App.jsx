@@ -1,10 +1,9 @@
-import ArtList from "./ArtList";
+import ArtList from "./components/ArtList/ArtList";
 
 export default function App() {
-  return (
-    <div>
-      <h1>mode 1</h1>
-      <ArtList />
-    </div>
-  );
+	return (
+		<div>
+			<ArtList />
+		</div>
+	);
 }
