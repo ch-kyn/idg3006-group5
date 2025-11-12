@@ -1,0 +1,35 @@
+.main {
+    display: flex;
+
+    &__cont {
+        width: 50%;
+        overflow: hidden;
+    }
+}
+
+.img {
+    object-fit: cover;
+    height: 100vh;
+}
+
+.info {
+    margin: 2.4rem 1.8rem;
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+}
+
+.box {
+    background-color: rgb(214, 225, 247);
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.4rem;
+    max-width: 55ch;
+    font-size: 1.2rem;
+
+    &__cont {
+        display: flex;
+        gap: 0.8rem;
+    }
+}

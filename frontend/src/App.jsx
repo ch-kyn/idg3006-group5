@@ -1,9 +1,10 @@
-import ArtList from "./components/ArtList/ArtList";
+import InventionPage from "./pages/InventionPage/InventionPage";
+import styles from './styles.scss';
 
 export default function App() {
 	return (
-		<div>
-			<ArtList />
-		</div>
+		<main className={styles.cont}>
+			<InventionPage />
+		</main>
 	);
 }
