@@ -1,0 +1,430 @@
+[
+	{
+		"country": "Norway",
+		"inventions": [
+			{
+				"name": "Cheese Slicer",
+				"inventor": "Thor Bjørklund",
+				"year": "1925",
+				"information": {
+					"general": "In 1925, Norwegian carpenter Thor Bjørklund invented the cheese slicer. He wanted a better way to cut cheese evenly, so he looked at his wood planers for ideas and made a simple tool that could slice cheese perfectly.",
+					"description": "The cheese slicer is great for cutting semi-hard and hard cheeses like Edam and brunost. It makes thin, even slices and is much easier to use than a knife. Over time, different styles were made for different kinds of cheese, and it quickly became popular in homes.",
+					"extra": "Bjørklund also tried to make a butter slicer, but it didn't work out after the first try. His cheese slicer spread beyond Norway and is now common in the Nordic countries, the Netherlands, Belgium, Germany, and Brazil."
+				},
+				"image": "images/europe/norway/cheese_slicer.webp"
+			},
+			{
+				"name": "Paper Clip",
+				"inventor": "Johan Vaaler",
+				"year": "1899",
+				"information": {
+					"general": "In 1899, Norwegian inventor Johan Vaaler created an early version of the paper clip to fasten papers together without damaging them.",
+					"description": "The paper clip is a simple yet ingenious tool that holds sheets of paper neatly and securely. It became a staple in offices and schools worldwide.",
+					"extra": "Although later designs improved on Vaaler's original version, his invention inspired a global office essential used every day by millions."
+				},
+				"image": "images/europe/norway/paper_clip.webp"
+			},
+			{
+				"name": "Clip-on Ski Binding",
+				"inventor": "Bruno R. Linge",
+				"year": "1920s",
+				"information": {
+					"general": "In the 1920s, Norwegian inventor Bruno R. Linge developed the first practical clip-on ski binding. He wanted a safer and easier way for skiers to attach their boots to skis.",
+					"description": "The clip-on ski binding is a small metal device that securely holds a skier's boot to the ski. It improved control, stability, and safety while skiing, making the sport more accessible to beginners and experts alike.",
+					"extra": "Linge's invention became widely adopted in Norway and influenced modern ski bindings around the world. Today, clip-on bindings are an essential part of skiing equipment, used in recreational and competitive skiing."
+				},
+				"image": "images/europe/norway/ski_binding.webp"
+			}
+		]
+	},
+	{
+		"country": "Italy",
+		"inventions": [
+			{
+				"name": "Piano",
+				"inventor": "Bartolomeo Cristofori",
+				"year": "c. 1700",
+				"information": {
+					"general": "Around 1700, Italian instrument maker Bartolomeo Cristofori invented the piano. He wanted a keyboard instrument that could play both soft and loud notes, something the harpsichord couldn't do.",
+					"description": "The piano allows musicians to create melodies and harmonies with varying dynamics, from soft whispers to loud bursts. It quickly became popular in Europe and is now a cornerstone of music worldwide.",
+					"extra": "Cristofori's early designs were carefully engineered with hammers and strings to produce richer sounds. Over centuries, the piano evolved into grand and upright versions used everywhere from concert halls to schools."
+				},
+				"image": "images/europe/italy/piano.webp"
+			},
+			{
+				"name": "Eyeglasses",
+				"inventor": "Salvino D'Armate (traditional attribution)",
+				"year": "c. 1280",
+				"information": {
+					"general": "In the late 13th century, Italian inventor Salvino D'Armate is credited with creating the first wearable eyeglasses in Italy.",
+					"description": "Eyeglasses improved vision for people with farsightedness or nearsightedness, making reading, crafting, and work easier.",
+					"extra": "These early eyeglasses consisted of convex lenses mounted in frames that could be balanced on the nose. Eyeglasses spread throughout Europe and evolved into the wide variety of designs we use today."
+				},
+				"image": "images/europe/italy/eyeglasses.webp"
+			},
+			{
+				"name": "Pasta Machine",
+				"inventor": "Angelo Vitantonio",
+				"year": "1800s",
+				"information": {
+					"general": "In the 19th century, Italian inventor Angelo Vitantonio developed a mechanized pasta machine to roll and cut pasta more efficiently.",
+					"description": "The pasta machine allowed cooks to produce fresh, even sheets of pasta quickly, revolutionizing pasta making at home and in restaurants.",
+					"extra": "Before this invention, pasta had to be hand-rolled, which was labor-intensive. Vitantonio’s design spread across Italy and beyond, inspiring modern pasta machines still used today."
+				},
+				"image": "images/europe/italy/pasta_machine.webp"
+			}
+		]
+	},
+	{
+		"country": "Germany",
+		"inventions": [
+			{
+				"name": "Printing Press",
+				"inventor": "Johannes Gutenberg",
+				"year": "1440s",
+				"information": {
+					"general": "In the 1440s, Johannes Gutenberg of Germany invented the movable type printing press. He aimed to make book production faster and more affordable.",
+					"description": "The printing press allowed mass production of books, spreading knowledge, ideas, and literacy across Europe. Before it, books had to be copied by hand, which was slow and expensive.",
+					"extra": "Gutenberg's invention changed the world, enabling the Renaissance, Reformation, and scientific revolution by making ideas accessible to many people for the first time."
+				},
+				"image": "images/europe/germany/printing_press.webp"
+			}
+		]
+	},
+	{
+		"country": "United Kingdom",
+		"inventions": [
+			{
+				"name": "Steam Engine",
+				"inventor": "James Watt",
+				"year": "1765",
+				"information": {
+					"general": "In 1765, Scottish engineer James Watt improved the steam engine to make it more efficient and practical for industry.",
+					"description": "The steam engine powered machines, trains, and ships, changing how goods were made and transported. It fueled the Industrial Revolution across Britain and the world.",
+					"extra": "Watt's enhancements allowed engines to use less fuel and generate more power. His work helped industries grow rapidly and shaped modern economies."
+				},
+				"image": "images/europe/uk/steam_engine.webp"
+			}
+		]
+	},
+	{
+		"country": "France",
+		"inventions": [
+			{
+				"name": "Hot Air Balloon",
+				"inventor": "Montgolfier Brothers",
+				"year": "1783",
+				"information": {
+					"general": "In 1783, the Montgolfier brothers in France launched the first successful hot air balloon, marking humanity's first flight.",
+					"description": "The balloon lifted people and objects into the air using heated air. It inspired fascination with flight and exploration of the skies.",
+					"extra": "The Montgolfiers experimented with different materials and sizes, eventually carrying passengers safely. Ballooning became a popular spectacle in Europe and laid groundwork for aviation."
+				},
+				"image": "images/europe/france/hot_air_balloon.webp"
+			}
+		]
+	},
+	{
+		"country": "USA",
+		"inventions": [
+			{
+				"name": "Telephone",
+				"inventor": "Alexander Graham Bell",
+				"year": "1876",
+				"information": {
+					"general": "In 1876, Alexander Graham Bell invented the telephone in the United States. He wanted to transmit voice over long distances.",
+					"description": "The telephone allowed people to speak instantly across cities and countries, revolutionizing communication. It soon became a household necessity.",
+					"extra": "Bell's invention inspired decades of innovation in telecommunications, from switchboards to mobile phones, connecting people in ways never imagined before."
+				},
+				"image": "images/north_america/usa/telephone.webp"
+			}
+		]
+	},
+	{
+		"country": "Canada",
+		"inventions": [
+			{
+				"name": "Insulin",
+				"inventor": "Frederick Banting and Charles Best",
+				"year": "1921",
+				"information": {
+					"general": "In 1921, Canadian scientists Frederick Banting and Charles Best discovered insulin to treat diabetes, a disease that was often fatal.",
+					"description": "Insulin allows people with diabetes to control blood sugar levels, saving countless lives. It became a cornerstone of modern medicine.",
+					"extra": "Their experiments involved extracting insulin from animal pancreases. Today, insulin treatments continue to evolve, helping millions around the world."
+				},
+				"image": "images/north_america/canada/insulin.webp"
+			}
+		]
+	},
+	{
+		"country": "Mexico",
+		"inventions": [
+			{
+				"name": "Color TV (early system)",
+				"inventor": "Guillermo González Camarena",
+				"year": "1940",
+				"information": {
+					"general": "In 1940, Mexican engineer Guillermo González Camarena invented an early color television system. He wanted to make TV more vivid and realistic.",
+					"description": "His system allowed broadcasts in color, enriching entertainment and education. It paved the way for modern color television.",
+					"extra": "Camarena tested his technology extensively, and it influenced global television systems. His invention was celebrated in Mexico and internationally."
+				},
+				"image": "images/north_america/mexico/color_tv.webp"
+			}
+		]
+	},
+	{
+		"country": "Brazil",
+		"inventions": [
+			{
+				"name": "Airplane Taxiing System",
+				"inventor": "Alberto Santos-Dumont",
+				"year": "c. 1906",
+				"information": {
+					"general": "Brazilian inventor Alberto Santos-Dumont made advances in controlled flight and early airplane taxiing around 1906.",
+					"description": "He created machines that could take off, fly, and land safely. His work contributed to the development of aviation worldwide.",
+					"extra": "Santos-Dumont conducted many public demonstrations in Europe, inspiring pilots and engineers. He is celebrated as a pioneer of aviation in Brazil and beyond."
+				},
+				"image": "images/south_america/brazil/airplane_taxiing.webp"
+			}
+		]
+	},
+	{
+		"country": "Argentina",
+		"inventions": [
+			{
+				"name": "Artificial Heart (early prototype)",
+				"inventor": "Argentine medical team",
+				"year": "1969",
+				"information": {
+					"general": "In 1969, Argentine researchers contributed to early artificial heart prototypes for patients with severe heart disease.",
+					"description": "These prototypes helped doctors keep patients alive while waiting for transplants, marking a major step in medical technology.",
+					"extra": "Their work laid the groundwork for modern artificial heart devices, saving countless lives worldwide."
+				},
+				"image": "images/south_america/argentina/artificial_heart.webp"
+			}
+		]
+	},
+	{
+		"country": "China",
+		"inventions": [
+			{
+				"name": "Paper",
+				"inventor": "Cai Lun",
+				"year": "105",
+				"information": {
+					"general": "In 105 AD, Chinese official Cai Lun improved papermaking techniques, creating paper that was affordable and practical.",
+					"description": "Paper allowed writing and printing to spread, revolutionizing communication and education across China and later the world.",
+					"extra": "Cai Lun experimented with mulberry bark, hemp, and rags. His methods were widely adopted, laying the foundation for books and records for centuries."
+				},
+				"image": "images/asia/china/paper.webp"
+			}
+		]
+	},
+	{
+		"country": "Japan",
+		"inventions": [
+			{
+				"name": "Blue LED",
+				"inventor": "Shuji Nakamura",
+				"year": "1993",
+				"information": {
+					"general": "In 1993, Japanese engineer Shuji Nakamura developed the blue LED, a breakthrough in lighting technology.",
+					"description": "The blue LED made energy-efficient white light possible and transformed electronics, displays, and lighting worldwide.",
+					"extra": "Nakamura's work earned him a Nobel Prize in Physics in 2014. Blue LEDs are now used in screens, traffic lights, and countless devices."
+				},
+				"image": "images/asia/japan/blue_led.webp"
+			}
+		]
+	},
+	{
+		"country": "India",
+		"inventions": [
+			{
+				"name": "Shampoo (modern formula)",
+				"inventor": "K. N. Dikshit",
+				"year": "???",
+				"information": {
+					"general": "In the early 20th century, Indian chemist K. N. Dikshit developed a modern shampoo formula to clean hair effectively.",
+					"description": "Shampoo quickly became a common household product, replacing traditional hair-washing methods with soaps and herbs.",
+					"extra": "This innovation spread worldwide and became the foundation for the global haircare industry."
+				},
+				"image": "images/asia/india/shampoo.webp"
+			}
+		]
+	},
+	{
+		"country": "South Korea",
+		"inventions": [
+			{
+				"name": "CDMA Mobile Communication",
+				"inventor": "South Korean engineers",
+				"year": "1990s",
+				"information": {
+					"general": "In the 1990s, South Korean engineers developed CDMA technology for mobile communication, improving call quality and capacity.",
+					"description": "CDMA allowed more people to use mobile networks simultaneously without interference, revolutionizing mobile telephony.",
+					"extra": "The technology spread worldwide and remains a foundation for modern mobile networks and smartphones."
+				},
+				"image": "images/asia/south_korea/cdma.webp"
+			}
+		]
+	},
+	{
+		"country": "Egypt",
+		"inventions": [
+			{
+				"name": "Paper (Papyrus)",
+				"inventor": "Ancient Egyptians",
+				"year": "c. 3000 BC",
+				"information": {
+					"general": "Ancient Egyptians invented papyrus around 3000 BC, one of the first forms of paper.",
+					"description": "Papyrus was used for writing, record-keeping, and art, allowing ideas to be recorded and shared.",
+					"extra": "They made sheets from the papyrus plant, and this technique spread across the Mediterranean for centuries."
+				},
+				"image": "images/africa/egypt/papyrus.webp"
+			}
+		]
+	},
+	{
+		"country": "South Africa",
+		"inventions": [
+			{
+				"name": "Kreepy Krauly (automatic pool cleaner)",
+				"inventor": "F. W. L. de Jager",
+				"year": "1974",
+				"information": {
+					"general": "In 1974, South African engineer F. W. L. de Jager invented the Kreepy Krauly, an automatic pool cleaner.",
+					"description": "The device cleans swimming pools without manual effort, using water flow to move and collect debris.",
+					"extra": "It became popular worldwide and remains a standard for automatic pool cleaning systems."
+				},
+				"image": "images/africa/south_africa/kreepy_krauly.webp"
+			}
+		]
+	},
+	{
+		"country": "Nigeria",
+		"inventions": [
+			{
+				"name": "Nigerian Drums (Talking Drum Innovation)",
+				"inventor": "Traditional Makers",
+				"year": "c. 600 AD",
+				"information": {
+					"general": "In Nigeria, traditional makers developed the talking drum, an instrument capable of mimicking human speech.",
+					"description": "It was used for communication, ceremonies, and storytelling, passing information across villages quickly.",
+					"extra": "The drum's design evolved over centuries and influenced musical traditions across West Africa."
+				},
+				"image": "images/africa/nigeria/talking_drum.webp"
+			}
+		]
+	},
+	{
+		"country": "Kenya",
+		"inventions": [
+			{
+				"name": "Paper from Sisal Plant",
+				"inventor": "Kenyan Innovators",
+				"year": "1970s",
+				"information": {
+					"general": "In the 1970s, Kenyan innovators developed paper using sisal plant fibers to create affordable, sustainable paper.",
+					"description": "This paper helped schools and communities access educational materials at lower costs.",
+					"extra": "It became an example of using local resources creatively for education and business."
+				},
+				"image": "images/africa/kenya/sisal_paper.webp"
+			}
+		]
+	},
+	{
+		"country": "Morocco",
+		"inventions": [
+			{
+				"name": "Tadelakt Plaster",
+				"inventor": "Moroccan Artisans",
+				"year": "c. 900 AD",
+				"information": {
+					"general": "Moroccan artisans developed tadelakt, a polished plaster used for waterproof walls and baths.",
+					"description": "It is durable, water-resistant, and visually striking, often seen in traditional Moroccan architecture.",
+					"extra": "The technique spread across North Africa and continues to be a decorative and functional art form today."
+				},
+				"image": "images/africa/morocco/tadelakt.webp"
+			}
+		]
+	},
+	{
+		"country": "Australia",
+		"inventions": [
+			{
+				"name": "Black Box Flight Recorder",
+				"inventor": "Dr. David Warren",
+				"year": "1958",
+				"information": {
+					"general": "In 1958, Australian scientist Dr. David Warren invented the black box flight recorder to understand airplane crashes.",
+					"description": "The device records flight data and cockpit audio, helping investigators find the causes of accidents.",
+					"extra": "Black boxes are now required in all commercial aircraft worldwide and have greatly improved aviation safety."
+				},
+				"image": "images/oceania/australia/black_box.webp"
+			}
+		]
+	},
+	{
+		"country": "New Zealand",
+		"inventions": [
+			{
+				"name": "Disposable Syringe",
+				"inventor": "Colin Murdoch",
+				"year": "1956",
+				"information": {
+					"general": "In 1956, New Zealand pharmacist Colin Murdoch invented the disposable syringe to reduce infections and improve safety.",
+					"description": "These syringes are now standard in medicine, making injections safer and easier.",
+					"extra": "Murdoch's invention has saved countless lives and is used globally in hospitals and clinics."
+				},
+				"image": "images/oceania/new_zealand/disposable_syringe.webp"
+			}
+		]
+	},
+	{
+		"country": "Fiji",
+		"inventions": [
+			{
+				"name": "Traditional Canoe Designs",
+				"inventor": "Fijian Artisans",
+				"year": "ancient",
+				"information": {
+					"general": "Fijian artisans developed advanced canoe designs that allowed long ocean voyages between islands.",
+					"description": "These canoes were fast, stable, and essential for fishing, trade, and travel.",
+					"extra": "The designs influenced navigation across the Pacific and are still celebrated in Fijian culture today."
+				},
+				"image": "images/oceania/fiji/canoe.webp"
+			}
+		]
+	},
+	{
+		"country": "Papua New Guinea",
+		"inventions": [
+			{
+				"name": "Bilum (string bags)",
+				"inventor": "Papua New Guinea Communities",
+				"year": "ancient",
+				"information": {
+					"general": "Papua New Guinea communities developed bilum, strong handwoven string bags for carrying goods.",
+					"description": "Bilum bags are lightweight, durable, and versatile, used for carrying everything from food to babies.",
+					"extra": "These traditional bags remain culturally important and are even exported internationally for their unique design."
+				},
+				"image": "images/oceania/papua_new_guinea/bilum.webp"
+			}
+		]
+	},
+	{
+		"country": "Samoa",
+		"inventions": [
+			{
+				"name": "Tattooing Techniques",
+				"inventor": "Samoan Communities",
+				"year": "ancient",
+				"information": {
+					"general": "Samoan communities developed intricate tattooing techniques as a form of identity, status, and art.",
+					"description": "These tattoos are applied with traditional tools and carry deep cultural significance.",
+					"extra": "Samoan tattooing influenced Polynesian culture and remains a celebrated art form today."
+				},
+				"image": "images/oceania/samoa/tattoo.webp"
+			}
+		]
+	}
+]
