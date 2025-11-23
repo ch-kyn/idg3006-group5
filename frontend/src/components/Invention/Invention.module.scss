@@ -1,3 +1,5 @@
+@use '../../styles/colors' as c;
+
 .main {
     display: flex;
 
@@ -10,26 +12,62 @@
 .img {
     object-fit: cover;
     height: 100vh;
+    width: 100%;
 }
 
 .info {
-    margin: 2.4rem 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 2.4rem 1.8rem;
+    height: 100%;
 }
 
 .text {
-    display: flex;
-    flex-direction: column;
+    font-weight: 600;
+
+    &_cont {
+        display: flex;
+        flex-direction: column-reverse;
+        flex: 1;
+        gap: 0.5rem;
+        
+    }
 }
 
-.box {
-    background-color: rgb(214, 225, 247);
-    padding: 0.4rem 0.8rem;
-    border-radius: 0.4rem;
-    max-width: 55ch;
-    font-size: 1.2rem;
+.label {
+    font-weight: 600;
+}
 
-    &__cont {
-        display: flex;
-        gap: 0.8rem;
-    }
+.card {
+    max-width: 400px;
+    margin: 1rem auto;
+    border-radius: 0.75rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.02);
+    padding: 1.5rem;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    margin: 0.8rem;
+    background-color: c.$primaryBlue100;      
+    color: c.$muteBlack;           
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: c.$primaryBlue500;
+    margin-bottom: 0.4rem;
+    font-family: "Inter";
+}
+
+.details {
+    color: c.$muteBlack;
+    font-weight: 500;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    font-family: 'Mulish', sans-serif;
+}
+
+.label {
+    font-weight: bold;
+    color: c.$primaryBlue400;
 }

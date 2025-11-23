@@ -1,18 +1,61 @@
+@use '../../styles/colors' as c;
+
 .cont {
     display: flex;
     flex-direction: column;
-    justify-content: column;
     align-items: center;
+    max-width: 80%;
 }
 
 .answers {
     display: flex;
     flex-direction: column;
     width: 700px;
+    align-items: center;
 }
 
 .title {
-    max-width: 65ch;
     text-align: center;
+    margin: 0.8rem 0;
+    font-family: 'Inter';
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+.nextButton {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: c.$primaryBlue500;
+    color: white;
+    border: none;
+    border-radius: 0.4rem;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:disabled {
+        background-color: c.$lightGrey;
+        cursor: not-allowed;
+    }
+
+    &:hover {
+        filter: brightness(1.05);
+    }
+}
+
+.explanation {
+    width: 55ch;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: c.$primaryBlue100;
+    border-left: 4px solid c.$primaryBlue500;
+    border-radius: 0.25rem;
+    overflow-y: auto;
+    font-size: 1.1rem;
     line-height: 1.5;
+    border: #bec2d8 2px solid;
+    border-radius: 0.4rem;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    height: 100px;
 }

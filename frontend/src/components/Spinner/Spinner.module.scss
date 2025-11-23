@@ -1,0 +1,70 @@
+@use "../../styles/colors" as c;
+
+.wrapper {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.earth {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    position: relative;
+    background: radial-gradient(circle at 15% 20%,
+            c.$primaryBlue300,
+            c.$primaryBlue400 );
+    box-shadow: 0 0 40px rgba(91, 140, 255, 0.3);
+    z-index: 2;
+}
+
+.continents {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: url("../../assets/map.webp") center/cover repeat;
+    opacity: 0.5;
+    mix-blend-mode: overlay;
+    animation: rotateEarth 10s linear infinite;
+    z-index: 3;
+}
+
+@keyframes rotateEarth {
+    100% {
+        background-position: -200px 0;
+    }
+}
+
+.center {
+    position: relative;
+    width: 240px;
+    height: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text {
+    font-family: 'Shrikhand';
+    margin: 2.4rem 0 0.8rem 0;
+    color: c.$primaryBlue100;
+    font-size: 1.3rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    opacity: 0.85;
+}
+
+.fact {
+    font-family: 'Mulish';
+    font-weight: 500;
+    max-width: 35ch;
+    color: c.$whiteBlue;
+    line-height: 1.5;
+    font-size: 1.15rem;
+    text-align: center;
+}

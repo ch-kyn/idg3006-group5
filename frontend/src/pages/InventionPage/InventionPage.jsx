@@ -1,27 +1,17 @@
-import { useEffect, useState } from 'react';
-import { io } from 'socket.io-client';
+import { useEffect } from 'react';
+import SocketLayout from '../../layouts/SocketLayout.jsx';
 import Invention from '../../components/Invention/Invention';
-import styles from './InventionPage.module.scss';
 
 const InventionPage = () => {
-    const [data, setData] = useState([]);
-
     useEffect(() => {
-        const socket = io('http://localhost:3000');
-
-        socket.on('newData', (data) => {
-            console.log('Received from Node-RED:', data);
-            setData(data);
-        });
-
-        return () => socket.disconnect();
+        document.title = 'Inventions 💡';
     }, []);
 
     return (
-        <div className={styles.cont}>
-            <Invention data={data.invention} country={data.country} />
-        </div>
+        <SocketLayout namespace="invention">
+            {(data) => <Invention data={data.invention} country={data.country} />}
+        </SocketLayout>
     );
-}
+};
 
 export default InventionPage;
