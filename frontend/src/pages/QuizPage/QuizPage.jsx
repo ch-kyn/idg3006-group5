@@ -1,30 +1,45 @@
 import { useEffect, useState } from 'react';
-import { io } from 'socket.io-client';
-import Quiz from '../Quiz/Quiz';
-import ProgressBar from '../ProgressBar/ProgressBar';
-import styles from './QuizPage.module.scss';
+import SocketLayout from "../../layouts/SocketLayout";
+import Logo from '../../components/Logo/Logo';
+import Quiz from "../../components/Quiz/Quiz";
+import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import styles from "./QuizPage.module.scss";
 
 const QuizPage = () => {
-    const [data, setData] = useState([]);
+    const [current, setCurrent] = useState(1);
 
     useEffect(() => {
-        const socket = io('http://localhost:3000');
-
-        socket.on('newData', (data) => {
-            console.log('Received from Node-RED:', data);
-            setData(data);
-        });
-
-        return () => socket.disconnect();
+        document.title = 'Quiz 📝';
     }, []);
 
     return (
-        <div className={styles.cont}>
-            <h1>Quiz</h1>
-            <ProgressBar length={data.length} />
-            <Quiz questions={data} />
-        </div>
+        <SocketLayout namespace="quiz">
+            {(data) => {                
+                const questions = data?.questions || [];
+
+                return (
+                    <div className={styles.cont}>
+                        <div>
+                            <Logo />
+                            <ProgressBar 
+                                length={questions.length} 
+                                current={current} 
+                                country={data.country}
+                            />
+                        </div>
+
+                        <div className={styles.quiz}>
+                            <Quiz 
+                                questions={questions} 
+                                country={data.country}
+                                onProgress={setCurrent} 
+                            />
+                        </div>
+                    </div>
+                );
+            }}
+        </SocketLayout>
     );
-}
+};
 
 export default QuizPage;
