@@ -1,8 +1,11 @@
 import styles from './HomePage.module.scss';
+import useControllerListener from '../../hooks/useControllerListener';
 import Logo from "../../components/Logo/Logo";
 import Menu from "../../components/Menu/Menu";
 
 const HomePage = () => {
+    useControllerListener();
+
     return (
         <div className={styles.cont}>
             <svg className={styles.svg} xmlns="http://www.w3.org/2000/svg" version="1.0" width="1280.000000pt" height="841.000000pt" viewBox="0 0 1280.000000 841.000000" preserveAspectRatio="xMidYMid meet">

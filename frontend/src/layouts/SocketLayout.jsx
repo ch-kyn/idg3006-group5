@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { io } from 'socket.io-client';
+import useControllerListener from '../hooks/useControllerListener';
 import Spinner from '../components/Spinner/Spinner';
 
 const SocketLayout = ({ namespace, title, children }) => {
@@ -13,6 +14,7 @@ const SocketLayout = ({ namespace, title, children }) => {
             document.title = title;
         }
     }, [title]);
+    
 
     useEffect(() => {
         socketRef.current = io("http://localhost:3000");
@@ -29,7 +31,7 @@ const SocketLayout = ({ namespace, title, children }) => {
             // update data when real payload arrives
             if (incomingData.type === namespace) {
                 setData(incomingData.payload ?? incomingData);
-                setLoading(false); // hide spinner
+                setLoading(false);
             }
         };
 
@@ -48,6 +50,7 @@ const SocketLayout = ({ namespace, title, children }) => {
         };
     }, [namespace]);
 
+    useControllerListener(!loading);
     if (loading) return <Spinner />;
 
     return <>{children(data)}</>;

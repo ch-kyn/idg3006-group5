@@ -15,7 +15,7 @@ const QuizItem = ({ option, selectedOptions, correctSelected, onSelect, letter }
 
     return (
         <button
-            className={styles.cont}
+            className={`${styles.cont} controller-target`}
             onClick={handleClick}
             disabled={correctSelected || selectedOptions.includes(option.answer)}
         >

@@ -6,13 +6,13 @@ const QuizFinish = ({ score, total, country }) => {
     const percentage = total > 0 ? score / total : 0;
 
     if (score === 0) {
-        message = "Let's try again!";
+        message = "Let's try again! 😅";
     } else if (percentage <= 0.5) {
-        message = "Nice try!";
+        message = "Nice try! 👍";
     } else if (percentage > 0.5 && score < total) {
-        message = "You almost got it!";
+        message = "You almost got it! 🤏✨";
     } else if (score === total) {
-        message = "Perfect! You must be an expert!";
+        message = "Woah... You must be an expert! 🏆🎉";
     }
 
     return (

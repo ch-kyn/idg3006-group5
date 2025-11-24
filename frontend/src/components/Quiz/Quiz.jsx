@@ -3,7 +3,7 @@ import QuizItem from '../QuizItem/QuizItem';
 import QuizFinish from '../QuizFinish/QuizFinish';
 import styles from './Quiz.module.scss';
 
-const Quiz = ({ questions, country }) => {
+const Quiz = ({ questions, country, onProgress }) => {
     const [currentIdx, setCurrentIdx] = useState(0);
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [correctSelected, setCorrectSelected] = useState(false);
@@ -37,7 +37,13 @@ const Quiz = ({ questions, country }) => {
     };
 
     const handleNext = () => {
-        setCurrentIdx(prev => prev + 1);
+        setCurrentIdx(prev => {
+        const next = prev + 1;
+
+        if (onProgress) onProgress(next + 1); // 1-based count
+            return next;
+        });
+        
         setSelectedOptions([]);
         setCorrectSelected(false);
     };
@@ -63,7 +69,7 @@ const Quiz = ({ questions, country }) => {
 
             {correctSelected && <div className={styles.explanation}>{correctAnswerObj.explanation}</div>}
 
-            <button className={styles.nextButton} onClick={handleNext} disabled={!correctSelected}>
+            <button className={`${styles.nextButton} controller-target`} onClick={handleNext} disabled={!correctSelected}>
                 {currentIdx === questions.length - 1 ? "Complete Quiz" : "Next Question"}
             </button>
         </div>

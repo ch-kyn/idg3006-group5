@@ -11,6 +11,7 @@ const QuizPage = () => {
     useEffect(() => {
         document.title = 'Quiz 📝';
     }, []);
+    
 
     return (
         <SocketLayout namespace="quiz">
@@ -23,7 +24,7 @@ const QuizPage = () => {
                             <Logo />
                             <ProgressBar 
                                 length={questions.length} 
-                                current={current} 
+                                current={Math.min(current, questions.length)} 
                                 country={data.country}
                             />
                         </div>

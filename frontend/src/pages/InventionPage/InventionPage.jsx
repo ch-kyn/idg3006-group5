@@ -4,9 +4,9 @@ import Invention from '../../components/Invention/Invention';
 
 const InventionPage = () => {
     useEffect(() => {
-        document.title = 'Inventions 💡';
+        document.title = 'Invention 💡';
     }, []);
-
+    
     return (
         <SocketLayout namespace="invention">
             {(data) => <Invention data={data.invention} country={data.country} />}
