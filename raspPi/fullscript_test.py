@@ -22,15 +22,39 @@ TOKEN = "YOUR_TOKEN_HERE"
 # ----------------------------
 # RESET PIN & I2C INIT
 # ----------------------------
-reset_pin = digitalio.DigitalInOut(board.D17)
+reset_pin = digitalio.DigitalInOut(board.D7)
 reset_pin.direction = digitalio.Direction.OUTPUT
+
 i2c = busio.I2C(board.SCL, board.SDA)
+
+def hard_reset():
+    reset_pin.value = False      # hold reset LOW
+    time.sleep(0.01)
+    reset_pin.value = True       # release reset
+    time.sleep(0.5)              # wait for sensor to boot
 
 def init_sensor():
     print("Initializing BNO08X...")
-    sensor = BNO08X_I2C(i2c, reset_pin=reset_pin, address=0x4A, debug=False)
-    sensor.enable_feature(BNO_REPORT_ROTATION_VECTOR)
+    hard_reset()
+
+    sensor = BNO08X_I2C(i2c, address=0x4A, debug=False)
+
+    # Some library versions support disabling debug output
+    try:
+        sensor.enable_debug_output(False)
+    except AttributeError:
+        pass
+
+    # Enable rotation vector safely
+    try:
+        sensor.enable_feature(BNO_REPORT_ROTATION_VECTOR)
+    except KeyError as e:
+        print(f"⚠️ Unknown report type during init: {e}")
+    except OSError as e:
+        print(f"⚠️ I2C error during init: {e}")
+
     return sensor
+
 
 sensor = init_sensor()
 
@@ -86,11 +110,18 @@ def send_coords(lat, lon, token):
         return None
 
 # ----------------------------
-# STABILITY TRACKING
+# STABILITY TRACKING + HICCUPS
 # ----------------------------
+READINGS_BUFFER = 5  # number of recent readings to smooth
+lat_buffer = []
+lon_buffer = []
+
 last_latlon = None
 stable_start = None
-stable_sent = False  # <-- Track if we already sent coords
+stable_sent = False  # track if we already sent coords
+
+hiccup_count = 0
+MAX_HICCUPS = 10
 
 # ----------------------------
 # MAIN LOOP
@@ -110,9 +141,20 @@ while True:
         lat, lon = vector_to_latlon(world_vec)
         if lat is None:
             continue
-        current = (lat, lon)
 
-        # First reading → initialize
+        # Append to smoothing buffers
+        lat_buffer.append(lat)
+        lon_buffer.append(lon)
+        if len(lat_buffer) > READINGS_BUFFER:
+            lat_buffer.pop(0)
+            lon_buffer.pop(0)
+
+        # Compute average for stability
+        lat_avg = sum(lat_buffer) / len(lat_buffer)
+        lon_avg = sum(lon_buffer) / len(lon_buffer)
+        current = (lat_avg, lon_avg)
+
+        # Initialize on first reading
         if last_latlon is None:
             last_latlon = current
             stable_start = time.time()
@@ -120,8 +162,8 @@ while True:
             continue
 
         # Compute movement
-        lat_diff = abs(lat - last_latlon[0])
-        lon_diff = abs(lon - last_latlon[1])
+        lat_diff = abs(lat_avg - last_latlon[0])
+        lon_diff = abs(lon_avg - last_latlon[1])
 
         if lat_diff < STABLE_THRESHOLD_DEG and lon_diff < STABLE_THRESHOLD_DEG:
             # Still stable → check timer
@@ -131,25 +173,32 @@ while True:
 
             if time.time() - stable_start >= STABLE_TIME_SEC and not stable_sent:
                 print(f"Stable position reached:")
-                print(f"→ Latitude:  {lat:.2f}°")
-                print(f"→ Longitude: {lon:.2f}°")
+                print(f"→ Latitude:  {lat_avg:.2f}°")
+                print(f"→ Longitude: {lon_avg:.2f}°")
                 print("---------------------------")
 
                 # Send coordinates once
-                send_coords(lat, lon, TOKEN)
+                # send_coords(lat_avg, lon_avg, TOKEN)
                 stable_sent = True
         else:
-            # Movement too large → reset
+            # Movement too large → reset stability timer
             stable_start = time.time()
             last_latlon = current
             stable_sent = False
 
+        hiccup_count = 0  # reset hiccup counter on successful read
         time.sleep(0.05)
 
-    except OSError:
-        print("\n⚠️  I2C hiccup — resetting sensor...")
-        time.sleep(0.2)
-        sensor = init_sensor()
+    except (OSError, KeyError) as e:
+        print("⚠️ I2C or unknown report error —", e)
+        hiccup_count += 1
+        if hiccup_count >= MAX_HICCUPS:
+            print("⚠️ Too many hiccups, reinitializing sensor...")
+            time.sleep(0.2)
+            sensor = init_sensor()
+            hiccup_count = 0
+        else:
+            time.sleep(0.05)
 
     except Exception as e:
         print("Unexpected error:", e)

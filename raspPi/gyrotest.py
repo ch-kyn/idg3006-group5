@@ -11,8 +11,9 @@ from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR
 # ----------------------------
 #  RESET PIN (REQUIRED)
 # ----------------------------
-reset_pin = digitalio.DigitalInOut(board.D17)  # GPIO17 (Pin 11)
+reset_pin = digitalio.DigitalInOut(board.D7)
 reset_pin.direction = digitalio.Direction.OUTPUT
+
 
 
 # ----------------------------
@@ -23,7 +24,7 @@ i2c = busio.I2C(board.SCL, board.SDA)
 def init_sensor():
     """Initialize sensor with reset."""
     print("Initializing BNO08X...")
-    sensor = BNO08X_I2C(i2c, reset_pin=reset_pin, address=0x4A, debug=False)
+    sensor = BNO08X_I2C(i2c, address=0x4A, debug=False)
     sensor.enable_feature(BNO_REPORT_ROTATION_VECTOR)
     return sensor
 
@@ -72,9 +73,9 @@ def vector_to_latlon(v):
 sensor_axis = (1.0, 0.0, 0.0)   # use +X as pointing direction
 calib_quat  = (0.0, 0.0, 0.0, 1.0)  # no calibration rotation
 
-STABLE_THRESHOLD_DEG = 1.0       # must stay within ±1° window
+STABLE_THRESHOLD_DEG = 2.0       # must stay within ±1° window
 STABLE_TIME_SEC = 3.0            # must remain stable for 3 seconds
-
+stable = False
 
 # ----------------------------
 # STABILITY TRACKING
@@ -118,18 +119,21 @@ while True:
         if lat_diff < STABLE_THRESHOLD_DEG and lon_diff < STABLE_THRESHOLD_DEG:
             # Still stable → check timer
             if time.time() - stable_start >= STABLE_TIME_SEC:
-                print(f"Stable position reached:")
-                print(f"→ Latitude:  {lat:.2f}°")
-                print(f"→ Longitude: {lon:.2f}°")
-                print("---------------------------")
+                if stable == False:
+                    print(f"Stable position reached:")
+                    print(f"→ Latitude:  {lat:.2f}°")
+                    print(f"→ Longitude: {lon:.2f}°")
+                    print("---------------------------")
 
-                # Reset so it must become stable AGAIN
-                stable_start = time.time()
-                last_latlon = current
+                    # Reset so it must become stable AGAIN
+                    stable_start = time.time()
+                    stable = True
+                    last_latlon = current
         else:
             # Movement too large → reset stabilization timer
             stable_start = time.time()
             last_latlon = current
+            stable = False
 
         time.sleep(0.05)
 
