@@ -15,11 +15,12 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100vh;
 }
 
 body {
     background-color: c.$bgBlue;
-    height: 100vh;
     overflow: hidden;
     font-family: 'Mulish', sans-serif;
     color: c.$muteBlack;
@@ -28,9 +29,16 @@ body {
 }
 
 .cont {
+    height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
     max-width: 2400px;
-    height: 100vh;
     max-height: 2000px;
 }
+
+
+    .controller-target:focus, .controller-target:focus-visible {
+        outline: 4px solid c.$lightBlue !important;
+        outline-offset: 2px !important;
+    }

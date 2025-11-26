@@ -5,14 +5,15 @@ const QuizFinish = ({ score, total, country }) => {
 
     const percentage = total > 0 ? score / total : 0;
 
+    // customizable message
     if (score === 0) {
-        message = "Let's try again!";
+        message = "Let's try again! 😅";
     } else if (percentage <= 0.5) {
-        message = "Nice try!";
+        message = "Nice try! 👍";
     } else if (percentage > 0.5 && score < total) {
-        message = "You almost got it!";
+        message = "You almost got it! 🤏✨";
     } else if (score === total) {
-        message = "Perfect! You must be an expert!";
+        message = "Woah... You must be an expert! 🏆🎉";
     }
 
     return (
@@ -24,7 +25,9 @@ const QuizFinish = ({ score, total, country }) => {
 
         {/* make the reload less abrupt */}
         <button
-            className={styles.restartButton}
+            tabIndex={0} 
+            data-nav="select" 
+            className={`${styles.restartButton} controller-target`}
             onClick={() => {
                 const quizContainer = document.querySelector(`.${styles.cont}`);
                 if (quizContainer) {

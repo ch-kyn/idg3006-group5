@@ -15,18 +15,21 @@ const QuizItem = ({ option, selectedOptions, correctSelected, onSelect, letter }
 
     return (
         <button
-            className={styles.cont}
+            className={`${styles.cont} controller-target-answer`}
             onClick={handleClick}
             disabled={correctSelected || selectedOptions.includes(option.answer)}
+            data-action={letter}
+            tabIndex={-1}
         >
             <span className={styles.option}>
                 <span className={styles.letter}>{letter}</span>. {option.answer}
             </span>
             <span className={styles.symbol} style={{ fontSize: '1.4rem', visibility: symbol ? 'visible' : 'hidden' }}>
-                {symbol || '✔'} {/* placeholder, won't be seen if hidden */}
+                {symbol || '✔'}
             </span>
         </button>
     );
 };
 
 export default QuizItem;
+

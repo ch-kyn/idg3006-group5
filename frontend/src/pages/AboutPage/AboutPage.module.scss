@@ -1,0 +1,79 @@
+@use '../../styles/colors' as c;
+
+.cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 2.4rem 1.8rem;
+}
+
+.about {
+    display: flex;
+    justify-content: center;
+    gap: 2.4rem;
+    width: 80%;
+    min-width: 600px;
+    height: 100%;
+    background-color: c.$whiteBlue;
+    border-radius: 0.4rem;
+    padding: 2rem 3.2rem;
+    max-width: 1400px;
+    max-height: 1000px;
+}
+
+.col {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    &__left {
+        gap: 2rem;
+        margin: 0.8rem;
+    }
+
+    &__right {
+        gap: 1.2rem;
+        flex-wrap: wrap;
+    }
+}
+
+.img {
+    height: 220px;
+    object-fit: contain;
+    width: auto;
+}
+
+.border {
+    border: 2px solid c.$lightGrey;
+}
+
+.images {
+    display: flex;
+    justify-content: start;
+    gap: 0.8rem;
+}
+
+.general {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    background-color: c.$whiteBlue;
+    padding: 1.2rem 1.8rem;
+    border-radius: 0.4rem;
+    width: 100%;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    gap: 0.4rem;
+}
+
+.label {
+    font-weight: bold;
+    color: c.$primaryBlue400;
+}
+
+.text {
+    font-weight: 600;
+}
