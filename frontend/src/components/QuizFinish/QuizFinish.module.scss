@@ -21,3 +21,8 @@
         filter: brightness(1.05);
     }
 }
+
+.controller-target:focus, .controller-target:focus-visible {
+    outline: 4px solid blue !important;
+    outline-offset: 3px !important;
+}

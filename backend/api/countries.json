@@ -1,0 +1,47 @@
+[
+    {
+        "country": "Norway",
+        "capital": "Oslo",
+        "population": 5606944,
+        "area_km2": 385199,
+        "currency": "Norwegian Krone (NOK)",
+        "gdp_total_usd": 507700000000,
+        "national_day": "May 17",
+        "national_animal": "Moose",
+
+        "exports": [
+            "Oil",
+            "Natural gas",
+            "Seafood (salmon)",
+            "Aluminium",
+            "Hydropower"
+        ],
+
+        "popular_dishes": [
+            "Fårikål",
+            "Kjøttkaker",
+            "Gravlaks"
+        ],
+
+        "famous_people": [
+            "Edvard Munch",
+            "Henrik Ibsen",
+            "Knut Hamsun"
+        ],
+
+        "places_heritage": [
+            "Bryggen, Bergen",
+            "Røros Mining Town",
+            "Urnes Stave Church",
+            "Nidaros Cathedral, Trondheim",
+            "Geirangerfjord"
+        ],
+
+        "images": {
+            "flag": "images/countries/norway/norway_flag.webp",
+            "map": "images/countries/norway/norway_map.webp",
+            "food": "images/countries/norway/norway_kjøttkaker.webp",
+            "place": "images/countries/norway/norway_bryggen.webp"
+        }
+    }
+]

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import QuizItem from '../QuizItem/QuizItem';
 import QuizFinish from '../QuizFinish/QuizFinish';
 import styles from './Quiz.module.scss';
@@ -8,6 +8,28 @@ const Quiz = ({ questions, country, onProgress }) => {
     const [selectedOptions, setSelectedOptions] = useState([]);
     const [correctSelected, setCorrectSelected] = useState(false);
     const [firstTryCorrect, setFirstTryCorrect] = useState(0);
+
+    // focus Next button when correct answer selected
+    // useEffect(() => {
+    //     if (correctSelected) {
+    //         const nextBtn = document.querySelector("#nextButton");
+    //         nextBtn?.focus();
+    //     }
+    // }, [correctSelected]);
+
+    // const tabbable = Array.from(document.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+    // .filter(el => !el.disabled && el.offsetParent !== null); // visible & not disabled
+
+    // tabbable.forEach((el, i) => console.log(i, el));
+
+    // safely update progress for parent
+    useEffect(() => {
+        if (onProgress) {
+            onProgress(currentIdx + 1); // 1-based
+        }
+    }, [currentIdx, onProgress]);
+
+    if (!questions || questions.length === 0) return null;
 
     if (currentIdx >= questions.length) {
         return (
@@ -23,27 +45,22 @@ const Quiz = ({ questions, country, onProgress }) => {
     const correctAnswerObj = currentQuestion.answers.find(a => a.correct);
 
     const handleSelect = (option) => {
+        if (selectedOptions.includes(option.answer)) return;
+
         setSelectedOptions(prev => [...prev, option.answer]);
 
-        // Count first-try correct
+        // count first-try correct
         if (!correctSelected && selectedOptions.length === 0 && option.correct) {
             setFirstTryCorrect(prev => prev + 1);
         }
 
-        // If correct answer clicked, disable all
         if (option.correct) {
             setCorrectSelected(true);
         }
     };
 
     const handleNext = () => {
-        setCurrentIdx(prev => {
-        const next = prev + 1;
-
-        if (onProgress) onProgress(next + 1); // 1-based count
-            return next;
-        });
-        
+        setCurrentIdx(prev => prev + 1);
         setSelectedOptions([]);
         setCorrectSelected(false);
     };
@@ -52,7 +69,9 @@ const Quiz = ({ questions, country, onProgress }) => {
 
     return (
         <div className={styles.cont}>
-            <h2 className={styles.title}>{currentQuestion.question}</h2>
+            <h2 className={styles.title}>
+                {currentQuestion.question}
+            </h2>
 
             <div className={styles.answers}>
                 {currentQuestion.answers.map((option, i) => (
@@ -67,10 +86,23 @@ const Quiz = ({ questions, country, onProgress }) => {
                 ))}
             </div>
 
-            {correctSelected && <div className={styles.explanation}>{correctAnswerObj.explanation}</div>}
+            {correctSelected && (
+                <div className={styles.explanation}>
+                    {correctAnswerObj.explanation}
+                </div>
+            )}
 
-            <button className={`${styles.nextButton} controller-target`} onClick={handleNext} disabled={!correctSelected}>
-                {currentIdx === questions.length - 1 ? "Complete Quiz" : "Next Question"}
+            <button
+                tabIndex={0}
+                id="nextButton"
+                className={`${styles.nextButton} controller-target`}
+                onClick={handleNext}
+                disabled={!correctSelected}
+                data-nav="select" 
+            >
+                {currentIdx === questions.length - 1
+                    ? "Complete Quiz"
+                    : "Next Question"}
             </button>
         </div>
     );

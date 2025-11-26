@@ -1,0 +1,140 @@
+@use '../../styles/colors' as c;
+
+.infoBtn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 3rem;
+    height: 3rem;
+
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: scale(1.05);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+
+    svg {
+        pointer-events: none;
+    }
+}
+
+/* modal */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(6px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 1000;
+}
+
+.modal {
+    background: c.$muteBlack;
+    color: white;
+
+    padding: 2rem;
+    width: min(90%, 28rem);
+
+    border-radius: 1.2rem;
+
+    box-shadow:
+        rgba(0, 0, 0, 0.4) 0px 10px 25px,
+        rgba(0, 0, 0, 0.2) 0px 5px 10px;
+
+    animation: popIn 0.2s ease-out;
+
+    h2 {
+        font-size: 1.4rem;
+        margin-bottom: 1.2rem;
+    }
+}
+
+.section {
+    margin-bottom: 1.2rem;
+
+    h3 {
+        font-size: 1rem;
+        margin-bottom: 0.3rem;
+        color: c.$lightBlue;
+    }
+
+    p, li {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: #e5e7eb;
+    }
+}
+
+.list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.closeBtn {
+    margin-top: 1.5rem;
+    padding: 0.6rem 1.3rem;
+    border: none;
+    border-radius: 0.6rem;
+    background: c.$primaryBlue500;
+    color: white;
+
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+
+    &:hover {
+        background: c.$primaryBlue400;
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+@media (orientation: landscape) and (max-height: 500px) {
+    .overlay {
+        background: rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(3px);
+    }
+
+    .modal {
+        padding: 1.2rem;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+}

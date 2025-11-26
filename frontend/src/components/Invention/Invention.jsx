@@ -1,4 +1,3 @@
-// import { useState } from 'react';
 import styles from './Invention.module.scss';
 import InfoSlider from '../InfoSlider/InfoSlider';
 import Logo from '../Logo/Logo';

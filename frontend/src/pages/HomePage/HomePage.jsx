@@ -4,6 +4,7 @@ import Logo from "../../components/Logo/Logo";
 import Menu from "../../components/Menu/Menu";
 
 const HomePage = () => {
+    document.title = "Worldy";
     useControllerListener();
 
     return (

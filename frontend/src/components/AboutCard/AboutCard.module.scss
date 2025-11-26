@@ -1,0 +1,52 @@
+@use '../../styles/colors' as c;
+
+.card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    width: 300px;
+}
+
+.imageContainer {
+    flex: 1;
+    max-height: 300px; 
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: auto;    
+        object-fit: cover; 
+        display: block;
+    }
+}
+
+.content {
+    flex: 1; 
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-weight: 600;
+    color: c.$primaryBlue500;
+    margin-bottom: 0.4rem;
+    font-family: "Inter";
+}
+
+.list {
+    list-style-type: disc;
+    line-height: 1.6;
+    padding-left: 1.2rem;
+
+    li {
+        font-size: 1.15rem;
+    }
+}
+

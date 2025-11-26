@@ -21,10 +21,11 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 // API routes
+// for "Invention"
 app.get("/api/inventions", (req, res) => {
     const dataPath = path.join(__dirname, "api", "inventions.json");
     fs.readFile(dataPath, "utf8", (err, data) => {
-        if (err) return res.status(500).json({ error: "Could not read inventions data" });
+        if (err) return res.status(500).json({ error: "Could not read 'inventions' data" });
         res.json(JSON.parse(data));
     });
 });
@@ -33,12 +34,50 @@ app.get("/api/inventions/:country", (req, res) => {
     const country = req.params.country.toLowerCase();
     const dataPath = path.join(__dirname, "api", "inventions.json");
     fs.readFile(dataPath, "utf8", (err, data) => {
-        if (err) return res.status(500).json({ error: "Could not read inventions data" });
+        if (err) return res.status(500).json({ error: "Could not read 'inventions' data" });
 
         const inventions = JSON.parse(data);
         const countryData = inventions.find(item => item.country.toLowerCase() === country);
 
-        if (!countryData) return res.status(404).json({ error: "Country not found" });
+         if (!countryData) {
+            return res.json({
+                country,
+                message: `No inventions found for "${country}"`,
+                inventions: []
+            });
+        }
+        res.json(countryData);
+    });
+});
+
+
+// for "About"
+app.get("/api/countries", (req, res) => {
+    const dataPath = path.join(__dirname, "api", "countries.json");
+    fs.readFile(dataPath, "utf8", (err, data) => {
+        if (err) return res.status(500).json({ error: "Could not read 'countries' data" });
+        res.json(JSON.parse(data));
+    });
+});
+
+app.get("/api/countries/:country", (req, res) => {
+    const country = req.params.country.toLowerCase();
+    const dataPath = path.join(__dirname, "api", "countries.json");
+    fs.readFile(dataPath, "utf8", (err, data) => {
+        if (err) return res.status(500).json({ error: "Could not read 'countries' data" });
+
+        const inventions = JSON.parse(data);
+        const countryData = inventions.find(item => item.country.toLowerCase() === country);
+
+        // fallback response 
+        if (!countryData) {
+            return res.json({
+                country,
+                message: `No country info found for "${country}"`,
+                info: null
+            });
+        }
+
         res.json(countryData);
     });
 });
@@ -48,8 +87,8 @@ io.on("connection", (socket) => {
     console.log("Client connected:", socket.id);
 
     socket.on("requestData", (msg) => {
-        // Just forward the request to Node-RED
-        io.emit("requestDataToNodeRED", msg);
+        // just forward the request to Node-RED
+        io.emit("requestData", msg);
     });
 
     socket.on("control", (data) => {
@@ -62,8 +101,8 @@ io.on("connection", (socket) => {
         io.emit("newData", data.payload ?? data);
     });
 
-    socket.on("newCoordinates", (data) => {
-        io.emit("newCoordinates", data.payload ?? data);
+    socket.on("loading", (data) => {
+        io.emit("loading", data.payload ?? data);
     });
 
     socket.on("disconnect", () => {

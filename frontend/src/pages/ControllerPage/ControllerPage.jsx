@@ -1,13 +1,12 @@
-import { useEffect, useRef } from "react";
+import { useRef, useEffect } from "react";
 import { io } from "socket.io-client";
+import InfoButton from "../InfoButton/InfoButton";
 import styles from "./ControllerPage.module.scss";
 
-const SOCKET_URL = "http://192.168.10.134:3000";
+const SOCKET_URL = "http://10.22.18.15:3000/";
 
 const ControllerPage = () => {
     const socketRef = useRef(null);
-    const buttonRefs = useRef([]);
-    const focusIndex = useRef(0);
 
     // create socket once
     if (!socketRef.current) {
@@ -16,82 +15,92 @@ const ControllerPage = () => {
 
     const socket = socketRef.current;
 
+    // connect and handle socket events (optional logging)
     useEffect(() => {
-        const focusButton = () => {
-            if (buttonRefs.current.length > 0) {
-                buttonRefs.current[focusIndex.current]?.focus();
-            }
-        };
-
-        const handleControl = ({ action }) => {
-            if (buttonRefs.current.length === 0) return;
-
-            switch (action) {
-                case "up":
-                case "left":
-                    focusIndex.current =
-                        (focusIndex.current - 1 + buttonRefs.current.length) %
-                        buttonRefs.current.length;
-                    break;
-                case "down":
-                case "right":
-                    focusIndex.current =
-                        (focusIndex.current + 1) % buttonRefs.current.length;
-                    break;
-                case "select":
-                    buttonRefs.current[focusIndex.current]?.click();
-                    break;
-                default:
-                    console.warn("Unknown action:", action);
-            }
-
-            focusButton();
-        };
-
         socket.on("connect", () => console.log("Connected:", socket.id));
         socket.on("connect_error", (err) => console.error("Socket error:", err));
-        socket.on("control", handleControl);
-
-        focusButton();
 
         return () => {
-            socket.off("control", handleControl);
             socket.disconnect();
         };
     }, [socket]);
 
-    const send = (action) => socket.emit("control", { action });
+    // send controller action to server
+    const send = (action) => {
+        socket.emit("control", { action });
+    };
 
     return (
-        <div className={styles.wrapper}>
-            <button ref={(el) => (buttonRefs.current[0] = el)} onClick={() => send("up")}>
-                ⬆️
-            </button>
-
-            <div className={styles.middle}>
-                <button ref={(el) => (buttonRefs.current[1] = el)} onClick={() => send("left")}>
-                    ⬅️
-                </button>
-                <button ref={(el) => (buttonRefs.current[2] = el)} onClick={() => send("down")}>
-                    ⬇️
-                </button>
-                <button ref={(el) => (buttonRefs.current[3] = el)} onClick={() => send("right")}>
-                    ➡️
-                </button>
+        <div className={styles.cont}>
+            <div className={styles.top}>
+                <InfoButton />
+                <div className={styles.quizButtons}>
+                    <button
+                        aria-label="Answer A, Red"
+                        className={`${styles.quizButton} ${styles.quizRed}`}
+                        onClick={() => send("A")}
+                    >
+                        A
+                    </button>
+                    <button
+                        aria-label="Answer B, Green"
+                        className={`${styles.quizButton} ${styles.quizGreen}`}
+                        onClick={() => send("B")}
+                    >
+                        B
+                    </button>
+                    <button
+                        aria-label="Answer C, Yellow"
+                        className={`${styles.quizButton} ${styles.quizYellow}`}
+                        onClick={() => send("C")}
+                    >
+                        C
+                    </button>
+                    <button
+                        aria-label="Answer D, Blue"
+                        className={`${styles.quizButton} ${styles.quizBlue}`}
+                        onClick={() => send("D")}
+                    >
+                        D
+                    </button>
+                </div>
             </div>
 
-            <button ref={(el) => (buttonRefs.current[4] = el)} onClick={() => send("select")}>✅ SELECT</button>
+            <div className={styles.btm}>
+                <div className={styles.arrows}>
+                    <div className={styles.row}>
+                        <button className={styles.arrow} onClick={() => send("up")}>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-160v-487L216-423l-56-57 320-320 320 320-56 57-224-224v487h-80Z"/></svg>
+                        </button>
+                    </div>
+                    <div className={styles.row}>
+                        <button className={styles.arrow} onClick={() => send("left")}>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/></svg>
+                        </button>
+                        <div className={styles.spacer} />
+                        <button className={styles.arrow} onClick={() => send("right")}>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M647-440H160v-80h487L423-744l57-56 320 320-320 320-57-56 224-224Z"/></svg>
+                        </button>
+                    </div>
+                    <div className={styles.row}>
+                        <button className={styles.arrow} onClick={() => send("down")}>
+                            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-800v487L216-537l-56 57 320 320 320-320-56-57-224 224v-487h-80Z"/></svg>
+                        </button>
+                    </div>
+                    <button className={styles.select} onClick={() => send("select")}>SELECT</button>
+                </div>
 
-            <div className={styles.nav}>
-                <button ref={(el) => (buttonRefs.current[5] = el)} onClick={() => send("invention")}>
-                    Invention
-                </button>
-                <button ref={(el) => (buttonRefs.current[6] = el)} onClick={() => send("about")}>
-                    About
-                </button>
-                <button ref={(el) => (buttonRefs.current[7] = el)} onClick={() => send("quiz")}>
-                    Quiz
-                </button>
+                <div className={styles.nav}>
+                    <button className={styles.nav__btn} onClick={() => send("invention")}>
+                        Invention
+                    </button>
+                    <button className={styles.nav__btn} onClick={() => send("quiz")}>
+                        Quiz
+                    </button>
+                    <button className={styles.nav__btn} onClick={() => send("about")}>
+                        About
+                    </button>
+                </div>
             </div>
         </div>
     );

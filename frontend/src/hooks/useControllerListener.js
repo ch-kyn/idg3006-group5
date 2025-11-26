@@ -1,32 +1,56 @@
 import { useEffect, useRef } from "react";
 import { io } from "socket.io-client";
-import { useLocation } from "react-router-dom";
 
-const SOCKET_URL = "http://192.168.10.134:3000/";
+const SOCKET_URL = "http://10.22.18.15:3000/";
 
 export default function useControllerListener(ready = true) {
-    const location = useLocation();
     const focusIndex = useRef(0);
     const elements = useRef([]);
     const socketRef = useRef(null);
     const isThrottled = useRef(false);
 
     // re-query elements whenever location changes
-    useEffect(() => {
-        if (!ready) return;
+    // useEffect(() => {
+    //     if (!ready) return;
+    //     elements.current = Array.from(document.querySelectorAll(".controller-target"));
+    //     console.log(elements.current);
+    //     if (elements.current.length > 0) {
+    //         focusIndex.current = 0;
+    //         elements.current[focusIndex.current].focus();
+    //     }
+    // }, [location.pathname, ready]);
 
-        elements.current = Array.from(document.querySelectorAll(".controller-target"));
-        if (elements.current.length > 0) {
+    useEffect(() => {
+    if (!ready) return;
+
+    const updateElements = () => {
+        const newEls = Array.from(document.querySelectorAll(".controller-target"));
+        elements.current = newEls;
+
+        if (newEls.length > 0) {
             focusIndex.current = 0;
-            elements.current[focusIndex.current].focus();
+            newEls[0].focus();
         }
-    }, [location.pathname, ready]);
+    };
 
-    // attach socket listener
+        updateElements();
+
+        // observe when elements with 'controller-target' changes
+        const observer = new MutationObserver(updateElements);
+        observer.observe(document.body, { childList: true, subtree: true });
+
+        return () => observer.disconnect();
+    }, [ready]);
+
+
+    // attach socket listener once
     useEffect(() => {
         if (!ready) return;
 
-        socketRef.current = io(SOCKET_URL);
+        if (!socketRef.current) {
+            socketRef.current = io(SOCKET_URL);
+        }
+        const socket = socketRef.current;
 
         const moveFocus = (direction) => {
             const els = elements.current;
@@ -35,7 +59,6 @@ export default function useControllerListener(ready = true) {
             const currentEl = els[focusIndex.current];
             const allowed = currentEl.dataset.nav?.split(" ") || [];
 
-            // only move if direction is allowed for the current element
             if (!allowed.includes(direction)) return;
 
             let nextIndex = focusIndex.current;
@@ -48,7 +71,7 @@ export default function useControllerListener(ready = true) {
                     nextIndex = (nextIndex + 1) % len;
                 }
 
-                if (nextIndex === focusIndex.current) return;
+                if (nextIndex === focusIndex.current) return; // full loop, stop
             } while (!(els[nextIndex].dataset.nav?.split(" ")?.includes(direction)));
 
             focusIndex.current = nextIndex;
@@ -56,12 +79,28 @@ export default function useControllerListener(ready = true) {
         };
 
         const handleControl = ({ action }) => {
-            if (isThrottled.current) return;
-            const els = elements.current;
-            if (!els || els.length === 0) return;
+            // handle navigation actions immediately
+            if (action === "invention") {
+                window.location.href = "/invention";
+                return;
+            }
 
+            if (action === "quiz") {
+                window.location.href = "/quiz";
+                return;
+            }
+            if (action === "about") {
+                window.location.href = "/about";
+                return;
+            }
+
+            // throttle movement/select actions
+            if (isThrottled.current) return;
             isThrottled.current = true;
             setTimeout(() => (isThrottled.current = false), 150);
+
+            const els = elements.current;
+            if (!els || els.length === 0) return;
 
             switch (action) {
                 case "up":
@@ -70,33 +109,44 @@ export default function useControllerListener(ready = true) {
                 case "right":
                     moveFocus(action);
                     break;
+                case "select": {
+                    const els = Array.from(document.querySelectorAll(".controller-target"));
+                    const el = els[focusIndex.current];
 
-                case "select":
-                    els[focusIndex.current].click();
-                    break;
+                    console.log("🟢 SELECT", el);
 
-                case "inventions":
-                    window.location.href = "/invention";
+                    if (el && !el.disabled) {
+                        el.click();
+                    }
                     break;
-                case "quiz":
-                    window.location.href = "/quiz";
+                }
+
+                case "A":
+                case "B":
+                case "C":
+                case "D": {
+                    // click on btn with the corresponding value in 'data-action'
+                    const btns = Array.from(document.querySelectorAll(".controller-target-answer"));
+                    const targetBtn = btns.find(el => el.dataset.action === action);
+                    if (targetBtn) {
+                        targetBtn.click();
+                    } else {
+                        console.warn("No button found for action:", action);
+                    }
                     break;
-                case "about":
-                    window.location.href = "/about";
-                    break;
+                }
+
 
                 default:
                     console.warn("Unknown action:", action);
             }
         };
 
-        socketRef.current.on("control", handleControl);
+
+        socket.on("control", handleControl);
 
         return () => {
-            if (socketRef.current) {
-                socketRef.current.off("control", handleControl);
-                socketRef.current.disconnect();
-            }
+            socket.off("control", handleControl);
         };
     }, [ready]);
 }
