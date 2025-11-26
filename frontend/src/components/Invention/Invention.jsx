@@ -1,5 +1,7 @@
 // import { useState } from 'react';
 import styles from './Invention.module.scss';
+import InfoSlider from '../InfoSlider/InfoSlider';
+import Logo from '../Logo/Logo';
 
 const Invention = ({ data, country }) => {
     return (
@@ -11,22 +13,18 @@ const Invention = ({ data, country }) => {
                 
                 <section className={styles.main__cont}>
                     <div className={styles.info}>
-                        <h1>{data.name}</h1>
-                        <div className={styles.text}>
-                            <span>Country: {country}</span>
-                            <span>Inventor: {data.inventor}</span>
-                            <span>Year: {data.year}</span>
-                        </div>
-                        <div className={styles.box__cont}>
-                            <div className={styles.box}>
-                                <p>{data.information?.general}</p>
-                            </div>
-                            <div className={styles.box}>
-                                <p>{data.information?.description}</p>
-                            </div>
-                            <div className={styles.box}>
-                                <p>{data.information?.extra}</p>
-                            </div>
+                        <Logo />
+                        <InfoSlider data={data} />
+                        <div className={styles.text__cont}>
+                               <div className={styles.card}>
+                                    <h1 className={styles.title}>{data.name}</h1>
+                                    
+                                    <div className={styles.details}>
+                                        <p className={styles.text}><span className={styles.label}>Country:</span> {country}</p>
+                                        <p className={styles.text}><span className={styles.label}>Inventor:</span> {data.inventor}</p>
+                                        <p className={styles.text}><span className={styles.label}>Year:</span> {data.year}</p>
+                                    </div>
+                                </div>
                         </div>
                     </div>
                 </section>

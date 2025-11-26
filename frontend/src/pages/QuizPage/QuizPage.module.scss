@@ -1,0 +1,30 @@
+@use '../../styles/colors' as c;
+
+.cont {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 2.4rem 1.8rem;
+}
+
+.quiz {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: c.$whiteBlue;
+    height: 80%;
+    border-radius: 0.75rem;
+    max-height: 700px;
+    width: 850px;
+    padding: 0.8rem;
+}
+
+.title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: c.$primaryBlue500;
+    margin-bottom: 0.4rem;
+    font-family: 'Inter', sans-serif;
+}
+

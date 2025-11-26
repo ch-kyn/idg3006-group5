@@ -1,19 +1,59 @@
-.cont {
-    height: 4rem;
-    padding: 0.4rem 0.8rem;
-    margin: 0.8rem;
-    text-align: left;
-    font-size: 1.4rem;
-}
+@use '../../styles/colors' as c;
 
 .letter {
     font-weight: bold;
 }
 
-.correct {
-    color: green;
+.cont {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1.6rem;
+    background-color: c.$primaryBlue500;
+    color: white; 
+    border-radius: 0.75rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    border: none;
+    height: fit-content;
+    width: 45ch;
+    margin: 0.6rem;
+    font-size: 1.15rem;
+    align-items: center;
+    text-align: left;
+    gap: 0.8rem;
+
+    &:hover {
+        cursor: pointer;
+        filter: brightness(1.05);
+    }
+
+    &:active {
+        transform: scale(0.97);
+    }
+
+    &:nth-child(1) {
+        background-color: c.$quizRed;
+    }
+
+    &:nth-child(2) {
+        background-color: c.$quizGreen;
+    }
+
+    &:nth-child(3) {
+        background-color: c.$quizYellow;
+    }
+
+    &:nth-child(4) {
+        background-color: c.$quizBlue;
+    }
 }
 
-.wrong {
-    color: red;
+.option {
+    display: block;
+}
+
+.symbol {
+    display: block;
+    font-size: 1.4rem;
 }

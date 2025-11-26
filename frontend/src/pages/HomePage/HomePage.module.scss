@@ -1,0 +1,22 @@
+@use '../../styles/colors' as c;
+
+.cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // height: 100vh;
+    justify-content: center;
+}
+
+.svg {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    width: 180%;      
+    height: 180%;
+    transform: translate(-50%, -50%);
+    z-index: -5;       
+    opacity: 0.1;   
+    pointer-events: none; 
+    fill: c.$primaryBlue400;
+  }

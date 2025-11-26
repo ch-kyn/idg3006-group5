@@ -1,0 +1,23 @@
+@use "../../styles/colors" as c;
+
+.title {
+    font-family: 'Inter', sans-serif;
+    margin-bottom: 0.4rem;
+    color: c.$primaryBlue500;
+    font-weight: 500;
+}
+
+.restartButton {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: c.$primaryBlue500;
+    color: white;
+    border: none;
+    border-radius: 0.4rem;
+    font-size: 1rem;
+    cursor: pointer;
+
+    &:hover {
+        filter: brightness(1.05);
+    }
+}

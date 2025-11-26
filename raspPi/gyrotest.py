@@ -15,8 +15,9 @@ from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR
 # ----------------------------
 #  RESET PIN (REQUIRED)
 # ----------------------------
-reset_pin = digitalio.DigitalInOut(board.D17)  # GPIO17 (Pin 11)
+reset_pin = digitalio.DigitalInOut(board.D7)
 reset_pin.direction = digitalio.Direction.OUTPUT
+
 
 
 # ----------------------------
@@ -28,7 +29,7 @@ i2c = busio.I2C(board.SCL, board.SDA)
 def init_sensor():
     """Initialize sensor with reset."""
     print("Initializing BNO08X...")
-    sensor = BNO08X_I2C(i2c, reset_pin=reset_pin, address=0x4A, debug=False)
+    sensor = BNO08X_I2C(i2c, address=0x4A, debug=False)
     sensor.enable_feature(BNO_REPORT_ROTATION_VECTOR)
     return sensor
 

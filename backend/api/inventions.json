@@ -7,9 +7,9 @@
 				"inventor": "Thor Bjørklund",
 				"year": "1925",
 				"information": {
-					"general": "In 1925, Norwegian carpenter Thor Bjørklund invented the cheese slicer. He wanted a better way to cut cheese evenly, so he looked at his wood planers for ideas and made a simple tool that could slice cheese perfectly.",
-					"description": "The cheese slicer is great for cutting semi-hard and hard cheeses like Edam and brunost. It makes thin, even slices and is much easier to use than a knife. Over time, different styles were made for different kinds of cheese, and it quickly became popular in homes.",
-					"extra": "Bjørklund also tried to make a butter slicer, but it didn't work out after the first try. His cheese slicer spread beyond Norway and is now common in the Nordic countries, the Netherlands, Belgium, Germany, and Brazil."
+					"general": "In 1925, Thor Bjørklund designed the cheese slicer to make even, thin slices of cheese effortlessly.",
+					"description": "He crafted it from wood and steel, with a wire stretched across a flat blade. It glides through semi-hard cheeses like Edam or brunost, turning a tedious task into a quick, precise motion.",
+					"extra": "Bjørklund's inspiration came from the carpenter's plane he used in his workshop. He also experimented with a butter slicer, which failed, but his cheese slicer became a European and Brazilian kitchen classic."
 				},
 				"image": "images/europe/norway/cheese_slicer.webp"
 			},
@@ -18,9 +18,9 @@
 				"inventor": "Johan Vaaler",
 				"year": "1899",
 				"information": {
-					"general": "In 1899, Norwegian inventor Johan Vaaler created an early version of the paper clip to fasten papers together without damaging them.",
-					"description": "The paper clip is a simple yet ingenious tool that holds sheets of paper neatly and securely. It became a staple in offices and schools worldwide.",
-					"extra": "Although later designs improved on Vaaler's original version, his invention inspired a global office essential used every day by millions."
+					"general": "In 1899, Johan Vaaler invented the paper clip to hold sheets together neatly without damaging them.",
+					"description": "Made from bent wire, it creates tension that keeps papers aligned. Vaaler's design was simple yet ingeniously effective.",
+					"extra": "The idea reportedly came from the need to manage documents in offices efficiently. Later refinements improved durability, and today it's a ubiquitous office tool worldwide."
 				},
 				"image": "images/europe/norway/paper_clip.webp"
 			},
@@ -29,9 +29,9 @@
 				"inventor": "Bruno R. Linge",
 				"year": "1920s",
 				"information": {
-					"general": "In the 1920s, Norwegian inventor Bruno R. Linge developed the first practical clip-on ski binding. He wanted a safer and easier way for skiers to attach their boots to skis.",
-					"description": "The clip-on ski binding is a small metal device that securely holds a skier's boot to the ski. It improved control, stability, and safety while skiing, making the sport more accessible to beginners and experts alike.",
-					"extra": "Linge's invention became widely adopted in Norway and influenced modern ski bindings around the world. Today, clip-on bindings are an essential part of skiing equipment, used in recreational and competitive skiing."
+					"general": "In the 1920s, Bruno Linge developed the first clip-on ski binding to improve skiing safety.",
+					"description": "Constructed from metal and leather, the binding securely fastens boots to skis, offering control while reducing the risk of falls.",
+					"extra": "Linge was inspired by the growing popularity of skiing in Norway. His invention influenced modern ski bindings and made the sport more accessible and safer."
 				},
 				"image": "images/europe/norway/ski_binding.webp"
 			}
@@ -45,20 +45,20 @@
 				"inventor": "Bartolomeo Cristofori",
 				"year": "c. 1700",
 				"information": {
-					"general": "Around 1700, Italian instrument maker Bartolomeo Cristofori invented the piano. He wanted a keyboard instrument that could play both soft and loud notes, something the harpsichord couldn't do.",
-					"description": "The piano allows musicians to create melodies and harmonies with varying dynamics, from soft whispers to loud bursts. It quickly became popular in Europe and is now a cornerstone of music worldwide.",
-					"extra": "Cristofori's early designs were carefully engineered with hammers and strings to produce richer sounds. Over centuries, the piano evolved into grand and upright versions used everywhere from concert halls to schools."
+					"general": "Around 1700, Bartolomeo Cristofori created the piano to allow musicians to play both soft and loud notes.",
+					"description": "He engineered hammers to strike strings, giving the keyboard expressive power. Cristofori's use of hardwood, metal strings, and precise mechanics produced rich tones and dynamic range.",
+					"extra": "Inspired by the limitations of the harpsichord, he experimented with action mechanisms over decades. His designs evolved into the grand and upright pianos that define modern music halls and home instruments."
 				},
 				"image": "images/europe/italy/piano.webp"
 			},
 			{
 				"name": "Eyeglasses",
-				"inventor": "Salvino D'Armate (traditional attribution)",
+				"inventor": "Salvino D'Armate",
 				"year": "c. 1280",
 				"information": {
-					"general": "In the late 13th century, Italian inventor Salvino D'Armate is credited with creating the first wearable eyeglasses in Italy.",
-					"description": "Eyeglasses improved vision for people with farsightedness or nearsightedness, making reading, crafting, and work easier.",
-					"extra": "These early eyeglasses consisted of convex lenses mounted in frames that could be balanced on the nose. Eyeglasses spread throughout Europe and evolved into the wide variety of designs we use today."
+					"general": "Salvino D'Armate is credited with making the first wearable eyeglasses in Italy around 1280.",
+					"description": "Using convex lenses set in wood or metal frames balanced on the nose, these early spectacles improved vision for reading and work.",
+					"extra": "The inspiration likely came from monks and scholars needing to read manuscripts. Over centuries, frame and lens materials advanced, spreading eyeglasses across Europe and evolving into countless modern designs."
 				},
 				"image": "images/europe/italy/eyeglasses.webp"
 			},
@@ -67,9 +67,9 @@
 				"inventor": "Angelo Vitantonio",
 				"year": "1800s",
 				"information": {
-					"general": "In the 19th century, Italian inventor Angelo Vitantonio developed a mechanized pasta machine to roll and cut pasta more efficiently.",
-					"description": "The pasta machine allowed cooks to produce fresh, even sheets of pasta quickly, revolutionizing pasta making at home and in restaurants.",
-					"extra": "Before this invention, pasta had to be hand-rolled, which was labor-intensive. Vitantonio’s design spread across Italy and beyond, inspiring modern pasta machines still used today."
+					"general": "In the 19th century, Angelo Vitantonio built a mechanized pasta machine to streamline pasta preparation.",
+					"description": "Made with metal rollers and cutting blades, it produces even pasta sheets quickly. The machine saves hours of labor compared to hand-rolling dough.",
+					"extra": "Inspired by Italy's love for fresh pasta, Vitantonio refined his design through trial and error. His invention spread widely, laying the foundation for modern pasta machines used in kitchens worldwide."
 				},
 				"image": "images/europe/italy/pasta_machine.webp"
 			}
@@ -131,9 +131,9 @@
 				"inventor": "Alexander Graham Bell",
 				"year": "1876",
 				"information": {
-					"general": "In 1876, Alexander Graham Bell invented the telephone in the United States. He wanted to transmit voice over long distances.",
-					"description": "The telephone allowed people to speak instantly across cities and countries, revolutionizing communication. It soon became a household necessity.",
-					"extra": "Bell's invention inspired decades of innovation in telecommunications, from switchboards to mobile phones, connecting people in ways never imagined before."
+					"general": "In 1876, Alexander Graham Bell invented the telephone to transmit voice over long distances.",
+					"description": "Using wires, a diaphragm, and electromagnetic coils, it converted sound into electrical signals for instant communication.",
+					"extra": "Inspired by his work on hearing devices, Bell experimented tirelessly with circuits until the first call rang through."
 				},
 				"image": "images/north_america/usa/telephone.webp"
 			}
@@ -147,9 +147,9 @@
 				"inventor": "Frederick Banting and Charles Best",
 				"year": "1921",
 				"information": {
-					"general": "In 1921, Canadian scientists Frederick Banting and Charles Best discovered insulin to treat diabetes, a disease that was often fatal.",
-					"description": "Insulin allows people with diabetes to control blood sugar levels, saving countless lives. It became a cornerstone of modern medicine.",
-					"extra": "Their experiments involved extracting insulin from animal pancreases. Today, insulin treatments continue to evolve, helping millions around the world."
+					"general": "In 1921, Banting and Best discovered insulin to treat diabetes, saving countless lives.",
+					"description": "They extracted it from animal pancreases and purified it so it could regulate blood sugar safely.",
+					"extra": "Their experiments combined surgical skill and chemistry, laying the foundation for modern diabetes care."
 				},
 				"image": "images/north_america/canada/insulin.webp"
 			}
@@ -163,9 +163,9 @@
 				"inventor": "Guillermo González Camarena",
 				"year": "1940",
 				"information": {
-					"general": "In 1940, Mexican engineer Guillermo González Camarena invented an early color television system. He wanted to make TV more vivid and realistic.",
-					"description": "His system allowed broadcasts in color, enriching entertainment and education. It paved the way for modern color television.",
-					"extra": "Camarena tested his technology extensively, and it influenced global television systems. His invention was celebrated in Mexico and internationally."
+					"general": "In 1940, Camarena created an early color television system to make broadcasts more vivid.",
+					"description": "His device used color wheels and filters to project images in red, green, and blue tones.",
+					"extra": "He tested prototypes repeatedly at home and in studios, inspiring later global color TV standards."
 				},
 				"image": "images/north_america/mexico/color_tv.webp"
 			}
@@ -179,9 +179,9 @@
 				"inventor": "Alberto Santos-Dumont",
 				"year": "c. 1906",
 				"information": {
-					"general": "Brazilian inventor Alberto Santos-Dumont made advances in controlled flight and early airplane taxiing around 1906.",
-					"description": "He created machines that could take off, fly, and land safely. His work contributed to the development of aviation worldwide.",
-					"extra": "Santos-Dumont conducted many public demonstrations in Europe, inspiring pilots and engineers. He is celebrated as a pioneer of aviation in Brazil and beyond."
+					"general": "Around 1906, Santos-Dumont developed early systems for controlled airplane taxiing and flight.",
+					"description": "He designed wheels, steering, and lightweight structures to safely move and take off small aircraft.",
+					"extra": "Inspired by observation of birds and experiments in Paris, he demonstrated practical flight to astonished crowds."
 				},
 				"image": "images/south_america/brazil/airplane_taxiing.webp"
 			}
@@ -195,9 +195,9 @@
 				"inventor": "Argentine medical team",
 				"year": "1969",
 				"information": {
-					"general": "In 1969, Argentine researchers contributed to early artificial heart prototypes for patients with severe heart disease.",
-					"description": "These prototypes helped doctors keep patients alive while waiting for transplants, marking a major step in medical technology.",
-					"extra": "Their work laid the groundwork for modern artificial heart devices, saving countless lives worldwide."
+					"general": "In 1969, Argentine researchers built early artificial heart prototypes for patients with severe heart disease.",
+					"description": "Made from metal and plastic, the devices pumped blood temporarily while patients awaited transplants.",
+					"extra": "Their iterative testing in labs and with animals paved the way for modern artificial heart technology."
 				},
 				"image": "images/south_america/argentina/artificial_heart.webp"
 			}
@@ -211,9 +211,9 @@
 				"inventor": "Cai Lun",
 				"year": "105",
 				"information": {
-					"general": "In 105 AD, Chinese official Cai Lun improved papermaking techniques, creating paper that was affordable and practical.",
-					"description": "Paper allowed writing and printing to spread, revolutionizing communication and education across China and later the world.",
-					"extra": "Cai Lun experimented with mulberry bark, hemp, and rags. His methods were widely adopted, laying the foundation for books and records for centuries."
+					"general": "In 105 AD, Cai Lun refined papermaking to produce affordable sheets from mulberry bark, hemp, and rags.",
+					"description": "He mashed, pressed, and dried fibers into smooth sheets suitable for writing and recording ideas.",
+					"extra": "His experiments standardized a process that spread across China and later the world, enabling literature and bureaucracy to flourish."
 				},
 				"image": "images/asia/china/paper.webp"
 			}
@@ -227,9 +227,9 @@
 				"inventor": "Shuji Nakamura",
 				"year": "1993",
 				"information": {
-					"general": "In 1993, Japanese engineer Shuji Nakamura developed the blue LED, a breakthrough in lighting technology.",
-					"description": "The blue LED made energy-efficient white light possible and transformed electronics, displays, and lighting worldwide.",
-					"extra": "Nakamura's work earned him a Nobel Prize in Physics in 2014. Blue LEDs are now used in screens, traffic lights, and countless devices."
+					"general": "In 1993, Shuji Nakamura created the blue LED, completing the trio for white light sources.",
+					"description": "He used semiconductor materials like gallium nitride to produce energy-efficient blue light for displays and lighting.",
+					"extra": "After countless lab trials, his breakthrough earned a Nobel Prize and revolutionized electronics globally."
 				},
 				"image": "images/asia/japan/blue_led.webp"
 			}
@@ -241,11 +241,11 @@
 			{
 				"name": "Shampoo (modern formula)",
 				"inventor": "K. N. Dikshit",
-				"year": "???",
+				"year": "early 20th century",
 				"information": {
-					"general": "In the early 20th century, Indian chemist K. N. Dikshit developed a modern shampoo formula to clean hair effectively.",
-					"description": "Shampoo quickly became a common household product, replacing traditional hair-washing methods with soaps and herbs.",
-					"extra": "This innovation spread worldwide and became the foundation for the global haircare industry."
+					"general": "K. N. Dikshit developed a modern shampoo formula to clean hair effectively.",
+					"description": "He combined surfactants and mild chemicals for easy lather and gentle cleansing.",
+					"extra": "The product spread worldwide, transforming hair care from traditional soaps to the global shampoo industry."
 				},
 				"image": "images/asia/india/shampoo.webp"
 			}
@@ -259,9 +259,9 @@
 				"inventor": "South Korean engineers",
 				"year": "1990s",
 				"information": {
-					"general": "In the 1990s, South Korean engineers developed CDMA technology for mobile communication, improving call quality and capacity.",
-					"description": "CDMA allowed more people to use mobile networks simultaneously without interference, revolutionizing mobile telephony.",
-					"extra": "The technology spread worldwide and remains a foundation for modern mobile networks and smartphones."
+					"general": "In the 1990s, engineers in South Korea developed CDMA to improve mobile call capacity and quality.",
+					"description": "It uses unique codes to allow many users on the same frequency without interference.",
+					"extra": "Their work laid the foundation for modern mobile networks and the smartphones we rely on today."
 				},
 				"image": "images/asia/south_korea/cdma.webp"
 			}
@@ -275,9 +275,9 @@
 				"inventor": "Ancient Egyptians",
 				"year": "c. 3000 BC",
 				"information": {
-					"general": "Ancient Egyptians invented papyrus around 3000 BC, one of the first forms of paper.",
-					"description": "Papyrus was used for writing, record-keeping, and art, allowing ideas to be recorded and shared.",
-					"extra": "They made sheets from the papyrus plant, and this technique spread across the Mediterranean for centuries."
+					"general": "Around 3000 BC, Egyptians created papyrus sheets from the papyrus plant.",
+					"description": "They layered and pressed plant fibers to make durable writing surfaces for record-keeping and art.",
+					"extra": "This method spread across the Mediterranean, supporting administration and culture for centuries."
 				},
 				"image": "images/africa/egypt/papyrus.webp"
 			}
@@ -291,9 +291,9 @@
 				"inventor": "F. W. L. de Jager",
 				"year": "1974",
 				"information": {
-					"general": "In 1974, South African engineer F. W. L. de Jager invented the Kreepy Krauly, an automatic pool cleaner.",
-					"description": "The device cleans swimming pools without manual effort, using water flow to move and collect debris.",
-					"extra": "It became popular worldwide and remains a standard for automatic pool cleaning systems."
+					"general": "In 1974, de Jager built the Kreepy Krauly to clean pools automatically.",
+					"description": "Using water flow, it moves and vacuums debris without manual effort.",
+					"extra": "His clever use of basic hydraulics made pool maintenance easy worldwide."
 				},
 				"image": "images/africa/south_africa/kreepy_krauly.webp"
 			}
@@ -307,9 +307,9 @@
 				"inventor": "Traditional Makers",
 				"year": "c. 600 AD",
 				"information": {
-					"general": "In Nigeria, traditional makers developed the talking drum, an instrument capable of mimicking human speech.",
-					"description": "It was used for communication, ceremonies, and storytelling, passing information across villages quickly.",
-					"extra": "The drum's design evolved over centuries and influenced musical traditions across West Africa."
+					"general": "Around 600 AD, Nigerian artisans created the talking drum to mimic speech and send messages.",
+					"description": "Adjustable strings and tension allow pitch changes, letting drums 'talk' across distances.",
+					"extra": "This innovation influenced music and communication across West Africa for centuries."
 				},
 				"image": "images/africa/nigeria/talking_drum.webp"
 			}
@@ -323,9 +323,9 @@
 				"inventor": "Kenyan Innovators",
 				"year": "1970s",
 				"information": {
-					"general": "In the 1970s, Kenyan innovators developed paper using sisal plant fibers to create affordable, sustainable paper.",
-					"description": "This paper helped schools and communities access educational materials at lower costs.",
-					"extra": "It became an example of using local resources creatively for education and business."
+					"general": "In the 1970s, Kenyan innovators made paper from sisal plant fibers to reduce costs.",
+					"description": "They pulped, pressed, and dried fibers into sheets for school and community use.",
+					"extra": "This creative use of local materials supported education and small businesses."
 				},
 				"image": "images/africa/kenya/sisal_paper.webp"
 			}
@@ -339,9 +339,9 @@
 				"inventor": "Moroccan Artisans",
 				"year": "c. 900 AD",
 				"information": {
-					"general": "Moroccan artisans developed tadelakt, a polished plaster used for waterproof walls and baths.",
-					"description": "It is durable, water-resistant, and visually striking, often seen in traditional Moroccan architecture.",
-					"extra": "The technique spread across North Africa and continues to be a decorative and functional art form today."
+					"general": "Around 900 AD, Moroccan artisans developed tadelakt, a polished waterproof plaster.",
+					"description": "They used lime, natural pigments, and olive soap to create durable, glossy surfaces for baths and walls.",
+					"extra": "The technique spread through North Africa and is still used in decorative architecture today."
 				},
 				"image": "images/africa/morocco/tadelakt.webp"
 			}
@@ -355,9 +355,9 @@
 				"inventor": "Dr. David Warren",
 				"year": "1958",
 				"information": {
-					"general": "In 1958, Australian scientist Dr. David Warren invented the black box flight recorder to understand airplane crashes.",
-					"description": "The device records flight data and cockpit audio, helping investigators find the causes of accidents.",
-					"extra": "Black boxes are now required in all commercial aircraft worldwide and have greatly improved aviation safety."
+					"general": "In 1958, Dr. David Warren invented the black box to analyze airplane crashes.",
+					"description": "Encased in durable metal, it records cockpit audio and flight data for later investigation.",
+					"extra": "His tests and prototypes ensured planes worldwide became safer through flight data analysis."
 				},
 				"image": "images/oceania/australia/black_box.webp"
 			}
@@ -371,9 +371,9 @@
 				"inventor": "Colin Murdoch",
 				"year": "1956",
 				"information": {
-					"general": "In 1956, New Zealand pharmacist Colin Murdoch invented the disposable syringe to reduce infections and improve safety.",
-					"description": "These syringes are now standard in medicine, making injections safer and easier.",
-					"extra": "Murdoch's invention has saved countless lives and is used globally in hospitals and clinics."
+					"general": "In 1956, Colin Murdoch invented the disposable syringe to reduce infections.",
+					"description": "Made from plastic and rubber, it is pre-sterilized and safe for single use.",
+					"extra": "His invention quickly became a global medical standard, saving countless lives."
 				},
 				"image": "images/oceania/new_zealand/disposable_syringe.webp"
 			}
@@ -387,9 +387,9 @@
 				"inventor": "Fijian Artisans",
 				"year": "ancient",
 				"information": {
-					"general": "Fijian artisans developed advanced canoe designs that allowed long ocean voyages between islands.",
-					"description": "These canoes were fast, stable, and essential for fishing, trade, and travel.",
-					"extra": "The designs influenced navigation across the Pacific and are still celebrated in Fijian culture today."
+					"general": "Fijian artisans designed canoes capable of long ocean voyages.",
+					"description": "Using carved wood and lashings, the hulls were fast, stable, and seaworthy.",
+					"extra": "These designs supported fishing, trade, and migration, influencing Pacific navigation."
 				},
 				"image": "images/oceania/fiji/canoe.webp"
 			}
@@ -403,9 +403,9 @@
 				"inventor": "Papua New Guinea Communities",
 				"year": "ancient",
 				"information": {
-					"general": "Papua New Guinea communities developed bilum, strong handwoven string bags for carrying goods.",
-					"description": "Bilum bags are lightweight, durable, and versatile, used for carrying everything from food to babies.",
-					"extra": "These traditional bags remain culturally important and are even exported internationally for their unique design."
+					"general": "Papua New Guinea communities made bilum, strong handwoven string bags.",
+					"description": "Fibers are looped and knotted into flexible, durable nets for carrying food, goods, and even babies.",
+					"extra": "Bilum remains a cultural symbol and is now appreciated internationally for its craftsmanship."
 				},
 				"image": "images/oceania/papua_new_guinea/bilum.webp"
 			}
@@ -419,9 +419,9 @@
 				"inventor": "Samoan Communities",
 				"year": "ancient",
 				"information": {
-					"general": "Samoan communities developed intricate tattooing techniques as a form of identity, status, and art.",
-					"description": "These tattoos are applied with traditional tools and carry deep cultural significance.",
-					"extra": "Samoan tattooing influenced Polynesian culture and remains a celebrated art form today."
+					"general": "Samoan communities developed intricate tattoos as symbols of identity and status.",
+					"description": "Using comb-like tools and ink from soot, designs are tapped into the skin with precision.",
+					"extra": "These techniques influenced Polynesian art and remain an important cultural tradition."
 				},
 				"image": "images/oceania/samoa/tattoo.webp"
 			}
