@@ -3,7 +3,7 @@
 - France
 - Germany
 - Italy
-- Norway
+- Norway (+ `/about`)
 - United Kingdom
 
 
