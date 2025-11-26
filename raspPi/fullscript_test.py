@@ -35,25 +35,30 @@ def hard_reset():
 
 def init_sensor():
     print("Initializing BNO08X...")
-    hard_reset()
 
-    sensor = BNO08X_I2C(i2c, address=0x4A, debug=False)
+    # Hardware reset
+    reset_pin.value = False
+    time.sleep(0.01)
+    reset_pin.value = True
+    time.sleep(0.25)
 
-    # Some library versions support disabling debug output
+    # Create sensor (no debug argument!)
+    sensor = BNO08X_I2C(i2c, address=0x4A)
+
+    # Disable debug (packet dumping)
     try:
-        sensor.enable_debug_output(False)
-    except AttributeError:
+        sensor.debug = False
+    except:
         pass
 
-    # Enable rotation vector safely
     try:
-        sensor.enable_feature(BNO_REPORT_ROTATION_VECTOR)
-    except KeyError as e:
-        print(f"⚠️ Unknown report type during init: {e}")
-    except OSError as e:
-        print(f"⚠️ I2C error during init: {e}")
+        sensor.sh2.set_debug(False)
+    except:
+        pass
 
+    sensor.enable_feature(BNO_REPORT_ROTATION_VECTOR)
     return sensor
+
 
 
 sensor = init_sensor()
@@ -190,7 +195,6 @@ while True:
         time.sleep(0.05)
 
     except (OSError, KeyError) as e:
-        print("⚠️ I2C or unknown report error —", e)
         hiccup_count += 1
         if hiccup_count >= MAX_HICCUPS:
             print("⚠️ Too many hiccups, reinitializing sensor...")
@@ -201,5 +205,4 @@ while True:
             time.sleep(0.05)
 
     except Exception as e:
-        print("Unexpected error:", e)
         time.sleep(0.2)

@@ -85,7 +85,6 @@ def vector_to_latlon(v):
 
     return lat, lon
 
-
 # ----------------------------
 # CONFIG
 # ----------------------------
@@ -109,21 +108,6 @@ def key_pressed():
     dr, dw, de = select.select([sys.stdin], [], [], 0)
     return dr != []
 
-
-# ----------------------------
-# STABILITY TRACKING
-# ----------------------------
-STABLE_THRESHOLD_DEG = 1.0
-STABLE_TIME_SEC = 3.0
-
-last_latlon = None
-stable_start = None
-
-
-# ----------------------------
-# MAIN LOOP
-# ----------------------------
-print("Press 'c' at any time to calibrate the current orientation as 0°/0°.\n")
 
 while True:
     try:
@@ -154,31 +138,7 @@ while True:
 
         current = (lat, lon)
 
-        # If first reading, init stability tracking
-        if last_latlon is None:
-            last_latlon = current
-            stable_start = time.time()
-            continue
-
-        # Check stability
-        lat_diff = abs(lat - last_latlon[0])
-        lon_diff = abs(lon - last_latlon[1])
-
-        if lat_diff < STABLE_THRESHOLD_DEG and lon_diff < STABLE_THRESHOLD_DEG:
-            if time.time() - stable_start >= STABLE_TIME_SEC:
-                print(f"Stable position reached:")
-                print(f"→ Latitude:  {lat:.2f}°")
-                print(f"→ Longitude: {lon:.2f}°")
-                print("---------------------------")
-
-                stable_start = time.time()
-                last_latlon = current
-        else:
-            stable_start = time.time()
-            last_latlon = current
-
-        time.sleep(0.05)
-
+        print(f"lat is: {lat}. lon is: {lon}")
     except OSError:
         print("\n⚠️  I2C hiccup — resetting sensor...")
         time.sleep(0.2)
