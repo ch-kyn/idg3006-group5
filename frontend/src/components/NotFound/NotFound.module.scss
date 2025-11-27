@@ -1,0 +1,47 @@
+@use '../../styles/colors' as c;
+
+.cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 600px;
+    width: 850px;
+    gap: 2rem;
+
+    img {
+        border: 2px solid c.$whiteBlue;
+        border-radius: 0.75rem;
+    }
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    background-color: c.$whiteBlue;
+    border-radius: 0.75rem;
+    padding: 2rem 2.5rem;
+}
+
+.title, .text {
+    display: block;
+}
+
+.btn {
+    display: block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    background-color: c.$primaryBlue500;
+    color: white;
+    border: none;
+    border-radius: 0.4rem;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 10rem;
+    text-decoration: none;
+
+    &:hover {
+        filter: brightness(1.05);
+    }
+}

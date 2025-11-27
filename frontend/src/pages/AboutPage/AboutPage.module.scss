@@ -17,7 +17,6 @@
     width: 80%;
     min-width: 600px;
     height: 100%;
-    background-color: c.$whiteBlue;
     border-radius: 0.4rem;
     padding: 2rem 3.2rem;
     max-width: 1400px;
@@ -31,7 +30,6 @@
 
     &__left {
         gap: 2rem;
-        margin: 0.8rem;
     }
 
     &__right {
@@ -59,14 +57,20 @@
 .general {
     display: flex;
     flex-direction: column;
+    gap: 0.8rem;
     width: fit-content;
     background-color: c.$whiteBlue;
-    padding: 1.2rem 1.8rem;
+    padding: 2.4rem 1.8rem;
     border-radius: 0.4rem;
-    width: 100%;
-    font-size: 1.2rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    gap: 0.4rem;
+
+    &__text {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        font-size: 1.2rem;
+        gap: 0.4rem;
+    }
 }
 
 .label {

@@ -2,6 +2,7 @@ import SocketLayout from "../../layouts/SocketLayout";
 import Logo from '../../components/Logo/Logo';
 import Quiz from "../../components/Quiz/Quiz";
 import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import NotFound from "../../components/NotFound/NotFound";
 import styles from "./QuizPage.module.scss";
 import { useState } from "react";
 
@@ -12,6 +13,8 @@ const QuizPage = () => {
         <SocketLayout namespace="quiz" title="Quiz 📝">
             {(data) => {
                 const questions = data?.questions || [];
+                if (data?.error || questions.length === 0) return (<NotFound />);
+
                 const country = data?.country;
 
                 return (
