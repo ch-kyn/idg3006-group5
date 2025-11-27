@@ -39,13 +39,13 @@ app.get("/api/inventions/:country", (req, res) => {
         const inventions = JSON.parse(data);
         const countryData = inventions.find(item => item.country.toLowerCase() === country);
 
-         if (!countryData) {
-            return res.json({
-                country,
-                message: `No inventions found for "${country}"`,
-                inventions: []
+        if (!countryData) {
+            return res.status(404).json({
+                error: "Inventions not found",
+                requested: country
             });
         }
+        
         res.json(countryData);
     });
 });
@@ -68,15 +68,14 @@ app.get("/api/countries/:country", (req, res) => {
 
         const inventions = JSON.parse(data);
         const countryData = inventions.find(item => item.country.toLowerCase() === country);
-
-        // fallback response 
+        
         if (!countryData) {
-            return res.json({
-                country,
-                message: `No country info found for "${country}"`,
-                info: null
+            return res.status(404).json({
+                error: "Country not found",
+                requested: country
             });
         }
+
 
         res.json(countryData);
     });

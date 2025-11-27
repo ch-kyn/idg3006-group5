@@ -9,29 +9,17 @@ export default function useControllerListener(ready = true) {
     const socketRef = useRef(null);
     const isThrottled = useRef(false);
 
-    // re-query elements whenever location changes
-    // useEffect(() => {
-    //     if (!ready) return;
-    //     elements.current = Array.from(document.querySelectorAll(".controller-target"));
-    //     console.log(elements.current);
-    //     if (elements.current.length > 0) {
-    //         focusIndex.current = 0;
-    //         elements.current[focusIndex.current].focus();
-    //     }
-    // }, [location.pathname, ready]);
-
     useEffect(() => {
     if (!ready) return;
+        const updateElements = () => {
+            const newEls = Array.from(document.querySelectorAll(".controller-target"));
+            elements.current = newEls;
 
-    const updateElements = () => {
-        const newEls = Array.from(document.querySelectorAll(".controller-target"));
-        elements.current = newEls;
-
-        if (newEls.length > 0) {
-            focusIndex.current = 0;
-            newEls[0].focus();
-        }
-    };
+            if (newEls.length > 0) {
+                focusIndex.current = 0;
+                newEls[0].focus();
+            }
+        };
 
         updateElements();
 
@@ -112,8 +100,6 @@ export default function useControllerListener(ready = true) {
                 case "select": {
                     const els = Array.from(document.querySelectorAll(".controller-target"));
                     const el = els[focusIndex.current];
-
-                    console.log("🟢 SELECT", el);
 
                     if (el && !el.disabled) {
                         el.click();

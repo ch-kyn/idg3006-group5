@@ -24,16 +24,28 @@ const SocketLayout = ({ namespace, title, children }) => {
 		const normalize = (msg) => msg.payload ?? msg;
 
 		// handle incoming newData / loading
+		// handle incoming newData / loading
 		const handleIncoming = (incomingData) => {
-			if (!incomingData) return;
-
 			const msg = normalize(incomingData);
 
-			// only handle events for this namespace
-			if (msg.type !== namespace) return;
+			// stop loading if data received have errors
+			if (msg.error) {
+				console.log(`[${namespace}] Error received`, msg.error);
+				setData(msg);  
+				setLoading(false);
+				return;
+			}
+
+			// optional type check
+			if (msg.type && msg.type !== namespace) {
+				console.log(`[${namespace}] Type error received`, msg.error);
+
+				return;
+			}
 
 			if (msg.loading) {
 				console.log(`[${namespace}] Loading started`);
+				console.log(msg);
 				setLoading(true);
 				return;
 			}
