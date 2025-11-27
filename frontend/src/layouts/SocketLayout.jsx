@@ -17,7 +17,7 @@ const SocketLayout = ({ namespace, title, children }) => {
 
 	useEffect(() => {
 		console.log("Initializing socket for namespace:", namespace);
-		const socket = io("http://localhost:3000", { autoConnect: true });
+		const socket = io("http://localhost:3000", { autoConnect: true, transports: ["polling", "websocket"] });
 		socketRef.current = socket;
 
 		// normalize incoming payload

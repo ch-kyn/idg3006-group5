@@ -88,6 +88,28 @@
 					"extra": "Gutenberg's invention changed the world, enabling the Renaissance, Reformation, and scientific revolution by making ideas accessible to many people for the first time."
 				},
 				"image": "images/europe/germany/printing_press.webp"
+			},
+			{
+				"name": "Automobile",
+				"inventor": "Karl Benz",
+				"year": "1885",
+				"information": {
+					"general": "Karl Benz of Germany is credited with inventing the first practical automobile powered by an internal combustion engine.",
+					"description": "The Benz Patent-Motorwagen is considered the world's first real car, marking the beginning of modern transportation as we know it today.",
+					"extra": "This invention transformed how humans travel, trade, and design cities, eventually shaping the entire global automotive industry."
+				},
+				"image": "images/europe/germany/automobile.webp"
+			},
+			{
+				"name": "X-ray Machine",
+				"inventor": "Wilhelm Conrad Röntgen",
+				"year": "1895",
+				"information": {
+					"general": "Wilhelm Conrad Röntgen discovered X-rays while experimenting with cathode rays in Germany.",
+					"description": "This discovery made it possible to see inside the human body without surgery, revolutionizing medical diagnostics.",
+					"extra": "X-ray technology became one of the most important tools in medicine, science, and security worldwide."
+				},
+				"image": "images/europe/germany/xray_machine.webp"
 			}
 		]
 	},
@@ -104,6 +126,28 @@
 					"extra": "Watt's enhancements allowed engines to use less fuel and generate more power. His work helped industries grow rapidly and shaped modern economies."
 				},
 				"image": "images/europe/uk/steam_engine.webp"
+			},
+			{
+				"name": "World Wide Web",
+				"inventor": "Tim Berners-Lee",
+				"year": "1989",
+				"information": {
+					"general": "British computer scientist Tim Berners-Lee invented the World Wide Web while working at CERN.",
+					"description": "The World Wide Web made it possible to access and share information through websites connected by hyperlinks.",
+					"extra": "It revolutionized how people learn, communicate, work, and access information across the entire globe."
+				},
+				"image": "images/europe/uk/world_wide_web.webp"
+			},
+			{
+				"name": "Jet Engine",
+				"inventor": "Frank Whittle",
+				"year": "1937",
+				"information": {
+					"general": "British engineer Frank Whittle developed the first practical turbojet engine.",
+					"description": "The jet engine allowed aircraft to travel significantly faster and higher than before.",
+					"extra": "This invention transformed aviation, making modern commercial and military flight possible."
+				},
+				"image": "images/europe/uk/jet_engine.webp"
 			}
 		]
 	},
@@ -120,6 +164,66 @@
 					"extra": "The Montgolfiers experimented with different materials and sizes, eventually carrying passengers safely. Ballooning became a popular spectacle in Europe and laid groundwork for aviation."
 				},
 				"image": "images/europe/france/hot_air_balloon.webp"
+			},
+			{
+				"name": "Pasteurization",
+				"inventor": "Louis Pasteur",
+				"year": "1864",
+				"information": {
+					"general": "In 1864, Louis Pasteur developed the process of pasteurization to kill harmful microbes in liquids like milk and wine.",
+					"description": "The method involves heating liquids to a specific temperature for a set time to destroy bacteria without affecting flavor. It drastically improved food safety and public health.",
+					"extra": "Pasteurization is still used worldwide today for dairy, juice, and other perishable liquids, preventing countless illnesses and saving millions of lives."
+				},
+				"image": "images/europe/france/pasteurization.webp"
+			},
+			{
+				"name": "Braille System",
+				"inventor": "Louis Braille",
+				"year": "1824",
+				"information": {
+					"general": "In 1824, Louis Braille, a blind Frenchman, invented the Braille system for reading and writing for visually impaired people.",
+					"description": "The system uses patterns of raised dots representing letters, numbers, and punctuation. It allowed blind individuals to read independently and access education.",
+					"extra": "Braille revolutionized literacy for the blind, becoming a universal tactile writing system used in schools, libraries, and everyday life worldwide."
+				},
+				"image": "images/europe/france/braille.webp"
+			}
+		]
+	},
+	{
+		"country": "Greece",
+		"inventions": [
+			{
+				"name": "Olympic Flame / Torch Relay",
+				"inventor": "Ancient Greeks (Olympic organizers)",
+				"year": "776 BCE",
+				"information": {
+					"general": "A ceremonial flame lit to honor the gods and symbolize the continuity of the Olympic Games.",
+					"description": "The torch was carried in a relay from Olympia to the host city, a tradition to demonstrate unity, endurance, and respect.",
+					"extra": "Modern Olympic torch relays are inspired directly by this ancient Greek invention, blending culture and sportsmanship."
+				},
+				"image": "images/europe/greece/olympic_flame.webp"
+			},
+			{
+				"name": "Water Mill",
+				"inventor": "Ancient Greek Engineers",
+				"year": "3rd Century BCE",
+				"information": {
+					"general": "The Greeks were among the first to use water-powered mills to grind grain into flour.",
+					"description": "Flowing water turned a wheel connected to grinding stones, replacing manual labor with mechanical energy.",
+					"extra": "This innovation became the foundation for later industrial machines and energy use in Europe and beyond."
+				},
+				"image": "images/europe/greece/water_mill.webp"
+			},
+			{
+				"name": "Archimedes' Screw",
+				"inventor": "Archimedes",
+				"year": "3rd Century BCE",
+				"information": {
+					"general": "Archimedes invented a device for raising water for irrigation and drainage purposes.",
+					"description": "The screw-shaped device rotates inside a pipe or cylinder, lifting water upward as it turns.",
+					"extra": "It is still used today in agriculture and water management systems around the world."
+				},
+				"image": "images/europe/greece/archimedes_screw.webp"
 			}
 		]
 	},

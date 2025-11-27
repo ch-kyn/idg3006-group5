@@ -43,8 +43,8 @@ const AboutPage = () => {
                             <div className={`${styles.col} ${styles.col__right}`}>
                                 <AboutCard title="Popular Dishes" dataArr={info.popular_dishes} image={`http://localhost:3000/${info.images['food']}`} />
                                 <AboutCard title="Famous People" dataArr={info.famous_people} />
-                                <AboutCard title="Heritage Places" dataArr={info.places_heritage} image={`http://localhost:3000/${info.images['place']}`} />
                                 <AboutCard title="Exports" dataArr={info.exports} />
+                                <AboutCard title="Heritage Places" dataArr={info.places_heritage} image={`http://localhost:3000/${info.images['place']}`} />
                             </div>
                         </div>
                     </div>
