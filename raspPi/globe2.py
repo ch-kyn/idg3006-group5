@@ -1,5 +1,5 @@
 import asyncio
-import websockets
+import socketio
 import json
 import time
 import math
@@ -13,9 +13,11 @@ from adafruit_bno08x.i2c import BNO08X_I2C
 from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR
 
 # ----------------------------
-# WebSocket config
+# Socket.IO client
 # ----------------------------
-WS_URI = "ws://192.168.166.154:8765"  # replace with your server
+WS_URI = "http://192.168.166.154:8765"  # Socket.IO server URL
+
+sio = socketio.AsyncClient()
 
 # ----------------------------
 # RESET PIN (REQUIRED)
@@ -105,61 +107,67 @@ def key_pressed():
     dr, dw, de = select.select([sys.stdin], [], [], 0)
     return dr != []
 
+# ----------------------------
+# Socket.IO events
+# ----------------------------
+@sio.event
+async def connect():
+    print("✅ Connected to Socket.IO server!")
+
+@sio.event
+async def disconnect():
+    print("❌ Disconnected from server")
 
 # ----------------------------
-# Main async loop
+# Main loop
 # ----------------------------
-async def send_coordinates():
+async def main_loop():
     global sensor
-    async with websockets.connect(WS_URI) as websocket:
-        print("Connected to WebSocket server!")
+    while True:
+        # --- Keyboard calibration ---
+        if key_pressed():
+            ch = sys.stdin.read(1)
+            if ch.lower() == "c":
+                calibrate(sensor.quaternion)
 
-        while True:
-            # --- Keyboard calibration ---
-            if key_pressed():
-                ch = sys.stdin.read(1)
-                if ch.lower() == "c":
-                    calibrate(sensor.quaternion)
+        try:
+            # Read quaternion
+            x, y, z, w = sensor.quaternion
+            if (x, y, z, w) == (0.0, 0.0, 0.0, 0.0):
+                await asyncio.sleep(0.01)
+                continue
 
-            try:
-                # Read quaternion
-                x, y, z, w = sensor.quaternion
-                if (x, y, z, w) == (0.0, 0.0, 0.0, 0.0):
-                    await asyncio.sleep(0.01)
-                    continue
+            raw_q = (x, y, z, w)
+            corrected_q = quat_mul(calibration_quat, raw_q)
+            world_vec = rotate_vector_by_quat(sensor_axis, corrected_q)
+            lat, lon = vector_to_latlon(world_vec)
+            if lat is None:
+                await asyncio.sleep(0.1)
+                continue
 
-                raw_q = (x, y, z, w)
-                corrected_q = quat_mul(calibration_quat, raw_q)
-                world_vec = rotate_vector_by_quat(sensor_axis, corrected_q)
-                lat, lon = vector_to_latlon(world_vec)
-                if lat is None:
-                    await asyncio.sleep(1)
-                    continue
+            # Send coordinates to Socket.IO server
+            await sio.emit('coords', {"lat": round(lat,3), "lon": round(lon,3)})
+            print(f"Sent: lat={lat:.3f}, lon={lon:.3f}")
 
-                # Send over WebSocket
-                message = json.dumps({"lat": round(lat, 3), "lon": round(lon, 3)})
-                await websocket.send(message)
-                print(f"Sent: {message}")
-
-                await asyncio.sleep(1)  # update rate ~10 Hz
-            except OSError:
-                print("\n⚠️ I2C hiccup — resetting sensor...")
-                sensor = init_sensor()
-                await asyncio.sleep(0.2)
-            except Exception as e:
-                print("Unexpected error:", e)
-                await asyncio.sleep(0.2)
+            await asyncio.sleep(0.1)  # ~10 Hz update rate
+        except OSError:
+            print("\n⚠️ I2C hiccup — resetting sensor...")
+            sensor = init_sensor()
+            await asyncio.sleep(0.2)
+        except Exception as e:
+            print("Unexpected error:", e)
+            await asyncio.sleep(0.2)
 
 # ----------------------------
 # Entry point
 # ----------------------------
 if __name__ == "__main__":
-    # Make stdin non-blocking for keyboard input
     import tty, termios
     fd = sys.stdin.fileno()
     old_settings = termios.tcgetattr(fd)
     try:
         tty.setcbreak(fd)
-        asyncio.run(send_coordinates())
+        asyncio.run(sio.connect(WS_URI))
+        asyncio.run(main_loop())
     finally:
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
