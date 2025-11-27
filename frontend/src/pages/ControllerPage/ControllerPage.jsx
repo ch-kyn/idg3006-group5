@@ -10,7 +10,7 @@ const ControllerPage = () => {
 
     // create socket once
     if (!socketRef.current) {
-        socketRef.current = io(SOCKET_URL, { transports: ["websocket"] });
+        socketRef.current = io(SOCKET_URL, { transports: ["polling", "websocket"] });
     }
 
     const socket = socketRef.current;

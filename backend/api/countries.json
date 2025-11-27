@@ -8,40 +8,316 @@
         "gdp_total_usd": 507700000000,
         "national_day": "May 17",
         "national_animal": "Moose",
-
         "exports": [
             "Oil",
             "Natural gas",
             "Seafood (salmon)",
-            "Aluminium",
             "Hydropower"
         ],
-
         "popular_dishes": [
             "Fårikål",
             "Kjøttkaker",
-            "Gravlaks"
+            "Gravlaks",
+            "Lutefisk"
         ],
-
         "famous_people": [
             "Edvard Munch",
             "Henrik Ibsen",
-            "Knut Hamsun"
+            "Knut Hamsun",
+            "Roald Amundsen"
         ],
-
         "places_heritage": [
             "Bryggen, Bergen",
             "Røros Mining Town",
-            "Urnes Stave Church",
             "Nidaros Cathedral, Trondheim",
             "Geirangerfjord"
         ],
-
         "images": {
             "flag": "images/countries/norway/norway_flag.webp",
             "map": "images/countries/norway/norway_map.webp",
             "food": "images/countries/norway/norway_kjøttkaker.webp",
             "place": "images/countries/norway/norway_bryggen.webp"
+        }
+    },
+    {
+        "country": "Italy",
+        "capital": "Rome",
+        "population": 59554023,
+        "area_km2": 301340,
+        "currency": "Euro (EUR)",
+        "gdp_total_usd": 2100000000000,
+        "national_day": "June 2",
+        "national_animal": "Italian Wolf",
+        "exports": [
+            "Machinery",
+            "Vehicles",
+            "Pharmaceuticals",
+            "Fashion & Clothing"
+        ],
+        "popular_dishes": [
+            "Pizza",
+            "Pasta Carbonara",
+            "Risotto",
+            "Tiramisu"
+        ],
+        "famous_people": [
+            "Leonardo da Vinci",
+            "Galileo Galilei",
+            "Michelangelo",
+            "Sophia Loren"
+        ],
+        "places_heritage": [
+            "Colosseum, Rome",
+            "Venice Canals",
+            "Leaning Tower of Pisa",
+            "Pompeii Ruins"
+        ],
+        "images": {
+            "flag": "images/countries/italy/italy_flag.webp",
+            "map": "images/countries/italy/italy_map.webp",
+            "food": "images/countries/italy/italy_pizza.webp",
+            "place": "images/countries/italy/italy_colosseum.webp"
+        }
+    },
+    {
+        "country": "Germany",
+        "capital": "Berlin",
+        "population": 83200000,
+        "area_km2": 357022,
+        "currency": "Euro (EUR)",
+        "gdp_total_usd": 4200000000000,
+        "national_day": "October 3",
+        "national_animal": "Federal Eagle",
+        "exports": [
+            "Automobiles",
+            "Machinery",
+            "Chemicals",
+            "Pharmaceuticals"
+        ],
+        "popular_dishes": [
+            "Bratwurst",
+            "Sauerbraten",
+            "Pretzels",
+            "Schnitzel"
+        ],
+        "famous_people": [
+            "Johann Wolfgang von Goethe",
+            "Albert Einstein",
+            "Ludwig van Beethoven",
+            "Otto von Bismarck"
+        ],
+        "places_heritage": [
+            "Brandenburg Gate, Berlin",
+            "Cologne Cathedral",
+            "Neuschwanstein Castle",
+            "Black Forest"
+        ],
+        "images": {
+            "flag": "images/countries/germany/germany_flag.webp",
+            "map": "images/countries/germany/germany_map.webp",
+            "food": "images/countries/germany/germany_bratwurst.webp",
+            "place": "images/countries/germany/germany_neuschwanstein.webp"
+        }
+    },
+    {
+        "country": "United Kingdom",
+        "capital": "London",
+        "population": 67000000,
+        "area_km2": 242495,
+        "currency": "Pound Sterling (GBP)",
+        "gdp_total_usd": 3100000000000,
+        "national_day": "No official national day",
+        "national_animal": "Lion",
+        "exports": [
+            "Machinery",
+            "Pharmaceuticals",
+            "Vehicles",
+            "Petroleum products"
+        ],
+        "popular_dishes": [
+            "Fish and Chips",
+            "Sunday Roast",
+            "Full English Breakfast",
+            "Shepherd’s Pie"
+        ],
+        "famous_people": [
+            "William Shakespeare",
+            "Isaac Newton",
+            "Charles Darwin",
+            "Queen Elizabeth II"
+        ],
+        "places_heritage": [
+            "Tower of London",
+            "Stonehenge",
+            "Edinburgh Castle",
+            "Giant’s Causeway"
+        ],
+        "images": {
+            "flag": "images/countries/uk/uk_flag.webp",
+            "map": "images/countries/uk/uk_map.webp",
+            "food": "images/countries/uk/uk_fish_chips.webp",
+            "place": "images/countries/uk/uk_stonehenge.webp"
+        }
+    },
+    {
+        "country": "France",
+        "capital": "Paris",
+        "population": 67300000,
+        "area_km2": 551695,
+        "currency": "Euro (EUR)",
+        "gdp_total_usd": 2800000000000,
+        "national_day": "July 14",
+        "national_animal": "Gallic Rooster",
+        "exports": [
+            "Aircraft",
+            "Wine",
+            "Pharmaceuticals",
+            "Luxury goods"
+        ],
+        "popular_dishes": [
+            "Croissant",
+            "Coq au Vin",
+            "Ratatouille",
+            "Crêpes"
+        ],
+        "famous_people": [
+            "Napoleon Bonaparte",
+            "Claude Monet",
+            "Marie Curie",
+            "Louis Pasteur"
+        ],
+        "places_heritage": [
+            "Eiffel Tower, Paris",
+            "Palace of Versailles",
+            "Mont Saint-Michel",
+            "Louvre Museum"
+        ],
+        "images": {
+            "flag": "images/countries/france/france_flag.webp",
+            "map": "images/countries/france/france_map.webp",
+            "food": "images/countries/france/france_croissant.webp",
+            "place": "images/countries/france/france_eiffel_tower.webp"
+        }
+    },
+
+    {
+        "country": "Greece",
+        "capital": "Athens",
+        "population": 10720000,
+        "area_km2": 131957,
+        "currency": "Euro (EUR)",
+        "gdp_total_usd": 250000000000,
+        "national_day": "March 25",
+        "national_animal": "Dolphin",
+        "exports": [
+            "Olive oil",
+            "Fruits & Vegetables",
+            "Shipping services",
+            "Pharmaceuticals"
+        ],
+        "popular_dishes": [
+            "Moussaka",
+            "Souvlaki",
+            "Tzatziki",
+            "Baklava"
+        ],
+        "famous_people": [
+            "Alexander the Great",
+            "Socrates",
+            "Nikos Kazantzakis",
+            "Maria Callas"
+        ],
+        "places_heritage": [
+            "Acropolis, Athens",
+            "Santorini",
+            "Delphi",
+            "Meteora"
+        ],
+        "images": {
+            "flag": "images/countries/greece/greece_flag.webp",
+            "map": "images/countries/greece/greece_map.webp",
+            "food": "images/countries/greece/greece_moussaka.webp",
+            "place": "images/countries/greece/greece_acropolis.webp"
+        }
+    },
+    {
+        "country": "Russia",
+        "capital": "Moscow",
+        "population": 146000000,
+        "area_km2": 17098246,
+        "currency": "Russian Ruble (RUB)",
+        "gdp_total_usd": 1700000000000,
+        "national_day": "June 12",
+        "national_animal": "Brown Bear",
+        "exports": [
+            "Oil",
+            "Natural Gas",
+            "Metals",
+            "Timber"
+        ],
+        "popular_dishes": [
+            "Borscht",
+            "Pelmeni",
+            "Blini",
+            "Beef Stroganoff"
+        ],
+        "famous_people": [
+            "Leo Tolstoy",
+            "Pyotr Tchaikovsky",
+            "Yuri Gagarin",
+            "Anna Pavlova"
+        ],
+        "places_heritage": [
+            "Red Square, Moscow",
+            "Hermitage Museum, St. Petersburg",
+            "Kremlin, Moscow",
+            "Lake Baikal"
+        ],
+        "images": {
+            "flag": "images/countries/russia/russia_flag.webp",
+            "map": "images/countries/russia/russia_map.webp",
+            "food": "images/countries/russia/russia_borscht.webp",
+            "place": "images/countries/russia/russia_red_square.webp"
+        }
+    },
+    {
+        "country": "Spain",
+        "capital": "Madrid",
+        "population": 47350000,
+        "area_km2": 505990,
+        "currency": "Euro (EUR)",
+        "gdp_total_usd": 1400000000000,
+        "national_day": "October 12",
+        "national_animal": "Bull",
+        "exports": [
+            "Vehicles",
+            "Food & Wine",
+            "Machinery",
+            "Tourism services"
+        ],
+        "popular_dishes": [
+            "Paella",
+            "Tapas",
+            "Gazpacho",
+            "Churros"
+        ],
+        "famous_people": [
+            "Pablo Picasso",
+            "Miguel de Cervantes",
+            "Salvador Dalí",
+            "Penélope Cruz"
+        ],
+        "places_heritage": [
+            "Sagrada Familia, Barcelona",
+            "Alhambra, Granada",
+            "Park Güell, Barcelona",
+            "Prado Museum, Madrid"
+        ],
+        "images": {
+            "flag": "images/countries/spain/spain_flag.webp",
+            "map": "images/countries/spain/spain_map.webp",
+            "food": "images/countries/spain/spain_paella.webp",
+            "place": "images/countries/spain/spain_sagrada_familia.webp"
         }
     }
 ]
