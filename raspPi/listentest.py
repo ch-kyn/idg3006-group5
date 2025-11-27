@@ -1,10 +1,17 @@
 import asyncio
 import websockets
 import json
+import time
 
 # WebSocket server config
 HOST = "0.0.0.0"  # listen on all interfaces
 PORT = 8765       # match the sender's WS_URI port
+
+#stability check configs
+stability_room = 3 #if within 3 degrees
+stability_time = 3000
+request_sent = False
+
 
 async def handle_client(websocket, path):
     print(f"New client connected: {websocket.remote_address}")
@@ -16,6 +23,10 @@ async def handle_client(websocket, path):
                 lon = data.get("lon")
                 if lat is not None and lon is not None:
                     print(f"Received: lat={lat:.6f}, lon={lon:.6f}")
+                #check if request is sent and coordinattes are stable for 3 seconds:
+                if(request_sent =! True and ...)
+
+
             except json.JSONDecodeError:
                 print("Received invalid JSON:", message)
     except websockets.ConnectionClosed:
