@@ -15,13 +15,13 @@ from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR
 # ----------------------------
 # Socket.IO client
 # ----------------------------
-WS_URI = "http://192.168.166.154:8765"  # Socket.IO server URL
+WS_URI = "http://192.168.166.154:8765"
 sio = socketio.AsyncClient()
 
 # ----------------------------
 # RESET PIN (REQUIRED)
 # ----------------------------
-reset_pin = digitalio.DigitalInOut(board.D17)  # GPIO17 (Pin 11)
+reset_pin = digitalio.DigitalInOut(board.D17)
 reset_pin.direction = digitalio.Direction.OUTPUT
 
 # ----------------------------
@@ -84,21 +84,13 @@ def vector_to_latlon(v):
 # ----------------------------
 # CONFIG
 # ----------------------------
-sensor_axis = (1.0, 0.0, 0.0)  # +X is pointing direction
-calibration_quat = (0.0, 0.0, 0.0, 1.0)  # identity
+sensor_axis = (1.0, 0.0, 0.0)
+calibration_quat = (0.0, 0.0, 0.0, 1.0)
 
 def calibrate(q):
-    """Set calibration so this quaternion becomes zero orientation."""
     global calibration_quat
     calibration_quat = invert_quat(q)
-    print("\n🎯 Calibration set! Current orientation is now 0° latitude / 0° longitude.\n")
-
-# ----------------------------
-# Keyboard input helper
-# ----------------------------
-def key_pressed():
-    dr, dw, de = select.select([sys.stdin], [], [], 0)
-    return dr != []
+    print("\n🎯 Calibration set!\n")
 
 # ----------------------------
 # Socket.IO events
@@ -112,21 +104,15 @@ async def disconnect():
     print("❌ Disconnected from server")
 
 # ----------------------------
-# Main loop
+# Main sensor loop
 # ----------------------------
 async def main_loop():
     global sensor
-    while True:
-        # --- Keyboard calibration ---
-        if key_pressed():
-            ch = sys.stdin.read(1)
-            if ch.lower() == "c":
-                calibrate(sensor.quaternion)
 
+    while True:
         try:
-            # Read quaternion
             x, y, z, w = sensor.quaternion
-            if (x, y, z, w) == (0.0, 0.0, 0.0, 0.0):
+            if (x, y, z, w) == (0, 0, 0, 0):
                 await asyncio.sleep(0.01)
                 continue
 
@@ -134,19 +120,21 @@ async def main_loop():
             corrected_q = quat_mul(calibration_quat, raw_q)
             world_vec = rotate_vector_by_quat(sensor_axis, corrected_q)
             lat, lon = vector_to_latlon(world_vec)
+
             if lat is None:
                 await asyncio.sleep(0.1)
                 continue
 
-            # Send coordinates to Socket.IO server
-            await sio.emit('coords', {"lat": round(lat,3), "lon": round(lon,3)})
+            await sio.emit("coords", {"lat": round(lat,3), "lon": round(lon,3)})
             print(f"Sent: lat={lat:.3f}, lon={lon:.3f}")
 
-            await asyncio.sleep(0.1)  # ~10 Hz update rate
+            await asyncio.sleep(0.1)
+
         except OSError:
             print("\n⚠️ I2C hiccup — resetting sensor...")
             sensor = init_sensor()
             await asyncio.sleep(0.2)
+
         except Exception as e:
             print("Unexpected error:", e)
             await asyncio.sleep(0.2)
@@ -158,15 +146,17 @@ if __name__ == "__main__":
     import tty, termios
     fd = sys.stdin.fileno()
     old_settings = termios.tcgetattr(fd)
+
     try:
         tty.setcbreak(fd)
 
-        async def main():
+        async def runner():
             await sio.connect(WS_URI)
-            print("✅ Connected, starting main loop...")
-            await main_loop()
+            asyncio.create_task(main_loop())  # <--- IMPORTANT
+            while True:
+                await asyncio.sleep(1)
 
-        asyncio.run(main())
+        asyncio.run(runner())
 
     finally:
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
