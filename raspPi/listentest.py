@@ -44,7 +44,7 @@ async def connect(sid, environ):
 async def disconnect(sid):
     print(f"Client disconnected: {sid}")
 
-@sio.event
+@sio.on("coords")
 async def coords(sid, data):
     global last_coords, stable_since, request_sent
 
@@ -54,6 +54,7 @@ async def coords(sid, data):
         return
 
     print(f"Received coords: lat={lat}, lon={lon}")
+
 
     # Stability check
     if last_coords is None:
