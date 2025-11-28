@@ -1,45 +1,27 @@
-import time, board, busio, digitalio
-from adafruit_bno08x.i2c import BNO08X_I2C
+import asyncio
+import socketio
 
-# ---- Hardware reset pin ----
-reset_pin = digitalio.DigitalInOut(board.D17)
-reset_pin.direction = digitalio.Direction.OUTPUT
+sio = socketio.AsyncClient()
+WS_URI = "http://192.168.166.154:8765"
 
-# ---- Hardware reset ----
-print("Hardware reset...")
-reset_pin.value = False
-time.sleep(0.5)
-reset_pin.value = True
-time.sleep(1.5)
+@sio.event
+async def connect():
+    print("✅ Connected to server!")
 
-# ---- Bring up I2C ----
-i2c = busio.I2C(board.SCL, board.SDA)
-sensor = BNO08X_I2C(i2c, address=0x4A)
+@sio.event
+async def disconnect():
+    print("❌ Disconnected from server")
 
-print("Sending SHTP reset packet...")
+async def main():
+    await sio.connect(WS_URI)
+    print("Connected, starting sending loop...")
+    try:
+        for i in range(5):
+            await sio.emit("message", {"lat": i, "lon": i})
+            print(f"Sent coords: {i}, {i}")
+            await asyncio.sleep(1)
+    finally:
+        # Disconnect cleanly in the same loop
+        await sio.disconnect()
 
-# -------------------------------
-# LOW-LEVEL SH2 RESET COMMAND
-# -------------------------------
-# Channel 2 = Control Channel
-# Report ID 1 = Reset
-#
-# Format:
-#   Byte 0-1: payload length
-#   Byte 2: channel number
-#   Byte 3: sequence number
-#   Byte 4: Report ID (0x01)
-# -------------------------------
-
-# Build packet
-channel = 2
-seq = sensor.sequence_numbers[channel]
-packet = bytearray([0x01])  # Report ID: RESET
-
-sensor._send_shtp_packet(channel, packet)
-sensor.sequence_numbers[channel] = (seq + 1) & 0xFF
-
-print("Reset command sent. Waiting...")
-time.sleep(2)
-
-print("Try running tiny_test.py again.")
+asyncio.run(main())

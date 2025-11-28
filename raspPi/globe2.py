@@ -16,7 +16,6 @@ from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR
 # Socket.IO client
 # ----------------------------
 WS_URI = "http://192.168.166.154:8765"  # Socket.IO server URL
-
 sio = socketio.AsyncClient()
 
 # ----------------------------
@@ -32,13 +31,10 @@ i2c = busio.I2C(board.SCL, board.SDA)
 
 def init_sensor():
     print("Initializing BNO08X...")
-
-    # Hardware reset pulse
     reset_pin.value = False
     time.sleep(0.01)
     reset_pin.value = True
     time.sleep(0.25)
-
     sensor = BNO08X_I2C(i2c, address=0x4A)
     sensor.enable_feature(BNO_REPORT_ROTATION_VECTOR)
     return sensor
@@ -76,16 +72,13 @@ def vector_to_latlon(v):
     mag = math.sqrt(vx*vx + vy*vy + vz*vz)
     if mag == 0:
         return None, None
-
     vx /= mag
     vy /= mag
     vz /= mag
     lat = math.degrees(math.asin(vz))
     lon = math.degrees(math.atan2(vy, vx))
-
     if lon >= 180: lon -= 360
     if lon < -180: lon += 360
-
     return lat, lon
 
 # ----------------------------
@@ -167,7 +160,13 @@ if __name__ == "__main__":
     old_settings = termios.tcgetattr(fd)
     try:
         tty.setcbreak(fd)
-        asyncio.run(sio.connect(WS_URI))
-        asyncio.run(main_loop())
+
+        async def main():
+            await sio.connect(WS_URI)
+            print("✅ Connected, starting main loop...")
+            await main_loop()
+
+        asyncio.run(main())
+
     finally:
         termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
