@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { io } from "socket.io-client";
 
-const SOCKET_URL = "http://10.22.18.15:3000/";
+const SOCKET_URL = "http://192.168.166.132:3000/";
 
 export default function useControllerListener(ready = true) {
     const focusIndex = useRef(0);

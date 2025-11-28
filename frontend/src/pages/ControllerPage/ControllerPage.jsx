@@ -3,14 +3,14 @@ import { io } from "socket.io-client";
 import InfoButton from "../InfoButton/InfoButton";
 import styles from "./ControllerPage.module.scss";
 
-const SOCKET_URL = "http://10.22.18.15:3000/";
+const SOCKET_URL = "http://192.168.166.132:3000";
 
 const ControllerPage = () => {
     const socketRef = useRef(null);
 
     // create socket once
     if (!socketRef.current) {
-        socketRef.current = io(SOCKET_URL, { transports: ["polling", "websocket"] });
+        socketRef.current = io(SOCKET_URL);
     }
 
     const socket = socketRef.current;
