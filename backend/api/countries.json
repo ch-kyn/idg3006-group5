@@ -199,7 +199,6 @@
             "place": "images/countries/france/france_eiffel_tower.webp"
         }
     },
-
     {
         "country": "Greece",
         "capital": "Athens",
@@ -318,6 +317,126 @@
             "map": "images/countries/spain/spain_map.webp",
             "food": "images/countries/spain/spain_paella.webp",
             "place": "images/countries/spain/spain_sagrada_familia.webp"
+        }
+    },
+    {
+        "country": "China",
+        "capital": "Beijing",
+        "population": 1412000000,
+        "area_km2": 9597000,
+        "currency": "Renminbi (Yuan, CNY)",
+        "gdp_total_usd": 17700000000000,
+        "national_day": "October 1",
+        "national_animal": "Giant Panda",
+        "exports": [
+            "Electronics",
+            "Machinery",
+            "Textiles",
+            "Furniture"
+        ],
+        "popular_dishes": [
+            "Peking Duck",
+            "Dumplings",
+            "Sweet and Sour Pork",
+            "Kung Pao Chicken"
+        ],
+        "famous_people": [
+            "Confucius",
+            "Sun Tzu",
+            "Jackie Chan",
+            "Yao Ming"
+        ],
+        "places_heritage": [
+            "Great Wall of China, Beijing",
+            "Terracotta Army, Xi'an",
+            "Forbidden City, Beijing",
+            "Potala Palace, Lhasa"
+        ],
+        "images": {
+            "flag": "images/countries/china/china_flag.webp",
+            "map": "images/countries/china/china_map.webp",
+            "food": "images/countries/china/china_peking_duck.webp",
+            "place": "images/countries/china/china_great_wall.webp"
+        }
+    },
+    {
+        "country": "Japan",
+        "capital": "Tokyo",
+        "population": 125800000,
+        "area_km2": 377975,
+        "currency": "Japanese Yen (JPY)",
+        "gdp_total_usd": 5000000000000,
+        "national_day": "February 11 (National Foundation Day)",
+        "national_animal": "Green Pheasant",
+        "exports": [
+            "Cars",
+            "Electronics",
+            "Machinery",
+            "Steel"
+        ],
+        "popular_dishes": [
+            "Sushi",
+            "Ramen",
+            "Tempura",
+            "Okonomiyaki"
+        ],
+        "famous_people": [
+            "Hayao Miyazaki",
+            "Akira Kurosawa",
+            "Yoko Ono",
+            "Shinzo Abe"
+        ],
+        "places_heritage": [
+            "Mount Fuji",
+            "Kinkaku-ji, Kyoto",
+            "Itsukushima Shrine, Hiroshima",
+            "Himeji Castle, Himeji"
+        ],
+        "images": {
+            "flag": "images/countries/japan/japan_flag.webp",
+            "map": "images/countries/japan/japan_map.webp",
+            "food": "images/countries/japan/japan_sushi.webp",
+            "place": "images/countries/japan/japan_mount_fuji.webp"
+        }
+    },
+    {
+        "country": "South Korea",
+        "capital": "Seoul",
+        "population": 51700000,
+        "area_km2": 100210,
+        "currency": "South Korean Won (KRW)",
+        "gdp_total_usd": 2000000000000,
+        "national_day": "October 3 (National Foundation Day)",
+        "national_animal": "Korean Tiger",
+        "exports": [
+            "Semiconductors",
+            "Cars",
+            "Ships",
+            "Electronics"
+        ],
+        "popular_dishes": [
+            "Kimchi",
+            "Bibimbap",
+            "Bulgogi",
+            "Tteokbokki"
+        ],
+        "famous_people": [
+            "Bong Joon-ho",
+            "PSY",
+            "Ban Ki-moon",
+            "Son Heung-min"
+        ],
+        "places_heritage": [
+            "Gyeongbokgung Palace, Seoul",
+            "Jeju Island",
+            "Changdeokgung Palace, Seoul",
+            "Bukchon Hanok Village, Seoul"
+        ],
+        "images": {
+            "flag": "images/countries/south_korea/south_korea_flag.webp",
+            "map": "images/countries/south_korea/south_korea_map.webp",
+            "food": "images/countries/south_korea/south_korea_kimchi.webp",
+            "place": "images/countries/south_korea/south_korea_gyeongbokgung.webp"
         }
     }
 ]
