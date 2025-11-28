@@ -228,6 +228,82 @@
 		]
 	},
 	{
+		"country": "Russia",
+		"inventions": [
+			{
+				"name": "Periodic Table of Elements",
+				"inventor": "Dmitri Mendeleev",
+				"year": "1869",
+				"information": {
+					"general": "A systematic arrangement of chemical elements based on their atomic number, electron configurations, and recurring chemical properties.",
+					"description": "Mendeleev organized elements so that elements with similar properties fell into vertical columns, predicting the existence and properties of elements yet to be discovered.",
+					"extra": "This table forms the foundation of modern chemistry and is still used worldwide for scientific research and education."
+				},
+				"image": "images/europe/russia/periodic_table.webp"
+			},
+			{
+				"name": "First Practical Helicopter",
+				"inventor": "Igor Sikorsky",
+				"year": "1939",
+				"information": {
+					"general": "Sikorsky developed one of the first successful single-rotor helicopters capable of controlled flight.",
+					"description": "His design combined a main rotor for lift and a tail rotor for stability, setting the blueprint for most modern helicopters.",
+					"extra": "Sikorsky's work revolutionized aviation, enabling vertical takeoff and landing, search-and-rescue operations, and military transport."
+				},
+				"image": "images/europe/russia/helicopter.webp"
+			},
+			{
+				"name": "Tetris",
+				"inventor": "Alexey Pajitnov",
+				"year": "1984",
+				"information": {
+					"general": "A tile-matching puzzle video game that became one of the most popular and influential games in history.",
+					"description": "Players rotate and place falling shapes called tetrominoes to complete horizontal lines without gaps, which then disappear, scoring points.",
+					"extra": "Tetris has been adapted to nearly every gaming platform and is considered a cultural icon worldwide."
+				},
+				"image": "images/europe/russia/tetris.webp"
+			}
+		]
+	},
+	{
+		"country": "Spain",
+		"inventions": [
+			{
+				"name": "Chupa Chups (Lollipop)",
+				"inventor": "Enric Bernat",
+				"year": "1958",
+				"information": {
+					"general": "A popular lollipop on a stick, designed to make candy easier and cleaner to eat for children.",
+					"description": "Bernat invented the idea of putting candy on a stick so it could be enjoyed without sticky fingers, revolutionizing the candy industry.",
+					"extra": "The brand logo was famously designed by Salvador Dalí, and Chupa Chups became a global phenomenon."
+				},
+				"image": "images/europe/spain/chupa_chups.webp"
+			},
+			{
+				"name": "Table Football (Foosball)",
+				"inventor": "Valentin Gomez",
+				"year": "1937",
+				"information": {
+					"general": "A tabletop game simulating association football, played by manipulating rods with attached figures to hit a small ball into the opponent's goal.",
+					"description": "Gomez's design popularized the game in Spain and beyond, making it a widely played recreational activity in homes, bars, and clubs.",
+					"extra": "Modern foosball tables have evolved in design and rules, but the basic Spanish-invented concept remains the same worldwide."
+				},
+				"image": "images/europe/spain/table_football.webp"
+			},
+			{
+				"name": "Modern Classical Acoustic Guitar",
+				"inventor": "Antonio de Torres Jurado",
+				"year": "1850s",
+				"information": {
+					"general": "The modern design of the classical acoustic guitar, with a larger body, fan bracing, and improved resonance.",
+					"description": "Torres standardized the guitar's shape and internal bracing, improving volume, tone, and playability, forming the basis of modern classical and flamenco guitars.",
+					"extra": "His designs influenced luthiers worldwide and are still followed in modern guitar making."
+				},
+				"image": "images/europe/spain/acoustic_guitar.webp"
+			}
+		]
+	},
+	{
 		"country": "USA",
 		"inventions": [
 			{
@@ -320,6 +396,28 @@
 					"extra": "His experiments standardized a process that spread across China and later the world, enabling literature and bureaucracy to flourish."
 				},
 				"image": "images/asia/china/paper.webp"
+			},
+			{
+				"name": "Gunpowder",
+				"inventor": "Chinese Alchemists",
+				"year": "9th Century CE",
+				"information": {
+					"general": "An explosive mixture initially discovered while seeking an elixir of immortality.",
+					"description": "Used first for fireworks and later adapted for military applications, gunpowder transformed warfare globally.",
+					"extra": "Its invention laid the foundation for cannons, firearms, and modern explosives."
+				},
+				"image": "images/asia/china/gunpowder.webp"
+			},
+			{
+				"name": "Compass",
+				"inventor": "Ancient Chinese Engineers",
+				"year": "Han Dynasty, 2nd century BCE",
+				"information": {
+					"general": "A navigational instrument that shows direction relative to the Earth's magnetic poles.",
+					"description": "The Chinese first used lodestone (magnetized mineral) to create a simple directional compass for navigation and geomancy.",
+					"extra": "The compass later became a crucial tool for maritime exploration globally."
+				},
+				"image": "images/asia/china/compass.webp"
 			}
 		]
 	},
@@ -336,6 +434,28 @@
 					"extra": "After countless lab trials, his breakthrough earned a Nobel Prize and revolutionized electronics globally."
 				},
 				"image": "images/asia/japan/blue_led.webp"
+			},
+			{
+				"name": "Compact Disc (CD)",
+				"inventor": "Kees Schouhamer Immink & Toshitada Doi (Sony/Philips collaboration)",
+				"year": "1982",
+				"information": {
+					"general": "An optical disc used to store digital data, originally for audio storage.",
+					"description": "Japanese engineers helped develop the CD standard and manufacturing technology, making digital audio widely accessible.",
+					"extra": "CDs revolutionized music distribution and data storage, laying the groundwork for DVDs and Blu-rays."
+				},
+				"image": "images/asia/japan/compact_disc.webp"
+			},
+			{
+				"name": "Game Boy",
+				"inventor": "Gunpei Yokoi",
+				"year": "1989",
+				"information": {
+					"general": "A handheld gaming console that popularized portable video gaming worldwide.",
+					"description": "Gunpei Yokoi designed a compact, durable device with interchangeable game cartridges, making gaming accessible anywhere.",
+					"extra": "The Game Boy's success led to a long-running line of Nintendo handheld consoles and inspired the entire portable gaming industry."
+				},
+				"image": "images/asia/japan/game_boy.webp"
 			}
 		]
 	},
@@ -359,16 +479,38 @@
 		"country": "South Korea",
 		"inventions": [
 			{
-				"name": "CDMA Mobile Communication",
-				"inventor": "South Korean engineers",
-				"year": "1990s",
+				"name": "Kimchi Refrigerator",
+				"inventor": "Kim Jae-kyung / South Korean engineers",
+				"year": "1995",
 				"information": {
-					"general": "In the 1990s, engineers in South Korea developed CDMA to improve mobile call capacity and quality.",
-					"description": "It uses unique codes to allow many users on the same frequency without interference.",
-					"extra": "Their work laid the foundation for modern mobile networks and the smartphones we rely on today."
+					"general": "A specialized refrigerator designed to store kimchi at ideal temperatures and humidity levels to preserve flavor and fermentation.",
+					"description": "Unlike standard refrigerators, Kimchi refrigerators maintain a stable, slightly colder environment with precise humidity control, preventing over-fermentation while keeping kimchi fresh for months.",
+					"extra": "This invention became extremely popular in South Korean households and has been exported globally to cater to Korean cuisine enthusiasts."
 				},
-				"image": "images/asia/south_korea/cdma.webp"
-			}
+				"image": "images/asia/south_korea/kimchi_refrigerator.webp"
+			},
+			{
+				"name": "Banana Milk",
+				"inventor": "Seoul Milk Co.",
+				"year": "1974",
+				"information": {
+					"general": "A flavored milk beverage that became a cultural staple in South Korea.",
+					"description": "Seoul Milk invented this banana-flavored milk, which became extremely popular and widely consumed in schools and households.",
+					"extra": "Banana milk is now an iconic South Korean drink, often exported and referenced in Korean pop culture."
+				},
+				"image": "images/asia/south_korea/banana_milk.webp"
+			},
+			{
+				"name": "Hangul (Korean Alphabet)",
+				"inventor": "King Sejong the Great",
+				"year": "1443",
+				"information": {
+					"general": "The Korean writing system, designed to be easy to learn and use.",
+					"description": "Hangul was created to improve literacy in Korea. Its systematic phonetic design allows almost anyone to read and write Korean quickly.",
+					"extra": "Hangul is celebrated every year on Hangul Day (October 9 in South Korea) and is considered one of the most scientific writing systems in the world."
+				},
+				"image": "images/asia/south_korea/hangul.webp"
+        	}
 		]
 	},
 	{
