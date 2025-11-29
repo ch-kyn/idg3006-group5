@@ -7,7 +7,7 @@ const Invention = ({ data, country }) => {
         data && (
             <div className={styles.main}>
                 <section className={styles.main__cont}>
-                    <img src={`http://localhost:3000/${data.image}`} alt={data.name} className={styles.img}/>
+                    <img src={`${import.meta.env.VITE_SOCKET_URL}${data.image}`} alt={data.name} className={styles.img}/>
                 </section>
                 
                 <section className={styles.main__cont}>

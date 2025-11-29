@@ -20,7 +20,7 @@ const NotFound = (country = null) => {
     return (
         <div className={styles.cont}>
             <img
-                src={`http://localhost:3000/${randomOption.imageUrl}`}
+                src={`${import.meta.env.VITE_SOCKET_URL}${randomOption.imageUrl}`}
                 alt="Fallback illustration"
                 className={styles.img}
             />
