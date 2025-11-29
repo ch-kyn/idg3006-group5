@@ -4,6 +4,7 @@ import { Server } from "socket.io";
 import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
+import os from "os";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -14,9 +15,6 @@ const io = new Server(server, {
     cors: { origin: "*", methods: ["GET","POST"] },
     transports: ["polling", "websocket"]
 });
-
-// Track requested namespaces
-const clientNamespaces = {};
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
@@ -82,13 +80,14 @@ app.get("/api/countries/:country", (req, res) => {
     });
 });
 
+/* -------------------------------------------------------------------------------------- */
 // Socket.IO
 io.on("connection", (socket) => {
     console.log("Client connected:", socket.id);
 
+    // just forward the request to Node-RED
     socket.on("requestData", (msg) => {
-        // just forward the request to Node-RED
-        io.emit("requestData", msg);
+        io.emit("requestData", msg); 
     });
 
     socket.on("control", (data) => {
@@ -105,12 +104,50 @@ io.on("connection", (socket) => {
         io.emit("loading", data.payload ?? data);
     });
 
+    socket.on("coords", (data) => {
+        io.emit("coords", data.payload ?? data);
+    });
+
+    socket.on("calibrate", (data) => {
+        io.emit("calibrate", data.payload ?? data);
+    });
+
+    socket.on("calibrateDone", (data) => {
+        io.emit("calibrateDone", data.payload ?? data);
+    });
+
+    socket.on("calibrateRestart", (data) => {
+        io.emit("calibrateRestart", data.payload ?? data);
+    });
+
+    socket.on("stableCoordinatesSent", (data) => {
+        io.emit("stableCoordinatesSent", data.payload ?? data);
+    });
+
     socket.on("disconnect", () => {
         console.log("Client disconnected:", socket.id);
     });
 });
 
-server.listen(3000, '0.0.0.0', () =>
-    console.log("Server running at http://localhost:3000"
-    
-));
+/* -------------------------------------------------------------------------------------- */
+function getLocalIP() {
+    const interfaces = os.networkInterfaces();
+    for (const name of Object.keys(interfaces)) {
+        for (const iface of interfaces[name]) {
+            if (iface.family === "IPv4" && !iface.internal) {
+                return iface.address;
+            }
+        }
+    }
+    return "localhost";
+}
+
+const port = 3000;
+const localIP = getLocalIP();
+
+//  display the local machine's IP address for LAN access and localhost
+server.listen(port, '0.0.0.0', () => {
+    console.log("Server running at:");
+    console.log(`  Local:   http://localhost:${port}`);
+    console.log(`  Network: http://${localIP}:${port}`);
+});

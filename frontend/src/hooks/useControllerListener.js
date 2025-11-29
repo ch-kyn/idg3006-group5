@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { io } from "socket.io-client";
 
-const SOCKET_URL = "http://10.22.18.15:3000/";
+const SOCKET_URL = import.meta.env.VITE_SOCKET_URL;
 
 export default function useControllerListener(ready = true) {
     const focusIndex = useRef(0);
@@ -9,8 +9,10 @@ export default function useControllerListener(ready = true) {
     const socketRef = useRef(null);
     const isThrottled = useRef(false);
 
+    // track elements and observe DOM changes
     useEffect(() => {
-    if (!ready) return;
+        if (!ready) return;
+
         const updateElements = () => {
             const newEls = Array.from(document.querySelectorAll(".controller-target"));
             elements.current = newEls;
@@ -97,13 +99,11 @@ export default function useControllerListener(ready = true) {
                 case "right":
                     moveFocus(action);
                     break;
-                case "select": {
-                    const els = Array.from(document.querySelectorAll(".controller-target"));
-                    const el = els[focusIndex.current];
 
-                    if (el && !el.disabled) {
-                        el.click();
-                    }
+                case "select": {
+                    // click the currently focused element
+                    const el = els[focusIndex.current];
+                    if (el && !el.disabled) el.click();
                     break;
                 }
 
@@ -121,13 +121,11 @@ export default function useControllerListener(ready = true) {
                     }
                     break;
                 }
-
-
+                
                 default:
                     console.warn("Unknown action:", action);
             }
         };
-
 
         socket.on("control", handleControl);
 

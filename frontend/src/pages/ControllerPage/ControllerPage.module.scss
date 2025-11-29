@@ -1,17 +1,18 @@
-@use '../../styles/colors' as c;
+@use "../../styles/colors" as c;
 
 .cont {
     display: flex;
-    flex-direction: column;
+    // flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 2rem;
+    gap: 3rem;
+    flex-flow: wrap;
 }
 
 .text {
     font-size: 1.1rem;
     margin-bottom: 0.2rem;
-    font-family: 'Inter';
+    font-family: "Inter";
     color: white;
     font-weight: 500;
 }
@@ -27,6 +28,10 @@
     display: flex;
     flex-direction: row;
     gap: 5rem;
+
+    &__cont {
+        display: flex;
+    }
 }
 
 .arrows {
@@ -54,17 +59,17 @@
         box-shadow: none;
         color: white;
         outline: none;
-        border-radius: 0.4rem;  
+        border-radius: 0.4rem;
 
         &:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
             opacity: 0.95;
         }
 
         &:active {
             transform: translateY(0) scale(0.96);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2) inset;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) inset;
             opacity: 1;
         }
     }
@@ -87,13 +92,13 @@
 
     &:hover {
         transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
         opacity: 0.95;
     }
 
     &:active {
         transform: translateY(0) scale(0.96);
-        box-shadow: 0 2px 6px rgba(0,0,0,0.2) inset;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) inset;
         opacity: 1;
     }
 }
@@ -107,37 +112,36 @@
 
     &__btn {
         background-color: c.$primaryBlue500;
-        border: none;                       
-        border-radius: 0.6rem;             
+        border: none;
+        border-radius: 0.6rem;
         height: 3rem;
         width: 10rem;
         font-size: 1.1rem;
         font-weight: 800;
         color: white;
         padding: 0 1rem;
-        cursor: pointer;                     
+        cursor: pointer;
         text-align: center;
-        transition: all 0.2s ease-in-out;  
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transition: all 0.2s ease-in-out;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
         &:hover {
             background-color: c.$primaryBlue400;
-            box-shadow: 0 6px 10px rgba(0,0,0,0.15);
-            transform: translateY(-2px); 
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
         }
 
         &:active {
             background-color: c.$primaryBlue500;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.12);
-            transform: translateY(0);     
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+            transform: translateY(0);
         }
 
         &:focus {
-            outline: none;                  
+            outline: none;
             box-shadow: 0 0 0 3px rgba(32, 162, 71, 0.4);
         }
     }
-
 }
 
 .quizButtons {
@@ -165,9 +169,8 @@
 
         &:active {
             filter: brightness(0.9);
-            box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
         }
-        
     }
 }
 
@@ -185,4 +188,56 @@
 
 .quizBlue {
     background-color: c.$quizBlue;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+
+.calibrateBox {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 30ch;
+    padding: 20px;
+    background-color: c.$whiteBlue;
+    // border: 2px solid #1e90ff;
+    border-radius: 12px;
+    font-family: Arial, sans-serif;
+    color: c.$muteBlack;
+    line-height: 1.5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.calibrateBox h3 {
+    margin-top: 0;
+}
+
+.calibrateBtn {
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    height: 3rem;
+    padding: 0.4rem 1.2rem;
+    font-size: 1.05rem;
+    cursor: pointer;
+    margin-top: 0.8rem;
+    transition: background-color 0.2s;
+    font-weight: bold;
+
+    &:hover {
+        transform: scale(1.05);
+        filter: brightness(1.1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    &:active {
+        filter: brightness(0.9);
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.12);
+    }
 }
