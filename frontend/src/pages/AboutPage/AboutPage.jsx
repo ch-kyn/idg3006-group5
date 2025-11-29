@@ -22,8 +22,8 @@ const AboutPage = () => {
                             <div className={`${styles.col} ${styles.col__left}`}>
                                  <div className={styles.general}>
                                     <div className={styles.images}>
-                                        <img src={`http://localhost:3000/${info.images['flag']}`} alt={`${data.country} flag`} className={styles.img} width={100} />
-                                        <img src={`http://localhost:3000/${info.images['map']}`} alt={`${data.country} on the world map`} className={`${styles.img} ${styles.border}`} width={100} />
+                                        <img src={`${import.meta.env.VITE_SOCKET_URL}${info.images['flag']}`} alt={`${data.country} flag`} className={styles.img} width={100} />
+                                        <img src={`${import.meta.env.VITE_SOCKET_URL}${info.images['map']}`} alt={`${data.country} on the world map`} className={`${styles.img} ${styles.border}`} width={100} />
                                     </div>
                                     <h1>{data.country}</h1>
                                     <div className={styles.general__text}>
@@ -41,10 +41,10 @@ const AboutPage = () => {
                             </div>
 
                             <div className={`${styles.col} ${styles.col__right}`}>
-                                <AboutCard title="Popular Dishes" dataArr={info.popular_dishes} image={`http://localhost:3000/${info.images['food']}`} />
+                                <AboutCard title="Popular Dishes" dataArr={info.popular_dishes} image={`${import.meta.env.VITE_SOCKET_URL}${info.images['food']}`} />
                                 <AboutCard title="Famous People" dataArr={info.famous_people} />
                                 <AboutCard title="Exports" dataArr={info.exports} />
-                                <AboutCard title="Heritage Places" dataArr={info.places_heritage} image={`http://localhost:3000/${info.images['place']}`} />
+                                <AboutCard title="Heritage Places" dataArr={info.places_heritage} image={`${import.meta.env.VITE_SOCKET_URL}${info.images['place']}`} />
                             </div>
                         </div>
                     </div>

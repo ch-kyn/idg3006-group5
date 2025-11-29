@@ -9,17 +9,20 @@ A plus sign is awarded if:
 ## Europe
 - France
 - Germany
+- Greece
 - Italy
 - Norway
+- Russia
+- Spain
 - United Kingdom
 
 ## Asia
+- China
+- Japan
+
 ## North America
 ## South America
 ## Africa
 ## Oceania
 
 ## Countries to add
-- Spain
-- Russia
-- Greece

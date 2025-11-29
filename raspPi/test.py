@@ -5,6 +5,9 @@ import asyncio
 sio = socketio.AsyncServer(async_mode='asgi')
 app = socketio.ASGIApp(sio)
 
+# ---------------------
+# EVENTS
+# ---------------------
 @sio.event
 async def connect(sid, environ):
     print(f"✅ Client connected: {sid}")
