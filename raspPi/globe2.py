@@ -1,36 +1,22 @@
 import asyncio
 import socketio
-import json
 import time
 import math
 import board
 import busio
 import digitalio
-import sys
-import select
-
 from adafruit_bno08x.i2c import BNO08X_I2C
 from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR
 
-# ----------------------------
-# Socket.IO client
-# ----------------------------
 WS_URI = "http://192.168.166.154:8765"
 sio = socketio.AsyncClient()
 
-# ----------------------------
-# RESET PIN (REQUIRED)
-# ----------------------------
+# Sensor setup (same as before)
 reset_pin = digitalio.DigitalInOut(board.D17)
 reset_pin.direction = digitalio.Direction.OUTPUT
-
-# ----------------------------
-# I2C INIT
-# ----------------------------
 i2c = busio.I2C(board.SCL, board.SDA)
 
 def init_sensor():
-    print("Initializing BNO08X...")
     reset_pin.value = False
     time.sleep(0.01)
     reset_pin.value = True
@@ -41,15 +27,14 @@ def init_sensor():
 
 sensor = init_sensor()
 
-# ----------------------------
-# Quaternion + vector helpers
-# ----------------------------
+# Helpers (quaternions, rotate_vector_by_quat, vector_to_latlon) omitted for brevity
+
+calibration_quat = (0,0,0,1)
+sensor_axis = (1,0,0)
+
 def quat_conjugate(q):
     x, y, z, w = q
     return (-x, -y, -z, w)
-
-def invert_quat(q):
-    return quat_conjugate(q)
 
 def quat_mul(q1, q2):
     x1, y1, z1, w1 = q1
@@ -81,38 +66,28 @@ def vector_to_latlon(v):
     if lon < -180: lon += 360
     return lat, lon
 
-# ----------------------------
-# CONFIG
-# ----------------------------
-sensor_axis = (1.0, 0.0, 0.0)
-calibration_quat = (0.0, 0.0, 0.0, 1.0)
+def invert_quat(q):
+    return quat_conjugate(q)
 
 def calibrate(q):
     global calibration_quat
     calibration_quat = invert_quat(q)
-    print("\n🎯 Calibration set!\n")
+    print("Calibration set")
 
-# ----------------------------
-# Socket.IO events
-# ----------------------------
 @sio.event
 async def connect():
-    print("✅ Connected to Socket.IO server!")
+    print("✅ Connected to server!")
 
 @sio.event
 async def disconnect():
     print("❌ Disconnected from server")
 
-# ----------------------------
-# Main sensor loop
-# ----------------------------
 async def main_loop():
     global sensor
-
     while True:
         try:
             x, y, z, w = sensor.quaternion
-            if (x, y, z, w) == (0, 0, 0, 0):
+            if (x, y, z, w) == (0,0,0,0):
                 await asyncio.sleep(0.01)
                 continue
 
@@ -120,43 +95,21 @@ async def main_loop():
             corrected_q = quat_mul(calibration_quat, raw_q)
             world_vec = rotate_vector_by_quat(sensor_axis, corrected_q)
             lat, lon = vector_to_latlon(world_vec)
-
             if lat is None:
                 await asyncio.sleep(0.1)
                 continue
 
             await sio.emit("coords", {"lat": round(lat,3), "lon": round(lon,3)})
             print(f"Sent: lat={lat:.3f}, lon={lon:.3f}")
-
             await asyncio.sleep(0.1)
 
-        except OSError:
-            print("\n⚠️ I2C hiccup — resetting sensor...")
-            sensor = init_sensor()
-            await asyncio.sleep(0.2)
-
         except Exception as e:
-            print("Unexpected error:", e)
-            await asyncio.sleep(0.2)
+            print("Error:", e)
+            await asyncio.sleep(0.5)
 
-# ----------------------------
-# Entry point
-# ----------------------------
+async def runner():
+    await sio.connect(WS_URI)
+    await main_loop()  # run continuously
+
 if __name__ == "__main__":
-    import tty, termios
-    fd = sys.stdin.fileno()
-    old_settings = termios.tcgetattr(fd)
-
-    try:
-        tty.setcbreak(fd)
-
-        async def runner():
-            await sio.connect(WS_URI)
-            asyncio.create_task(main_loop())  # <--- IMPORTANT
-            while True:
-                await asyncio.sleep(1)
-
-        asyncio.run(runner())
-
-    finally:
-        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+    asyncio.run(runner())

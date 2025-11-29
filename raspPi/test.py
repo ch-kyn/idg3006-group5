@@ -1,27 +1,27 @@
-import asyncio
 import socketio
+from aiohttp import web
 
-sio = socketio.AsyncClient()
-WS_URI = "http://192.168.166.154:8765"
+sio = socketio.AsyncServer(cors_allowed_origins="*")
+app = web.Application()
+sio.attach(app)
+
+# ---------------------
+# EVENTS
+# ---------------------
+@sio.event
+async def connect(sid, environ):
+    print(f"Device connected: {sid}")
+
+@sio.on("coords")
+async def coords(sid, data):
+    print(f"📍 Received coords from {sid}: {data}")
 
 @sio.event
-async def connect():
-    print("✅ Connected to server!")
+async def disconnect(sid):
+    print(f"Device disconnected: {sid}")
 
-@sio.event
-async def disconnect():
-    print("❌ Disconnected from server")
-
-async def main():
-    await sio.connect(WS_URI)
-    print("Connected, starting sending loop...")
-    try:
-        for i in range(5):
-            await sio.emit("message", {"lat": i, "lon": i})
-            print(f"Sent coords: {i}, {i}")
-            await asyncio.sleep(1)
-    finally:
-        # Disconnect cleanly in the same loop
-        await sio.disconnect()
-
-asyncio.run(main())
+# ---------------------
+# START SERVER
+# ---------------------
+if __name__ == "__main__":
+    web.run_app(app, host="0.0.0.0", port=8765)
