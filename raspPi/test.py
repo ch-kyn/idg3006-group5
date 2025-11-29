@@ -1,27 +1,22 @@
-import asyncio
 import socketio
+import asyncio
 
-sio = socketio.AsyncClient()
-WS_URI = "http://192.168.166.154:8765"
-
-@sio.event
-async def connect():
-    print("✅ Connected to server!")
+# Async Socket.IO server
+sio = socketio.AsyncServer(async_mode='asgi')
+app = socketio.ASGIApp(sio)
 
 @sio.event
-async def disconnect():
-    print("❌ Disconnected from server")
+async def connect(sid, environ):
+    print(f"✅ Client connected: {sid}")
 
-async def main():
-    await sio.connect(WS_URI)
-    print("Connected, starting sending loop...")
-    try:
-        for i in range(5):
-            await sio.emit("message", {"lat": i, "lon": i})
-            print(f"Sent coords: {i}, {i}")
-            await asyncio.sleep(1)
-    finally:
-        # Disconnect cleanly in the same loop
-        await sio.disconnect()
+@sio.event
+async def disconnect(sid):
+    print(f"❌ Client disconnected: {sid}")
 
-asyncio.run(main())
+@sio.event
+async def coords(sid, data):
+    print(f"Received coords from {sid}: {data}")
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8765)
