@@ -5,8 +5,6 @@ import math
 import board
 import busio
 import digitalio
-import sys
-import select
 from adafruit_bno08x.i2c import BNO08X_I2C
 from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR
 
@@ -70,23 +68,15 @@ def vector_to_latlon(v):
     return lat, lon
 
 # ----------------------------
-# CALIBRATION
+# SENSOR AXIS
 # ----------------------------
 sensor_axis = (1.0, 0.0, 0.0)
-calibration_quat = (0, 0, 0, 1)
-
-def calibrate(q):
-    global calibration_quat
-    calibration_quat = quat_conjugate(q)
-    print("\n🎯 Calibration set (Python side)\n")
 
 # ----------------------------
 # SOCKET.IO SETUP
 # ----------------------------
 sio = socketio.AsyncClient()
-SERVER_URI = "http://localhost:3000"
-
-active_sending = False  # Node-RED controls this
+SERVER_URI = "https://acrocarpous-masonically-dannielle.ngrok-free.dev"
 
 @sio.event
 async def connect():
@@ -96,46 +86,14 @@ async def connect():
 async def disconnect():
     print("Disconnected from server")
 
-# Node-RED → start sending
-@sio.on("calibrateDone")
-async def on_calibrate(data):
-    global active_sending
-    print("Calibrate done received from server")
-
-    await sio.emit("calibrateRestart", {"reset": True})
-    print("Sent calibrateRestart to Node-RED")
-
-    # Start raw streaming
-    active_sending = True
-
-# Node-RED → stable detected → stop sending
-@sio.on("stableCoordinatesSent")
-async def on_stable(data):
-    global active_sending
-    print("Node-RED says stable reached:", data)
-
-    active_sending = False
-    await sio.emit("calibrate", {"calibrate": False})
-    print("Sent calibrate=false to Node-RED")
-
 # ----------------------------
 # RAW CONTINUOUS STREAM LOOP
 # ----------------------------
 async def stream_sensor(interval=0.05):
-    """
-    Sends RAW lat/lon continuously when active_sending=True.
-    Node-RED handles:
-        - averaging (EMA)
-        - stability detection
-        - stableCoordinatesSent logic
-    """
-    global active_sending
-
-    print("Python ready. Waiting for calibrateDone...")
+    print("Python ready. Streaming sensor data...")
 
     while True:
-        if active_sending and sio.connected:
-
+        if sio.connected:
             # Read quaternion
             x, y, z, w = sensor.quaternion
             if (x, y, z, w) == (0, 0, 0, 0):
@@ -144,16 +102,13 @@ async def stream_sensor(interval=0.05):
 
             raw_q = (x, y, z, w)
 
-            # Apply Python-side calibration
-            corrected_q = quat_mul(calibration_quat, raw_q)
-
             # Convert direction → lat/lon
-            world_vec = rotate_vector_by_quat(sensor_axis, corrected_q)
+            world_vec = rotate_vector_by_quat(sensor_axis, raw_q)
             lat, lon = vector_to_latlon(world_vec)
 
             if lat is not None:
                 await sio.emit("coords", {"lat": lat, "long": lon})
-                print(f"📡 Sent raw coords: lat={lat:.2f}, lon={lon:.2f}")
+                print(f"📡 Sent coords: lat={lat:.2f}, lon={lon:.2f}")
 
         await asyncio.sleep(interval)
 
