@@ -108,20 +108,16 @@ io.on("connection", (socket) => {
         io.emit("coords", data.payload ?? data);
     });
 
-    socket.on("calibrate", (data) => {
-        io.emit("calibrate", data.payload ?? data);
-    });
-
-    socket.on("calibrateDone", (data) => {
-        io.emit("calibrateDone", data.payload ?? data);
-    });
-
-    socket.on("calibrateRestart", (data) => {
-        io.emit("calibrateRestart", data.payload ?? data);
+    socket.on("start", (data) => {
+        io.emit("start", data.payload ?? data);
     });
 
     socket.on("stableCoordinatesSent", (data) => {
+        // forward the stable coordinates
         io.emit("stableCoordinatesSent", data.payload ?? data);
+
+        // reset Start to false
+        io.emit("start", { "start": false });
     });
 
     socket.on("disconnect", () => {

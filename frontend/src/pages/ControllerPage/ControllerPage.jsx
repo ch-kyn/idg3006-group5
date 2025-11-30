@@ -106,15 +106,22 @@ const ControllerPage = () => {
             </div>
 
             <div className={styles.btm__cont}>
-                <div className={styles.calibrateBox}>
+                {/* <div className={styles.calibrateBox}>
                     <p>
                         Please align the red dot on Earth to the top of the scope.
                         Once aligned, click <strong>Calibrate</strong> to continue <br /><br />
-                        
-                        ⚠️ Do this every time before spinning the Earth.
                     </p>
                     <button className={styles.calibrateBtn} onClick={() => socket.emit("calibrate", { "calibrate": true })}>
                         Calibrate
+                    </button>
+                </div> */}
+
+                <div className={styles.calibrateBox}>
+                    <p>
+                        Please click <strong>Start</strong> before spinning the globe to find a country. <br />
+                    </p>
+                    <button className={styles.calibrateBtn} onClick={() => socket.emit("start", { "start": true })}>
+                        Start
                     </button>
                 </div>
             </div>
