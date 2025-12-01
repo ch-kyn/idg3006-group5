@@ -152,6 +152,44 @@
 		]
 	},
 	{
+	"country": "Colombia",
+	"inventions": [
+		{
+			"name": "Haptx / Force-Feedback Glove Prototype",
+			"inventor": "Juan David Wills",
+			"year": "2014",
+			"information": {
+				"general": "In 2014, Colombian engineer Juan David Wills built an early prototype of a force-feedback glove that later contributed to the technology behind modern haptic VR systems.",
+				"description": "The prototype used pneumatic micro-valves and lightweight actuators to simulate pressure and touch sensations. It allowed users to feel resistance while interacting with virtual objects, a major step toward immersive VR experiences.",
+				"extra": "Wills’ early experiments were developed in Bogotá with limited resources. His research later influenced commercial haptic devices used in medical training, remote robotics, and immersive gaming."
+			},
+			"image": "images/latin_america/colombia/haptic_glove.webp"
+		},
+		{
+			"name": "Expandable Heart Stent",
+			"inventor": "Jorge Reynolds Pombo",
+			"year": "1960s",
+			"information": {
+				"general": "Colombian engineer Jorge Reynolds helped develop early versions of the expandable heart stent while researching cardiovascular implants.",
+				"description": "The device is a tiny mesh cylinder inserted into blocked arteries. Once positioned, it expands to keep blood vessels open, improving circulation and reducing the risk of heart attacks.",
+				"extra": "Reynolds is also famous for creating one of the world's first external pacemakers. His work contributed greatly to modern biomedical engineering in Latin America."
+			},
+			"image": "images/latin_america/colombia/heart_stent.webp"
+		},
+		{
+			"name": "Antioquia Coffee Pulper",
+			"inventor": "Luis Eduardo Álvarez",
+			"year": "1940s",
+			"information": {
+				"general": "In the 1940s, Colombian inventor Luis Eduardo Álvarez designed a mechanical coffee pulper that automated the removal of coffee cherry skins.",
+				"description": "Made from metal drums and a rotating abrasive surface, the machine quickly separated beans from pulp, reducing labor and improving consistency in coffee processing.",
+				"extra": "The invention became widely adopted in rural Antioquia. It increased productivity for small farmers and helped raise the quality of Colombia’s globally renowned coffee industry."
+			},
+			"image": "images/latin_america/colombia/coffee_pulper.webp"
+		}
+	]
+	},
+	{
 		"country": "France",
 		"inventions": [
 			{
@@ -408,7 +446,29 @@
 					"extra": "Inspired by observation of birds and experiments in Paris, he demonstrated practical flight to astonished crowds."
 				},
 				"image": "images/south_america/brazil/airplane_taxiing.webp"
-			}
+			},
+			  {
+      "name": "Superflexible Fiber Optics",
+      "inventor": "José Mauro Pinheiro",
+      "year": "1990s",
+      "information": {
+        "general": "Brazilian physicist José Mauro Pinheiro helped develop ultra-flexible fiber-optic strands that improved telecommunication durability.",
+        "description": "The fibers used modified polymer coatings allowing extreme bending without signal loss, ideal for dense urban cable layouts.",
+        "extra": "The technology was later used in submarine cables and satellite communication infrastructures across Latin America."
+      },
+      "image": "images/latin_america/brazil/brazil_fiber_optics.webp"
+    },
+	  {
+      "name": "Direct-Recording Electronic Voting Machine",
+      "inventor": "Brazilian Superior Electoral Court (TSE) Engineering Team",
+      "year": "1996",
+      "information": {
+        "general": "In 1996, Brazilian engineers created one of the world's first national-scale electronic voting machines.",
+        "description": "The device digitized ballots, reduced counting time from days to minutes, and incorporated validation features that cut down election errors.",
+        "extra": "Brazil became a global pioneer in electronic voting. Many countries later modeled their systems after Brazil’s design."
+      },
+      "image": "images/latin_america/brazil/brazil_voting_machine.webp"
+    }
 		]
 	},
 	{
