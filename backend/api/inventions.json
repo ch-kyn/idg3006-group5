@@ -846,7 +846,46 @@
       "image": "images/latin_america/bolivia/bolivia_high_altitude_oxygen.webp"
     }
   ]
+},
+{
+  "country": "Peru",
+  "inventions": [
+    {
+      "name": "Quipu Digital Archive",
+      "inventor": "Pontifical Catholic University of Peru (PUCP) Team",
+      "year": "2000s",
+      "information": {
+        "general": "In the 2000s, Peruvian researchers digitized ancient quipu knots to preserve Inca accounting and communication methods.",
+        "description": "Using high-resolution scanning and data modeling, they translated knot patterns into digital databases to study historical trade and census records.",
+        "extra": "This effort made quipu accessible to global scholars and influenced modern information-encoding techniques inspired by traditional systems."
+      },
+      "image": "images/latin_america/peru/peru_quipu_digital.webp"
+    },
+    {
+      "name": "Potato Preservation System",
+      "inventor": "Instituto Nacional de Innovación Agraria (INIA)",
+      "year": "1990s",
+      "information": {
+        "general": "Peruvian agricultural engineers developed a low-temperature and humidity-controlled storage system for potatoes, reducing post-harvest losses.",
+        "description": "The system allows potatoes to be stored for months without sprouting or rotting, supporting both domestic supply and export markets.",
+        "extra": "Given Peru’s status as the origin of potatoes, this invention significantly increased food security and agricultural efficiency nationwide."
+      },
+      "image": "images/latin_america/peru/peru_potato_storage.webp"
+    },
+     {
+      "name": "Pukio Irrigation Machine",
+      "inventor": "Andean Agricultural Engineering Teams",
+      "year": "2010s",
+      "information": {
+        "general": "In the 2010s, Peruvian engineers modernized the traditional Pukio system, creating a machine that efficiently lifts and channels water for agriculture.",
+        "description": "The device combines ancient Inca hydraulic knowledge with modern mechanical pumps, enabling consistent water flow to terraced fields while reducing manual labor.",
+        "extra": "The Pukio machine preserves traditional Andean irrigation methods while supporting sustainable farming and increasing crop yields in mountainous regions."
+      },
+      "image": "images/latin_america/peru/peru_pukio_machine.webp"
+    }
+  ]
 }
+
 
 
 
