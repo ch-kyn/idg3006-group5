@@ -438,5 +438,365 @@
             "food": "images/countries/south_korea/south_korea_kimchi.webp",
             "place": "images/countries/south_korea/south_korea_gyeongbokgung.webp"
         }
+    },
+    {
+        "country": "United States",
+        "capital": "Washington, D.C.",
+        "population": 331000000,
+        "area_km2": 9834000,
+        "currency": "United States Dollar (USD)",
+        "gdp_total_usd": 25000000000000,
+        "national_day": "July 4 (Independence Day)",
+        "national_animal": "Bald Eagle",
+        "exports": [
+            "Machinery",
+            "Electronics",
+            "Vehicles",
+            "Aircraft"
+        ],
+        "popular_dishes": [
+            "Hamburger",
+            "Hot Dog",
+            "Apple Pie",
+            "Fried Chicken"
+        ],
+        "famous_people": [
+            "George Washington",
+            "Martin Luther King Jr.",
+            "Jimi Hendrix",
+            "Beyoncé"
+        ],
+        "places_heritage": [
+            "Statue of Liberty, New York",
+            "Grand Canyon, Arizona",
+            "Yellowstone National Park, Wyoming",
+            "Mount Rushmore, South Dakota"
+        ],
+        "images": {
+            "flag": "images/countries/united_states/united_states_flag.webp",
+            "map": "images/countries/united_states/united_states_map.webp",
+            "food": "images/countries/united_states/united_states_apple_pie.webp",
+            "place": "images/countries/united_states/united_states_statue_of_liberty.webp"
+        }
+    },
+    {
+        "country": "Canada",
+        "capital": "Ottawa",
+        "population": 38000000,
+        "area_km2": 9985000,
+        "currency": "Canadian Dollar (CAD)",
+        "gdp_total_usd": 2200000000000,
+        "national_day": "July 1 (Canada Day)",
+        "national_animal": "Beaver",
+        "exports": [
+            "Vehicles",
+            "Minerals",
+            "Wood",
+            "Machinery"
+        ],
+        "popular_dishes": [
+            "Poutine",
+            "Butter Tarts",
+            "Nanaimo Bars",
+            "Maple Syrup"
+        ],
+        "famous_people": [
+            "Justin Trudeau",
+            "Celine Dion",
+            "Ryan Reynolds",
+            "Wayne Gretzky"
+        ],
+        "places_heritage": [
+            "CN Tower, Toronto",
+            "Niagara Falls, Ontario",
+            "Banff National Park, Alberta",
+            "Old Quebec City, Quebec"
+        ],
+        "images": {
+            "flag": "images/countries/canada/canada_flag.webp",
+            "map": "images/countries/canada/canada_map.webp",
+            "food": "images/countries/canada/canada_poutine.webp",
+            "place": "images/countries/canada/canada_cn_tower.webp"
+        }
+    },
+    {
+        "country": "Mexico",
+        "capital": "Mexico City",
+        "population": 128000000,
+        "area_km2": 1964000,
+        "currency": "Mexican Peso (MXN)",
+        "gdp_total_usd": 1300000000000,
+        "national_day": "September 16 (Independence Day)",
+        "national_animal": "Golden Eagle",
+        "exports": [
+            "Vehicles",
+            "Electronics",
+            "Oil",
+            "Agricultural Products"
+        ],
+        "popular_dishes": [
+            "Tacos",
+            "Mole",
+            "Chiles en Nogada",
+            "Tamales"
+        ],
+        "famous_people": [
+            "Frida Kahlo",
+            "Diego Rivera",
+            "Carlos Slim",
+            "Salma Hayek"
+        ],
+        "places_heritage": [
+            "Chichen Itza, Yucatán",
+            "Teotihuacan, Mexico State",
+            "Cenotes of Yucatán",
+            "Historic Center of Mexico City"
+        ],
+        "images": {
+            "flag": "images/countries/mexico/mexico_flag.webp",
+            "map": "images/countries/mexico/mexico_map.webp",
+            "food": "images/countries/mexico/mexico_tacos.webp",
+            "place": "images/countries/mexico/mexico_chichen_itza.webp"
+        }
+    },
+    {
+        "country": "Vietnam",
+        "capital": "Hanoi",
+        "population": 98000000,
+        "area_km2": 331210,
+        "currency": "Vietnamese Dong (VND)",
+        "gdp_total_usd": 410000000000,
+        "national_day": "September 2",
+        "national_animal": "Water Buffalo",
+        "exports": [
+            "Electronics",
+            "Textiles",
+            "Footwear",
+            "Coffee"
+        ],
+        "popular_dishes": [
+            "Pho",
+            "Banh Mi",
+            "Spring Rolls",
+            "Bun Cha"
+        ],
+        "famous_people": [
+            "Ho Chi Minh",
+            "Nguyen Xuan Phuc",
+            "Pham Nhat Vuong",
+            "Trinh Cong Son"
+        ],
+        "places_heritage": [
+            "Ha Long Bay",
+            "Phong Nha-Ke Bang National Park",
+            "Imperial City of Hue",
+            "My Son Sanctuary"
+        ],
+        "images": {
+            "flag": "images/countries/vietnam/vietnam_flag.webp",
+            "map": "images/countries/vietnam/vietnam_map.webp",
+            "food": "images/countries/vietnam/vietnam_pho.webp",
+            "place": "images/countries/vietnam/vietnam_halong_bay.webp"
+        }
+    },
+    {
+        "country": "Turkey",
+        "capital": "Ankara",
+        "population": 86000000,
+        "area_km2": 783562,
+        "currency": "Turkish Lira (TRY)",
+        "gdp_total_usd": 950000000000,
+        "national_day": "October 29 (Republic Day)",
+        "national_animal": "Gray Wolf",
+        "exports": [
+            "Automobiles",
+            "Textiles",
+            "Machinery",
+            "Agricultural Products"
+        ],
+        "popular_dishes": [
+            "Kebabs",
+            "Baklava",
+            "Dolma",
+            "Lahmacun"
+        ],
+        "famous_people": [
+            "Mustafa Kemal Atatürk",
+            "Orhan Pamuk",
+            "Recep Tayyip Erdoğan",
+            "Tarkan"
+        ],
+        "places_heritage": [
+            "Hagia Sophia, Istanbul",
+            "Cappadocia",
+            "Pamukkale",
+            "Ephesus"
+        ],
+        "images": {
+            "flag": "images/countries/turkey/turkey_flag.webp",
+            "map": "images/countries/turkey/turkey_map.webp",
+            "food": "images/countries/turkey/turkey_kebab.webp",
+            "place": "images/countries/turkey/turkey_hagia_sophia.webp"
+        }
+    },
+    {
+        "country": "Iran",
+        "capital": "Tehran",
+        "population": 88000000,
+        "area_km2": 1648195,
+        "currency": "Iranian Rial (IRR)",
+        "gdp_total_usd": 400000000000,
+        "national_day": "April 1 (Islamic Republic Day)",
+        "national_animal": "Persian Lion",
+        "exports": [
+            "Oil",
+            "Petrochemicals",
+            "Carpets",
+            "Fruits"
+        ],
+        "popular_dishes": [
+            "Chelo Kebab",
+            "Ghormeh Sabzi",
+            "Fesenjan",
+            "Tahdig"
+        ],
+        "famous_people": [
+            "Omar Khayyam",
+            "Forough Farrokhzad",
+            "Asghar Farhadi",
+            "Shirin Ebadi"
+        ],
+        "places_heritage": [
+            "Persepolis",
+            "Naqsh-e Jahan Square",
+            "Golestan Palace",
+            "Pasargadae"
+        ],
+        "images": {
+            "flag": "images/countries/iran/iran_flag.webp",
+            "map": "images/countries/iran/iran_map.webp",
+            "food": "images/countries/iran/iran_tahdig.webp",
+            "place": "images/countries/iran/iran_persepolis.webp"
+        }
+    },
+    {
+        "country": "India",
+        "capital": "New Delhi",
+        "population": 1428000000,
+        "area_km2": 3287263,
+        "currency": "Indian Rupee (INR)",
+        "gdp_total_usd": 3500000000000,
+        "national_day": "August 15 (Independence Day)",
+        "national_animal": "Bengal Tiger",
+        "exports": [
+            "Pharmaceuticals",
+            "Textiles",
+            "Jewellery",
+            "Software Services"
+        ],
+        "popular_dishes": [
+            "Biryani",
+            "Butter Chicken",
+            "Masala Dosa",
+            "Samosa"
+        ],
+        "famous_people": [
+            "Mahatma Gandhi",
+            "Rabindranath Tagore",
+            "A. R. Rahman",
+            "Virat Kohli"
+        ],
+        "places_heritage": [
+            "Taj Mahal, Agra",
+            "Qutub Minar, Delhi",
+            "Hampi",
+            "Khajuraho Temples"
+        ],
+        "images": {
+            "flag": "images/countries/india/india_flag.webp",
+            "map": "images/countries/india/india_map.webp",
+            "food": "images/countries/india/india_biryani.webp",
+            "place": "images/countries/india/india_taj_mahal.webp"
+        }
+    },
+    {
+        "country": "Pakistan",
+        "capital": "Islamabad",
+        "population": 241000000,
+        "area_km2": 881913,
+        "currency": "Pakistani Rupee (PKR)",
+        "gdp_total_usd": 380000000000,
+        "national_day": "August 14 (Independence Day)",
+        "national_animal": "Markhor",
+        "exports": [
+            "Textiles",
+            "Rice",
+            "Leather",
+            "Sporting Goods"
+        ],
+        "popular_dishes": [
+            "Biryani",
+            "Nihari",
+            "Karahi",
+            "Chapli Kebab"
+        ],
+        "famous_people": [
+            "Muhammad Ali Jinnah",
+            "Malala Yousafzai",
+            "Abdus Salam",
+            "Imran Khan"
+        ],
+        "places_heritage": [
+            "Mohenjo-daro",
+            "Badshahi Mosque",
+            "Lahore Fort",
+            "Hunza Valley"
+        ],
+        "images": {
+            "flag": "images/countries/pakistan/pakistan_flag.webp",
+            "map": "images/countries/pakistan/pakistan_map.webp",
+            "food": "images/countries/pakistan/pakistan_karahi.webp",
+            "place": "images/countries/pakistan/pakistan_badshahi_mosque.webp"
+        }
+    },
+    {
+        "country": "Philippines",
+        "capital": "Manila",
+        "population": 114000000,
+        "area_km2": 300000,
+        "currency": "Philippine Peso (PHP)",
+        "gdp_total_usd": 440000000000,
+        "national_day": "June 12 (Independence Day)",
+        "national_animal": "Carabao",
+        "exports": [
+            "Electronics",
+            "Bananas",
+            "Coconut Oil",
+            "Semiconductors"
+        ],
+        "popular_dishes": [
+            "Adobo",
+            "Sinigang",
+            "Lechon",
+            "Pancit"
+        ],
+        "famous_people": [
+            "Jose Rizal",
+            "Manny Pacquiao",
+            "Lea Salonga",
+            "Ferdinand Marcos"
+        ],
+        "places_heritage": [
+            "Rice Terraces of Banaue",
+            "Tubbataha Reefs Natural Park",
+            "Historic Town of Vigan",
+            "Puerto Princesa Underground River"
+        ],
+        "images": {
+            "flag": "images/countries/philippines/philippines_flag.webp",
+            "map": "images/countries/philippines/philippines_map.webp",
+            "food": "images/countries/philippines/philippines_adobo.webp",
+            "place": "images/countries/philippines/philippines_banaue.webp"
+        }
     }
 ]

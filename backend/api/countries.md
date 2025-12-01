@@ -14,13 +14,24 @@ A plus sign is awarded if:
 - Norway
 - Russia
 - Spain
+- Turkey
 - United Kingdom
 
 ## Asia
 - China
+- India
+- Iran
 - Japan
+- Pakistan
+- Philippines
+- South-Korea
+- Vietnam
 
 ## North America
+- Canada
+- Mexico
+- United States
+
 ## South America
 ## Africa
 ## Oceania

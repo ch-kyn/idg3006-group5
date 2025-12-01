@@ -5,6 +5,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import fs from "fs";
 import os from "os";
+import toSnakeCase from "./utils/toSnakeCase.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -30,7 +31,7 @@ app.get("/api/inventions", (req, res) => {
 });
 
 app.get("/api/inventions/:country", (req, res) => {
-    const country = req.params.country.toLowerCase();
+    const country = toSnakeCase(req.params.country);
     const dataPath = path.join(__dirname, "api", "inventions.json");
     fs.readFile(dataPath, "utf8", (err, data) => {
         if (err) return res.status(500).json({ error: "Could not read 'inventions' data" });
@@ -60,7 +61,7 @@ app.get("/api/countries", (req, res) => {
 });
 
 app.get("/api/countries/:country", (req, res) => {
-    const country = req.params.country.toLowerCase();
+    const country = toSnakeCase(req.params.country);
     const dataPath = path.join(__dirname, "api", "countries.json");
     fs.readFile(dataPath, "utf8", (err, data) => {
         if (err) return res.status(500).json({ error: "Could not read 'countries' data" });
