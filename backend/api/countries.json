@@ -400,6 +400,49 @@
         }
     },
     {
+  "country": "Colombia",
+  "capital": "Bogotá",
+  "population": 52696000,
+  "area_km2": 1140748,
+  "currency": "Colombian peso (COP)",
+  "gdp_total_usd": 419000000000,
+  "national_day": "July 20",
+  "national_animal": "Andean condor",
+  "exports": [
+    "Crude petroleum",
+    "Coal",
+    "Coffee",
+    "Gold & Emeralds",
+    "Cut flowers"
+  ],
+  "popular_dishes": [
+    "Arepa",
+    "Bandeja Paisa",
+    "Ajiaco",
+    "Sancocho",
+    "Empanadas"
+  ],
+  "famous_people": [
+    "Gabriel García Márquez",
+    "Shakira",
+    "Fernando Botero",
+    "Sofía Vergara"
+  ],
+  "places_heritage": [
+    "Historic Centre of Cartagena",
+    "Tayrona National Park",
+    "Cocora Valley",
+    "Ciudad Perdida (Lost City)"
+  ],
+  "images": {
+    "flag": "images/countries/colombia/colombia_flag.webp",
+    "map": "images/countries/colombia/colombia_map.webp",
+    "food": "images/countries/colombia/colombia_food.webp",
+    "place": "images/countries/colombia/colombia_place.webp"
+  }
+},
+
+    {
         "country": "South Korea",
         "capital": "Seoul",
         "population": 51700000,
@@ -438,5 +481,263 @@
             "food": "images/countries/south_korea/south_korea_kimchi.webp",
             "place": "images/countries/south_korea/south_korea_gyeongbokgung.webp"
         }
-    }
+    },
+    {
+  "country": "Venezuela",
+  "capital": "Caracas",
+  "population": 28670000,
+  "area_km2": 916445,
+  "currency": "Venezuelan bolívar (VES)",
+  "gdp_total_usd": 85000000000,
+  "national_day": "July 5",
+  "national_animal": "Turpial (Venezuelan troupial)",
+  "exports": [
+    "Crude oil",
+    "Refined petroleum",
+    "Gold",
+    "Chemicals",
+    "Cocoa beans"
+  ],
+  "popular_dishes": [
+    "Arepa",
+    "Pabellón Criollo",
+    "Hallaca",
+    "Cachapa",
+    "Tequeños"
+  ],
+  "famous_people": [
+    "Simón Bolívar",
+    "Gustavo Dudamel",
+    "Rómulo Gallegos",
+    "Teresa Carreño"
+  ],
+  "places_heritage": [
+    "Ángel Falls",
+    "Los Roques Archipelago",
+    "Mérida Cable Car (Teleférico)",
+    "Morrocoy National Park"
+  ],
+  "images": {
+    "flag": "images/countries/venezuela/venezuela_flag.webp",
+    "map": "images/countries/venezuela/venezuela_map.webp",
+    "food": "images/countries/venezuela/venezuela_food.webp",
+    "place": "images/countries/venezuela/venezuela_place.webp"
+  }
+},
+{
+  "country": "Ecuador",
+  "capital": "Quito",
+  "population": 18110000,
+  "area_km2": 256370,
+  "currency": "United States Dollar (USD)",
+  "gdp_total_usd": 118000000000,
+  "national_day": "August 10",
+  "national_animal": "Andean Condor",
+  "exports": [
+    "Crude oil",
+    "Bananas",
+    "Shrimp",
+    "Flowers (especially roses)",
+    "Cocoa and chocolate"
+  ],
+  "popular_dishes": [
+    "Ceviche",
+    "Encebollado",
+    "Locro de Papa",
+    "Fanesca",
+    "Hornado"
+  ],
+  "famous_people": [
+    "Oswaldo Guayasamín",
+    "Jefferson Pérez",
+    "Eloy Alfaro",
+    "Matilde Hidalgo de Procel"
+  ],
+  "places_heritage": [
+    "Galápagos Islands",
+    "Historic Centre of Quito",
+    "Cuenca Historic Centre",
+    "Cotopaxi National Park"
+  ],
+  "images": {
+    "flag": "images/countries/ecuador/ecuador_flag.webp",
+    "map": "images/countries/ecuador/ecuador_map.webp",
+    "food": "images/countries/ecuador/ecuador_food.webp",
+    "place": "images/countries/ecuador/ecuador_place.webp"
+  }
+},
+{
+  "country": "Brazil",
+  "capital": "Brasília",
+  "population": 203100000,
+  "area_km2": 8515767,
+  "currency": "Brazilian Real (BRL)",
+  "gdp_total_usd": 2160000000000,
+  "national_day": "September 7",
+  "national_animal": "Jaguar",
+  "exports": [
+    "Soybeans",
+    "Iron ore",
+    "Crude oil",
+    "Coffee",
+    "Meat (beef & poultry)"
+  ],
+  "popular_dishes": [
+    "Feijoada",
+    "Pão de queijo",
+    "Brigadeiro",
+    "Moqueca",
+    "Acarajé"
+  ],
+  "famous_people": [
+    "Pelé",
+    "Oscar Niemeyer",
+    "Carmen Miranda",
+    "Ayrton Senna"
+  ],
+  "places_heritage": [
+    "Christ the Redeemer (Rio de Janeiro)",
+    "Iguaçu National Park",
+    "Pantanal Conservation Area",
+    "Historic Centre of Salvador"
+  ],
+  "images": {
+    "flag": "images/countries/brazil/brazil_flag.webp",
+    "map": "images/countries/brazil/brazil_map.webp",
+    "food": "images/countries/brazil/brazil_food.webp",
+    "place": "images/countries/brazil/brazil_place.webp"
+  }
+},
+{
+  "country": "Bolivia",
+  "capital": "Sucre (constitutional), La Paz (administrative)",
+  "population": 11900000,
+  "area_km2": 1098581,
+  "currency": "Boliviano (BOB)",
+  "gdp_total_usd": 42000000,
+  "national_day": "August 6",
+  "national_animal": "Llama",
+  "exports": [
+    "Natural gas",
+    "Zinc",
+    "Silver",
+    "Soybeans",
+    "Quinoa"
+  ],
+  "popular_dishes": [
+    "Salteñas",
+    "Pique a lo Macho",
+    "Silpancho",
+    "Api con pastel",
+    "Chairo"
+  ],
+  "famous_people": [
+    "Evo Morales",
+    "Túpac Katari",
+    "Jaime Escalante",
+    "Domitila Barrios de Chungara"
+  ],
+  "places_heritage": [
+    "Salar de Uyuni",
+    "Tiwanaku Archaeological Site",
+    "Madidi National Park",
+    "Potosí Historic Town"
+  ],
+  "images": {
+    "flag": "images/countries/bolivia/bolivia_flag.webp",
+    "map": "images/countries/bolivia/bolivia_map.webp",
+    "food": "images/countries/bolivia/bolivia_food.webp",
+    "place": "images/countries/bolivia/bolivia_place.webp"
+  }
+},
+{
+  "country": "Peru",
+  "capital": "Lima",
+  "population": 34000000,
+  "area_km2": 1285216,
+  "currency": "Peruvian Sol (PEN)",
+  "gdp_total_usd": 250000000000,
+  "national_day": "July 28",
+  "national_animal": "Vicuña",
+  "exports": [
+    "Copper",
+    "Gold",
+    "Zinc",
+    "Coffee",
+    "Asparagus"
+  ],
+  "popular_dishes": [
+    "Ceviche",
+    "Lomo Saltado",
+    "Aji de Gallina",
+    "Causa Limeña",
+    "Anticuchos"
+  ],
+  "famous_people": [
+    "Mario Vargas Llosa",
+    "Gastón Acurio",
+    "Inca Garcilaso de la Vega",
+    "Claudio Pizarro"
+  ],
+  "places_heritage": [
+    "Machu Picchu",
+    "Nazca Lines",
+    "Colca Canyon",
+    "Historic Centre of Lima"
+  ],
+  "images": {
+    "flag": "images/countries/peru/peru_flag.webp",
+    "map": "images/countries/peru/peru_map.webp",
+    "food": "images/countries/peru/peru_food.webp",
+    "place": "images/countries/peru/peru_place.webp"
+  }
+},
+{
+  "country": "Argentina",
+  "capital": "Buenos Aires",
+  "population": 46000000,
+  "area_km2": 2780400,
+  "currency": "Argentine Peso (ARS)",
+  "gdp_total_usd": 620000000000,
+  "national_day": "July 9",
+  "national_animal": "Rufous Hornero",
+  "exports": [
+    "Soybeans",
+    "Corn",
+    "Wheat",
+    "Beef",
+    "Wine"
+  ],
+  "popular_dishes": [
+    "Asado",
+    "Empanadas",
+    "Milanesa",
+    "Dulce de leche",
+    "Choripán"
+  ],
+  "famous_people": [
+    "Lionel Messi",
+    "Jorge Luis Borges",
+    "Eva Perón",
+    "René Favaloro"
+  ],
+  "places_heritage": [
+    "Iguazú Falls",
+    "Perito Moreno Glacier",
+    "Córdoba Historic Centre",
+    "Quebrada de Humahuaca"
+  ],
+  "images": {
+    "flag": "images/countries/argentina/argentina_flag.webp",
+    "map": "images/countries/argentina/argentina_map.webp",
+    "food": "images/countries/argentina/argentina_food.webp",
+    "place": "images/countries/argentina/argentina_place.webp"
+  }
+}
+
+
+
+
+
+
 ]
