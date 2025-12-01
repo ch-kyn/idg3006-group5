@@ -523,6 +523,49 @@
     "food": "images/countries/venezuela/venezuela_food.webp",
     "place": "images/countries/venezuela/venezuela_place.webp"
   }
+},
+{
+  "country": "Ecuador",
+  "capital": "Quito",
+  "population": 18110000,
+  "area_km2": 256370,
+  "currency": "United States Dollar (USD)",
+  "gdp_total_usd": 118000000000,
+  "national_day": "August 10",
+  "national_animal": "Andean Condor",
+  "exports": [
+    "Crude oil",
+    "Bananas",
+    "Shrimp",
+    "Flowers (especially roses)",
+    "Cocoa and chocolate"
+  ],
+  "popular_dishes": [
+    "Ceviche",
+    "Encebollado",
+    "Locro de Papa",
+    "Fanesca",
+    "Hornado"
+  ],
+  "famous_people": [
+    "Oswaldo Guayasamín",
+    "Jefferson Pérez",
+    "Eloy Alfaro",
+    "Matilde Hidalgo de Procel"
+  ],
+  "places_heritage": [
+    "Galápagos Islands",
+    "Historic Centre of Quito",
+    "Cuenca Historic Centre",
+    "Cotopaxi National Park"
+  ],
+  "images": {
+    "flag": "images/countries/ecuador/ecuador_flag.webp",
+    "map": "images/countries/ecuador/ecuador_map.webp",
+    "food": "images/countries/ecuador/ecuador_food.webp",
+    "place": "images/countries/ecuador/ecuador_place.webp"
+  }
 }
+
 
 ]

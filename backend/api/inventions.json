@@ -748,6 +748,45 @@
       "image": "images/latin_america/venezuela/tostyarepa.webp"
     }
   ]
+},
+{
+  "country": "Ecuador",
+  "inventions": [
+    {
+      "name": "Panela Vacuum Evaporation System",
+      "inventor": "Luis Alberto Armendáriz",
+      "year": "1980s",
+      "information": {
+        "general": "In the 1980s, Ecuadorian engineer Luis Armendáriz developed a vacuum-based evaporation system to modernize the production of panela (unrefined cane sugar).",
+        "description": "The system reduces boiling temperature, allowing sugarcane juice to concentrate without burning, improving both quality and production speed. It became important for small Andean producers.",
+        "extra": "Armendáriz’s design increased energy efficiency and created more consistent panela blocks, influencing sugarcane processing across South America."
+      },
+      "image": "images/latin_america/ecuador/ecuador_panela_system.webp"
+    },
+    {
+      "name": "Ecuavóley Net System",
+      "inventor": "Quito Sports Innovators Group",
+      "year": "1950s",
+      "information": {
+        "general": "In the 1950s, local athletes in Quito standardized the modern net and ball system for Ecuavóley, Ecuador’s unique three-player version of volleyball.",
+        "description": "The system involved a higher net, a specific ball weight, and reinforced court posts, giving the sport its signature fast, powerful style.",
+        "extra": "Ecuavóley later spread to Colombia, Peru, and migrant communities in the U.S. and Spain. Ecuador’s standardized equipment remains the sport’s global reference."
+      },
+      "image": "images/latin_america/ecuador/ecuador_ecuavoley.webp"
+    },
+    {
+      "name": "Galápagos Environmental Monitoring System",
+      "inventor": "Charles Darwin Research Station (Ecuadorian engineering teams)",
+      "year": "1990s",
+      "information": {
+        "general": "In the 1990s, Ecuadorian engineers and biologists co-developed an early digital monitoring network to track environmental data in the Galápagos Islands.",
+        "description": "Solar-powered sensors collected information on climate, species behavior, and volcanic activity, sending it to research centers for conservation analysis.",
+        "extra": "This hybrid technological–biological system became a model for island conservation worldwide, influencing similar projects in the Pacific and Indian Ocean."
+      },
+      "image": "images/latin_america/ecuador/ecuador_galapagos_monitor.webp"
+    }
+  ]
 }
+
 
 ]
