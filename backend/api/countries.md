@@ -1,8 +1,8 @@
 # Available countries
 ## Information
-A plus sign is awarded if:
-    - *x* country has three inventions with pictures for `/invention`
-    - *x* country has information with pictures for `/about`
+- Each country should have three inventions with pictures for `/invention`.
+    - One-two inventions for certain countries is fine.
+- Each country has information with pictures for `/about`.
 
 **Note**: ALL IMAGES SHOULD BE IN .WEBP GUYS
 
@@ -29,10 +29,18 @@ A plus sign is awarded if:
 
 ## North America
 - Canada
-- Mexico
+- Mexico (not done ops)
 - United States
 
 ## South America
+- Argentina
+- Bolivia
+- Brazil
+- Colombia
+- Ecuador
+- Peru
+- Venezuela
+
 ## Africa
 ## Oceania
 
