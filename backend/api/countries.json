@@ -649,7 +649,93 @@
     "food": "images/countries/bolivia/bolivia_food.webp",
     "place": "images/countries/bolivia/bolivia_place.webp"
   }
+},
+{
+  "country": "Peru",
+  "capital": "Lima",
+  "population": 34000000,
+  "area_km2": 1285216,
+  "currency": "Peruvian Sol (PEN)",
+  "gdp_total_usd": 250000000000,
+  "national_day": "July 28",
+  "national_animal": "Vicuña",
+  "exports": [
+    "Copper",
+    "Gold",
+    "Zinc",
+    "Coffee",
+    "Asparagus"
+  ],
+  "popular_dishes": [
+    "Ceviche",
+    "Lomo Saltado",
+    "Aji de Gallina",
+    "Causa Limeña",
+    "Anticuchos"
+  ],
+  "famous_people": [
+    "Mario Vargas Llosa",
+    "Gastón Acurio",
+    "Inca Garcilaso de la Vega",
+    "Claudio Pizarro"
+  ],
+  "places_heritage": [
+    "Machu Picchu",
+    "Nazca Lines",
+    "Colca Canyon",
+    "Historic Centre of Lima"
+  ],
+  "images": {
+    "flag": "images/countries/peru/peru_flag.webp",
+    "map": "images/countries/peru/peru_map.webp",
+    "food": "images/countries/peru/peru_food.webp",
+    "place": "images/countries/peru/peru_place.webp"
+  }
+},
+{
+  "country": "Argentina",
+  "capital": "Buenos Aires",
+  "population": 46000000,
+  "area_km2": 2780400,
+  "currency": "Argentine Peso (ARS)",
+  "gdp_total_usd": 620000000000,
+  "national_day": "July 9",
+  "national_animal": "Rufous Hornero",
+  "exports": [
+    "Soybeans",
+    "Corn",
+    "Wheat",
+    "Beef",
+    "Wine"
+  ],
+  "popular_dishes": [
+    "Asado",
+    "Empanadas",
+    "Milanesa",
+    "Dulce de leche",
+    "Choripán"
+  ],
+  "famous_people": [
+    "Lionel Messi",
+    "Jorge Luis Borges",
+    "Eva Perón",
+    "René Favaloro"
+  ],
+  "places_heritage": [
+    "Iguazú Falls",
+    "Perito Moreno Glacier",
+    "Córdoba Historic Centre",
+    "Quebrada de Humahuaca"
+  ],
+  "images": {
+    "flag": "images/countries/argentina/argentina_flag.webp",
+    "map": "images/countries/argentina/argentina_map.webp",
+    "food": "images/countries/argentina/argentina_food.webp",
+    "place": "images/countries/argentina/argentina_place.webp"
+  }
 }
+
+
 
 
 
