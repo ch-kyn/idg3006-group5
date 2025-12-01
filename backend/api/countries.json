@@ -565,7 +565,50 @@
     "food": "images/countries/ecuador/ecuador_food.webp",
     "place": "images/countries/ecuador/ecuador_place.webp"
   }
+},
+{
+  "country": "Brazil",
+  "capital": "Brasília",
+  "population": 203100000,
+  "area_km2": 8515767,
+  "currency": "Brazilian Real (BRL)",
+  "gdp_total_usd": 2160000000000,
+  "national_day": "September 7",
+  "national_animal": "Jaguar",
+  "exports": [
+    "Soybeans",
+    "Iron ore",
+    "Crude oil",
+    "Coffee",
+    "Meat (beef & poultry)"
+  ],
+  "popular_dishes": [
+    "Feijoada",
+    "Pão de queijo",
+    "Brigadeiro",
+    "Moqueca",
+    "Acarajé"
+  ],
+  "famous_people": [
+    "Pelé",
+    "Oscar Niemeyer",
+    "Carmen Miranda",
+    "Ayrton Senna"
+  ],
+  "places_heritage": [
+    "Christ the Redeemer (Rio de Janeiro)",
+    "Iguaçu National Park",
+    "Pantanal Conservation Area",
+    "Historic Centre of Salvador"
+  ],
+  "images": {
+    "flag": "images/countries/brazil/brazil_flag.webp",
+    "map": "images/countries/brazil/brazil_map.webp",
+    "food": "images/countries/brazil/brazil_food.webp",
+    "place": "images/countries/brazil/brazil_place.webp"
+  }
 }
+
 
 
 ]

@@ -402,7 +402,29 @@
 					"extra": "Inspired by observation of birds and experiments in Paris, he demonstrated practical flight to astonished crowds."
 				},
 				"image": "images/south_america/brazil/airplane_taxiing.webp"
-			}
+			},
+			  {
+      "name": "Superflexible Fiber Optics",
+      "inventor": "José Mauro Pinheiro",
+      "year": "1990s",
+      "information": {
+        "general": "Brazilian physicist José Mauro Pinheiro helped develop ultra-flexible fiber-optic strands that improved telecommunication durability.",
+        "description": "The fibers used modified polymer coatings allowing extreme bending without signal loss, ideal for dense urban cable layouts.",
+        "extra": "The technology was later used in submarine cables and satellite communication infrastructures across Latin America."
+      },
+      "image": "images/latin_america/brazil/brazil_fiber_optics.webp"
+    },
+	  {
+      "name": "Direct-Recording Electronic Voting Machine",
+      "inventor": "Brazilian Superior Electoral Court (TSE) Engineering Team",
+      "year": "1996",
+      "information": {
+        "general": "In 1996, Brazilian engineers created one of the world's first national-scale electronic voting machines.",
+        "description": "The device digitized ballots, reduced counting time from days to minutes, and incorporated validation features that cut down election errors.",
+        "extra": "Brazil became a global pioneer in electronic voting. Many countries later modeled their systems after Brazil’s design."
+      },
+      "image": "images/latin_america/brazil/brazil_voting_machine.webp"
+    }
 		]
 	},
 	{
