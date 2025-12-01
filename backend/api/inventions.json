@@ -342,7 +342,7 @@
 		]
 	},
 	{
-		"country": "USA",
+		"country": "United States",
 		"inventions": [
 			{
 				"name": "Telephone",
@@ -353,7 +353,29 @@
 					"description": "Using wires, a diaphragm, and electromagnetic coils, it converted sound into electrical signals for instant communication.",
 					"extra": "Inspired by his work on hearing devices, Bell experimented tirelessly with circuits until the first call rang through."
 				},
-				"image": "images/north_america/usa/telephone.webp"
+				"image": "images/north_america/united_states/telephone.webp"
+			},
+			{
+				"name": "Light Bulb",
+				"inventor": "Thomas Edison",
+				"year": "1879",
+				"information": {
+					"general": "In 1879, Thomas Edison successfully developed a practical and long-lasting electric light bulb.",
+					"description": "The bulb used a carbon filament in a vacuum to produce light efficiently and reliably for home and industrial use.",
+					"extra": "Edison tested thousands of materials for the filament before finding one that could burn long enough to be commercially viable."
+				},
+				"image": "images/north_america/united_states/light_bulb.webp"
+			},
+			{
+				"name": "Airplane",
+				"inventor": "Wright Brothers",
+				"year": "1903",
+				"information": {
+					"general": "In 1903, Orville and Wilbur Wright made the first controlled, sustained flight of a powered aircraft.",
+					"description": "Their airplane, the Wright Flyer, used a lightweight engine and movable control surfaces to achieve lift and stability.",
+					"extra": "The Wright brothers' experimentation with gliders, wind tunnels, and control mechanisms paved the way for modern aviation."
+				},
+				"image": "images/north_america/united_states/airplane.webp"
 			}
 		]
 	},
@@ -370,6 +392,28 @@
 					"extra": "Their experiments combined surgical skill and chemistry, laying the foundation for modern diabetes care."
 				},
 				"image": "images/north_america/canada/insulin.webp"
+			},
+			{
+				"name": "IMAX",
+				"inventor": "Graeme Ferguson, Roman Kroitor, Robert Kerr, William C. Shaw",
+				"year": "1967",
+				"information": {
+					"general": "IMAX, developed in Canada in 1967, revolutionized large-format cinema with ultra-high-resolution film.",
+					"description": "The system uses larger film frames and advanced projection techniques to immerse audiences in lifelike visuals.",
+					"extra": "IMAX theaters are now globally recognized for their ability to deliver intense, immersive movie experiences."
+				},
+				"image": "images/north_america/canada/imax.webp"
+			},
+			{
+				"name": "Electric Wheelchair",
+				"inventor": "George Klein",
+				"year": "1950s",
+				"information": {
+					"general": "Canadian inventor George Klein created the first practical electric wheelchair to improve mobility for disabled veterans.",
+					"description": "Using a motorized system, the chair allowed users to move independently, transforming rehabilitation and accessibility.",
+					"extra": "Klein's innovation laid the groundwork for modern powered mobility devices used worldwide today."
+				},
+				"image": "images/north_america/canada/electric_wheelchair.webp"
 			}
 		]
 	},
@@ -520,22 +564,6 @@
 		]
 	},
 	{
-		"country": "India",
-		"inventions": [
-			{
-				"name": "Shampoo (modern formula)",
-				"inventor": "K. N. Dikshit",
-				"year": "early 20th century",
-				"information": {
-					"general": "K. N. Dikshit developed a modern shampoo formula to clean hair effectively.",
-					"description": "He combined surfactants and mild chemicals for easy lather and gentle cleansing.",
-					"extra": "The product spread worldwide, transforming hair care from traditional soaps to the global shampoo industry."
-				},
-				"image": "images/asia/india/shampoo.webp"
-			}
-		]
-	},
-	{
 		"country": "South Korea",
 		"inventions": [
 			{
@@ -570,7 +598,7 @@
 					"extra": "Hangul is celebrated every year on Hangul Day (October 9 in South Korea) and is considered one of the most scientific writing systems in the world."
 				},
 				"image": "images/asia/south_korea/hangul.webp"
-        	}
+			}
 		]
 	},
 	{
@@ -734,159 +762,210 @@
 		]
 	},
 	{
-  "country": "Venezuela",
-  "inventions": [
-    {
-      "name": "Canaima Educational Operating System",
-      "inventor": "Centro Nacional de Tecnologías de Información (CNTI)",
-      "year": "2009",
-      "information": {
-        "general": "In 2009, Venezuelan software engineers created Canaima, a Linux-based OS designed for widespread educational use.",
-        "description": "Built on Debian, it offers lightweight performance for low-cost laptops. Its clean interface, offline-friendly tools, and open-source structure made it ideal for classrooms with limited connectivity.",
-        "extra": "Canaima was installed in more than 7 million 'Canaimitas' laptops distributed to students nationwide. It remains one of Latin America’s largest open-source educational tech initiatives."
-      },
-      "image": "images/latin_america/venezuela/canaima_os.webp"
-    },
-    {
-      "name": "Devil’s Acid (Sulfur-Mud Therapy Technique)",
-      "inventor": "Dr. Jacinto Convit",
-      "year": "1980s",
-      "information": {
-        "general": "Dr. Jacinto Convit developed pioneering immunotherapy methods that influenced treatments for leprosy and cancer.",
-        "description": "By combining killed bacteria with a patient's own immune cells, Convit created a therapy that stimulated targeted immune responses. The research helped shape modern immunological approaches.",
-        "extra": "Convit received global recognition for his humanitarian medical work, including nominations for the Nobel Prize."
-      },
-      "image": "images/latin_america/venezuela/jacinto_convit.webp"
-    },
-    {
-      "name": "Modern Arepa Maker (TostyArepa)",
-      "inventor": "Carlos R. Soto",
-      "year": "1970s",
-      "information": {
-        "general": "In the 1970s, Venezuelan engineer Carlos Soto created the first electric arepa maker, known today as the TostyArepa.",
-        "description": "The appliance presses and heats corn dough evenly between two metal plates, producing perfectly shaped arepas in minutes.",
-        "extra": "The TostyArepa became a household staple in Venezuela and among diaspora communities, shaping how arepas are prepared worldwide."
-      },
-      "image": "images/latin_america/venezuela/tostyarepa.webp"
-    }
-  ]
-},
-{
-  "country": "Ecuador",
-  "inventions": [
-    {
-      "name": "Panela Vacuum Evaporation System",
-      "inventor": "Luis Alberto Armendáriz",
-      "year": "1980s",
-      "information": {
-        "general": "In the 1980s, Ecuadorian engineer Luis Armendáriz developed a vacuum-based evaporation system to modernize the production of panela (unrefined cane sugar).",
-        "description": "The system reduces boiling temperature, allowing sugarcane juice to concentrate without burning, improving both quality and production speed. It became important for small Andean producers.",
-        "extra": "Armendáriz’s design increased energy efficiency and created more consistent panela blocks, influencing sugarcane processing across South America."
-      },
-      "image": "images/latin_america/ecuador/ecuador_panela_system.webp"
-    },
-    {
-      "name": "Ecuavóley Net System",
-      "inventor": "Quito Sports Innovators Group",
-      "year": "1950s",
-      "information": {
-        "general": "In the 1950s, local athletes in Quito standardized the modern net and ball system for Ecuavóley, Ecuador’s unique three-player version of volleyball.",
-        "description": "The system involved a higher net, a specific ball weight, and reinforced court posts, giving the sport its signature fast, powerful style.",
-        "extra": "Ecuavóley later spread to Colombia, Peru, and migrant communities in the U.S. and Spain. Ecuador’s standardized equipment remains the sport’s global reference."
-      },
-      "image": "images/latin_america/ecuador/ecuador_ecuavoley.webp"
-    },
-    {
-      "name": "Galápagos Environmental Monitoring System",
-      "inventor": "Charles Darwin Research Station (Ecuadorian engineering teams)",
-      "year": "1990s",
-      "information": {
-        "general": "In the 1990s, Ecuadorian engineers and biologists co-developed an early digital monitoring network to track environmental data in the Galápagos Islands.",
-        "description": "Solar-powered sensors collected information on climate, species behavior, and volcanic activity, sending it to research centers for conservation analysis.",
-        "extra": "This hybrid technological–biological system became a model for island conservation worldwide, influencing similar projects in the Pacific and Indian Ocean."
-      },
-      "image": "images/latin_america/ecuador/ecuador_galapagos_monitor.webp"
-    }
-  ]
-},
-{
-  "country": "Bolivia",
-  "inventions": [
-    {
-      "name": "Solar-Powered Salt Harvesting System",
-      "inventor": "Andean Engineering Team",
-      "year": "1990s",
-      "information": {
-        "general": "In the 1990s, Bolivian engineers developed solar-powered systems to improve salt extraction in the Salar de Uyuni region.",
-        "description": "The system uses solar energy to evaporate brine efficiently, increasing salt and lithium yields while reducing labor and fuel costs.",
-        "extra": "This innovation influenced renewable-energy-based extraction techniques across South America, supporting lithium mining for batteries."
-      },
-      "image": "images/latin_america/bolivia/bolivia_solar_salt.webp"
-    },
-    {
-      "name": "Chirimoya Juice Pasteurizer",
-      "inventor": "Luis Fernando Quispe",
-      "year": "1980s",
-      "information": {
-        "general": "In the 1980s, Bolivian engineer Luis Quispe designed a small-scale pasteurization system for tropical fruits like chirimoya and guava.",
-        "description": "The device uses low-temperature pasteurization to preserve nutrients and extend shelf life, enabling local farmers to export juices safely.",
-        "extra": "It became widely used in Cochabamba and Santa Cruz, increasing income for small farmers and supporting Ecuadorian and Brazilian fruit trade connections."
-      },
-      "image": "images/latin_america/bolivia/bolivia_chirimoya_pasteurizer.webp"
-    },
-    {
-      "name": "High-Altitude Medical Oxygen Device",
-      "inventor": "Cochabamba Medical Team",
-      "year": "2000s",
-      "information": {
-        "general": "In the early 2000s, a Bolivian medical team developed portable oxygen devices specifically optimized for high-altitude cities like La Paz.",
-        "description": "The devices regulate oxygen delivery under thin-air conditions, improving patient survival and comfort in hospitals and homes at 3,500 meters above sea level.",
-        "extra": "This innovation has become a model for high-altitude medical care in Andean countries."
-      },
-      "image": "images/latin_america/bolivia/bolivia_high_altitude_oxygen.webp"
-    }
-  ]
-},
-{
-  "country": "Peru",
-  "inventions": [
-    {
-      "name": "Quipu Digital Archive",
-      "inventor": "Pontifical Catholic University of Peru (PUCP) Team",
-      "year": "2000s",
-      "information": {
-        "general": "In the 2000s, Peruvian researchers digitized ancient quipu knots to preserve Inca accounting and communication methods.",
-        "description": "Using high-resolution scanning and data modeling, they translated knot patterns into digital databases to study historical trade and census records.",
-        "extra": "This effort made quipu accessible to global scholars and influenced modern information-encoding techniques inspired by traditional systems."
-      },
-      "image": "images/latin_america/peru/peru_quipu_digital.webp"
-    },
-    {
-      "name": "Potato Preservation System",
-      "inventor": "Instituto Nacional de Innovación Agraria (INIA)",
-      "year": "1990s",
-      "information": {
-        "general": "Peruvian agricultural engineers developed a low-temperature and humidity-controlled storage system for potatoes, reducing post-harvest losses.",
-        "description": "The system allows potatoes to be stored for months without sprouting or rotting, supporting both domestic supply and export markets.",
-        "extra": "Given Peru’s status as the origin of potatoes, this invention significantly increased food security and agricultural efficiency nationwide."
-      },
-      "image": "images/latin_america/peru/peru_potato_storage.webp"
-    },
-     {
-      "name": "Pukio Irrigation Machine",
-      "inventor": "Andean Agricultural Engineering Teams",
-      "year": "2010s",
-      "information": {
-        "general": "In the 2010s, Peruvian engineers modernized the traditional Pukio system, creating a machine that efficiently lifts and channels water for agriculture.",
-        "description": "The device combines ancient Inca hydraulic knowledge with modern mechanical pumps, enabling consistent water flow to terraced fields while reducing manual labor.",
-        "extra": "The Pukio machine preserves traditional Andean irrigation methods while supporting sustainable farming and increasing crop yields in mountainous regions."
-      },
-      "image": "images/latin_america/peru/peru_pukio_machine.webp"
-    }
-  ]
-}
-
-
-
-
+		"country": "Vietnam",
+		"inventions": [
+			{
+				"name": "Water Puppet Theater",
+				"inventor": "Vietnamese Folk Artists",
+				"year": "11th Century",
+				"information": {
+					"general": "Water puppetry is a traditional Vietnamese art form where puppets perform on water instead of a stage.",
+					"description": "Puppeteers stand behind a screen and control the wooden puppets using long rods hidden under the water.",
+					"extra": "It was originally used to entertain villagers and convey folklore, and it remains a symbol of Vietnamese cultural heritage."
+				},
+				"image": "images/asia/vietnam/water_puppet_theater.webp"
+			},
+			{
+				"name": "Rice Paper",
+				"inventor": "Vietnamese Artisans",
+				"year": "Ancient Times",
+				"information": {
+					"general": "Rice paper is a thin, edible paper made from rice flour, traditionally used in rolls and wrappers.",
+					"description": "The rice flour is mixed with water, spread thin, steamed, and dried to produce flexible sheets.",
+					"extra": "Rice paper has influenced culinary techniques worldwide, especially in Southeast Asian cuisine."
+				},
+				"image": "images/asia/vietnam/rice_paper.webp"
+			}
+		]
+	},
+	{
+		"country": "Turkey",
+		"inventions": [
+			{
+				"name": "Tulip Cultivation",
+				"inventor": "Turkish Gardeners",
+				"year": "16th Century",
+				"information": {
+					"general": "Turkish gardeners refined tulip cultivation, creating spectacular gardens and festivals.",
+					"description": "They selectively bred tulip bulbs for color, shape, and pattern, influencing horticulture and inspiring tulip mania in Europe.",
+					"extra": "While tulips existed elsewhere, Turkey's systematic cultivation and decorative use were pioneering."
+				},
+				"image": "images/europe/turkey/tulip.webp"
+			},
+			{
+				"name": "Hittite Chariot",
+				"inventor": "Hittite Engineers",
+				"year": "1600 BCE",
+				"information": {
+					"general": "The Hittites, ancient Anatolian people, developed a light, fast chariot used in warfare.",
+					"description": "Their chariot design allowed greater maneuverability and speed on the battlefield, revolutionizing ancient military tactics.",
+					"extra": "This design influenced later civilizations' chariots across the Near East."
+				},
+				"image": "images/europe/turkey/hittite_chariot.webp"
+			},
+			{
+				"name": "Iznik Pottery",
+				"inventor": "Turkish Artisans",
+				"year": "15th Century",
+				"information": {
+					"general": "Iznik pottery is a form of fine ceramic decorated with intricate designs and vivid colors.",
+					"description": "Artisans perfected glazing and painting techniques to produce high-quality bowls, tiles, and plates.",
+					"extra": "Iznik ceramics became a hallmark of Turkish art and influenced European ceramic production."
+				},
+				"image": "images/europe/turkey/iznik_pottery.webp"
+			}
+		]
+	},
+	{
+		"country": "Iran",
+		"inventions": [
+			{
+				"name": "Baghdad Battery",
+				"inventor": "Parthian / Persian Civilization",
+				"year": "c. 200 BCE",
+				"information": {
+					"general": "An ancient device believed to be one of the world's first attempts at generating electricity.",
+					"description": "It was made using a clay jar, a rolled copper cylinder, and an iron rod sealed with bitumen. When filled with an acidic liquid like vinegar or lemon juice, the components reacted to create a small electrical charge.",
+					"extra": "While its true purpose is still debated, many researchers believe it may have been used for electroplating jewelry with precious metals — hinting at an advanced understanding of early chemistry and electricity."
+				},
+				"image": "images/asia/iran/baghdad_battery.webp"
+			},
+			{
+				"name": "Backgammon",
+				"inventor": "Ancient Persians",
+				"year": "c. 3000 BCE",
+				"information": {
+					"general": "One of the oldest known strategy board games in human history.",
+					"description": "Using a wooden board, carved pieces and dice made from bone or stone, players raced and captured pieces using a mix of probability and skill. The design created endless variations of play and strategy.",
+					"extra": "Backgammon spread across the Middle East, into Europe, and eventually around the world. Thousands of years later, the core gameplay remains almost unchanged."
+				},
+				"image": "images/asia/iran/backgammon.webp"
+			},
+			{
+				"name": "Yakhchal (Ancient Ice House)",
+				"inventor": "Persian Engineers",
+				"year": "c. 400 BCE",
+				"information": {
+					"general": "A massive ancient refrigerator built in the middle of desert landscapes.",
+					"description": "The conical structure was made from a special mortar that resisted heat. Underground chambers, thick walls, and wind-catchers kept ice frozen even in extreme summer temperatures.",
+					"extra": "Ice was transported from nearby mountains in winter and stored year-round. These structures inspired modern refrigeration and passive cooling architecture."
+				},
+				"image": "images/asia/iran/yakhchal.webp"
+			}
+		]
+	},
+	{
+		"country": "India",
+		"inventions": [
+			{
+				"name": "Zero (Numeric Symbol)",
+				"inventor": "Indian Mathematicians",
+				"year": "c. 500 CE",
+				"information": {
+					"general": "The first civilization to use zero as both a number and a symbol.",
+					"description": "Indian scholars formalized zero to represent 'nothingness' in mathematics. This allowed for the powerful place-value system used today in arithmetic, algebra, geometry and computing.",
+					"extra": "Without zero, modern physics, engineering, and digital technology would not exist. It is one of the most influential inventions in history."
+				},
+				"image": "images/asia/india/zero.webp"
+			},
+			{
+				"name": "Chess (Chaturanga)",
+				"inventor": "Indian Game Designers",
+				"year": "c. 600 CE",
+				"information": {
+					"general": "The original version of modern chess was created in India.",
+					"description": "The game was based on real military units: infantry, cavalry, elephants, and chariots. Played on an 8×8 board, it trained strategic thinking and battle planning.",
+					"extra": "As it travelled to Persia and Europe, the pieces evolved into the modern queen, bishop, and knight — turning it into the global game of chess we know today."
+				},
+				"image": "images/asia/india/chaturanga.webp"
+			},
+			{
+				"name": "Stepwells",
+				"inventor": "Ancient Indian Builders",
+				"year": "c. 3000 BCE",
+				"information": {
+					"general": "Architectural wells designed to access underground water during dry seasons.",
+					"description": "These massive structures contained hundreds of steps leading down to water, with platforms, temples and carved stone walls. They were both functional water sources and artistic masterpieces.",
+					"extra": "Some stepwells descend more than ten stories underground and remain standing today as examples of advanced ancient engineering and climate-resilient design."
+				},
+				"image": "images/asia/india/stepwell.webp"
+			}
+		]
+	},
+	{
+		"country": "Pakistan",
+		"inventions": [
+			{
+				"name": "Buttons",
+				"inventor": "Indus Valley Civilization",
+				"year": "c. 2000 BCE",
+				"information": {
+					"general": "Some of the world's first known buttons were created in the Indus Valley.",
+					"description": "Carved from seashells and drilled with holes, early buttons were sewn onto clothing — both as decoration and as fasteners.",
+					"extra": "This simple invention eventually transformed global fashion, leading to coats, uniforms, shirts and modern garments."
+				},
+				"image": "images/asia/pakistan/buttons.webp"
+			},
+			{
+				"name": "Precision Measuring Rulers",
+				"inventor": "Indus Valley Engineers",
+				"year": "c. 2500 BCE",
+				"information": {
+					"general": "Among the most accurate measuring tools of the ancient world.",
+					"description": "These rulers were crafted from ivory and divided into extremely small, consistent units — rivaling the precision of modern tools.",
+					"extra": "They allowed the cities of Harappa and Mohenjo-Daro to be built in perfect grid systems with remarkably advanced urban planning."
+				},
+				"image": "images/asia/pakistan/ivory_ruler.webp"
+			}
+		]
+	},
+	{
+		"country": "Philippines",
+		"inventions": [
+			{
+				"name": "Jeepney",
+				"inventor": "Filipino Mechanics",
+				"year": "1940s",
+				"information": {
+					"general": "A fully customized public transport vehicle created from war surplus.",
+					"description": "After World War II, abandoned U.S. military jeeps were extended, decorated with bright colors, and fitted with side benches to carry many passengers.",
+					"extra": "The Jeepney became both an affordable transport solution and a powerful national symbol of Filipino creativity and resilience."
+				},
+				"image": "images/asia/philippines/jeepney.webp"
+			},
+			{
+				"name": "Banana Ketchup",
+				"inventor": "Maria Orosa",
+				"year": "1942",
+				"information": {
+					"general": "A bright red ketchup made without tomatoes.",
+					"description": "During wartime tomato shortages, bananas were mashed and blended with vinegar, sugar, and spices, then dyed red to resemble ketchup.",
+					"extra": "Today, banana ketchup is a Filipino staple, used in dishes like spaghetti, fried chicken, and barbecue."
+				},
+				"image": "images/asia/philippines/banana_ketchup.webp"
+			},
+			{
+				"name": "Bangka (Filipino Canoe)",
+				"inventor": "Ancient Filipino Boatmakers",
+				"year": "c. 1500s",
+				"information": {
+					"general": "The bangka is a traditional Filipino outrigger canoe used for fishing, transport, and trade.",
+					"description": "Handcrafted from wood and often fitted with bamboo outriggers for stability, these boats are lightweight, durable, and designed for navigating rivers and coastal waters.",
+					"extra": "Bangka remain a vital part of Filipino life today, reflecting centuries of maritime skill and tangible craftsmanship.",
+					"tangible": true
+				},
+				"image": "images/asia/philippines/bangka.webp"
+			}
+		]
+	}
 ]
