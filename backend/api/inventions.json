@@ -152,6 +152,44 @@
 		]
 	},
 	{
+	"country": "Colombia",
+	"inventions": [
+		{
+			"name": "Haptx / Force-Feedback Glove Prototype",
+			"inventor": "Juan David Wills",
+			"year": "2014",
+			"information": {
+				"general": "In 2014, Colombian engineer Juan David Wills built an early prototype of a force-feedback glove that later contributed to the technology behind modern haptic VR systems.",
+				"description": "The prototype used pneumatic micro-valves and lightweight actuators to simulate pressure and touch sensations. It allowed users to feel resistance while interacting with virtual objects, a major step toward immersive VR experiences.",
+				"extra": "Wills’ early experiments were developed in Bogotá with limited resources. His research later influenced commercial haptic devices used in medical training, remote robotics, and immersive gaming."
+			},
+			"image": "images/latin_america/colombia/haptic_glove.webp"
+		},
+		{
+			"name": "Expandable Heart Stent",
+			"inventor": "Jorge Reynolds Pombo",
+			"year": "1960s",
+			"information": {
+				"general": "Colombian engineer Jorge Reynolds helped develop early versions of the expandable heart stent while researching cardiovascular implants.",
+				"description": "The device is a tiny mesh cylinder inserted into blocked arteries. Once positioned, it expands to keep blood vessels open, improving circulation and reducing the risk of heart attacks.",
+				"extra": "Reynolds is also famous for creating one of the world's first external pacemakers. His work contributed greatly to modern biomedical engineering in Latin America."
+			},
+			"image": "images/latin_america/colombia/heart_stent.webp"
+		},
+		{
+			"name": "Antioquia Coffee Pulper",
+			"inventor": "Luis Eduardo Álvarez",
+			"year": "1940s",
+			"information": {
+				"general": "In the 1940s, Colombian inventor Luis Eduardo Álvarez designed a mechanical coffee pulper that automated the removal of coffee cherry skins.",
+				"description": "Made from metal drums and a rotating abrasive surface, the machine quickly separated beans from pulp, reducing labor and improving consistency in coffee processing.",
+				"extra": "The invention became widely adopted in rural Antioquia. It increased productivity for small farmers and helped raise the quality of Colombia’s globally renowned coffee industry."
+			},
+			"image": "images/latin_america/colombia/coffee_pulper.webp"
+		}
+	]
+	},
+	{
 		"country": "France",
 		"inventions": [
 			{
@@ -672,5 +710,44 @@
 				"image": "images/oceania/samoa/tattoo.webp"
 			}
 		]
-	}
+	},
+	{
+  "country": "Venezuela",
+  "inventions": [
+    {
+      "name": "Canaima Educational Operating System",
+      "inventor": "Centro Nacional de Tecnologías de Información (CNTI)",
+      "year": "2009",
+      "information": {
+        "general": "In 2009, Venezuelan software engineers created Canaima, a Linux-based OS designed for widespread educational use.",
+        "description": "Built on Debian, it offers lightweight performance for low-cost laptops. Its clean interface, offline-friendly tools, and open-source structure made it ideal for classrooms with limited connectivity.",
+        "extra": "Canaima was installed in more than 7 million 'Canaimitas' laptops distributed to students nationwide. It remains one of Latin America’s largest open-source educational tech initiatives."
+      },
+      "image": "images/latin_america/venezuela/canaima_os.webp"
+    },
+    {
+      "name": "Devil’s Acid (Sulfur-Mud Therapy Technique)",
+      "inventor": "Dr. Jacinto Convit",
+      "year": "1980s",
+      "information": {
+        "general": "Dr. Jacinto Convit developed pioneering immunotherapy methods that influenced treatments for leprosy and cancer.",
+        "description": "By combining killed bacteria with a patient's own immune cells, Convit created a therapy that stimulated targeted immune responses. The research helped shape modern immunological approaches.",
+        "extra": "Convit received global recognition for his humanitarian medical work, including nominations for the Nobel Prize."
+      },
+      "image": "images/latin_america/venezuela/jacinto_convit.webp"
+    },
+    {
+      "name": "Modern Arepa Maker (TostyArepa)",
+      "inventor": "Carlos R. Soto",
+      "year": "1970s",
+      "information": {
+        "general": "In the 1970s, Venezuelan engineer Carlos Soto created the first electric arepa maker, known today as the TostyArepa.",
+        "description": "The appliance presses and heats corn dough evenly between two metal plates, producing perfectly shaped arepas in minutes.",
+        "extra": "The TostyArepa became a household staple in Venezuela and among diaspora communities, shaping how arepas are prepared worldwide."
+      },
+      "image": "images/latin_america/venezuela/tostyarepa.webp"
+    }
+  ]
+}
+
 ]

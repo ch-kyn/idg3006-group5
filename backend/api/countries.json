@@ -481,5 +481,48 @@
             "food": "images/countries/south_korea/south_korea_kimchi.webp",
             "place": "images/countries/south_korea/south_korea_gyeongbokgung.webp"
         }
-    }
+    },
+    {
+  "country": "Venezuela",
+  "capital": "Caracas",
+  "population": 28670000,
+  "area_km2": 916445,
+  "currency": "Venezuelan bolívar (VES)",
+  "gdp_total_usd": 85000000000,
+  "national_day": "July 5",
+  "national_animal": "Turpial (Venezuelan troupial)",
+  "exports": [
+    "Crude oil",
+    "Refined petroleum",
+    "Gold",
+    "Chemicals",
+    "Cocoa beans"
+  ],
+  "popular_dishes": [
+    "Arepa",
+    "Pabellón Criollo",
+    "Hallaca",
+    "Cachapa",
+    "Tequeños"
+  ],
+  "famous_people": [
+    "Simón Bolívar",
+    "Gustavo Dudamel",
+    "Rómulo Gallegos",
+    "Teresa Carreño"
+  ],
+  "places_heritage": [
+    "Ángel Falls",
+    "Los Roques Archipelago",
+    "Mérida Cable Car (Teleférico)",
+    "Morrocoy National Park"
+  ],
+  "images": {
+    "flag": "images/countries/venezuela/venezuela_flag.webp",
+    "map": "images/countries/venezuela/venezuela_map.webp",
+    "food": "images/countries/venezuela/venezuela_food.webp",
+    "place": "images/countries/venezuela/venezuela_place.webp"
+  }
+}
+
 ]
