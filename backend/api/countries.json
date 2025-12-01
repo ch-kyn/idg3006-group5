@@ -607,7 +607,50 @@
     "food": "images/countries/brazil/brazil_food.webp",
     "place": "images/countries/brazil/brazil_place.webp"
   }
+},
+{
+  "country": "Bolivia",
+  "capital": "Sucre (constitutional), La Paz (administrative)",
+  "population": 11900000,
+  "area_km2": 1098581,
+  "currency": "Boliviano (BOB)",
+  "gdp_total_usd": 42000000,
+  "national_day": "August 6",
+  "national_animal": "Llama",
+  "exports": [
+    "Natural gas",
+    "Zinc",
+    "Silver",
+    "Soybeans",
+    "Quinoa"
+  ],
+  "popular_dishes": [
+    "Salteñas",
+    "Pique a lo Macho",
+    "Silpancho",
+    "Api con pastel",
+    "Chairo"
+  ],
+  "famous_people": [
+    "Evo Morales",
+    "Túpac Katari",
+    "Jaime Escalante",
+    "Domitila Barrios de Chungara"
+  ],
+  "places_heritage": [
+    "Salar de Uyuni",
+    "Tiwanaku Archaeological Site",
+    "Madidi National Park",
+    "Potosí Historic Town"
+  ],
+  "images": {
+    "flag": "images/countries/bolivia/bolivia_flag.webp",
+    "map": "images/countries/bolivia/bolivia_map.webp",
+    "food": "images/countries/bolivia/bolivia_food.webp",
+    "place": "images/countries/bolivia/bolivia_place.webp"
+  }
 }
+
 
 
 

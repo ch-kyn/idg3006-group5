@@ -808,7 +808,46 @@
       "image": "images/latin_america/ecuador/ecuador_galapagos_monitor.webp"
     }
   ]
+},
+{
+  "country": "Bolivia",
+  "inventions": [
+    {
+      "name": "Solar-Powered Salt Harvesting System",
+      "inventor": "Andean Engineering Team",
+      "year": "1990s",
+      "information": {
+        "general": "In the 1990s, Bolivian engineers developed solar-powered systems to improve salt extraction in the Salar de Uyuni region.",
+        "description": "The system uses solar energy to evaporate brine efficiently, increasing salt and lithium yields while reducing labor and fuel costs.",
+        "extra": "This innovation influenced renewable-energy-based extraction techniques across South America, supporting lithium mining for batteries."
+      },
+      "image": "images/latin_america/bolivia/bolivia_solar_salt.webp"
+    },
+    {
+      "name": "Chirimoya Juice Pasteurizer",
+      "inventor": "Luis Fernando Quispe",
+      "year": "1980s",
+      "information": {
+        "general": "In the 1980s, Bolivian engineer Luis Quispe designed a small-scale pasteurization system for tropical fruits like chirimoya and guava.",
+        "description": "The device uses low-temperature pasteurization to preserve nutrients and extend shelf life, enabling local farmers to export juices safely.",
+        "extra": "It became widely used in Cochabamba and Santa Cruz, increasing income for small farmers and supporting Ecuadorian and Brazilian fruit trade connections."
+      },
+      "image": "images/latin_america/bolivia/bolivia_chirimoya_pasteurizer.webp"
+    },
+    {
+      "name": "High-Altitude Medical Oxygen Device",
+      "inventor": "Cochabamba Medical Team",
+      "year": "2000s",
+      "information": {
+        "general": "In the early 2000s, a Bolivian medical team developed portable oxygen devices specifically optimized for high-altitude cities like La Paz.",
+        "description": "The devices regulate oxygen delivery under thin-air conditions, improving patient survival and comfort in hospitals and homes at 3,500 meters above sea level.",
+        "extra": "This innovation has become a model for high-altitude medical care in Andean countries."
+      },
+      "image": "images/latin_america/bolivia/bolivia_high_altitude_oxygen.webp"
+    }
+  ]
 }
+
 
 
 ]
