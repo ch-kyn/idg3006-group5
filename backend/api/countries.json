@@ -400,6 +400,49 @@
         }
     },
     {
+  "country": "Colombia",
+  "capital": "Bogotá",
+  "population": 52696000,
+  "area_km2": 1140748,
+  "currency": "Colombian peso (COP)",
+  "gdp_total_usd": 419000000000,
+  "national_day": "July 20",
+  "national_animal": "Andean condor",
+  "exports": [
+    "Crude petroleum",
+    "Coal",
+    "Coffee",
+    "Gold & Emeralds",
+    "Cut flowers"
+  ],
+  "popular_dishes": [
+    "Arepa",
+    "Bandeja Paisa",
+    "Ajiaco",
+    "Sancocho",
+    "Empanadas"
+  ],
+  "famous_people": [
+    "Gabriel García Márquez",
+    "Shakira",
+    "Fernando Botero",
+    "Sofía Vergara"
+  ],
+  "places_heritage": [
+    "Historic Centre of Cartagena",
+    "Tayrona National Park",
+    "Cocora Valley",
+    "Ciudad Perdida (Lost City)"
+  ],
+  "images": {
+    "flag": "images/countries/colombia/colombia_flag.webp",
+    "map": "images/countries/colombia/colombia_map.webp",
+    "food": "images/countries/colombia/colombia_food.webp",
+    "place": "images/countries/colombia/colombia_place.webp"
+  }
+},
+
+    {
         "country": "South Korea",
         "capital": "Seoul",
         "population": 51700000,
