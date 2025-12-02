@@ -2,8 +2,8 @@ import sharp from "sharp";
 import fs from "fs-extra";
 import path from "path";
 
-const inputFolder = "./public/images/inventions/asia/iraq";      // folder with your original images
-const outputFolder = "./public/images/inventions/asia/iraq";   // folder to save .webp files
+const inputFolder = "./public/images/inventions/asia/saudi-arabia";      // folder with your original images
+const outputFolder = "./public/images/inventions/asia/saudi-arabia";   // folder to save .webp files
 
 async function convertImages() {
   await fs.ensureDir(outputFolder);

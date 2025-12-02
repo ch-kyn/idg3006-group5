@@ -1919,6 +1919,49 @@
     "food": "images/countries/asia/iraq/iraq_food.webp",
     "place": "images/countries/asia/iraq/iraq_place.webp"
   }
+},
+{
+  "country": "Saudi Arabia",
+  "capital": "Riyadh",
+  "population": 36000000,
+  "area_km2": 2149690,
+  "currency": "Saudi Riyal (SAR)",
+  "gdp_total_usd": 1100000000000,
+  "national_day": "September 23",
+  "national_animal": "Arabian Camel",
+  "exports": [
+    "Crude Oil",
+    "Petrochemicals",
+    "Plastics",
+    "Dates"
+  ],
+  "popular_dishes": [
+    "Kabsa",
+    "Mandi",
+    "Jareesh",
+    "Mutabbaq",
+    "Saleeg"
+  ],
+  "famous_people": [
+    "Ibn Saud (Founder of Saudi Arabia)",
+    "Muhammad ibn Abd al-Wahhab",
+    "Ghazi al-Gosaibi",
+    "Turki Alalshikh"
+  ],
+  "places_heritage": [
+    "Al-Ula (Hegra / Mada'in Saleh)",
+    "Masmak Fortress",
+    "Diriyah",
+    "Al-Balad, Jeddah",
+    "The Prophet's Mosque (Medina)"
+  ],
+  "images": {
+    "flag": "images/countries/asia/saudi-arabia/saudi_flag.webp",
+    "map": "images/countries/asia/saudi-arabia/saudi_map.webp",
+    "food": "images/countries/asia/saudi-arabia/saudi_food.webp",
+    "place": "images/countries/asia/saudi-arabia/saudi_place.webp"
+  }
 }
+
 
 ]
