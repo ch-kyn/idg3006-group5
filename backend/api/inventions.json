@@ -1624,6 +1624,84 @@
       "image": "images/asia/iraq/iraq_hammurabi.webp"
     }
   ]
+},
+{
+  "country": "Saudi Arabia",
+  "inventions": [
+    {
+      "name": "Astrolabe Improvements",
+      "inventor": "Arab Astronomers of the Hejaz",
+      "year": "8th–10th Century",
+      "information": {
+        "general": "Arab astronomers refined the astrolabe, an instrument used to measure stars and navigate across deserts and seas.",
+        "description": "Their enhancements improved accuracy for prayer times, navigation, and astronomical calculations.",
+        "extra": "These advancements were developed in major Arabian centers including Mecca and Medina, influencing global navigation and science."
+      },
+      "image": "images/asia/saudi_arabia/saudi_arabia_astrolabe.webp"
+    },
+    {
+      "name": "Oil Extraction & Drilling Innovations",
+      "inventor": "Saudi Aramco Engineers",
+      "year": "1930s–Present",
+      "information": {
+        "general": "Saudi engineers and geologists modernized oil extraction techniques after the discovery of oil in the 1930s.",
+        "description": "Advances included deeper drilling, enhanced oil recovery, and large-scale offshore extraction technologies.",
+        "extra": "These innovations helped Saudi Arabia become a global leader in petroleum technology and energy production."
+      },
+      "image": "images/asia/saudi_arabia/saudi_arabia_drilling.webp"
+    },
+    {
+      "name": "Desalination Technologies",
+      "inventor": "Saudi Water Conversion Corporation (SWCC)",
+      "year": "1970s–Present",
+      "information": {
+        "general": "Saudi Arabia pioneered large-scale desalination technologies to transform seawater into drinking water.",
+        "description": "The country developed massive reverse osmosis and multi-stage flash distillation plants to supply water to cities and farms.",
+        "extra": "Saudi Arabia is now the world’s largest producer of desalinated water, influencing global water sustainability efforts."
+      },
+      "image": "images/asia/saudi_arabia/saudi_arabia_desalination.webp"
+    }
+  ]
+},
+{
+  "country": "Afghanistan",
+  "inventions": [
+    {
+      "name": "Lapis Lazuli Trade Network",
+      "inventor": "Ancient Bactrian Traders",
+      "year": "6000–3000 BCE",
+      "information": {
+        "general": "Afghanistan’s ancient civilizations created one of the world’s earliest luxury trade networks centered on lapis lazuli.",
+        "description": "The gemstone, mined in Badakhshan, was transported across Mesopotamia, Egypt, and the Indus Valley, influencing ancient art and jewelry.",
+        "extra": "Artifacts made from Afghan lapis were found in the tomb of Tutankhamun, proving its importance in global trade thousands of years ago."
+      },
+      "image": "images/asia/afghanistan/afghanistan_lapis.webp"
+    },
+    {
+      "name": "Early Windmills",
+      "inventor": "Persian Engineers (Used in region including Afghan territories)",
+      "year": "500–900 CE",
+      "information": {
+        "general": "Some of the earliest vertical-axis windmills appeared in regions that include present-day Afghanistan.",
+        "description": "These mills used vertical sails to grind grain and pump water, functioning in the windy plateaus of eastern Persia and western Afghanistan.",
+        "extra": "Their design influenced later windmill developments across the Middle East and Central Asia."
+      },
+      "image": "images/asia/afghanistan/afghanistan_windmill.webp"
+    },
+    {
+      "name": "The Rubab",
+      "inventor": "Pashtun and Tajik Artisans",
+      "year": "7th–10th Century",
+      "information": {
+        "general": "The Afghan rubab, a traditional stringed instrument, is considered one of the earliest known precursors to modern guitars.",
+        "description": "Carved from mulberry wood and covered with goat skin, it produces deep, resonant tones central to Afghan folk music.",
+        "extra": "Its musical influence spread into India, inspiring the creation of the sarod — a key instrument in classical Hindustani music."
+      },
+      "image": "images/asia/afghanistan/afghanistan_rubab.webp"
+    }
+  ]
 }
+
+
 
 ]

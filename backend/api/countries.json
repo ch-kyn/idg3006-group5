@@ -1961,7 +1961,50 @@
     "food": "images/countries/asia/saudi-arabia/saudi_food.webp",
     "place": "images/countries/asia/saudi-arabia/saudi_place.webp"
   }
+},
+{
+  "country": "Afghanistan",
+  "capital": "Kabul",
+  "population": 42000000,
+  "area_km2": 652230,
+  "currency": "Afghan Afghani (AFN)",
+  "gdp_total_usd": 20000000000,
+  "national_day": "August 19",
+  "national_animal": "Snow Leopard",
+  "exports": [
+    "Dried Fruits & Nuts",
+    "Carpets & Rugs",
+    "Precious Stones (Lapis Lazuli)",
+    "Saffron"
+  ],
+  "popular_dishes": [
+    "Kabuli Pulao",
+    "Mantu",
+    "Bolani",
+    "Aush",
+    "Shorwa"
+  ],
+  "famous_people": [
+    "Ahmad Shah Massoud",
+    "Rumi (Jalal ad-Din Muhammad Rumi)",
+    "Abdur Rahman Khan",
+    "Abdul Rahman Pazhwak"
+  ],
+  "places_heritage": [
+    "Bamiyan Valley (Buddha Niches)",
+    "Minaret of Jam",
+    "Herat Citadel",
+    "Bagh-e Babur",
+    "Blue Mosque of Mazar-i-Sharif"
+  ],
+  "images": {
+    "flag": "images/countries/asia/afghanistan/afghanistan_flag.webp",
+    "map": "images/countries/asia/afghanistan/afghanistan_map.webp",
+    "food": "images/countries/asia/afghanistan/afghanistan_food.webp",
+    "place": "images/countries/asia/afghanistan/afghanistan_place.webp"
+  }
 }
+
 
 
 ]
