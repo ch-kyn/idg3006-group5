@@ -6,7 +6,7 @@
 
 **Note**: ALL IMAGES SHOULD BE IN .WEBP GUYS
 
-## Europe (17)
+## Europe (24)
 - Austria
 - Belarus
 - Belgium
@@ -17,11 +17,13 @@
 - Germany
 - Greece
 - Iceland
+- Ireland
 - Italy
 - Lithuania
 - Netherlands
 - Norway
 - Poland
+- Romania
 - Russia
 - Spain
 - Sweden
@@ -30,28 +32,27 @@
 - Ukraine
 - United Kingdom
 
-## Asia (13)
+## Asia (18)
+- Afghanistan
 - China
 - India
 - Indonesia
 - Iran
+- Iraq
 - Japan
 - Kazakhstan
 - Malaysia
 - Mongolia
 - Pakistan
 - Philippines
-- South-Korea
-- Sudan
-- Thailand
-- Vietnam
-- United Arab Emirates
-- Iraq
 - Saudi-Arabia
-- Afghanistan
+- South-Korea
 - Syria
+- Thailand
+- United Arab Emirates
+- Vietnam
 
-## North America (3)
+## North America (4)
 - Canada
 - Cuba
 - Mexico
@@ -67,7 +68,7 @@
 - Peru
 - Venezuela
 
-## Africa (8)
+## Africa (10)
 - Algeria
 - Angola
 - Democratic Republic of the Congo

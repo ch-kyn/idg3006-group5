@@ -1982,7 +1982,7 @@
 				"information": {
 					"general": "Pioneering hygiene practices in medicine to reduce infections.",
 					"description": "Introduced systematic handwashing in obstetric clinics, drastically lowering mortality rates.",
-					"extra": "Semmelweis’ work laid the foundation for modern antiseptic techniques and infection control."
+					"extra": "Semmelweis' work laid the foundation for modern antiseptic techniques and infection control."
 				},
 				"image": "images/inventions/europe/austria/semmelweis_hygiene.webp"
 			}
@@ -2105,249 +2105,234 @@
 				},
 				"image": "images/inventions/europe/ireland/defibrillator.webp"
 			},
-			 {
-                "name": "Guinness Beer Innovations",
-                "inventor": "Arthur Guinness",
-                "year": "1759",
-                "information": {
-                    "general": "Pioneered stout brewing methods.",
-                    "description": "Refined fermentation, roasting, and nitrogenation techniques to perfect Guinness.",
-                    "extra": "Influenced beer production worldwide and became an iconic Irish export."
-                },
-                "image": "images/inventions/europe/ireland/guinness.webp"
-            }
+			{
+				"name": "Guinness Beer Innovations",
+				"inventor": "Arthur Guinness",
+				"year": "1759",
+				"information": {
+					"general": "Pioneered stout brewing methods.",
+					"description": "Refined fermentation, roasting, and nitrogenation techniques to perfect Guinness.",
+					"extra": "Influenced beer production worldwide and became an iconic Irish export."
+				},
+				"image": "images/inventions/europe/ireland/guinness.webp"
+			}
 		]
 	},
-{
-    "country": "Malaysia",
-    "inventions": [
-        {
-            "name": "Single-Chip USB Flash Drive",
-            "inventor": "Pua Khein Seng",
-            "year": "2000",
-            "information": {
-                "general": "Compact data storage device integrating all components on a single chip.",
-                "description": "Revolutionized portable digital storage by making USB flash drives smaller, faster, and more reliable.",
-                "extra": "This innovation helped Malaysia become a key player in global data storage technology."
-            },
-            "image": "images/inventions/asia/malaysia/usb_flash_drive.webp"
-        },
-        {
-            "name": "Biometric Passport",
-            "inventor": "IRIS Corporation Malaysia",
-            "year": "1998",
-            "information": {
-                "general": "Secure passport embedded with biometric identification technology.",
-                "description": "Includes fingerprint and facial recognition data to prevent forgery and improve border security.",
-                "extra": "IRIS Corp's innovation has been adopted by several countries worldwide for e-passports."
-            },
-            "image": "images/inventions/asia/malaysia/biometric_passport.webp"
-        },
-        {
-            "name": "Automatic Egg Boiler",
-            "inventor": "Malaysian engineers",
-            "year": "2005",
-            "information": {
-                "general": "Appliance to cook eggs perfectly without monitoring.",
-                "description": "Boils eggs to soft, medium, or hard consistency using automated temperature and timing controls.",
-                "extra": "Popularized household convenience in Malaysia and exported globally."
-            },
-            "image": "images/inventions/asia/malaysia/automatic_egg_boiler.webp"
-        }
-    ]
-},
-{
-"country": "Iraq",
-  "inventions": [
-    {
-      "name": "The Wheel",
-      "inventor": "Sumerians (Ancient Mesopotamia)",
-      "year": "Around 3500 BCE",
-      "information": {
-        "general": "One of humanity's most important inventions, the wheel first appeared in ancient Mesopotamia, in what is now Iraq.",
-        "description": "Originally used for pottery, the wheel later enabled carts, transport, and mechanical devices, transforming human civilization.",
-        "extra": "The earliest known wheel was discovered near the ancient city of Ur, showing Iraq’s central role in early technological development."
-      },
-      "image": "images/asia/iraq/iraq_wheel.webp"
-    },
-    {
-      "name": "Cuneiform Writing",
-      "inventor": "Sumerians",
-      "year": "Around 3200 BCE",
-      "information": {
-        "general": "Cuneiform, the world’s first known writing system, was created in Mesopotamia to record trade, laws, and literature.",
-        "description": "It consisted of wedge-shaped marks pressed into clay tablets using a reed stylus, enabling administration and storytelling.",
-        "extra": "This writing system led to famous texts like the Epic of Gilgamesh and influenced future alphabets across the region."
-      },
-      "image": "images/asia/iraq/iraq_cuneiform.webp"
-    },
-    {
-      "name": "The First Laws: Code of Hammurabi",
-      "inventor": "Babylonian Scholars",
-      "year": "1754 BCE",
-      "information": {
-        "general": "The Code of Hammurabi, created in Babylon, is one of the earliest and most complete written legal codes.",
-        "description": "Carved into a basalt stele, the laws established standards for contracts, family issues, property, and justice.",
-        "extra": "Its famous phrase 'an eye for an eye' represents proportional justice, influencing legal traditions for millennia."
-      },
-      "image": "images/asia/iraq/iraq_hammurabi.webp"
-    }
-  ]
-},
-{
-  "country": "Saudi Arabia",
-  "inventions": [
-    {
-      "name": "Astrolabe Improvements",
-      "inventor": "Arab Astronomers of the Hejaz",
-      "year": "8th–10th Century",
-      "information": {
-        "general": "Arab astronomers refined the astrolabe, an instrument used to measure stars and navigate across deserts and seas.",
-        "description": "Their enhancements improved accuracy for prayer times, navigation, and astronomical calculations.",
-        "extra": "These advancements were developed in major Arabian centers including Mecca and Medina, influencing global navigation and science."
-      },
-      "image": "images/asia/saudi_arabia/saudi_arabia_astrolabe.webp"
-    },
-    {
-      "name": "Oil Extraction & Drilling Innovations",
-      "inventor": "Saudi Aramco Engineers",
-      "year": "1930s–Present",
-      "information": {
-        "general": "Saudi engineers and geologists modernized oil extraction techniques after the discovery of oil in the 1930s.",
-        "description": "Advances included deeper drilling, enhanced oil recovery, and large-scale offshore extraction technologies.",
-        "extra": "These innovations helped Saudi Arabia become a global leader in petroleum technology and energy production."
-      },
-      "image": "images/asia/saudi_arabia/saudi_arabia_drilling.webp"
-    },
-    {
-      "name": "Desalination Technologies",
-      "inventor": "Saudi Water Conversion Corporation (SWCC)",
-      "year": "1970s–Present",
-      "information": {
-        "general": "Saudi Arabia pioneered large-scale desalination technologies to transform seawater into drinking water.",
-        "description": "The country developed massive reverse osmosis and multi-stage flash distillation plants to supply water to cities and farms.",
-        "extra": "Saudi Arabia is now the world’s largest producer of desalinated water, influencing global water sustainability efforts."
-      },
-      "image": "images/asia/saudi_arabia/saudi_arabia_desalination.webp"
-    }
-  ]
-},
-{
-  "country": "Afghanistan",
-  "inventions": [
-    {
-      "name": "Lapis Lazuli Trade Network",
-      "inventor": "Ancient Bactrian Traders",
-      "year": "6000–3000 BCE",
-      "information": {
-        "general": "Afghanistan’s ancient civilizations created one of the world’s earliest luxury trade networks centered on lapis lazuli.",
-        "description": "The gemstone, mined in Badakhshan, was transported across Mesopotamia, Egypt, and the Indus Valley, influencing ancient art and jewelry.",
-        "extra": "Artifacts made from Afghan lapis were found in the tomb of Tutankhamun, proving its importance in global trade thousands of years ago."
-      },
-      "image": "images/asia/afghanistan/afghanistan_lapis.webp"
-    },
-    {
-      "name": "Early Windmills",
-      "inventor": "Persian Engineers (Used in region including Afghan territories)",
-      "year": "500–900 CE",
-      "information": {
-        "general": "Some of the earliest vertical-axis windmills appeared in regions that include present-day Afghanistan.",
-        "description": "These mills used vertical sails to grind grain and pump water, functioning in the windy plateaus of eastern Persia and western Afghanistan.",
-        "extra": "Their design influenced later windmill developments across the Middle East and Central Asia."
-      },
-      "image": "images/asia/afghanistan/afghanistan_windmill.webp"
-    },
-    {
-      "name": "The Rubab",
-      "inventor": "Pashtun and Tajik Artisans",
-      "year": "7th–10th Century",
-      "information": {
-        "general": "The Afghan rubab, a traditional stringed instrument, is considered one of the earliest known precursors to modern guitars.",
-        "description": "Carved from mulberry wood and covered with goat skin, it produces deep, resonant tones central to Afghan folk music.",
-        "extra": "Its musical influence spread into India, inspiring the creation of the sarod — a key instrument in classical Hindustani music."
-      },
-      "image": "images/asia/afghanistan/afghanistan_rubab.webp"
-    }
-  ]
-},
-{
-  "country": "Syria",
-  "inventions": [
-    {
-      "name": "Damascus Steel",
-      "inventor": "Medieval Syrian Bladesmiths",
-      "year": "Around 900–1750 CE",
-      "information": {
-        "general": "One of the most legendary steels in history, renowned for its strength, sharpness, and wave-like patterns.",
-        "description": "Crafted using advanced forging techniques, Damascus steel swords were prized across Europe and Asia for their durability and beauty.",
-        "extra": "Although the original process has been lost, modern metallurgy continues to study Damascus steel to replicate its unique makeup."
-      },
-      "image": "images/asia/syria/syria_damascus_steel.webp"
-    },
-    {
-      "name": "Aleppo Soap",
-      "inventor": "Syrian Artisans",
-      "year": "Around 2000 BCE",
-      "information": {
-        "general": "One of the world’s oldest natural soaps, made from olive oil and laurel oil.",
-        "description": "Produced using traditional hot process techniques, Aleppo soap influenced the development of soap-making in Europe.",
-        "extra": "It is considered the ancestor of Marseille soap and continues to be crafted in Aleppo today."
-      },
-      "image": "images/asia/syria/syria_aleppo_soap.webp"
-    },
-    {
-      "name": "Ugaritic Alphabet",
-      "inventor": "Ugaritic Scribes",
-      "year": "Around 1400 BCE",
-      "information": {
-        "general": "One of the earliest known alphabets, discovered in the ancient city of Ugarit (modern Ras Shamra).",
-        "description": "The 30-letter cuneiform alphabet simplified writing compared to complex pictographic systems.",
-        "extra": "It influenced later alphabetic systems and is considered a major step in the history of written language."
-      },
-      "image": "images/asia/syria/syria_ugaritic_alphabet.webp"
-    }
-  ]
-},
-{
-  "country": "Romania",
-  "inventions": [
-    {
-      "name": "The Jet Engine (Coandă-1910)",
-      "inventor": "Henri Coandă",
-      "year": "1910",
-      "information": {
-        "general": "Henri Coandă built the world’s first jet-powered aircraft prototype, marking the birth of jet propulsion.",
-        "description": "His aircraft used a pioneering engine that expelled air at high speed, creating thrust — a concept fundamental to modern jet engines.",
-        "extra": "Coandă also discovered the Coandă Effect, crucial in aerodynamics and fluid dynamics."
-      },
-      "image": "images/europe/romania/romania_jetengine.webp"
-    },
-    {
-      "name": "Insulin (Co-discovery Contribution)",
-      "inventor": "Nicolae Paulescu",
-      "year": "1916–1921",
-      "information": {
-        "general": "Romanian physiologist Nicolae Paulescu conducted groundbreaking research on diabetes treatment.",
-        "description": "He isolated a pancreatic extract he named 'pancreina', which lowered blood sugar levels — an essential step toward modern insulin.",
-        "extra": "Although the Nobel Prize went to Banting and Best, many historians argue that Paulescu should share credit for the discovery."
-      },
-      "image": "images/europe/romania/romania_insulin.webp"
-    },
-    {
-      "name": "Cibernetics Foundations",
-      "inventor": "Stefan Odobleja",
-      "year": "1938",
-      "information": {
-        "general": "Stefan Odobleja is considered a precursor of modern cybernetics.",
-        "description": "His work 'Psychologie consonantiste' introduced concepts such as feedback mechanisms years before Norbert Wiener formalized cybernetics.",
-        "extra": "Odobleja’s theories influenced systems science, robotics, and computer science."
-      },
-      "image": "images/europe/romania/romania_cybernetics.webp"
-    }
-  ]
-}
-
-
-
-
+	{
+		"country": "Malaysia",
+		"inventions": [
+			{
+				"name": "Single-Chip USB Flash Drive",
+				"inventor": "Pua Khein Seng",
+				"year": "2000",
+				"information": {
+					"general": "Compact data storage device integrating all components on a single chip.",
+					"description": "Revolutionized portable digital storage by making USB flash drives smaller, faster, and more reliable.",
+					"extra": "This innovation helped Malaysia become a key player in global data storage technology."
+				},
+				"image": "images/inventions/asia/malaysia/usb_flash_drive.webp"
+			},
+			{
+				"name": "Biometric Passport",
+				"inventor": "IRIS Corporation Malaysia",
+				"year": "1998",
+				"information": {
+					"general": "Secure passport embedded with biometric identification technology.",
+					"description": "Includes fingerprint and facial recognition data to prevent forgery and improve border security.",
+					"extra": "IRIS Corp's innovation has been adopted by several countries worldwide for e-passports."
+				},
+				"image": "images/inventions/asia/malaysia/biometric_passport.webp"
+			},
+			{
+				"name": "Automatic Egg Boiler",
+				"inventor": "Malaysian engineers",
+				"year": "2005",
+				"information": {
+					"general": "Appliance to cook eggs perfectly without monitoring.",
+					"description": "Boils eggs to soft, medium, or hard consistency using automated temperature and timing controls.",
+					"extra": "Popularized household convenience in Malaysia and exported globally."
+				},
+				"image": "images/inventions/asia/malaysia/automatic_egg_boiler.webp"
+			}
+		]
+	},
+	{
+		"country": "Iraq",
+		"inventions": [
+			{
+				"name": "The Wheel",
+				"inventor": "Sumerians (Ancient Mesopotamia)",
+				"year": "Around 3500 BCE",
+				"information": {
+					"general": "One of humanity's most important inventions, the wheel first appeared in ancient Mesopotamia, in what is now Iraq.",
+					"description": "Originally used for pottery, the wheel later enabled carts, transport, and mechanical devices, transforming human civilization.",
+					"extra": "The earliest known wheel was discovered near the ancient city of Ur, showing Iraq's central role in early technological development."
+				},
+				"image": "images/asia/iraq/wheel.webp"
+			},
+			{
+				"name": "Cuneiform Writing",
+				"inventor": "Sumerians",
+				"year": "Around 3200 BCE",
+				"information": {
+					"general": "Cuneiform, the world's first known writing system, was created in Mesopotamia to record trade, laws, and literature.",
+					"description": "It consisted of wedge-shaped marks pressed into clay tablets using a reed stylus, enabling administration and storytelling.",
+					"extra": "This writing system led to famous texts like the Epic of Gilgamesh and influenced future alphabets across the region."
+				},
+				"image": "images/asia/iraq/cuneiform.webp"
+			},
+			{
+				"name": "The First Laws: Code of Hammurabi",
+				"inventor": "Babylonian Scholars",
+				"year": "1754 BCE",
+				"information": {
+					"general": "The Code of Hammurabi, created in Babylon, is one of the earliest and most complete written legal codes.",
+					"description": "Carved into a basalt stele, the laws established standards for contracts, family issues, property, and justice.",
+					"extra": "Its famous phrase 'an eye for an eye' represents proportional justice, influencing legal traditions for millennia."
+				},
+				"image": "images/asia/iraq/hammurabi.webp"
+			}
+		]
+	},
+	{
+		"country": "Saudi Arabia",
+		"inventions": [
+			{
+				"name": "Astrolabe Improvements",
+				"inventor": "Arab Astronomers of the Hejaz",
+				"year": "8th–10th Century",
+				"information": {
+					"general": "Arab astronomers refined the astrolabe, an instrument used to measure stars and navigate across deserts and seas.",
+					"description": "Their enhancements improved accuracy for prayer times, navigation, and astronomical calculations.",
+					"extra": "These advancements were developed in major Arabian centers including Mecca and Medina, influencing global navigation and science."
+				},
+				"image": "images/asia/saudi_arabia/astrolabe.webp"
+			},
+			{
+				"name": "Oil Extraction & Drilling Innovations",
+				"inventor": "Saudi Aramco Engineers",
+				"year": "1930s–Present",
+				"information": {
+					"general": "Saudi engineers and geologists modernized oil extraction techniques after the discovery of oil in the 1930s.",
+					"description": "Advances included deeper drilling, enhanced oil recovery, and large-scale offshore extraction technologies.",
+					"extra": "These innovations helped Saudi Arabia become a global leader in petroleum technology and energy production."
+				},
+				"image": "images/asia/saudi_arabia/drilling.webp"
+			},
+			{
+				"name": "Desalination Technologies",
+				"inventor": "Saudi Water Conversion Corporation (SWCC)",
+				"year": "1970s–Present",
+				"information": {
+					"general": "Saudi Arabia pioneered large-scale desalination technologies to transform seawater into drinking water.",
+					"description": "The country developed massive reverse osmosis and multi-stage flash distillation plants to supply water to cities and farms.",
+					"extra": "Saudi Arabia is now the world's largest producer of desalinated water, influencing global water sustainability efforts."
+				},
+				"image": "images/asia/saudi_arabia/desalination.webp"
+			}
+		]
+	},
+	{
+		"country": "Afghanistan",
+		"inventions": [
+			{
+				"name": "Early Windmills",
+				"inventor": "Persian Engineers (Used in region including Afghan territories)",
+				"year": "500–900 CE",
+				"information": {
+					"general": "Some of the earliest vertical-axis windmills appeared in regions that include present-day Afghanistan.",
+					"description": "These mills used vertical sails to grind grain and pump water, functioning in the windy plateaus of eastern Persia and western Afghanistan.",
+					"extra": "Their design influenced later windmill developments across the Middle East and Central Asia."
+				},
+				"image": "images/asia/afghanistan/windmill.webp"
+			},
+			{
+				"name": "The Rubab",
+				"inventor": "Pashtun and Tajik Artisans",
+				"year": "7th–10th Century",
+				"information": {
+					"general": "The Afghan rubab, a traditional stringed instrument, is considered one of the earliest known precursors to modern guitars.",
+					"description": "Carved from mulberry wood and covered with goat skin, it produces deep, resonant tones central to Afghan folk music.",
+					"extra": "Its musical influence spread into India, inspiring the creation of the sarod — a key instrument in classical Hindustani music."
+				},
+				"image": "images/asia/afghanistan/rubab.webp"
+			}
+		]
+	},
+	{
+		"country": "Syria",
+		"inventions": [
+			{
+				"name": "Damascus Steel",
+				"inventor": "Medieval Syrian Bladesmiths",
+				"year": "Around 900–1750 CE",
+				"information": {
+					"general": "One of the most legendary steels in history, renowned for its strength, sharpness, and wave-like patterns.",
+					"description": "Crafted using advanced forging techniques, Damascus steel swords were prized across Europe and Asia for their durability and beauty.",
+					"extra": "Although the original process has been lost, modern metallurgy continues to study Damascus steel to replicate its unique makeup."
+				},
+				"image": "images/asia/syria/damascus_steel.webp"
+			},
+			{
+				"name": "Aleppo Soap",
+				"inventor": "Syrian Artisans",
+				"year": "Around 2000 BCE",
+				"information": {
+					"general": "One of the world's oldest natural soaps, made from olive oil and laurel oil.",
+					"description": "Produced using traditional hot process techniques, Aleppo soap influenced the development of soap-making in Europe.",
+					"extra": "It is considered the ancestor of Marseille soap and continues to be crafted in Aleppo today."
+				},
+				"image": "images/asia/syria/aleppo_soap.webp"
+			},
+			{
+				"name": "Ugaritic Alphabet",
+				"inventor": "Ugaritic Scribes",
+				"year": "Around 1400 BCE",
+				"information": {
+					"general": "One of the earliest known alphabets, discovered in the ancient city of Ugarit (modern Ras Shamra).",
+					"description": "The 30-letter cuneiform alphabet simplified writing compared to complex pictographic systems.",
+					"extra": "It influenced later alphabetic systems and is considered a major step in the history of written language."
+				},
+				"image": "images/asia/syria/ugaritic_alphabet.webp"
+			}
+		]
+	},
+	{
+		"country": "Romania",
+		"inventions": [
+			{
+				"name": "The Jet Engine (Coandă-1910)",
+				"inventor": "Henri Coandă",
+				"year": "1910",
+				"information": {
+					"general": "Henri Coandă built the world's first jet-powered aircraft prototype, marking the birth of jet propulsion.",
+					"description": "His aircraft used a pioneering engine that expelled air at high speed, creating thrust — a concept fundamental to modern jet engines.",
+					"extra": "Coandă also discovered the Coandă Effect, crucial in aerodynamics and fluid dynamics."
+				},
+				"image": "images/europe/romania/jet_engine.webp"
+			},
+			{
+				"name": "Insulin (Co-discovery Contribution)",
+				"inventor": "Nicolae Paulescu",
+				"year": "1916–1921",
+				"information": {
+					"general": "Romanian physiologist Nicolae Paulescu conducted groundbreaking research on diabetes treatment.",
+					"description": "He isolated a pancreatic extract he named 'pancreina', which lowered blood sugar levels — an essential step toward modern insulin.",
+					"extra": "Although the Nobel Prize went to Banting and Best, many historians argue that Paulescu should share credit for the discovery."
+				},
+				"image": "images/europe/romania/insulin.webp"
+			},
+			{
+				"name": "Cybernetics Foundations",
+				"inventor": "Stefan Odobleja",
+				"year": "1938",
+				"information": {
+					"general": "Stefan Odobleja is considered a precursor of modern cybernetics.",
+					"description": "His work 'Psychologie consonantiste' introduced concepts such as feedback mechanisms years before Norbert Wiener formalized cybernetics.",
+					"extra": "Odobleja's theories influenced systems science, robotics, and computer science."
+				},
+				"image": "images/europe/romania/cybernetics.webp"
+			}
+		]
+	}
 ]
