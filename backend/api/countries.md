@@ -6,30 +6,46 @@
 
 **Note**: ALL IMAGES SHOULD BE IN .WEBP GUYS
 
-## Europe (11)
+## Europe (17)
+- Austria
+- Belarus
+- Belgium
+- Czech Republic
+- Denmark
+- Finland
 - France
 - Germany
 - Greece
+- Iceland
 - Italy
+- Lithuania
 - Netherlands
 - Norway
 - Poland
 - Russia
 - Spain
+- Sweden
+- Switzerland
 - Turkey
+- Ukraine
 - United Kingdom
 
-## Asia (10)
+## Asia (13)
 - China
 - India
 - Indonesia
 - Iran
 - Japan
 - Kazakhstan
+- Malaysia
+- Mongolia
 - Pakistan
 - Philippines
 - South-Korea
+- Sudan
+- Thailand
 - Vietnam
+- United Arab Emirates
 - Iraq
 - Saudi-Arabia
 - Afghanistan
@@ -37,26 +53,31 @@
 
 ## North America (3)
 - Canada
+- Cuba
 - Mexico
 - United States
 
-## South America (7)
+## South America (8)
 - Argentina
 - Bolivia
 - Brazil
+- Chile
 - Colombia
 - Ecuador
 - Peru
 - Venezuela
 
-## Africa (7)
+## Africa (8)
 - Algeria
+- Angola
+- Democratic Republic of the Congo
 - Egypt
 - Kenya
 - Libya
 - Morocco
 - Nigeria
 - South-Africa
+- Sudan
 
 ## Oceania (5)
 - Australia
@@ -66,8 +87,3 @@
 - Samoa
 
 ## Countries to add
-(missing images)
-- Sudan
-- Mongolia
-- Thailand
-- Ukraine
