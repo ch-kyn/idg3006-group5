@@ -750,7 +750,19 @@
 					"extra": "This creative use of local materials supported education and small businesses."
 				},
 				"image": "images/inventions/africa/kenya/sisal_paper.webp"
-			}
+			},
+			{
+			"name": "Kenyan Jiko (Smokeless Charcoal Stove)",
+			"inventor": "Kenyan Innovators",
+			"year": "1970s",
+			"information": {
+				"general": "The Kenyan Jiko is an improved charcoal stove designed to cook efficiently with less smoke.",
+				"description": "Made from clay or metal, it directs airflow to burn fuel more efficiently, reducing fuel use and indoor air pollution.",
+				"extra": "The Jiko became widely adopted across East Africa and inspired further energy-efficient cooking solutions worldwide."
+			},
+			"image": "images/inventions/africa/kenya/kenya_jiko.webp"
+		}
+
 		]
 	},
 	{
@@ -766,6 +778,17 @@
 					"extra": "The technique spread through North Africa and is still used in decorative architecture today."
 				},
 				"image": "images/inventions/africa/morocco/tadelakt.webp"
+			},
+			{
+				"name": "Moroccan Leather (Tanning)",
+				"inventor": "Moroccan Artisans",
+				"year": "c. 11th century",
+				"information": {
+					"general": "Moroccan craftsmen developed high-quality leather tanning methods.",
+					"description": "They used natural dyes and traditional tanning techniques to produce durable, soft leather.",
+					"extra": "This leather became famous in Europe and remains a hallmark of Moroccan craftsmanship."
+				},
+				"image": "images/inventions/africa/morocco/leather.webp"
 			}
 		]
 	},
@@ -782,6 +805,28 @@
 					"extra": "His tests and prototypes ensured planes worldwide became safer through flight data analysis."
 				},
 				"image": "images/inventions/oceania/australia/black_box.webp"
+			},
+			{
+				"name": "Cochlear Implant",
+				"inventor": "Dr. Graeme Clark",
+				"year": "1978",
+				"information": {
+					"general": "Dr. Graeme Clark developed the cochlear implant to restore hearing for the deaf.",
+					"description": "The device converts sound into electrical signals that stimulate the auditory nerve.",
+					"extra": "Cochlear implants have transformed lives globally, enabling hearing and speech."
+				},
+				"image": "images/inventions/oceania/australia/cochlear_implant.webp"
+			},
+			{
+				"name": "Polymer Banknotes",
+				"inventor": "CSIRO Scientists",
+				"year": "1988",
+				"information": {
+					"general": "Australia developed the world's first polymer banknotes to improve durability and security.",
+					"description": "Made from a type of polymer film, these notes are resistant to tearing, water, and counterfeiting.",
+					"extra": "Today, many countries have adopted polymer banknotes inspired by Australia's innovation."
+				},
+				"image": "images/inventions/oceania/australia/polymer_banknotes.webp"
 			}
 		]
 	},
@@ -798,6 +843,28 @@
 					"extra": "His invention quickly became a global medical standard, saving countless lives."
 				},
 				"image": "images/inventions/oceania/new_zealand/disposable_syringe.webp"
+			},
+			{
+				"name": "Jet Boat",
+				"inventor": "Bill Hamilton",
+				"year": "1954",
+				"information": {
+					"general": "Bill Hamilton invented the jet boat to navigate shallow rivers.",
+					"description": "It uses a jet of water for propulsion instead of a propeller, enabling shallow-water travel.",
+					"extra": "This innovation is widely used for recreation and rescue operations worldwide."
+				},
+				"image": "images/inventions/oceania/new_zealand/jet_boat.webp"
+			},
+			{
+				"name": "Electric Fence",
+				"inventor": "Bill Gallagher",
+				"year": "1937",
+				"information": {
+					"general": "Bill Gallagher invented the electric fence to manage livestock efficiently.",
+					"description": "The system delivers a safe, controllable electric shock to deter animals from escaping.",
+					"extra": "It became a standard tool in agriculture worldwide."
+				},
+				"image": "images/inventions/oceania/new_zealand/electric_fence.webp"
 			}
 		]
 	},
@@ -805,15 +872,26 @@
 		"country": "Fiji",
 		"inventions": [
 			{
-				"name": "Traditional Canoe Designs",
+				"name": "Lali (Traditional Drums)",
+				"inventor": "Fijian Communities",
+				"year": "ancient",
+				"information": {
+					"general": "Fijians created lali drums for communication and ceremonies.",
+					"description": "Carved from wood and struck with sticks, they produce resonant sounds heard over long distances.",
+					"extra": "Lali remain culturally significant and are used in festivals and rituals today."
+				},
+				"image": "images/inventions/oceania/fiji/lali.webp"
+			},
+			{
+				"name": "Fijian Bark Cloth (Masi)",
 				"inventor": "Fijian Artisans",
 				"year": "ancient",
 				"information": {
-					"general": "Fijian artisans designed canoes capable of long ocean voyages.",
-					"description": "Using carved wood and lashings, the hulls were fast, stable, and seaworthy.",
-					"extra": "These designs supported fishing, trade, and migration, influencing Pacific navigation."
+					"general": "Artisans made cloth from beaten mulberry bark, decorated with intricate patterns.",
+					"description": "Masi was used for clothing, ceremonial items, and trade.",
+					"extra": "The tradition continues as a cultural art form in Fiji."
 				},
-				"image": "images/inventions/oceania/fiji/canoe.webp"
+				"image": "images/inventions/oceania/fiji/masi.webp"
 			}
 		]
 	},
@@ -830,6 +908,17 @@
 					"extra": "Bilum remains a cultural symbol and is now appreciated internationally for its craftsmanship."
 				},
 				"image": "images/inventions/oceania/papua_new_guinea/bilum.webp"
+			},
+			{
+				"name": "Pandanus Weaving",
+				"inventor": "Papua New Guinea Communities",
+				"year": "ancient",
+				"information": {
+					"general": "Pandanus leaves are woven into mats, baskets, and roofing materials.",
+					"description": "This method provides durable and weather-resistant everyday items.",
+					"extra": "The weaving tradition is integral to cultural identity and ceremonies."
+				},
+				"image": "images/inventions/oceania/papua_new_guinea/pandanus_weaving.webp"
 			}
 		]
 	},
@@ -846,6 +935,17 @@
 					"extra": "These techniques influenced Polynesian art and remain an important cultural tradition."
 				},
 				"image": "images/inventions/oceania/samoa/tattoo.webp"
+			},
+			{
+				"name": "Fale (Traditional Houses)",
+				"inventor": "Samoan Communities",
+				"year": "ancient",
+				"information": {
+					"general": "Samoans developed open-sided, thatched houses called fale.",
+					"description": "They are constructed with wooden posts and palm thatching for ventilation and strength.",
+					"extra": "Fale design influenced Polynesian architecture across the Pacific."
+				},
+				"image": "images/inventions/oceania/samoa/fale.webp"
 			}
 		]
 	},
@@ -1182,6 +1282,174 @@
 					"extra": "This innovation has become a model for high-altitude medical care in Andean countries."
 				},
 				"image": "images/inventions/south_america/bolivia/high_altitude_oxygen.webp"
+			}
+		]
+	},
+	{
+		"country": "Kazakhstan",
+		"inventions": [
+			{
+				"name": "Yurt (Portable Dwelling)",
+				"inventor": "Nomadic Turkic & Kazakh tribes",
+				"year": "c. 5th century",
+				"information": {
+					"general": "The yurt was developed by nomadic peoples of the Central Asian steppes as a portable, durable home.",
+					"description": "Built with a collapsible wooden frame and covered in felt made from sheep's wool, the circular structure retains heat in winter and stays cool in summer.",
+					"extra": "Kazakh nomads used yurts to follow seasonal grazing patterns. Its efficient design is still used today for cultural events and eco-tourism housing across Central Asia."
+				},
+				"image": "images/inventions/asia/kazakhstan/yurt.webp"
+			},
+			{
+				"name": "Kumis (Fermented Mare's Milk)",
+				"inventor": "Ancient Kazakh nomads",
+				"year": "c. 500 BCE",
+				"information": {
+					"general": "Kumis is an ancient fermented drink created by nomadic tribes using mare's milk.",
+					"description": "The milk is fermented in leather bags, producing a lightly alcoholic, probiotic beverage with a sour taste.",
+					"extra": "It was considered both a daily drink and a medicinal tonic. Even today, kumis is produced in Kazakhstan as part of cultural heritage and traditional healing practices."
+				},
+				"image": "images/inventions/asia/kazakhstan/kumis.webp"
+			}
+		]
+	},
+	{
+		"country": "Algeria",
+		"inventions": [
+			{
+				"name": "Foggaras (Ancient Irrigation System)",
+				"inventor": "Berber communities",
+				"year": "c. 1000 BCE",
+				"information": {
+					"general": "The foggara system was created to transport underground water in desert regions without evaporation.",
+					"description": "It uses gently sloping underground tunnels that bring water from aquifers to the surface using gravity alone.",
+					"extra": "This technique made agriculture possible in the Sahara and inspired later qanat systems across North Africa and the Middle East."
+				},
+				"image": "images/inventions/africa/algeria/foggara.webp"
+			},
+			{
+				"name": "Couscous Rolling Technique",
+				"inventor": "Berber people",
+				"year": "c. 200 BCE",
+				"information": {
+					"general": "The Berber tribes of Algeria developed the hand-rolling method used to make couscous grains.",
+					"description": "Semolina is rolled and steamed repeatedly to create tiny, airy granules that absorb sauces and flavour easily.",
+					"extra": "Couscous later spread throughout North Africa and the Mediterranean, becoming a global staple dish."
+				},
+				"image": "images/inventions/africa/algeria/couscous.webp"
+			}
+		]
+	},
+	{
+		"country": "Indonesia",
+		"inventions": [
+			{
+				"name": "Batik Fabric Dyeing",
+				"inventor": "Javanese artisans",
+				"year": "c. 6th century",
+				"information": {
+					"general": "Batik is an ancient Indonesian technique for creating patterns on fabric using wax and dye.",
+					"description": "Hot wax is applied with a canting pen, covering parts of the cloth before dyeing. When the wax is removed, intricate designs remain.",
+					"extra": "Recognized by UNESCO, batik is deeply tied to Indonesian identity and is still worn at formal and cultural events."
+				},
+				"image": "images/inventions/asia/indonesia/batik.webp"
+			},
+			{
+				"name": "Pinisi Ship",
+				"inventor": "Bugis & Makassar people",
+				"year": "c. 14th century",
+				"information": {
+					"general": "The Pinisi is a wooden sailing ship used for trade and exploration in Indonesian waters.",
+					"description": "Built using traditional techniques without blueprints, it has two masts and seven sails for ocean navigation.",
+					"extra": "These ships helped Indonesia become a maritime trading power across Southeast Asia."
+				},
+				"image": "images/inventions/asia/indonesia/pinisi.webp"
+			},
+			{
+			"name": "Piggy Bank (Celengan)",
+			"inventor": "Majapahit civilization (Java)",
+			"year": "c. 14th century",
+			"information": {
+				"general": "A boar-shaped terracotta figurine used to collect and store coins.",
+				"description": "The celengan is made from clay or terracotta and includes a slit at the top where coins can be inserted for safe keeping.",
+				"extra": "One of the oldest known pig-shaped money boxes dates back to the Majapahit period in Java, making it one of the earliest forms of the modern piggy bank."
+			},
+			"image": "images/inventions/asia/indonesia/celengan.webp"
+			}
+		]
+	},
+	{
+		"country": "Netherlands",
+		"inventions": [
+			{
+				"name": "Microscope",
+				"inventor": "Zacharias Janssen",
+				"year": "c. 1590",
+				"information": {
+					"general": "Zacharias Janssen is credited with creating the first compound microscope in the Netherlands.",
+					"description": "The device used multiple lenses to greatly magnify small objects invisible to the naked eye.",
+					"extra": "This invention revolutionized biology and medicine and paved the way for microbiology and modern scientific research."
+				},
+				"image": "images/inventions/europe/netherlands/microscope.webp"
+			},
+			{
+				"name": "Modern Submarine",
+				"inventor": "Cornelis Drebbel",
+				"year": "1620",
+				"information": {
+					"general": "Drebbel built the first navigable submarine for the British Royal Navy.",
+					"description": "It was made of greased leather over a wooden frame and could submerge using water ballast.",
+					"extra": "His invention laid the foundation for modern underwater exploration and naval warfare technology."
+				},
+				"image": "images/inventions/europe/netherlands/submarine.webp"
+			},
+			{
+				"name": "Cassette Tape",
+				"inventor": "Philips",
+				"year": "1963",
+				"information": {
+					"general": "Philips introduced the compact cassette tape as a portable audio storage medium.",
+					"description": "It used magnetic tape encased in plastic to store and play sound recordings.",
+					"extra": "The cassette transformed the global music industry and led to the creation of the Walkman and mixtape culture."
+				},
+				"image": "images/inventions/europe/netherlands/cassette_tape.webp"
+			}
+		]
+	},
+	{
+		"country": "Poland",
+		"inventions": [
+			{
+				"name": "Kerosene Lamp",
+				"inventor": "Ignacy Łukasiewicz",
+				"year": "1853",
+				"information": {
+					"general": "Łukasiewicz developed the first practical kerosene lamp for safe and reliable lighting.",
+					"description": "It used refined petroleum and a glass chimney to create a brighter, cleaner flame than oil lamps.",
+					"extra": "This invention led to the creation of the world's first oil well and refinery, shaping the global energy industry."
+				},
+				"image": "images/inventions/europe/poland/kerosene_lamp.webp"
+			},
+			{
+				"name": "Bulletproof Vest",
+				"inventor": "Kazimierz Żegleń",
+				"year": "1897",
+				"information": {
+					"general": "Żegleń invented the soft-body bulletproof vest to protect against gunfire.",
+					"description": "Made from layers of silk, it was tested successfully against handgun bullets.",
+					"extra": "His work later influenced modern protective armor used by military and police forces."
+				},
+				"image": "images/inventions/europe/poland/bulletproof_vest.webp"
+			},
+			{
+				"name": "Water Mine Detector",
+				"inventor": "Józef Kosacki",
+				"year": "1941",
+				"information": {
+					"general": "Kosacki invented the first practical portable metal detector during World War II.",
+					"description": "It was used to locate land mines safely by detecting metal objects buried underground.",
+					"extra": "This invention saved countless lives and is the basis for modern metal detection technologies."
+				},
+				"image": "images/inventions/europe/poland/metal_detector.webp"
 			}
 		]
 	}

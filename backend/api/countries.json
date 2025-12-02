@@ -1198,5 +1198,485 @@
             "food": "images/countries/africa/nigeria/nigeria_jollof_rice.webp",
             "place": "images/countries/africa/nigeria/nigeria_zuma_rock.webp"
         }
+    },
+    {
+        "country": "Kenya",
+        "capital": "Nairobi",
+        "population": 54000000,
+        "area_km2": 580367,
+        "currency": "Kenyan Shilling (KES)",
+        "gdp_total_usd": 95000000000,
+        "national_day": "December 12 (Independence Day)",
+        "national_animal": "Lion",
+        "exports": [
+            "Tea",
+            "Coffee",
+            "Horticultural products",
+            "Tourism"
+        ],
+        "popular_dishes": [
+            "Ugali",
+            "Nyama Choma",
+            "Sukuma Wiki",
+            "Chapati"
+        ],
+        "famous_people": [
+            "Wangari Maathai",
+            "Uhuru Kenyatta",
+            "David Rudisha",
+            "Eliud Kipchoge"
+        ],
+        "places_heritage": [
+            "Maasai Mara National Reserve",
+            "Mount Kenya",
+            "Lamu Old Town",
+            "Lake Naivasha"
+        ],
+        "images": {
+            "flag": "images/countries/africa/kenya/kenya_flag.webp",
+            "map": "images/countries/africa/kenya/kenya_map.webp",
+            "food": "images/countries/africa/kenya/kenya_ugali.webp",
+            "place": "images/countries/africa/kenya/kenya_maasai_mara.webp"
+        }
+    },
+    {
+        "country": "Morocco",
+        "capital": "Rabat",
+        "population": 38000000,
+        "area_km2": 446550,
+        "currency": "Moroccan Dirham (MAD)",
+        "gdp_total_usd": 140000000000,
+        "national_day": "November 18 (Independence Day)",
+        "national_animal": "Barbary Lion",
+        "exports": [
+            "Phosphates",
+            "Textiles",
+            "Agricultural products",
+            "Automotive parts"
+        ],
+        "popular_dishes": [
+            "Couscous",
+            "Tagine",
+            "Harira",
+            "Pastilla"
+        ],
+        "famous_people": [
+            "Ibn Battuta",
+            "Malika Oufkir",
+            "Youssef En-Nesyri",
+            "Gad Elmaleh"
+        ],
+        "places_heritage": [
+            "Medina of Fez",
+            "Hassan II Mosque, Casablanca",
+            "Sahara Desert",
+            "Chefchaouen Blue City"
+        ],
+        "images": {
+            "flag": "images/countries/africa/morocco/morocco_flag.webp",
+            "map": "images/countries/africa/morocco/morocco_map.webp",
+            "food": "images/countries/africa/morocco/morocco_couscous.webp",
+            "place": "images/countries/africa/morocco/morocco_medina_of_fez.webp"
+        }
+    },
+    {
+        "country": "Australia",
+        "capital": "Canberra",
+        "population": 26000000,
+        "area_km2": 7692024,
+        "currency": "Australian Dollar (AUD)",
+        "gdp_total_usd": 1800000000000,
+        "national_day": "January 26 (Australia Day)",
+        "national_animal": "Red Kangaroo",
+        "exports": [
+            "Iron ore",
+            "Coal",
+            "Gold",
+            "Education services"
+        ],
+        "popular_dishes": [
+            "Meat Pie",
+            "Vegemite on Toast",
+            "Lamington",
+            "Barbecued Sausages"
+        ],
+        "famous_people": [
+            "Chris Hemsworth",
+            "Nicole Kidman",
+            "Steve Irwin",
+            "Cate Blanchett"
+        ],
+        "places_heritage": [
+            "Sydney Opera House",
+            "Great Barrier Reef",
+            "Uluru",
+            "Blue Mountains"
+        ],
+        "images": {
+            "flag": "images/countries/oceania/australia/australia_flag.webp",
+            "map": "images/countries/oceania/australia/australia_map.webp",
+            "food": "images/countries/oceania/australia/australia_lamington.webp",
+            "place": "images/countries/oceania/australia/australia_sydney_opera.webp"
+        }
+    },
+    {
+        "country": "New Zealand",
+        "capital": "Wellington",
+        "population": 5100000,
+        "area_km2": 268021,
+        "currency": "New Zealand Dollar (NZD)",
+        "gdp_total_usd": 250000000000,
+        "national_day": "February 6 (Waitangi Day)",
+        "national_animal": "Kiwi",
+        "exports": [
+            "Dairy products",
+            "Meat",
+            "Wood and paper",
+            "Wine"
+        ],
+        "popular_dishes": [
+            "Hangi",
+            "Pavlova",
+            "Fish and Chips",
+            "Lamb roast"
+        ],
+        "famous_people": [
+            "Jacinda Ardern",
+            "Edmund Hillary",
+            "Russell Crowe",
+            "Taika Waititi"
+        ],
+        "places_heritage": [
+            "Fiordland National Park",
+            "Rotorua Geothermal Area",
+            "Tongariro National Park",
+            "Milford Sound"
+        ],
+        "images": {
+            "flag": "images/countries/oceania/new_zealand/new_zealand_flag.webp",
+            "map": "images/countries/oceania/new_zealand/new_zealand_map.webp",
+            "food": "images/countries/oceania/new_zealand/new_zealand_pavlova.webp",
+            "place": "images/countries/oceania/new_zealand/new_zealand_milford_sound.webp"
+        }
+    },
+    {
+        "country": "Fiji",
+        "capital": "Suva",
+        "population": 900000,
+        "area_km2": 18274,
+        "currency": "Fijian Dollar (FJD)",
+        "gdp_total_usd": 5500000000,
+        "national_day": "October 10 (Independence Day)",
+        "national_animal": "Fijian Crested Iguana",
+        "exports": [
+            "Sugar",
+            "Fish",
+            "Gold",
+            "Tourism"
+        ],
+        "popular_dishes": [
+            "Kokoda",
+            "Palusami",
+            "Lovo",
+            "Cassava"
+        ],
+        "famous_people": [
+            "Ratu Sir Lala Sukuna",
+            "Waisale Serevi",
+            "Sitiveni Rabuka",
+            "Caroline Vakaafi"
+        ],
+        "places_heritage": [
+            "Yasawa Islands",
+            "Mamanuca Islands",
+            "Bouma National Heritage Park",
+            "Sigatoka Sand Dunes"
+        ],
+        "images": {
+            "flag": "images/countries/oceania/fiji/fiji_flag.webp",
+            "map": "images/countries/oceania/fiji/fiji_map.webp",
+            "food": "images/countries/oceania/fiji/fiji_kokoda.webp",
+            "place": "images/countries/oceania/fiji/fiji_mamanuca_islands.webp"
+        }
+    },
+    {
+        "country": "Papua New Guinea",
+        "capital": "Port Moresby",
+        "population": 9000000,
+        "area_km2": 462840,
+        "currency": "Papua New Guinean Kina (PGK)",
+        "gdp_total_usd": 24000000000,
+        "national_day": "September 16 (Independence Day)",
+        "national_animal": "Bird of Paradise",
+        "exports": [
+            "Gold",
+            "Copper",
+            "Oil",
+            "Coffee"
+        ],
+        "popular_dishes": [
+            "Mumu",
+            "Kokoda",
+            "Saksak",
+            "Taro"
+        ],
+        "famous_people": [
+            "Michael Somare",
+            "Sonia I. R. R.",
+            "Marcus Bai",
+            "Stanley Gene"
+        ],
+        "places_heritage": [
+            "Kokoda Track",
+            "Tufi Fjords",
+            "Mount Wilhelm",
+            "Sepik River"
+        ],
+        "images": {
+            "flag": "images/countries/oceania/papua_new_guinea/png_flag.webp",
+            "map": "images/countries/oceania/papua_new_guinea/png_map.webp",
+            "food": "images/countries/oceania/papua_new_guinea/png_mumu.webp",
+            "place": "images/countries/oceania/papua_new_guinea/png_sepik_river.webp"
+        }
+    },
+    {
+        "country": "Samoa",
+        "capital": "Apia",
+        "population": 200000,
+        "area_km2": 2842,
+        "currency": "Samoan Tala (WST)",
+        "gdp_total_usd": 900000000,
+        "national_day": "June 1 (Independence Day)",
+        "national_animal": "Flying Fox",
+        "exports": [
+            "Coconut products",
+            "Fish",
+            "Taro",
+            "Handicrafts"
+        ],
+        "popular_dishes": [
+            "Palusami",
+            "Oka",
+            "Faiai",
+            "Panikeke"
+        ],
+        "famous_people": [
+            "Tuilaepa Aiono Sailele Malielegaoi",
+            "Dwayne Johnson (ancestry)",
+            "Beulah Koale",
+            "Tatiana Lima"
+        ],
+        "places_heritage": [
+            "To Sua Ocean Trench",
+            "Robert Louis Stevenson Museum",
+            "Lalomanu Beach",
+            "Papapapai Maulalo"
+        ],
+        "images": {
+            "flag": "images/countries/oceania/samoa/samoa_flag.webp",
+            "map": "images/countries/oceania/samoa/samoa_map.webp",
+            "food": "images/countries/oceania/samoa/samoa_palusami.webp",
+            "place": "images/countries/oceania/samoa/samoa_to_sua_trench.webp"
+        }
+    },
+    {
+        "country": "Kazakhstan",
+        "capital": "Astana",
+        "population": 20600000,
+        "area_km2": 2724902,
+        "currency": "Kazakh Tenge (KZT)",
+        "gdp_total_usd": 225496000000,
+        "national_day": "December 16 (Independence Day, 1991)",
+        "national_animal": "Snow Leopard",
+        "exports": [
+            "Oil",
+            "Natural gas",
+            "Metals (iron, copper, uranium)",
+            "Wheat"
+        ],
+        "popular_dishes": [
+            "Beshbarmak",
+            "Kazy (horsemeat sausage)",
+            "Baursak",
+            "Kurt"
+        ],
+        "famous_people": [
+            "Nursultan Nazarbayev",
+            "Dina Nurpeisova",
+            "Gennady Golovkin",
+            "Dimash Kudaibergen"
+        ],
+        "places_heritage": [
+            "Charyn Canyon",
+            "Medeu Skating Rink (Almaty)",
+            "Baikonur Cosmodrome",
+            "Altyn-Emel National Park"
+        ],
+        "images": {
+            "flag": "images/countries/asia/kazakhstan/kazakhstan_flag.webp",
+            "map": "images/countries/asia/kazakhstan/kazakhstan_map.webp",
+            "food": "images/countries/asia/kazakhstan/kazakhstan_beshbarmak.webp",
+            "place": "images/countries/asia/kazakhstan/kazakhstan_charyn_canyon.webp"
+        }
+    },
+    {
+        "country": "Algeria",
+        "capital": "Algiers",
+        "population": 46800000,
+        "area_km2": 2381741,
+        "currency": "Algerian Dinar (DZD)",
+        "gdp_total_usd": 247626000000,
+        "national_day": "July 5 (Independence Day, 1962)",
+        "national_animal": "Fennec Fox",
+        "exports": [
+            "Oil",
+            "Natural gas",
+            "Petroleum products",
+            "Dates"
+        ],
+        "popular_dishes": [
+            "Couscous",
+            "Chakchouka",
+            "Chorba",
+            "Makroud"
+        ],
+        "famous_people": [
+            "Houari Boumediene",
+            "Assia Djebar",
+            "Rachid Taha",
+            "Abdelaziz Bouteflika"
+        ],
+        "places_heritage": [
+            "Casbah of Algiers",
+            "Tassili n'Ajjer",
+            "Djemila Ruins",
+            "Tipaza Archaeological Site"
+        ],
+        "images": {
+            "flag": "images/countries/africa/algeria/algeria_flag.webp",
+            "map": "images/countries/africa/algeria/algeria_map.webp",
+            "food": "images/countries/africa/algeria/algeria_chakchouka.webp",
+            "place": "images/countries/africa/algeria/algeria_casbah.webp"
+        }
+    },
+    {
+        "country": "Indonesia",
+        "capital": "Jakarta",
+        "population": 284400000,
+        "area_km2": 1910931,
+        "currency": "Indonesian Rupiah (IDR)",
+        "gdp_total_usd": 1319100000000,
+        "national_day": "August 17 (Independence Day, 1945)",
+        "national_animal": "Komodo Dragon",
+        "exports": [
+            "Coal",
+            "Palm oil",
+            "Textiles",
+            "Electronics"
+        ],
+        "popular_dishes": [
+            "Nasi Goreng",
+            "Rendang",
+            "Gado-Gado",
+            "Satay"
+        ],
+        "famous_people": [
+            "Sukarno",
+            "B.J. Habibie",
+            "Anggun C. Sasmi",
+            "Raden Ajeng Kartini"
+        ],
+        "places_heritage": [
+            "Borobudur Temple",
+            "Komodo National Park",
+            "Prambanan Temple",
+            "Bali’s Ubud and Rice Terraces"
+        ],
+        "images": {
+            "flag": "images/countries/asia/indonesia/indonesia_flag.webp",
+            "map": "images/countries/asia/indonesia/indonesia_map.webp",
+            "food": "images/countries/asia/indonesia/indonesia_nasi_goreng.webp",
+            "place": "images/countries/asia/indonesia/indonesia_borobudur.webp"
+        }
+    },
+    {
+        "country": "Netherlands",
+        "capital": "Amsterdam",
+        "population": 18000000,
+        "area_km2": 41543,
+        "currency": "Euro (EUR)",
+        "gdp_total_usd": 1008000000000,
+        "national_day": "April 27 (King’s Day)",
+        "national_animal": "Dutch Lion",
+        "exports": [
+            "Machinery & equipment",
+            "Food products",
+            "Chemicals",
+            "Natural gas"
+        ],
+        "popular_dishes": [
+            "Stroopwafel",
+            "Bitterballen",
+            "Haring",
+            "Poffertjes"
+        ],
+        "famous_people": [
+            "Vincent van Gogh",
+            "Anne Frank",
+            "Johan Cruyff",
+            "Rembrandt van Rijn"
+        ],
+        "places_heritage": [
+            "Kinderdijk Windmills",
+            "Rijksmuseum (Amsterdam)",
+            "Keukenhof Gardens",
+            "Canals of Amsterdam"
+        ],
+        "images": {
+            "flag": "images/countries/europe/netherlands/netherlands_flag.webp",
+            "map": "images/countries/europe/netherlands/netherlands_map.webp",
+            "food": "images/countries/europe/netherlands/netherlands_stroopwafel.webp",
+            "place": "images/countries/europe/netherlands/netherlands_kinderdijk.webp"
+        }
+    },
+    {
+        "country": "Poland",
+        "capital": "Warsaw",
+        "population": 38500000,
+        "area_km2": 312679,
+        "currency": "Polish Zloty (PLN)",
+        "gdp_total_usd": 688125000000,
+        "national_day": "November 11 (Independence Day, 1918)",
+        "national_animal": "White-tailed Eagle",
+        "exports": [
+            "Machinery & transport equipment",
+            "Furniture",
+            "Food products",
+            "Minerals & coal"
+        ],
+        "popular_dishes": [
+            "Pierogi",
+            "Bigos",
+            "Żurek",
+            "Placki ziemniaczane"
+        ],
+        "famous_people": [
+            "Marie Curie",
+            "Fryderyk Chopin",
+            "Lech Wałęsa",
+            "Wisława Szymborska"
+        ],
+        "places_heritage": [
+            "Old Town of Warsaw",
+            "Wieliczka Salt Mine",
+            "Auschwitz-Birkenau (memorial)",
+            "Wawel Castle (Kraków)"
+        ],
+        "images": {
+            "flag": "images/countries/europe/poland/poland_flag.webp",
+            "map": "images/countries/europe/poland/poland_map.webp",
+            "food": "images/countries/europe/poland/poland_pierogi.webp",
+            "place": "images/countries/europe/poland/poland_wawel_castle.webp"
+        }
     }
 ]

@@ -6,33 +6,37 @@
 
 **Note**: ALL IMAGES SHOULD BE IN .WEBP GUYS
 
-## Europe
+## Europe (11)
 - France
 - Germany
 - Greece
 - Italy
+- Netherlands
 - Norway
+- Poland
 - Russia
 - Spain
 - Turkey
 - United Kingdom
 
-## Asia
+## Asia (10)
 - China
 - India
+- Indonesia
 - Iran
 - Japan
+- Kazakhstan
 - Pakistan
 - Philippines
 - South-Korea
 - Vietnam
 
-## North America
+## North America (3)
 - Canada
 - Mexico
 - United States
 
-## South America
+## South America (7)
 - Argentina
 - Bolivia
 - Brazil
@@ -41,10 +45,21 @@
 - Peru
 - Venezuela
 
-## Africa
+## Africa (6)
+- Algeria
+- Egypt
+- Morocco
+- Kenya
 - Nigeria
 - South-Africa
 
-## Oceania
+## Oceania (5)
+- Australia
+- Fiji
+- Papua New Guinea
+- New Zealand
+- Samoa
 
 ## Countries to add
+- Poland
+- Netherlands
