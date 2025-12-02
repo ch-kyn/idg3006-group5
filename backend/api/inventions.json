@@ -752,17 +752,16 @@
 				"image": "images/inventions/africa/kenya/sisal_paper.webp"
 			},
 			{
-			"name": "Kenyan Jiko (Smokeless Charcoal Stove)",
-			"inventor": "Kenyan Innovators",
-			"year": "1970s",
-			"information": {
-				"general": "The Kenyan Jiko is an improved charcoal stove designed to cook efficiently with less smoke.",
-				"description": "Made from clay or metal, it directs airflow to burn fuel more efficiently, reducing fuel use and indoor air pollution.",
-				"extra": "The Jiko became widely adopted across East Africa and inspired further energy-efficient cooking solutions worldwide."
-			},
-			"image": "images/inventions/africa/kenya/kenya_jiko.webp"
-		}
-
+				"name": "Kenyan Jiko (Smokeless Charcoal Stove)",
+				"inventor": "Kenyan Innovators",
+				"year": "1970s",
+				"information": {
+					"general": "The Kenyan Jiko is an improved charcoal stove designed to cook efficiently with less smoke.",
+					"description": "Made from clay or metal, it directs airflow to burn fuel more efficiently, reducing fuel use and indoor air pollution.",
+					"extra": "The Jiko became widely adopted across East Africa and inspired further energy-efficient cooking solutions worldwide."
+				},
+				"image": "images/inventions/africa/kenya/kenya_jiko.webp"
+			}
 		]
 	},
 	{
@@ -1365,15 +1364,15 @@
 				"image": "images/inventions/asia/indonesia/pinisi.webp"
 			},
 			{
-			"name": "Piggy Bank (Celengan)",
-			"inventor": "Majapahit civilization (Java)",
-			"year": "c. 14th century",
-			"information": {
-				"general": "A boar-shaped terracotta figurine used to collect and store coins.",
-				"description": "The celengan is made from clay or terracotta and includes a slit at the top where coins can be inserted for safe keeping.",
-				"extra": "One of the oldest known pig-shaped money boxes dates back to the Majapahit period in Java, making it one of the earliest forms of the modern piggy bank."
-			},
-			"image": "images/inventions/asia/indonesia/celengan.webp"
+				"name": "Piggy Bank (Celengan)",
+				"inventor": "Majapahit civilization (Java)",
+				"year": "c. 14th century",
+				"information": {
+					"general": "A boar-shaped terracotta figurine used to collect and store coins.",
+					"description": "The celengan is made from clay or terracotta and includes a slit at the top where coins can be inserted for safe keeping.",
+					"extra": "One of the oldest known pig-shaped money boxes dates back to the Majapahit period in Java, making it one of the earliest forms of the modern piggy bank."
+				},
+				"image": "images/inventions/asia/indonesia/celengan.webp"
 			}
 		]
 	},
@@ -1450,6 +1449,141 @@
 					"extra": "This invention saved countless lives and is the basis for modern metal detection technologies."
 				},
 				"image": "images/inventions/europe/poland/metal_detector.webp"
+			}
+		]
+	},
+	{
+		"country": "Mongolia",
+		"inventions": [
+			{
+				"name": "Ger (Traditional Yurt)",
+				"inventor": "Mongolian nomads",
+				"year": "c. 1200s",
+				"information": {
+					"general": "Mongolian nomads developed the ger, a portable, round tent that could be dismantled, transported, and reassembled with ease.",
+					"description": "Constructed with a wooden lattice framework and covered with felt and canvas, it is lightweight yet durable, suitable for harsh steppe climates.",
+					"extra": "This design allowed nomadic herders to move with their livestock across vast plains, influencing portable housing designs worldwide."
+				},
+				"image": "images/inventions/asia/mongolia/ger.webp"
+			},
+			{
+				"name": "Mongolian Bow",
+				"inventor": "Ancient Mongolian warriors",
+				"year": "c. 1200s",
+				"information": {
+					"general": "The Mongolian composite bow was designed for mounted archery, combining power and portability.",
+					"description": "Made from wood, horn, and sinew, it delivered strong, accurate shots while being small enough for horseback use.",
+					"extra": "This bow was key to Mongol military success under Genghis Khan and influenced bow designs across Asia and Europe."
+				},
+				"image": "images/inventions/asia/mongolia/mongolian_bow.webp"
+			}
+		]
+	},
+	{
+		"country": "Libya",
+		"inventions": [
+			{
+				"name": "Libyan Caravan Saddle",
+				"inventor": "Nomadic Libyan tribes",
+				"year": "c. 1200s",
+				"information": {
+					"general": "Nomadic tribes designed specialized saddles for camels to transport goods across the Sahara.",
+					"description": "Made from tanned leather with reinforced wooden frames, these saddles distributed weight evenly for long journeys.",
+					"extra": "They were essential for trade caravans and inspired saddle designs across North Africa and the Middle East."
+				},
+				"image": "images/inventions/africa/libya/libyan_caravan_saddle.webp"
+			},
+			{
+				"name": "Saharan Water Cistern",
+				"inventor": "Ancient Libyan engineers",
+				"year": "c. 1000s",
+				"information": {
+					"general": "A water storage and irrigation system designed to survive arid desert conditions.",
+					"description": "Large underground cisterns captured rainwater and provided a reliable supply during dry periods.",
+					"extra": "This innovation enabled settlements and agriculture in harsh Sahara environments and influenced later desert water management techniques."
+				},
+				"image": "images/inventions/africa/libya/saharan_cistern.webp"
+			}
+		]
+	},
+	{
+		"country": "Ukraine",
+		"inventions": [
+			{
+				"name": "Gas Lamp (Oil & Gas Lighting)",
+				"inventor": "Ivan Kulish",
+				"year": "1800s",
+				"information": {
+					"general": "Ivan Kulish contributed to early gas lamp designs in Ukraine, providing efficient urban lighting.",
+					"description": "These lamps used coal or natural gas, illuminating streets and public spaces before widespread electricity.",
+					"extra": "Such lighting improved urban safety and productivity and was later adapted in other European cities."
+				},
+				"image": "images/inventions/europe/ukraine/gas_lamp.webp"
+			},
+			{
+				"name": "Modern Tractor Adaptations",
+				"inventor": "Ukrainian agricultural engineers",
+				"year": "1900s",
+				"information": {
+					"general": "Ukraine developed modifications for tractors to better suit large-scale grain farming.",
+					"description": "These adaptations included stronger plows, larger wheels, and improved engines for heavy-duty fieldwork.",
+					"extra": "They supported Ukraine’s agricultural efficiency and contributed to the country’s status as a major grain exporter."
+				},
+				"image": "images/inventions/europe/ukraine/tractor_adaptation.webp"
+			}
+		]
+	},
+	{
+		"country": "Sudan",
+		"inventions": [
+			{
+				"name": "Nile Boat Design",
+				"inventor": "Ancient Nubian and Sudanese craftsmen",
+				"year": "c. 2000 BCE",
+				"information": {
+					"general": "Ancient Sudanese peoples created advanced riverboats for transport, fishing, and trade along the Nile.",
+					"description": "Made from papyrus reeds or wood, these boats were lightweight, durable, and capable of carrying goods and passengers.",
+					"extra": "The design influenced river navigation across northeastern Africa and supported commerce and cultural exchange."
+				},
+				"image": "images/inventions/africa/sudan/nile_boat.webp"
+			},
+			{
+				"name": "Clay Water Jars",
+				"inventor": "Sudanese villagers",
+				"year": "c. 1000 BCE",
+				"information": {
+					"general": "Large clay jars were developed to store and cool water in arid climates.",
+					"description": "Their porous walls allow evaporative cooling, keeping water refreshingly cool in hot conditions.",
+					"extra": "This simple but effective technology is still used in Sudanese villages today and influenced water storage designs in dry regions."
+				},
+				"image": "images/inventions/africa/sudan/clay_water_jar.webp"
+			}
+		]
+	},
+	{
+		"country": "Thailand",
+		"inventions": [
+			{
+				"name": "Floating Market Boats",
+				"inventor": "Thai merchants",
+				"year": "c. 1700s",
+				"information": {
+					"general": "In Thailand, merchants developed specialized boats to conduct trade on canals and rivers.",
+					"description": "These wooden boats are shaped for stability and maneuverability, allowing vendors to sell fruits, vegetables, and cooked meals directly from the water.",
+					"extra": "Floating markets became a cultural icon and influenced local transportation and commerce systems."
+				},
+				"image": "images/inventions/asia/thailand/floating_market_boat.webp"
+			},
+			{
+				"name": "Muay Thai Training Equipment",
+				"inventor": "Thai martial artists",
+				"year": "c. 1800s",
+				"information": {
+					"general": "Specialized training tools were developed for Muay Thai, Thailand’s national sport.",
+					"description": "This includes heavy bags, wooden dummies, and traditional pads to strengthen striking, agility, and endurance.",
+					"extra": "These inventions supported Thailand’s cultural heritage and influenced martial arts training equipment worldwide."
+				},
+				"image": "images/inventions/asia/thailand/muay_thai_training_equipment.webp"
 			}
 		]
 	}

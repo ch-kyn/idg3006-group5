@@ -1678,5 +1678,205 @@
             "food": "images/countries/europe/poland/poland_pierogi.webp",
             "place": "images/countries/europe/poland/poland_wawel_castle.webp"
         }
+    },
+    {
+        "country": "Sudan",
+        "capital": "Khartoum",
+        "population": 50100000,
+        "area_km2": 1886068,
+        "currency": "Sudanese Pound (SDG)",
+        "gdp_total_usd": 36500000000,
+        "national_day": "January 1 (Independence 1956)",
+        "national_animal": "Nile Crocodile",
+        "exports": [
+            "Crude oil",
+            "Gold",
+            "Sesame",
+            "Livestock"
+        ],
+        "popular_dishes": [
+            "Ful medames",
+            "Kisra with stew",
+            "Tagine with okra",
+            "Asida (sorghum porridge)"
+        ],
+        "famous_people": [
+            "Omar al-Bashir",
+            "Manute Bol",
+            "Tayeb Salih",
+            "Nadifa Mohamed"
+        ],
+        "places_heritage": [
+            "Pyramids of Meroë",
+            "Suakin (Red Sea old port)",
+            "Jebel Barkal",
+            "Dinder National Park"
+        ],
+        "images": {
+            "flag": "images/countries/africa/sudan/sudan_flag.webp",
+            "map": "images/countries/africa/sudan/sudan_map.webp",
+            "food": "images/countries/africa/sudan/sudan_ful_medames.webp",
+            "place": "images/countries/africa/sudan/sudan_pyramids_ of_meroë.webp"
+        }
+    },
+    {
+        "country": "Libya",
+        "capital": "Tripoli",
+        "population": 7360000,
+        "area_km2": 1759541,
+        "currency": "Libyan Dinar (LYD)",
+        "gdp_total_usd": 47480000000,
+        "national_day": "December 24 (Independence Day, 1951)",
+        "national_animal": "Desert Fox",
+        "exports": [
+            "Crude oil",
+            "Petroleum products",
+            "Natural gas",
+            "Dates"
+        ],
+        "popular_dishes": [
+            "Bazeen",
+            "Shakshuka (Libyan style)",
+            "Asida",
+            "Fatta"
+        ],
+        "famous_people": [
+            "Muammar Gaddafi",
+            "Omar Mukhtar",
+            "Ibrahim al-Koni",
+            "Mohamed al-Mahdi"
+        ],
+        "places_heritage": [
+            "Leptis Magna",
+            "Cyrene Ancient City",
+            "Ghadames (old town)",
+            "Acacus Mountains Petroglyphs"
+        ],
+        "images": {
+            "flag": "images/countries/africa/libya/libya_flag.webp",
+            "map": "images/countries/africa/libya/libya_map.webp",
+            "food": "images/countries/africa/libya/libya_bazeen.webp",
+            "place": "images/countries/africa/libya/libya_leptis_magna.webp"
+        }
+    },
+    {
+        "country": "Mongolia",
+        "capital": "Ulaanbaatar",
+        "population": 3550000,
+        "area_km2": 1564116,
+        "currency": "Mongolian Tögrög (MNT)",
+        "gdp_total_usd": 25110000000,
+        "national_day": "July 11 (Naadam Festival)",
+        "national_animal": "Przewalski's Horse",
+        "exports": [
+            "Copper",
+            "Coal",
+            "Cashmere wool",
+            "Livestock & animal products"
+        ],
+        "popular_dishes": [
+            "Buuz",
+            "Khuushuur",
+            "Boodog",
+            "Airag (fermented mare’s milk)"
+        ],
+        "famous_people": [
+            "Genghis Khan",
+            "Kublai Khan",
+            "Damdin Sükhbaatar",
+            "Banijamtsyn Bat-Erdene"
+        ],
+        "places_heritage": [
+            "Gobi Desert",
+            "Terelj National Park",
+            "Karakorum (ancient capital)",
+            "Lake Khövsgöl"
+        ],
+        "images": {
+            "flag": "images/countries/asia/mongolia/mongolia_flag.webp",
+            "map": "images/countries/asia/mongolia/mongolia_map.webp",
+            "food": "images/countries/asia/mongolia/mongolia_buuz.webp",
+            "place": "images/countries/asia/mongolia/mongolia_gobi_desert.webp"
+        }
+    },
+    {
+        "country": "Thailand",
+        "capital": "Bangkok",
+        "population": 71800000,
+        "area_km2": 513120,
+        "currency": "Thai Baht (THB)",
+        "gdp_total_usd": 515000000000,
+        "national_day": "December 5 (King’s Birthday)",
+        "national_animal": "Elephant",
+        "exports": [
+            "Electronics",
+            "Automobiles & parts",
+            "Agricultural products (rice, rubber)",
+            "Tourism services"
+        ],
+        "popular_dishes": [
+            "Pad Thai",
+            "Tom Yum Goong",
+            "Green Curry",
+            "Som Tam"
+        ],
+        "famous_people": [
+            "King Bhumibol Adulyadej",
+            "King Maha Vajiralongkorn",
+            "Thaksin Shinawatra",
+            "Chalermchai Kositpipat"
+        ],
+        "places_heritage": [
+            "Ayutthaya Historical Park",
+            "Grand Palace (Bangkok)",
+            "Phang Nga Bay",
+            "Chiang Mai Old City"
+        ],
+        "images": {
+            "flag": "images/countries/asia/thailand/thailand_flag.webp",
+            "map": "images/countries/asia/thailand/thailand_map.webp",
+            "food": "images/countries/asia/thailand/thailand_pad_thai.webp",
+            "place": "images/countries/asia/thailand/thailand_ayutthaya.webp"
+        }
+    },
+    {
+        "country": "Ukraine",
+        "capital": "Kyiv",
+        "population": 37000000,
+        "area_km2": 603500,
+        "currency": "Ukrainian Hryvnia (UAH)",
+        "gdp_total_usd": 179000000000,
+        "national_day": "August 24 (Independence Day, 1991)",
+        "national_animal": "Common Crane",
+        "exports": [
+            "Grains (wheat, corn)",
+            "Iron & steel",
+            "Machinery & equipment",
+            "Sunflower oil"
+        ],
+        "popular_dishes": [
+            "Borscht",
+            "Varenyky",
+            "Holubtsi",
+            "Salo"
+        ],
+        "famous_people": [
+            "Taras Shevchenko",
+            "Lesya Ukrainka",
+            "Andriy Shevchenko",
+            "Serhiy Korolyov"
+        ],
+        "places_heritage": [
+            "Kyiv Pechersk Lavra",
+            "Saint Sophia Cathedral (Kyiv)",
+            "Lviv Old Town",
+            "Carpathian Mountains"
+        ],
+        "images": {
+            "flag": "images/countries/europe/ukraine/ukraine_flag.webp",
+            "map": "images/countries/europe/ukraine/ukraine_map.webp",
+            "food": "images/countries/europe/ukraine/ukraine_borscht.webp",
+            "place": "images/countries/europe/ukraine/ukraine_kyiv_lavra.webp"
+        }
     }
 ]

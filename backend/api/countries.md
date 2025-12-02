@@ -45,11 +45,12 @@
 - Peru
 - Venezuela
 
-## Africa (6)
+## Africa (7)
 - Algeria
 - Egypt
-- Morocco
 - Kenya
+- Libya
+- Morocco
 - Nigeria
 - South-Africa
 
@@ -61,5 +62,8 @@
 - Samoa
 
 ## Countries to add
-- Poland
-- Netherlands
+(missing images)
+- Sudan
+- Mongolia
+- Thailand
+- Ukraine
