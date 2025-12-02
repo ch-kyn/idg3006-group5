@@ -42,7 +42,8 @@
 - Venezuela
 
 ## Africa
-South-Africa
+- Nigeria
+- South-Africa
 
 ## Oceania
 
