@@ -29,7 +29,7 @@
 
 ## North America
 - Canada
-- Mexico (not done ops)
+- Mexico
 - United States
 
 ## South America
@@ -42,6 +42,8 @@
 - Venezuela
 
 ## Africa
+South-Africa
+
 ## Oceania
 
 ## Countries to add

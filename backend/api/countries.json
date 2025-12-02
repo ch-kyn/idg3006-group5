@@ -33,10 +33,10 @@
             "Geirangerfjord"
         ],
         "images": {
-            "flag": "images/countries/norway/norway_flag.webp",
-            "map": "images/countries/norway/norway_map.webp",
-            "food": "images/countries/norway/norway_kjøttkaker.webp",
-            "place": "images/countries/norway/norway_bryggen.webp"
+            "flag": "images/countries/europe/norway/norway_flag.webp",
+            "map": "images/countries/europe/norway/norway_map.webp",
+            "food": "images/countries/europe/norway/norway_kjøttkaker.webp",
+            "place": "images/countries/europe/norway/norway_bryggen.webp"
         }
     },
     {
@@ -73,10 +73,10 @@
             "Pompeii Ruins"
         ],
         "images": {
-            "flag": "images/countries/italy/italy_flag.webp",
-            "map": "images/countries/italy/italy_map.webp",
-            "food": "images/countries/italy/italy_pizza.webp",
-            "place": "images/countries/italy/italy_colosseum.webp"
+            "flag": "images/countries/europe/italy/italy_flag.webp",
+            "map": "images/countries/europe/italy/italy_map.webp",
+            "food": "images/countries/europe/italy/italy_pizza.webp",
+            "place": "images/countries/europe/italy/italy_colosseum.webp"
         }
     },
     {
@@ -113,10 +113,10 @@
             "Black Forest"
         ],
         "images": {
-            "flag": "images/countries/germany/germany_flag.webp",
-            "map": "images/countries/germany/germany_map.webp",
-            "food": "images/countries/germany/germany_bratwurst.webp",
-            "place": "images/countries/germany/germany_neuschwanstein.webp"
+            "flag": "images/countries/europe/germany/germany_flag.webp",
+            "map": "images/countries/europe/germany/germany_map.webp",
+            "food": "images/countries/europe/germany/germany_bratwurst.webp",
+            "place": "images/countries/europe/germany/germany_neuschwanstein.webp"
         }
     },
     {
@@ -138,7 +138,7 @@
             "Fish and Chips",
             "Sunday Roast",
             "Full English Breakfast",
-            "Shepherd’s Pie"
+            "Shepherd's Pie"
         ],
         "famous_people": [
             "William Shakespeare",
@@ -150,13 +150,13 @@
             "Tower of London",
             "Stonehenge",
             "Edinburgh Castle",
-            "Giant’s Causeway"
+            "Giant's Causeway"
         ],
         "images": {
-            "flag": "images/countries/uk/uk_flag.webp",
-            "map": "images/countries/uk/uk_map.webp",
-            "food": "images/countries/uk/uk_fish_chips.webp",
-            "place": "images/countries/uk/uk_stonehenge.webp"
+            "flag": "images/countries/europe/uk/uk_flag.webp",
+            "map": "images/countries/europe/uk/uk_map.webp",
+            "food": "images/countries/europe/uk/uk_fish_chips.webp",
+            "place": "images/countries/europe/uk/uk_stonehenge.webp"
         }
     },
     {
@@ -193,10 +193,10 @@
             "Louvre Museum"
         ],
         "images": {
-            "flag": "images/countries/france/france_flag.webp",
-            "map": "images/countries/france/france_map.webp",
-            "food": "images/countries/france/france_croissant.webp",
-            "place": "images/countries/france/france_eiffel_tower.webp"
+            "flag": "images/countries/europe/france/france_flag.webp",
+            "map": "images/countries/europe/france/france_map.webp",
+            "food": "images/countries/europe/france/france_croissant.webp",
+            "place": "images/countries/europe/france/france_eiffel_tower.webp"
         }
     },
     {
@@ -233,10 +233,10 @@
             "Meteora"
         ],
         "images": {
-            "flag": "images/countries/greece/greece_flag.webp",
-            "map": "images/countries/greece/greece_map.webp",
-            "food": "images/countries/greece/greece_moussaka.webp",
-            "place": "images/countries/greece/greece_acropolis.webp"
+            "flag": "images/countries/europe/greece/greece_flag.webp",
+            "map": "images/countries/europe/greece/greece_map.webp",
+            "food": "images/countries/europe/greece/greece_moussaka.webp",
+            "place": "images/countries/europe/greece/greece_acropolis.webp"
         }
     },
     {
@@ -273,10 +273,10 @@
             "Lake Baikal"
         ],
         "images": {
-            "flag": "images/countries/russia/russia_flag.webp",
-            "map": "images/countries/russia/russia_map.webp",
-            "food": "images/countries/russia/russia_borscht.webp",
-            "place": "images/countries/russia/russia_red_square.webp"
+            "flag": "images/countries/europe/russia/russia_flag.webp",
+            "map": "images/countries/europe/russia/russia_map.webp",
+            "food": "images/countries/europe/russia/russia_borscht.webp",
+            "place": "images/countries/europe/russia/russia_red_square.webp"
         }
     },
     {
@@ -313,10 +313,10 @@
             "Prado Museum, Madrid"
         ],
         "images": {
-            "flag": "images/countries/spain/spain_flag.webp",
-            "map": "images/countries/spain/spain_map.webp",
-            "food": "images/countries/spain/spain_paella.webp",
-            "place": "images/countries/spain/spain_sagrada_familia.webp"
+            "flag": "images/countries/europe/spain/spain_flag.webp",
+            "map": "images/countries/europe/spain/spain_map.webp",
+            "food": "images/countries/europe/spain/spain_paella.webp",
+            "place": "images/countries/europe/spain/spain_sagrada_familia.webp"
         }
     },
     {
@@ -353,10 +353,10 @@
             "Potala Palace, Lhasa"
         ],
         "images": {
-            "flag": "images/countries/china/china_flag.webp",
-            "map": "images/countries/china/china_map.webp",
-            "food": "images/countries/china/china_peking_duck.webp",
-            "place": "images/countries/china/china_great_wall.webp"
+            "flag": "images/countries/asia/china/china_flag.webp",
+            "map": "images/countries/asia/china/china_map.webp",
+            "food": "images/countries/asia/china/china_peking_duck.webp",
+            "place": "images/countries/asia/china/china_great_wall.webp"
         }
     },
     {
@@ -393,10 +393,10 @@
             "Himeji Castle, Himeji"
         ],
         "images": {
-            "flag": "images/countries/japan/japan_flag.webp",
-            "map": "images/countries/japan/japan_map.webp",
-            "food": "images/countries/japan/japan_sushi.webp",
-            "place": "images/countries/japan/japan_mount_fuji.webp"
+            "flag": "images/countries/asia/japan/japan_flag.webp",
+            "map": "images/countries/asia/japan/japan_map.webp",
+            "food": "images/countries/asia/japan/japan_sushi.webp",
+            "place": "images/countries/asia/japan/japan_mount_fuji.webp"
         }
     },
     {
@@ -412,13 +412,11 @@
             "Crude petroleum",
             "Coal",
             "Coffee",
-            "Gold & Emeralds",
-            "Cut flowers"
+            "Gold & Emeralds"
         ],
         "popular_dishes": [
             "Arepa",
             "Bandeja Paisa",
-            "Ajiaco",
             "Sancocho",
             "Empanadas"
         ],
@@ -435,10 +433,10 @@
             "Ciudad Perdida (Lost City)"
         ],
         "images": {
-            "flag": "images/countries/colombia/colombia_flag.webp",
-            "map": "images/countries/colombia/colombia_map.webp",
-            "food": "images/countries/colombia/colombia_food.webp",
-            "place": "images/countries/colombia/colombia_place.webp"
+            "flag": "images/countries/south_america/colombia/colombia_flag.webp",
+            "map": "images/countries/south_america/colombia/colombia_map.webp",
+            "food": "images/countries/south_america/colombia/colombia_food.webp",
+            "place": "images/countries/south_america/colombia/colombia_place.webp"
         }
     },
     {
@@ -475,10 +473,10 @@
             "Bukchon Hanok Village, Seoul"
         ],
         "images": {
-            "flag": "images/countries/south_korea/south_korea_flag.webp",
-            "map": "images/countries/south_korea/south_korea_map.webp",
-            "food": "images/countries/south_korea/south_korea_kimchi.webp",
-            "place": "images/countries/south_korea/south_korea_gyeongbokgung.webp"
+            "flag": "images/countries/asia/south_korea/south_korea_flag.webp",
+            "map": "images/countries/asia/south_korea/south_korea_map.webp",
+            "food": "images/countries/asia/south_korea/south_korea_kimchi.webp",
+            "place": "images/countries/asia/south_korea/south_korea_gyeongbokgung.webp"
         }
     },
     {
@@ -515,10 +513,10 @@
             "Mount Rushmore, South Dakota"
         ],
         "images": {
-            "flag": "images/countries/united_states/united_states_flag.webp",
-            "map": "images/countries/united_states/united_states_map.webp",
-            "food": "images/countries/united_states/united_states_apple_pie.webp",
-            "place": "images/countries/united_states/united_states_statue_of_liberty.webp"
+            "flag": "images/countries/north_america/united_states/united_states_flag.webp",
+            "map": "images/countries/north_america/united_states/united_states_map.webp",
+            "food": "images/countries/north_america/united_states/united_states_apple_pie.webp",
+            "place": "images/countries/north_america/united_states/united_states_statue_of_liberty.webp"
         }
     },
     {
@@ -555,10 +553,10 @@
             "Old Quebec City, Quebec"
         ],
         "images": {
-            "flag": "images/countries/canada/canada_flag.webp",
-            "map": "images/countries/canada/canada_map.webp",
-            "food": "images/countries/canada/canada_poutine.webp",
-            "place": "images/countries/canada/canada_cn_tower.webp"
+            "flag": "images/countries/north_america/canada/canada_flag.webp",
+            "map": "images/countries/north_america/canada/canada_map.webp",
+            "food": "images/countries/north_america/canada/canada_poutine.webp",
+            "place": "images/countries/north_america/canada/canada_cn_tower.webp"
         }
     },
     {
@@ -595,10 +593,10 @@
             "Historic Center of Mexico City"
         ],
         "images": {
-            "flag": "images/countries/mexico/mexico_flag.webp",
-            "map": "images/countries/mexico/mexico_map.webp",
-            "food": "images/countries/mexico/mexico_tacos.webp",
-            "place": "images/countries/mexico/mexico_chichen_itza.webp"
+            "flag": "images/countries/north_america/mexico/mexico_flag.webp",
+            "map": "images/countries/north_america/mexico/mexico_map.webp",
+            "food": "images/countries/north_america/mexico/mexico_tacos.webp",
+            "place": "images/countries/north_america/mexico/mexico_chichen_itza.webp"
         }
     },
     {
@@ -635,10 +633,10 @@
             "My Son Sanctuary"
         ],
         "images": {
-            "flag": "images/countries/vietnam/vietnam_flag.webp",
-            "map": "images/countries/vietnam/vietnam_map.webp",
-            "food": "images/countries/vietnam/vietnam_pho.webp",
-            "place": "images/countries/vietnam/vietnam_halong_bay.webp"
+            "flag": "images/countries/asia/vietnam/vietnam_flag.webp",
+            "map": "images/countries/asia/vietnam/vietnam_map.webp",
+            "food": "images/countries/asia/vietnam/vietnam_pho.webp",
+            "place": "images/countries/asia/vietnam/vietnam_halong_bay.webp"
         }
     },
     {
@@ -675,10 +673,10 @@
             "Ephesus"
         ],
         "images": {
-            "flag": "images/countries/turkey/turkey_flag.webp",
-            "map": "images/countries/turkey/turkey_map.webp",
-            "food": "images/countries/turkey/turkey_kebab.webp",
-            "place": "images/countries/turkey/turkey_hagia_sophia.webp"
+            "flag": "images/countries/europe/turkey/turkey_flag.webp",
+            "map": "images/countries/europe/turkey/turkey_map.webp",
+            "food": "images/countries/europe/turkey/turkey_kebab.webp",
+            "place": "images/countries/europe/turkey/turkey_hagia_sophia.webp"
         }
     },
     {
@@ -715,10 +713,10 @@
             "Pasargadae"
         ],
         "images": {
-            "flag": "images/countries/iran/iran_flag.webp",
-            "map": "images/countries/iran/iran_map.webp",
-            "food": "images/countries/iran/iran_tahdig.webp",
-            "place": "images/countries/iran/iran_persepolis.webp"
+            "flag": "images/countries/asia/iran/iran_flag.webp",
+            "map": "images/countries/asia/iran/iran_map.webp",
+            "food": "images/countries/asia/iran/iran_tahdig.webp",
+            "place": "images/countries/asia/iran/iran_persepolis.webp"
         }
     },
     {
@@ -755,10 +753,10 @@
             "Khajuraho Temples"
         ],
         "images": {
-            "flag": "images/countries/india/india_flag.webp",
-            "map": "images/countries/india/india_map.webp",
-            "food": "images/countries/india/india_biryani.webp",
-            "place": "images/countries/india/india_taj_mahal.webp"
+            "flag": "images/countries/asia/india/india_flag.webp",
+            "map": "images/countries/asia/india/india_map.webp",
+            "food": "images/countries/asia/india/india_biryani.webp",
+            "place": "images/countries/asia/india/india_taj_mahal.webp"
         }
     },
     {
@@ -795,10 +793,10 @@
             "Hunza Valley"
         ],
         "images": {
-            "flag": "images/countries/pakistan/pakistan_flag.webp",
-            "map": "images/countries/pakistan/pakistan_map.webp",
-            "food": "images/countries/pakistan/pakistan_karahi.webp",
-            "place": "images/countries/pakistan/pakistan_badshahi_mosque.webp"
+            "flag": "images/countries/asia/pakistan/pakistan_flag.webp",
+            "map": "images/countries/asia/pakistan/pakistan_map.webp",
+            "food": "images/countries/asia/pakistan/pakistan_karahi.webp",
+            "place": "images/countries/asia/pakistan/pakistan_badshahi_mosque.webp"
         }
     },
     {
@@ -835,10 +833,10 @@
             "Puerto Princesa Underground River"
         ],
         "images": {
-            "flag": "images/countries/philippines/philippines_flag.webp",
-            "map": "images/countries/philippines/philippines_map.webp",
-            "food": "images/countries/philippines/philippines_adobo.webp",
-            "place": "images/countries/philippines/philippines_banaue.webp"
+            "flag": "images/countries/asia/philippines/philippines_flag.webp",
+            "map": "images/countries/asia/philippines/philippines_map.webp",
+            "food": "images/countries/asia/philippines/philippines_adobo.webp",
+            "place": "images/countries/asia/philippines/philippines_banaue.webp"
         }
     },
     {
@@ -854,15 +852,13 @@
             "Crude oil",
             "Refined petroleum",
             "Gold",
-            "Chemicals",
-            "Cocoa beans"
+            "Chemicals"
         ],
         "popular_dishes": [
             "Arepa",
             "Pabellón Criollo",
             "Hallaca",
-            "Cachapa",
-            "Tequeños"
+            "Cachapa"
         ],
         "famous_people": [
             "Simón Bolívar",
@@ -877,10 +873,10 @@
             "Morrocoy National Park"
         ],
         "images": {
-            "flag": "images/countries/venezuela/venezuela_flag.webp",
-            "map": "images/countries/venezuela/venezuela_map.webp",
-            "food": "images/countries/venezuela/venezuela_food.webp",
-            "place": "images/countries/venezuela/venezuela_place.webp"
+            "flag": "images/countries/south_america/venezuela/venezuela_flag.webp",
+            "map": "images/countries/south_america/venezuela/venezuela_map.webp",
+            "food": "images/countries/south_america/venezuela/venezuela_food.webp",
+            "place": "images/countries/south_america/venezuela/venezuela_place.webp"
         }
     },
     {
@@ -895,7 +891,6 @@
         "exports": [
             "Crude oil",
             "Bananas",
-            "Shrimp",
             "Flowers (especially roses)",
             "Cocoa and chocolate"
         ],
@@ -903,8 +898,7 @@
             "Ceviche",
             "Encebollado",
             "Locro de Papa",
-            "Fanesca",
-            "Hornado"
+            "Fanesca"
         ],
         "famous_people": [
             "Oswaldo Guayasamín",
@@ -919,10 +913,10 @@
             "Cotopaxi National Park"
         ],
         "images": {
-            "flag": "images/countries/ecuador/ecuador_flag.webp",
-            "map": "images/countries/ecuador/ecuador_map.webp",
-            "food": "images/countries/ecuador/ecuador_food.webp",
-            "place": "images/countries/ecuador/ecuador_place.webp"
+            "flag": "images/countries/south_america/ecuador/ecuador_flag.webp",
+            "map": "images/countries/south_america/ecuador/ecuador_map.webp",
+            "food": "images/countries/south_america/ecuador/ecuador_food.webp",
+            "place": "images/countries/south_america/ecuador/ecuador_place.webp"
         }
     },
     {
@@ -938,15 +932,13 @@
             "Soybeans",
             "Iron ore",
             "Crude oil",
-            "Coffee",
-            "Meat (beef & poultry)"
+            "Coffee"
         ],
         "popular_dishes": [
             "Feijoada",
             "Pão de queijo",
             "Brigadeiro",
-            "Moqueca",
-            "Acarajé"
+            "Moqueca"
         ],
         "famous_people": [
             "Pelé",
@@ -961,10 +953,10 @@
             "Historic Centre of Salvador"
         ],
         "images": {
-            "flag": "images/countries/brazil/brazil_flag.webp",
-            "map": "images/countries/brazil/brazil_map.webp",
-            "food": "images/countries/brazil/brazil_food.webp",
-            "place": "images/countries/brazil/brazil_place.webp"
+            "flag": "images/countries/south_america/brazil/brazil_flag.webp",
+            "map": "images/countries/south_america/brazil/brazil_map.webp",
+            "food": "images/countries/south_america/brazil/brazil_food.webp",
+            "place": "images/countries/south_america/brazil/brazil_place.webp"
         }
     },
     {
@@ -980,15 +972,13 @@
             "Natural gas",
             "Zinc",
             "Silver",
-            "Soybeans",
-            "Quinoa"
+            "Soybeans"
         ],
         "popular_dishes": [
             "Salteñas",
             "Pique a lo Macho",
             "Silpancho",
-            "Api con pastel",
-            "Chairo"
+            "Api con pastel"
         ],
         "famous_people": [
             "Evo Morales",
@@ -1003,10 +993,10 @@
             "Potosí Historic Town"
         ],
         "images": {
-            "flag": "images/countries/bolivia/bolivia_flag.webp",
-            "map": "images/countries/bolivia/bolivia_map.webp",
-            "food": "images/countries/bolivia/bolivia_food.webp",
-            "place": "images/countries/bolivia/bolivia_place.webp"
+            "flag": "images/countries/south_america/bolivia/bolivia_flag.webp",
+            "map": "images/countries/south_america/bolivia/bolivia_map.webp",
+            "food": "images/countries/south_america/bolivia/bolivia_food.webp",
+            "place": "images/countries/south_america/bolivia/bolivia_place.webp"
         }
     },
     {
@@ -1022,15 +1012,13 @@
             "Copper",
             "Gold",
             "Zinc",
-            "Coffee",
-            "Asparagus"
+            "Coffee"
         ],
         "popular_dishes": [
             "Ceviche",
             "Lomo Saltado",
             "Aji de Gallina",
-            "Causa Limeña",
-            "Anticuchos"
+            "Causa Limeña"
         ],
         "famous_people": [
             "Mario Vargas Llosa",
@@ -1045,10 +1033,10 @@
             "Historic Centre of Lima"
         ],
         "images": {
-            "flag": "images/countries/peru/peru_flag.webp",
-            "map": "images/countries/peru/peru_map.webp",
-            "food": "images/countries/peru/peru_food.webp",
-            "place": "images/countries/peru/peru_place.webp"
+            "flag": "images/countries/south_america/peru/peru_flag.webp",
+            "map": "images/countries/south_america/peru/peru_map.webp",
+            "food": "images/countries/south_america/peru/peru_food.webp",
+            "place": "images/countries/south_america/peru/peru_place.webp"
         }
     },
     {
@@ -1064,15 +1052,13 @@
             "Soybeans",
             "Corn",
             "Wheat",
-            "Beef",
-            "Wine"
+            "Beef"
         ],
         "popular_dishes": [
             "Asado",
             "Empanadas",
             "Milanesa",
-            "Dulce de leche",
-            "Choripán"
+            "Dulce de leche"
         ],
         "famous_people": [
             "Lionel Messi",
@@ -1087,10 +1073,130 @@
             "Quebrada de Humahuaca"
         ],
         "images": {
-            "flag": "images/countries/argentina/argentina_flag.webp",
-            "map": "images/countries/argentina/argentina_map.webp",
-            "food": "images/countries/argentina/argentina_food.webp",
-            "place": "images/countries/argentina/argentina_place.webp"
+            "flag": "images/countries/south_america/argentina/argentina_flag.webp",
+            "map": "images/countries/south_america/argentina/argentina_map.webp",
+            "food": "images/countries/south_america/argentina/argentina_food.webp",
+            "place": "images/countries/south_america/argentina/argentina_place.webp"
+        }
+    },
+    {
+        "country": "South Africa",
+        "capital": "Pretoria (administrative), Cape Town (legislative), Bloemfontein (judicial)",
+        "population": 60000000,
+        "area_km2": 1219090,
+        "currency": "South African Rand (ZAR)",
+        "gdp_total_usd": 420000000000,
+        "national_day": "April 27",
+        "national_animal": "Springbok",
+        "exports": [
+            "Gold",
+            "Platinum",
+            "Diamonds",
+            "Coal"
+        ],
+        "popular_dishes": [
+            "Bobotie",
+            "Bunny Chow",
+            "Biltong",
+            "Braai"
+        ],
+        "famous_people": [
+            "Nelson Mandela",
+            "Desmond Tutu",
+            "Charlize Theron",
+            "Elon Musk"
+        ],
+        "places_heritage": [
+            "Table Mountain",
+            "Kruger National Park",
+            "Robben Island",
+            "Drakensberg Mountains"
+        ],
+        "images": {
+            "flag": "images/countries/africa/south_africa/south_africa_flag.webp",
+            "map": "images/countries/africa/south_africa/south_africa_map.webp",
+            "food": "images/countries/africa/south_africa/south_africa_bobotie.webp",
+            "place": "images/countries/africa/south_africa/south_africa_table_mountain.webp"
+        }
+    },
+    {
+        "country": "Egypt",
+        "capital": "Cairo",
+        "population": 111000000,
+        "area_km2": 1002450,
+        "currency": "Egyptian Pound (EGP)",
+        "gdp_total_usd": 400000000000,
+        "national_day": "July 23",
+        "national_animal": "Steppe Eagle",
+        "exports": [
+            "Crude Oil",
+            "Natural Gas",
+            "Cotton",
+            "Chemicals"
+        ],
+        "popular_dishes": [
+            "Koshari",
+            "Ful Medames",
+            "Molokhia",
+            "Mahshi"
+        ],
+        "famous_people": [
+            "Cleopatra",
+            "Naguib Mahfouz",
+            "Omar Sharif",
+            "Mohamed Salah"
+        ],
+        "places_heritage": [
+            "Pyramids of Giza",
+            "Luxor Temple",
+            "Valley of the Kings",
+            "Abu Simbel"
+        ],
+        "images": {
+            "flag": "images/countries/africa/egypt/egypt_flag.webp",
+            "map": "images/countries/africa/egypt/egypt_map.webp",
+            "food": "images/countries/africa/egypt/egypt_koshari.webp",
+            "place": "images/countries/africa/egypt/egypt_pyramids_of_giza.webp"
+        }
+    },
+    {
+        "country": "Nigeria",
+        "capital": "Abuja",
+        "population": 230000000,
+        "area_km2": 923768,
+        "currency": "Nigerian Naira (NGN)",
+        "gdp_total_usd": 640000000000,
+        "national_day": "October 1",
+        "national_animal": "Eagle",
+        "exports": [
+            "Crude Oil",
+            "Natural Gas",
+            "Cocoa",
+            "Rubber"
+        ],
+        "popular_dishes": [
+            "Jollof Rice",
+            "Pounded Yam and Egusi Soup",
+            "Suya",
+            "Akara"
+        ],
+        "famous_people": [
+            "Chinua Achebe",
+            "Fela Kuti",
+            "Ngozi Okonjo-Iweala",
+            "Wole Soyinka"
+        ],
+        "places_heritage": [
+            "Zuma Rock",
+            "Obudu Mountain Resort",
+            "Olumo Rock",
+            "Sukur Cultural Landscape"
+        ],
+        "images": {
+            "flag": "images/countries/africa/nigeria/nigeria_flag.webp",
+            "map": "images/countries/africa/nigeria/nigeria_map.webp",
+            "food": "images/countries/africa/nigeria/nigeria_jollof_rice.webp",
+            "place": "images/countries/africa/nigeria/nigeria_zuma_rock.webp"
         }
     }
 ]

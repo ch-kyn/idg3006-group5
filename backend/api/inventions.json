@@ -11,7 +11,7 @@
 					"description": "He crafted it from wood and steel, with a wire stretched across a flat blade. It glides through semi-hard cheeses like Edam or brunost, turning a tedious task into a quick, precise motion.",
 					"extra": "Bjørklund's inspiration came from the carpenter's plane he used in his workshop. He also experimented with a butter slicer, which failed, but his cheese slicer became a European and Brazilian kitchen classic."
 				},
-				"image": "images/europe/norway/cheese_slicer.webp"
+				"image": "images/inventions/europe/norway/cheese_slicer.webp"
 			},
 			{
 				"name": "Paper Clip",
@@ -22,7 +22,7 @@
 					"description": "Made from bent wire, it creates tension that keeps papers aligned. Vaaler's design was simple yet ingeniously effective.",
 					"extra": "The idea reportedly came from the need to manage documents in offices efficiently. Later refinements improved durability, and today it's a ubiquitous office tool worldwide."
 				},
-				"image": "images/europe/norway/paper_clip.webp"
+				"image": "images/inventions/europe/norway/paper_clip.webp"
 			},
 			{
 				"name": "Clip-on Ski Binding",
@@ -33,7 +33,7 @@
 					"description": "Constructed from metal and leather, the binding securely fastens boots to skis, offering control while reducing the risk of falls.",
 					"extra": "Linge was inspired by the growing popularity of skiing in Norway. His invention influenced modern ski bindings and made the sport more accessible and safer."
 				},
-				"image": "images/europe/norway/ski_binding.webp"
+				"image": "images/inventions/europe/norway/ski_binding.webp"
 			}
 		]
 	},
@@ -49,7 +49,7 @@
 					"description": "He engineered hammers to strike strings, giving the keyboard expressive power. Cristofori's use of hardwood, metal strings, and precise mechanics produced rich tones and dynamic range.",
 					"extra": "Inspired by the limitations of the harpsichord, he experimented with action mechanisms over decades. His designs evolved into the grand and upright pianos that define modern music halls and home instruments."
 				},
-				"image": "images/europe/italy/piano.webp"
+				"image": "images/inventions/europe/italy/piano.webp"
 			},
 			{
 				"name": "Eyeglasses",
@@ -60,7 +60,7 @@
 					"description": "Using convex lenses set in wood or metal frames balanced on the nose, these early spectacles improved vision for reading and work.",
 					"extra": "The inspiration likely came from monks and scholars needing to read manuscripts. Over centuries, frame and lens materials advanced, spreading eyeglasses across Europe and evolving into countless modern designs."
 				},
-				"image": "images/europe/italy/eyeglasses.webp"
+				"image": "images/inventions/europe/italy/eyeglasses.webp"
 			},
 			{
 				"name": "Pasta Machine",
@@ -71,7 +71,7 @@
 					"description": "Made with metal rollers and cutting blades, it produces even pasta sheets quickly. The machine saves hours of labor compared to hand-rolling dough.",
 					"extra": "Inspired by Italy's love for fresh pasta, Vitantonio refined his design through trial and error. His invention spread widely, laying the foundation for modern pasta machines used in kitchens worldwide."
 				},
-				"image": "images/europe/italy/pasta_machine.webp"
+				"image": "images/inventions/europe/italy/pasta_machine.webp"
 			}
 		]
 	},
@@ -87,7 +87,7 @@
 					"description": "The printing press allowed mass production of books, spreading knowledge, ideas, and literacy across Europe. Before it, books had to be copied by hand, which was slow and expensive.",
 					"extra": "Gutenberg's invention changed the world, enabling the Renaissance, Reformation, and scientific revolution by making ideas accessible to many people for the first time."
 				},
-				"image": "images/europe/germany/printing_press.webp"
+				"image": "images/inventions/europe/germany/printing_press.webp"
 			},
 			{
 				"name": "Automobile",
@@ -98,7 +98,7 @@
 					"description": "The Benz Patent-Motorwagen is considered the world's first real car, marking the beginning of modern transportation as we know it today.",
 					"extra": "This invention transformed how humans travel, trade, and design cities, eventually shaping the entire global automotive industry."
 				},
-				"image": "images/europe/germany/automobile.webp"
+				"image": "images/inventions/europe/germany/automobile.webp"
 			},
 			{
 				"name": "X-ray Machine",
@@ -109,7 +109,7 @@
 					"description": "This discovery made it possible to see inside the human body without surgery, revolutionizing medical diagnostics.",
 					"extra": "X-ray technology became one of the most important tools in medicine, science, and security worldwide."
 				},
-				"image": "images/europe/germany/xray_machine.webp"
+				"image": "images/inventions/europe/germany/xray_machine.webp"
 			}
 		]
 	},
@@ -125,7 +125,7 @@
 					"description": "The steam engine powered machines, trains, and ships, changing how goods were made and transported. It fueled the Industrial Revolution across Britain and the world.",
 					"extra": "Watt's enhancements allowed engines to use less fuel and generate more power. His work helped industries grow rapidly and shaped modern economies."
 				},
-				"image": "images/europe/uk/steam_engine.webp"
+				"image": "images/inventions/europe/uk/steam_engine.webp"
 			},
 			{
 				"name": "World Wide Web",
@@ -136,7 +136,7 @@
 					"description": "The World Wide Web made it possible to access and share information through websites connected by hyperlinks.",
 					"extra": "It revolutionized how people learn, communicate, work, and access information across the entire globe."
 				},
-				"image": "images/europe/uk/world_wide_web.webp"
+				"image": "images/inventions/europe/uk/world_wide_web.webp"
 			},
 			{
 				"name": "Jet Engine",
@@ -147,7 +147,7 @@
 					"description": "The jet engine allowed aircraft to travel significantly faster and higher than before.",
 					"extra": "This invention transformed aviation, making modern commercial and military flight possible."
 				},
-				"image": "images/europe/uk/jet_engine.webp"
+				"image": "images/inventions/europe/uk/jet_engine.webp"
 			}
 		]
 	},
@@ -163,7 +163,7 @@
 					"description": "The prototype used pneumatic micro-valves and lightweight actuators to simulate pressure and touch sensations. It allowed users to feel resistance while interacting with virtual objects, a major step toward immersive VR experiences.",
 					"extra": "Wills' early experiments were developed in Bogotá with limited resources. His research later influenced commercial haptic devices used in medical training, remote robotics, and immersive gaming."
 				},
-				"image": "images/south_america/colombia/haptic_glove.webp"
+				"image": "images/inventions/south_america/colombia/haptic_glove.webp"
 			},
 			{
 				"name": "Expandable Heart Stent",
@@ -174,7 +174,7 @@
 					"description": "The device is a tiny mesh cylinder inserted into blocked arteries. Once positioned, it expands to keep blood vessels open, improving circulation and reducing the risk of heart attacks.",
 					"extra": "Reynolds is also famous for creating one of the world's first external pacemakers. His work contributed greatly to modern biomedical engineering in Latin America."
 				},
-				"image": "images/south_america/colombia/heart_stent.webp"
+				"image": "images/inventions/south_america/colombia/heart_stent.webp"
 			},
 			{
 				"name": "Antioquia Coffee Pulper",
@@ -185,7 +185,7 @@
 					"description": "Made from metal drums and a rotating abrasive surface, the machine quickly separated beans from pulp, reducing labor and improving consistency in coffee processing.",
 					"extra": "The invention became widely adopted in rural Antioquia. It increased productivity for small farmers and helped raise the quality of Colombia's globally renowned coffee industry."
 				},
-				"image": "images/south_america/colombia/coffee_pulper.webp"
+				"image": "images/inventions/south_america/colombia/coffee_pulper.webp"
 			}
 		]
 	},
@@ -201,7 +201,7 @@
 					"description": "The balloon lifted people and objects into the air using heated air. It inspired fascination with flight and exploration of the skies.",
 					"extra": "The Montgolfiers experimented with different materials and sizes, eventually carrying passengers safely. Ballooning became a popular spectacle in Europe and laid groundwork for aviation."
 				},
-				"image": "images/europe/france/hot_air_balloon.webp"
+				"image": "images/inventions/europe/france/hot_air_balloon.webp"
 			},
 			{
 				"name": "Pasteurization",
@@ -212,7 +212,7 @@
 					"description": "The method involves heating liquids to a specific temperature for a set time to destroy bacteria without affecting flavor. It drastically improved food safety and public health.",
 					"extra": "Pasteurization is still used worldwide today for dairy, juice, and other perishable liquids, preventing countless illnesses and saving millions of lives."
 				},
-				"image": "images/europe/france/pasteurization.webp"
+				"image": "images/inventions/europe/france/pasteurization.webp"
 			},
 			{
 				"name": "Braille System",
@@ -223,7 +223,7 @@
 					"description": "The system uses patterns of raised dots representing letters, numbers, and punctuation. It allowed blind individuals to read independently and access education.",
 					"extra": "Braille revolutionized literacy for the blind, becoming a universal tactile writing system used in schools, libraries, and everyday life worldwide."
 				},
-				"image": "images/europe/france/braille.webp"
+				"image": "images/inventions/europe/france/braille.webp"
 			}
 		]
 	},
@@ -239,7 +239,7 @@
 					"description": "The torch was carried in a relay from Olympia to the host city, a tradition to demonstrate unity, endurance, and respect.",
 					"extra": "Modern Olympic torch relays are inspired directly by this ancient Greek invention, blending culture and sportsmanship."
 				},
-				"image": "images/europe/greece/olympic_flame.webp"
+				"image": "images/inventions/europe/greece/olympic_flame.webp"
 			},
 			{
 				"name": "Water Mill",
@@ -250,7 +250,7 @@
 					"description": "Flowing water turned a wheel connected to grinding stones, replacing manual labor with mechanical energy.",
 					"extra": "This innovation became the foundation for later industrial machines and energy use in Europe and beyond."
 				},
-				"image": "images/europe/greece/water_mill.webp"
+				"image": "images/inventions/europe/greece/water_mill.webp"
 			},
 			{
 				"name": "Archimedes' Screw",
@@ -261,7 +261,7 @@
 					"description": "The screw-shaped device rotates inside a pipe or cylinder, lifting water upward as it turns.",
 					"extra": "It is still used today in agriculture and water management systems around the world."
 				},
-				"image": "images/europe/greece/archimedes_screw.webp"
+				"image": "images/inventions/europe/greece/archimedes_screw.webp"
 			}
 		]
 	},
@@ -277,7 +277,7 @@
 					"description": "Mendeleev organized elements so that elements with similar properties fell into vertical columns, predicting the existence and properties of elements yet to be discovered.",
 					"extra": "This table forms the foundation of modern chemistry and is still used worldwide for scientific research and education."
 				},
-				"image": "images/europe/russia/periodic_table.webp"
+				"image": "images/inventions/europe/russia/periodic_table.webp"
 			},
 			{
 				"name": "First Practical Helicopter",
@@ -288,7 +288,7 @@
 					"description": "His design combined a main rotor for lift and a tail rotor for stability, setting the blueprint for most modern helicopters.",
 					"extra": "Sikorsky's work revolutionized aviation, enabling vertical takeoff and landing, search-and-rescue operations, and military transport."
 				},
-				"image": "images/europe/russia/helicopter.webp"
+				"image": "images/inventions/europe/russia/helicopter.webp"
 			},
 			{
 				"name": "Tetris",
@@ -299,7 +299,7 @@
 					"description": "Players rotate and place falling shapes called tetrominoes to complete horizontal lines without gaps, which then disappear, scoring points.",
 					"extra": "Tetris has been adapted to nearly every gaming platform and is considered a cultural icon worldwide."
 				},
-				"image": "images/europe/russia/tetris.webp"
+				"image": "images/inventions/europe/russia/tetris.webp"
 			}
 		]
 	},
@@ -315,7 +315,7 @@
 					"description": "Bernat invented the idea of putting candy on a stick so it could be enjoyed without sticky fingers, revolutionizing the candy industry.",
 					"extra": "The brand logo was famously designed by Salvador Dalí, and Chupa Chups became a global phenomenon."
 				},
-				"image": "images/europe/spain/chupa_chups.webp"
+				"image": "images/inventions/europe/spain/chupa_chups.webp"
 			},
 			{
 				"name": "Table Football (Foosball)",
@@ -326,7 +326,7 @@
 					"description": "Gomez's design popularized the game in Spain and beyond, making it a widely played recreational activity in homes, bars, and clubs.",
 					"extra": "Modern foosball tables have evolved in design and rules, but the basic Spanish-invented concept remains the same worldwide."
 				},
-				"image": "images/europe/spain/table_football.webp"
+				"image": "images/inventions/europe/spain/table_football.webp"
 			},
 			{
 				"name": "Modern Classical Acoustic Guitar",
@@ -337,7 +337,7 @@
 					"description": "Torres standardized the guitar's shape and internal bracing, improving volume, tone, and playability, forming the basis of modern classical and flamenco guitars.",
 					"extra": "His designs influenced luthiers worldwide and are still followed in modern guitar making."
 				},
-				"image": "images/europe/spain/acoustic_guitar.webp"
+				"image": "images/inventions/europe/spain/acoustic_guitar.webp"
 			}
 		]
 	},
@@ -353,7 +353,7 @@
 					"description": "Using wires, a diaphragm, and electromagnetic coils, it converted sound into electrical signals for instant communication.",
 					"extra": "Inspired by his work on hearing devices, Bell experimented tirelessly with circuits until the first call rang through."
 				},
-				"image": "images/north_america/united_states/telephone.webp"
+				"image": "images/inventions/north_america/united_states/telephone.webp"
 			},
 			{
 				"name": "Light Bulb",
@@ -364,7 +364,7 @@
 					"description": "The bulb used a carbon filament in a vacuum to produce light efficiently and reliably for home and industrial use.",
 					"extra": "Edison tested thousands of materials for the filament before finding one that could burn long enough to be commercially viable."
 				},
-				"image": "images/north_america/united_states/light_bulb.webp"
+				"image": "images/inventions/north_america/united_states/light_bulb.webp"
 			},
 			{
 				"name": "Airplane",
@@ -375,7 +375,7 @@
 					"description": "Their airplane, the Wright Flyer, used a lightweight engine and movable control surfaces to achieve lift and stability.",
 					"extra": "The Wright brothers' experimentation with gliders, wind tunnels, and control mechanisms paved the way for modern aviation."
 				},
-				"image": "images/north_america/united_states/airplane.webp"
+				"image": "images/inventions/north_america/united_states/airplane.webp"
 			}
 		]
 	},
@@ -391,7 +391,7 @@
 					"description": "They extracted it from animal pancreases and purified it so it could regulate blood sugar safely.",
 					"extra": "Their experiments combined surgical skill and chemistry, laying the foundation for modern diabetes care."
 				},
-				"image": "images/north_america/canada/insulin.webp"
+				"image": "images/inventions/north_america/canada/insulin.webp"
 			},
 			{
 				"name": "IMAX",
@@ -402,7 +402,7 @@
 					"description": "The system uses larger film frames and advanced projection techniques to immerse audiences in lifelike visuals.",
 					"extra": "IMAX theaters are now globally recognized for their ability to deliver intense, immersive movie experiences."
 				},
-				"image": "images/north_america/canada/imax.webp"
+				"image": "images/inventions/north_america/canada/imax.webp"
 			},
 			{
 				"name": "Electric Wheelchair",
@@ -413,7 +413,7 @@
 					"description": "Using a motorized system, the chair allowed users to move independently, transforming rehabilitation and accessibility.",
 					"extra": "Klein's innovation laid the groundwork for modern powered mobility devices used worldwide today."
 				},
-				"image": "images/north_america/canada/electric_wheelchair.webp"
+				"image": "images/inventions/north_america/canada/electric_wheelchair.webp"
 			}
 		]
 	},
@@ -429,7 +429,29 @@
 					"description": "His device used color wheels and filters to project images in red, green, and blue tones.",
 					"extra": "He tested prototypes repeatedly at home and in studios, inspiring later global color TV standards."
 				},
-				"image": "images/north_america/mexico/color_tv.webp"
+				"image": "images/inventions/north_america/mexico/color_tv.webp"
+			},
+			{
+				"name": "Birth Control Pill (oral contraceptive)",
+				"inventor": "Luis Ernesto Miramontes",
+				"year": "1951",
+				"information": {
+					"general": "Miramontes co-invented the first orally active hormonal contraceptive, revolutionizing family planning worldwide.",
+					"description": "He synthesized norethindrone, the key active ingredient, which could prevent ovulation when taken orally.",
+					"extra": "This breakthrough had profound social and cultural impacts, giving women unprecedented control over reproductive health."
+				},
+				"image": "images/inventions/north_america/mexico/birth_control_pill.webp"
+			},
+			{
+				"name": "Tridilosa (Structural Engineering System)",
+				"inventor": "Heberto Castillo",
+				"year": "1966",
+				"information": {
+					"general": "A lightweight and strong construction system combining concrete and steel for large-span structures.",
+					"description": "Tridilosa uses a 3D lattice structure to reduce material usage while maintaining high load-bearing capacity.",
+					"extra": "This innovation allowed Mexico to build taller, lighter, and more economical buildings, influencing modern architectural design."
+				},
+				"image": "images/inventions/north_america/mexico/tridilosa.webp"
 			}
 		]
 	},
@@ -445,7 +467,7 @@
 					"description": "He designed wheels, steering, and lightweight structures to safely move and take off small aircraft.",
 					"extra": "Inspired by observation of birds and experiments in Paris, he demonstrated practical flight to astonished crowds."
 				},
-				"image": "images/south_america/brazil/airplane_taxiing.webp"
+				"image": "images/inventions/south_america/brazil/airplane_taxiing.webp"
 			},
 			{
 				"name": "Superflexible Fiber Optics",
@@ -456,7 +478,7 @@
 					"description": "The fibers used modified polymer coatings allowing extreme bending without signal loss, ideal for dense urban cable layouts.",
 					"extra": "The technology was later used in submarine cables and satellite communication infrastructures across Latin America."
 				},
-				"image": "images/south_america/brazil/fiber_optics.webp"
+				"image": "images/inventions/south_america/brazil/fiber_optics.webp"
 			},
 			{
 				"name": "Direct-Recording Electronic Voting Machine",
@@ -467,7 +489,7 @@
 					"description": "The device digitized ballots, reduced counting time from days to minutes, and incorporated validation features that cut down election errors.",
 					"extra": "Brazil became a global pioneer in electronic voting. Many countries later modeled their systems after Brazil's design."
 				},
-				"image": "images/south_america/brazil/voting_machine.webp"
+				"image": "images/inventions/south_america/brazil/voting_machine.webp"
 			}
 		]
 	},
@@ -483,7 +505,7 @@
 					"description": "Made from metal and plastic, the devices pumped blood temporarily while patients awaited transplants.",
 					"extra": "Their iterative testing in labs and with animals paved the way for modern artificial heart technology."
 				},
-				"image": "images/south_america/argentina/artificial_heart.webp"
+				"image": "images/inventions/south_america/argentina/artificial_heart.webp"
 			},
 			{
 				"name": "Ballpoint Pen",
@@ -494,7 +516,7 @@
 					"description": "Using a tiny rotating ball in the tip to evenly dispense ink, it became a reliable and convenient writing instrument worldwide.",
 					"extra": "Bíró's design replaced fountain pens in many applications and is still used globally today."
 				},
-				"image": "images/south_america/argentina/ballpoint_pen.webp"
+				"image": "images/inventions/south_america/argentina/ballpoint_pen.webp"
 			}
 		]
 	},
@@ -510,7 +532,7 @@
 					"description": "He mashed, pressed, and dried fibers into smooth sheets suitable for writing and recording ideas.",
 					"extra": "His experiments standardized a process that spread across China and later the world, enabling literature and bureaucracy to flourish."
 				},
-				"image": "images/asia/china/paper.webp"
+				"image": "images/inventions/asia/china/paper.webp"
 			},
 			{
 				"name": "Gunpowder",
@@ -521,7 +543,7 @@
 					"description": "Used first for fireworks and later adapted for military applications, gunpowder transformed warfare globally.",
 					"extra": "Its invention laid the foundation for cannons, firearms, and modern explosives."
 				},
-				"image": "images/asia/china/gunpowder.webp"
+				"image": "images/inventions/asia/china/gunpowder.webp"
 			},
 			{
 				"name": "Compass",
@@ -532,7 +554,7 @@
 					"description": "The Chinese first used lodestone (magnetized mineral) to create a simple directional compass for navigation and geomancy.",
 					"extra": "The compass later became a crucial tool for maritime exploration globally."
 				},
-				"image": "images/asia/china/compass.webp"
+				"image": "images/inventions/asia/china/compass.webp"
 			}
 		]
 	},
@@ -548,7 +570,7 @@
 					"description": "He used semiconductor materials like gallium nitride to produce energy-efficient blue light for displays and lighting.",
 					"extra": "After countless lab trials, his breakthrough earned a Nobel Prize and revolutionized electronics globally."
 				},
-				"image": "images/asia/japan/blue_led.webp"
+				"image": "images/inventions/asia/japan/blue_led.webp"
 			},
 			{
 				"name": "Compact Disc (CD)",
@@ -559,7 +581,7 @@
 					"description": "Japanese engineers helped develop the CD standard and manufacturing technology, making digital audio widely accessible.",
 					"extra": "CDs revolutionized music distribution and data storage, laying the groundwork for DVDs and Blu-rays."
 				},
-				"image": "images/asia/japan/compact_disc.webp"
+				"image": "images/inventions/asia/japan/compact_disc.webp"
 			},
 			{
 				"name": "Game Boy",
@@ -570,7 +592,7 @@
 					"description": "Gunpei Yokoi designed a compact, durable device with interchangeable game cartridges, making gaming accessible anywhere.",
 					"extra": "The Game Boy's success led to a long-running line of Nintendo handheld consoles and inspired the entire portable gaming industry."
 				},
-				"image": "images/asia/japan/game_boy.webp"
+				"image": "images/inventions/asia/japan/game_boy.webp"
 			}
 		]
 	},
@@ -586,7 +608,7 @@
 					"description": "Unlike standard refrigerators, Kimchi refrigerators maintain a stable, slightly colder environment with precise humidity control, preventing over-fermentation while keeping kimchi fresh for months.",
 					"extra": "This invention became extremely popular in South Korean households and has been exported globally to cater to Korean cuisine enthusiasts."
 				},
-				"image": "images/asia/south_korea/kimchi_refrigerator.webp"
+				"image": "images/inventions/asia/south_korea/kimchi_refrigerator.webp"
 			},
 			{
 				"name": "Banana Milk",
@@ -597,7 +619,7 @@
 					"description": "Seoul Milk invented this banana-flavored milk, which became extremely popular and widely consumed in schools and households.",
 					"extra": "Banana milk is now an iconic South Korean drink, often exported and referenced in Korean pop culture."
 				},
-				"image": "images/asia/south_korea/banana_milk.webp"
+				"image": "images/inventions/asia/south_korea/banana_milk.webp"
 			},
 			{
 				"name": "Hangul (Korean Alphabet)",
@@ -608,7 +630,7 @@
 					"description": "Hangul was created to improve literacy in Korea. Its systematic phonetic design allows almost anyone to read and write Korean quickly.",
 					"extra": "Hangul is celebrated every year on Hangul Day (October 9 in South Korea) and is considered one of the most scientific writing systems in the world."
 				},
-				"image": "images/asia/south_korea/hangul.webp"
+				"image": "images/inventions/asia/south_korea/hangul.webp"
 			}
 		]
 	},
@@ -624,7 +646,29 @@
 					"description": "They layered and pressed plant fibers to make durable writing surfaces for record-keeping and art.",
 					"extra": "This method spread across the Mediterranean, supporting administration and culture for centuries."
 				},
-				"image": "images/africa/egypt/papyrus.webp"
+				"image": "images/inventions/africa/egypt/papyrus.webp"
+			},
+			{
+				"name": "Solar Calendar",
+				"inventor": "Ancient Egyptians",
+				"year": "c. 2700 BC",
+				"information": {
+					"general": "Egyptians developed a 365-day solar calendar to track the agricultural year.",
+					"description": "It divided the year into 12 months of 30 days each, plus 5 extra days, helping plan farming and religious events.",
+					"extra": "This calendar was one of the earliest accurate solar calendars, influencing later timekeeping systems."
+				},
+				"image": "images/inventions/africa/egypt/solar_calendar.webp"
+			},
+			{
+				"name": "Hieroglyphic Writing",
+				"inventor": "Ancient Egyptians",
+				"year": "c. 3200 BC",
+				"information": {
+					"general": "Hieroglyphics were a complex system of pictorial writing used for formal inscriptions.",
+					"description": "It combined logographic and alphabetic elements, carved on monuments, tombs, and papyrus.",
+					"extra": "Hieroglyphs preserved Egyptian history and culture for millennia and influenced early scripts in the region."
+				},
+				"image": "images/inventions/africa/egypt/hieroglyphs.webp"
 			}
 		]
 	},
@@ -640,7 +684,29 @@
 					"description": "Using water flow, it moves and vacuums debris without manual effort.",
 					"extra": "His clever use of basic hydraulics made pool maintenance easy worldwide."
 				},
-				"image": "images/africa/south_africa/kreepy_krauly.webp"
+				"image": "images/inventions/africa/south_africa//home/ciirche/Downloads/kreepy_krauly.webp.webp"
+			},
+			{
+				"name": "CAT Scan Contributions",
+				"inventor": "Allan Cormack",
+				"year": "1972",
+				"information": {
+					"general": "Cormack, working in South Africa, co-developed mathematical algorithms behind CT scanning.",
+					"description": "These algorithms allowed 3D images from multiple X-ray scans.",
+					"extra": "He later shared the Nobel Prize in Physiology or Medicine for this work, revolutionizing medical imaging."
+				},
+				"image": "images/inventions/africa/south_africa/cat_scan.webp"
+			},
+			{
+				"name": "Braai Grid (Portable Barbecue Grid)",
+				"inventor": "South African Innovators",
+				"year": "1970s",
+				"information": {
+					"general": "A portable barbecue grid designed to make outdoor cooking easier and more social.",
+					"description": "It allows meat, vegetables, and other foods to be grilled evenly over open flames or coals, perfect for the famous South African braai.",
+					"extra": "The braai culture is a beloved social tradition in South Africa, and this invention helped make it portable and accessible for gatherings anywhere."
+				},
+				"image": "images/inventions/africa/south_africa/braai_grid.webp"
 			}
 		]
 	},
@@ -656,7 +722,18 @@
 					"description": "Adjustable strings and tension allow pitch changes, letting drums 'talk' across distances.",
 					"extra": "This innovation influenced music and communication across West Africa for centuries."
 				},
-				"image": "images/africa/nigeria/talking_drum.webp"
+				"image": "images/inventions/africa/nigeria/talking_drum.webp"
+			},
+			{
+				"name": "Aso Oke Weaving Techniques",
+				"inventor": "Yoruba Artisans",
+				"year": "c. 1200 AD",
+				"information": {
+					"general": "Advanced traditional textile weaving creating richly patterned fabrics.",
+					"description": "Used on looms with precise techniques for ceremonial clothing and art.",
+					"extra": "Aso Oke remains a cultural symbol and influences modern textile design."
+				},
+				"image": "images/inventions/africa/nigeria/aso_oke.webp"
 			}
 		]
 	},
@@ -672,7 +749,7 @@
 					"description": "They pulped, pressed, and dried fibers into sheets for school and community use.",
 					"extra": "This creative use of local materials supported education and small businesses."
 				},
-				"image": "images/africa/kenya/sisal_paper.webp"
+				"image": "images/inventions/africa/kenya/sisal_paper.webp"
 			}
 		]
 	},
@@ -688,7 +765,7 @@
 					"description": "They used lime, natural pigments, and olive soap to create durable, glossy surfaces for baths and walls.",
 					"extra": "The technique spread through North Africa and is still used in decorative architecture today."
 				},
-				"image": "images/africa/morocco/tadelakt.webp"
+				"image": "images/inventions/africa/morocco/tadelakt.webp"
 			}
 		]
 	},
@@ -704,7 +781,7 @@
 					"description": "Encased in durable metal, it records cockpit audio and flight data for later investigation.",
 					"extra": "His tests and prototypes ensured planes worldwide became safer through flight data analysis."
 				},
-				"image": "images/oceania/australia/black_box.webp"
+				"image": "images/inventions/oceania/australia/black_box.webp"
 			}
 		]
 	},
@@ -720,7 +797,7 @@
 					"description": "Made from plastic and rubber, it is pre-sterilized and safe for single use.",
 					"extra": "His invention quickly became a global medical standard, saving countless lives."
 				},
-				"image": "images/oceania/new_zealand/disposable_syringe.webp"
+				"image": "images/inventions/oceania/new_zealand/disposable_syringe.webp"
 			}
 		]
 	},
@@ -736,7 +813,7 @@
 					"description": "Using carved wood and lashings, the hulls were fast, stable, and seaworthy.",
 					"extra": "These designs supported fishing, trade, and migration, influencing Pacific navigation."
 				},
-				"image": "images/oceania/fiji/canoe.webp"
+				"image": "images/inventions/oceania/fiji/canoe.webp"
 			}
 		]
 	},
@@ -752,7 +829,7 @@
 					"description": "Fibers are looped and knotted into flexible, durable nets for carrying food, goods, and even babies.",
 					"extra": "Bilum remains a cultural symbol and is now appreciated internationally for its craftsmanship."
 				},
-				"image": "images/oceania/papua_new_guinea/bilum.webp"
+				"image": "images/inventions/oceania/papua_new_guinea/bilum.webp"
 			}
 		]
 	},
@@ -768,7 +845,7 @@
 					"description": "Using comb-like tools and ink from soot, designs are tapped into the skin with precision.",
 					"extra": "These techniques influenced Polynesian art and remain an important cultural tradition."
 				},
-				"image": "images/oceania/samoa/tattoo.webp"
+				"image": "images/inventions/oceania/samoa/tattoo.webp"
 			}
 		]
 	},
@@ -784,7 +861,7 @@
 					"description": "Puppeteers stand behind a screen and control the wooden puppets using long rods hidden under the water.",
 					"extra": "It was originally used to entertain villagers and convey folklore, and it remains a symbol of Vietnamese cultural heritage."
 				},
-				"image": "images/asia/vietnam/water_puppet_theater.webp"
+				"image": "images/inventions/asia/vietnam/water_puppet_theater.webp"
 			},
 			{
 				"name": "Rice Paper",
@@ -795,7 +872,7 @@
 					"description": "The rice flour is mixed with water, spread thin, steamed, and dried to produce flexible sheets.",
 					"extra": "Rice paper has influenced culinary techniques worldwide, especially in Southeast Asian cuisine."
 				},
-				"image": "images/asia/vietnam/rice_paper.webp"
+				"image": "images/inventions/asia/vietnam/rice_paper.webp"
 			}
 		]
 	},
@@ -811,7 +888,7 @@
 					"description": "They selectively bred tulip bulbs for color, shape, and pattern, influencing horticulture and inspiring tulip mania in Europe.",
 					"extra": "While tulips existed elsewhere, Turkey's systematic cultivation and decorative use were pioneering."
 				},
-				"image": "images/europe/turkey/tulip.webp"
+				"image": "images/inventions/europe/turkey/tulip.webp"
 			},
 			{
 				"name": "Hittite Chariot",
@@ -822,7 +899,7 @@
 					"description": "Their chariot design allowed greater maneuverability and speed on the battlefield, revolutionizing ancient military tactics.",
 					"extra": "This design influenced later civilizations' chariots across the Near East."
 				},
-				"image": "images/europe/turkey/hittite_chariot.webp"
+				"image": "images/inventions/europe/turkey/hittite_chariot.webp"
 			},
 			{
 				"name": "Iznik Pottery",
@@ -833,7 +910,7 @@
 					"description": "Artisans perfected glazing and painting techniques to produce high-quality bowls, tiles, and plates.",
 					"extra": "Iznik ceramics became a hallmark of Turkish art and influenced European ceramic production."
 				},
-				"image": "images/europe/turkey/iznik_pottery.webp"
+				"image": "images/inventions/europe/turkey/iznik_pottery.webp"
 			}
 		]
 	},
@@ -849,7 +926,7 @@
 					"description": "It was made using a clay jar, a rolled copper cylinder, and an iron rod sealed with bitumen. When filled with an acidic liquid like vinegar or lemon juice, the components reacted to create a small electrical charge.",
 					"extra": "While its true purpose is still debated, many researchers believe it may have been used for electroplating jewelry with precious metals — hinting at an advanced understanding of early chemistry and electricity."
 				},
-				"image": "images/asia/iran/baghdad_battery.webp"
+				"image": "images/inventions/asia/iran/baghdad_battery.webp"
 			},
 			{
 				"name": "Backgammon",
@@ -860,7 +937,7 @@
 					"description": "Using a wooden board, carved pieces and dice made from bone or stone, players raced and captured pieces using a mix of probability and skill. The design created endless variations of play and strategy.",
 					"extra": "Backgammon spread across the Middle East, into Europe, and eventually around the world. Thousands of years later, the core gameplay remains almost unchanged."
 				},
-				"image": "images/asia/iran/backgammon.webp"
+				"image": "images/inventions/asia/iran/backgammon.webp"
 			},
 			{
 				"name": "Yakhchal (Ancient Ice House)",
@@ -871,7 +948,7 @@
 					"description": "The conical structure was made from a special mortar that resisted heat. Underground chambers, thick walls, and wind-catchers kept ice frozen even in extreme summer temperatures.",
 					"extra": "Ice was transported from nearby mountains in winter and stored year-round. These structures inspired modern refrigeration and passive cooling architecture."
 				},
-				"image": "images/asia/iran/yakhchal.webp"
+				"image": "images/inventions/asia/iran/yakhchal.webp"
 			}
 		]
 	},
@@ -887,7 +964,7 @@
 					"description": "Indian scholars formalized zero to represent 'nothingness' in mathematics. This allowed for the powerful place-value system used today in arithmetic, algebra, geometry and computing.",
 					"extra": "Without zero, modern physics, engineering, and digital technology would not exist. It is one of the most influential inventions in history."
 				},
-				"image": "images/asia/india/zero.webp"
+				"image": "images/inventions/asia/india/zero.webp"
 			},
 			{
 				"name": "Chess (Chaturanga)",
@@ -898,7 +975,7 @@
 					"description": "The game was based on real military units: infantry, cavalry, elephants, and chariots. Played on an 8×8 board, it trained strategic thinking and battle planning.",
 					"extra": "As it travelled to Persia and Europe, the pieces evolved into the modern queen, bishop, and knight — turning it into the global game of chess we know today."
 				},
-				"image": "images/asia/india/chaturanga.webp"
+				"image": "images/inventions/asia/india/chaturanga.webp"
 			},
 			{
 				"name": "Stepwells",
@@ -909,7 +986,7 @@
 					"description": "These massive structures contained hundreds of steps leading down to water, with platforms, temples and carved stone walls. They were both functional water sources and artistic masterpieces.",
 					"extra": "Some stepwells descend more than ten stories underground and remain standing today as examples of advanced ancient engineering and climate-resilient design."
 				},
-				"image": "images/asia/india/stepwell.webp"
+				"image": "images/inventions/asia/india/stepwell.webp"
 			}
 		]
 	},
@@ -925,7 +1002,7 @@
 					"description": "Carved from seashells and drilled with holes, early buttons were sewn onto clothing — both as decoration and as fasteners.",
 					"extra": "This simple invention eventually transformed global fashion, leading to coats, uniforms, shirts and modern garments."
 				},
-				"image": "images/asia/pakistan/buttons.webp"
+				"image": "images/inventions/asia/pakistan/buttons.webp"
 			},
 			{
 				"name": "Precision Measuring Rulers",
@@ -936,7 +1013,7 @@
 					"description": "These rulers were crafted from ivory and divided into extremely small, consistent units — rivaling the precision of modern tools.",
 					"extra": "They allowed the cities of Harappa and Mohenjo-Daro to be built in perfect grid systems with remarkably advanced urban planning."
 				},
-				"image": "images/asia/pakistan/ivory_ruler.webp"
+				"image": "images/inventions/asia/pakistan/ivory_ruler.webp"
 			}
 		]
 	},
@@ -952,7 +1029,7 @@
 					"description": "After World War II, abandoned U.S. military jeeps were extended, decorated with bright colors, and fitted with side benches to carry many passengers.",
 					"extra": "The Jeepney became both an affordable transport solution and a powerful national symbol of Filipino creativity and resilience."
 				},
-				"image": "images/asia/philippines/jeepney.webp"
+				"image": "images/inventions/asia/philippines/jeepney.webp"
 			},
 			{
 				"name": "Banana Ketchup",
@@ -963,7 +1040,7 @@
 					"description": "During wartime tomato shortages, bananas were mashed and blended with vinegar, sugar, and spices, then dyed red to resemble ketchup.",
 					"extra": "Today, banana ketchup is a Filipino staple, used in dishes like spaghetti, fried chicken, and barbecue."
 				},
-				"image": "images/asia/philippines/banana_ketchup.webp"
+				"image": "images/inventions/asia/philippines/banana_ketchup.webp"
 			},
 			{
 				"name": "Bangka (Filipino Canoe)",
@@ -972,10 +1049,9 @@
 				"information": {
 					"general": "The bangka is a traditional Filipino outrigger canoe used for fishing, transport, and trade.",
 					"description": "Handcrafted from wood and often fitted with bamboo outriggers for stability, these boats are lightweight, durable, and designed for navigating rivers and coastal waters.",
-					"extra": "Bangka remain a vital part of Filipino life today, reflecting centuries of maritime skill and tangible craftsmanship.",
-					"tangible": true
+					"extra": "Bangka remain a vital part of Filipino life today, reflecting centuries of maritime skill and tangible craftsmanship."
 				},
-				"image": "images/asia/philippines/bangka.webp"
+				"image": "images/inventions/asia/philippines/bangka.webp"
 			}
 		]
 	},
@@ -991,7 +1067,7 @@
 					"description": "Using high-resolution scanning and data modeling, they translated knot patterns into digital databases to study historical trade and census records.",
 					"extra": "This effort made quipu accessible to global scholars and influenced modern information-encoding techniques inspired by traditional systems."
 				},
-				"image": "images/south_america/peru/quipu_digital.webp"
+				"image": "images/inventions/south_america/peru/quipu_digital.webp"
 			},
 			{
 				"name": "Potato Preservation System",
@@ -1002,7 +1078,7 @@
 					"description": "The system allows potatoes to be stored for months without sprouting or rotting, supporting both domestic supply and export markets.",
 					"extra": "Given Peru's status as the origin of potatoes, this invention significantly increased food security and agricultural efficiency nationwide."
 				},
-				"image": "images/south_america/peru/potato_storage.webp"
+				"image": "images/inventions/south_america/peru/potato_storage.webp"
 			},
 			{
 				"name": "Pukio Irrigation Machine",
@@ -1013,7 +1089,7 @@
 					"description": "The device combines ancient Inca hydraulic knowledge with modern mechanical pumps, enabling consistent water flow to terraced fields while reducing manual labor.",
 					"extra": "The Pukio machine preserves traditional Andean irrigation methods while supporting sustainable farming and increasing crop yields in mountainous regions."
 				},
-				"image": "images/south_america/peru/pukio_machine.webp"
+				"image": "images/inventions/south_america/peru/pukio_machine.webp"
 			}
 		]
 	},
@@ -1029,7 +1105,7 @@
 					"description": "Built on Debian, it offers lightweight performance for low-cost laptops. Its clean interface, offline-friendly tools, and open-source structure made it ideal for classrooms with limited connectivity.",
 					"extra": "Canaima was installed in more than 7 million 'Canaimitas' laptops distributed to students nationwide. It remains one of Latin America's largest open-source educational tech initiatives."
 				},
-				"image": "images/south_america/venezuela/canaima_os.webp"
+				"image": "images/inventions/south_america/venezuela/canaima_os.webp"
 			},
 			{
 				"name": "Modern Arepa Maker (TostyArepa)",
@@ -1040,7 +1116,7 @@
 					"description": "The appliance presses and heats corn dough evenly between two metal plates, producing perfectly shaped arepas in minutes.",
 					"extra": "The TostyArepa became a household staple in Venezuela and among diaspora communities, shaping how arepas are prepared worldwide."
 				},
-				"image": "images/south_america/venezuela/tostyarepa.webp"
+				"image": "images/inventions/south_america/venezuela/tostyarepa.webp"
 			}
 		]
 	},
@@ -1056,7 +1132,7 @@
 					"description": "The system reduces boiling temperature, allowing sugarcane juice to concentrate without burning, improving both quality and production speed. It became important for small Andean producers.",
 					"extra": "Armendáriz's design increased energy efficiency and created more consistent panela blocks, influencing sugarcane processing across South America."
 				},
-				"image": "images/south_america/ecuador/panela_system.webp"
+				"image": "images/inventions/south_america/ecuador/panela_system.webp"
 			},
 			{
 				"name": "Ecuavóley Net System",
@@ -1067,7 +1143,7 @@
 					"description": "The system involved a higher net, a specific ball weight, and reinforced court posts, giving the sport its signature fast, powerful style.",
 					"extra": "Ecuavóley later spread to Colombia, Peru, and migrant communities in the U.S. and Spain. Ecuador's standardized equipment remains the sport's global reference."
 				},
-				"image": "images/south_america/ecuador/ecuavoley.webp"
+				"image": "images/inventions/south_america/ecuador/ecuavoley.webp"
 			}
 		]
 	},
@@ -1083,7 +1159,7 @@
 					"description": "The system uses solar energy to evaporate brine efficiently, increasing salt and lithium yields while reducing labor and fuel costs.",
 					"extra": "This innovation influenced renewable-energy-based extraction techniques across South America, supporting lithium mining for batteries."
 				},
-				"image": "images/south_america/bolivia/solar_salt.webp"
+				"image": "images/inventions/south_america/bolivia/solar_salt.webp"
 			},
 			{
 				"name": "Chirimoya Juice Pasteurizer",
@@ -1094,7 +1170,7 @@
 					"description": "The device uses low-temperature pasteurization to preserve nutrients and extend shelf life, enabling local farmers to export juices safely.",
 					"extra": "It became widely used in Cochabamba and Santa Cruz, increasing income for small farmers and supporting Ecuadorian and Brazilian fruit trade connections."
 				},
-				"image": "images/south_america/bolivia/chirimoya_pasteurizer.webp"
+				"image": "images/inventions/south_america/bolivia/chirimoya_pasteurizer.webp"
 			},
 			{
 				"name": "High-Altitude Medical Oxygen Device",
@@ -1105,7 +1181,7 @@
 					"description": "The devices regulate oxygen delivery under thin-air conditions, improving patient survival and comfort in hospitals and homes at 3,500 meters above sea level.",
 					"extra": "This innovation has become a model for high-altitude medical care in Andean countries."
 				},
-				"image": "images/south_america/bolivia/high_altitude_oxygen.webp"
+				"image": "images/inventions/south_america/bolivia/high_altitude_oxygen.webp"
 			}
 		]
 	}
