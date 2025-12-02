@@ -1738,7 +1738,46 @@
       "image": "images/asia/syria/syria_ugaritic_alphabet.webp"
     }
   ]
+},
+{
+  "country": "Romania",
+  "inventions": [
+    {
+      "name": "The Jet Engine (Coandă-1910)",
+      "inventor": "Henri Coandă",
+      "year": "1910",
+      "information": {
+        "general": "Henri Coandă built the world’s first jet-powered aircraft prototype, marking the birth of jet propulsion.",
+        "description": "His aircraft used a pioneering engine that expelled air at high speed, creating thrust — a concept fundamental to modern jet engines.",
+        "extra": "Coandă also discovered the Coandă Effect, crucial in aerodynamics and fluid dynamics."
+      },
+      "image": "images/europe/romania/romania_jetengine.webp"
+    },
+    {
+      "name": "Insulin (Co-discovery Contribution)",
+      "inventor": "Nicolae Paulescu",
+      "year": "1916–1921",
+      "information": {
+        "general": "Romanian physiologist Nicolae Paulescu conducted groundbreaking research on diabetes treatment.",
+        "description": "He isolated a pancreatic extract he named 'pancreina', which lowered blood sugar levels — an essential step toward modern insulin.",
+        "extra": "Although the Nobel Prize went to Banting and Best, many historians argue that Paulescu should share credit for the discovery."
+      },
+      "image": "images/europe/romania/romania_insulin.webp"
+    },
+    {
+      "name": "Cibernetics Foundations",
+      "inventor": "Stefan Odobleja",
+      "year": "1938",
+      "information": {
+        "general": "Stefan Odobleja is considered a precursor of modern cybernetics.",
+        "description": "His work 'Psychologie consonantiste' introduced concepts such as feedback mechanisms years before Norbert Wiener formalized cybernetics.",
+        "extra": "Odobleja’s theories influenced systems science, robotics, and computer science."
+      },
+      "image": "images/europe/romania/romania_cybernetics.webp"
+    }
+  ]
 }
+
 
 
 
