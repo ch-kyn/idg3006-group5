@@ -2003,7 +2003,49 @@
     "food": "images/countries/asia/afghanistan/afghanistan_food.webp",
     "place": "images/countries/asia/afghanistan/afghanistan_place.webp"
   }
+},
+{
+  "country": "Syria",
+  "capital": "Damascus",
+  "population": 17500000,
+  "area_km2": 185180,
+  "currency": "Syrian Pound (SYP)",
+  "gdp_total_usd": 22000000000,
+  "national_day": "April 17",
+  "national_animal": "Arabian Oryx",
+  "exports": [
+    "Olive Oil",
+    "Textiles",
+    "Phosphates",
+    "Fruits and Vegetables"
+  ],
+  "popular_dishes": [
+    "Kibbeh",
+    "Shawarma",
+    "Fattoush",
+    "Mahshi",
+    "Tabbouleh"
+  ],
+  "famous_people": [
+    "Nizar Qabbani",
+    "Adonis (Ali Ahmad Said Esber)",
+    "Omar Sharif",
+    "Fares Al-Helou"
+  ],
+  "places_heritage": [
+    "Ancient City of Damascus",
+    "Ancient City of Aleppo",
+    "Palmyra",
+    "Crac des Chevaliers"
+  ],
+  "images": {
+    "flag": "images/countries/asia/syria/syria_flag.webp",
+    "map": "images/countries/asia/syria/syria_map.webp",
+    "food": "images/countries/asia/syria/syria_food.webp",
+    "place": "images/countries/asia/syria/syria_place.webp"
+  }
 }
+
 
 
 

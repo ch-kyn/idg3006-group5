@@ -30,6 +30,10 @@
 - Philippines
 - South-Korea
 - Vietnam
+- Iraq
+- Saudi-Arabia
+- Afghanistan
+- Syria
 
 ## North America (3)
 - Canada
