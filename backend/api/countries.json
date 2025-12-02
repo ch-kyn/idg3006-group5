@@ -2556,5 +2556,171 @@
             "food": "images/countries/asia/malaysia/malaysia_nasi_lemak.webp",
             "place": "images/countries/asia/malaysia/malaysia_petronas_towers.webp"
         }
-    }
+    },
+{
+  "country": "Iraq",
+  "capital": "Baghdad",
+  "population": 45000000,
+  "area_km2": 438317,
+  "currency": "Iraqi Dinar (IQD)",
+  "gdp_total_usd": 230000000000,
+  "national_day": "October 3",
+  "national_animal": "Goat (Symbolic), Arabian Horse (Cultural symbol)",
+  "exports": [
+    "Crude Oil",
+    "Petroleum Products",
+    "Chemicals",
+    "Dates"
+  ],
+  "popular_dishes": [
+    "Masgouf",
+    "Dolma",
+    "Kabsa",
+    "Kleicha",
+    "Tashreeb"
+  ],
+  "famous_people": [
+    "Sinan Antoon",
+    "Zaha Hadid",
+    "Nouri Al-Maliki",
+    "Kadhim Al-Sahir"
+  ],
+  "places_heritage": [
+    "Babylon Archaeological Site",
+    "Erbil Citadel",
+    "Ziggurat of Ur",
+    "The Ancient City of Hatra"
+  ],
+  "images": {
+    "flag": "images/countries/asia/iraq/iraq_flag.webp",
+    "map": "images/countries/asia/iraq/iraq_map.webp",
+    "food": "images/countries/asia/iraq/iraq_food.webp",
+    "place": "images/countries/asia/iraq/iraq_place.webp"
+  }
+},
+{
+  "country": "Saudi Arabia",
+  "capital": "Riyadh",
+  "population": 36000000,
+  "area_km2": 2149690,
+  "currency": "Saudi Riyal (SAR)",
+  "gdp_total_usd": 1100000000000,
+  "national_day": "September 23",
+  "national_animal": "Arabian Camel",
+  "exports": [
+    "Crude Oil",
+    "Petrochemicals",
+    "Plastics",
+    "Dates"
+  ],
+  "popular_dishes": [
+    "Kabsa",
+    "Mandi",
+    "Jareesh",
+    "Mutabbaq",
+    "Saleeg"
+  ],
+  "famous_people": [
+    "Ibn Saud (Founder of Saudi Arabia)",
+    "Muhammad ibn Abd al-Wahhab",
+    "Ghazi al-Gosaibi",
+    "Turki Alalshikh"
+  ],
+  "places_heritage": [
+    "Al-Ula (Hegra / Mada'in Saleh)",
+    "Masmak Fortress",
+    "Diriyah",
+    "Al-Balad, Jeddah",
+    "The Prophet's Mosque (Medina)"
+  ],
+  "images": {
+    "flag": "images/countries/asia/saudi-arabia/saudi_flag.webp",
+    "map": "images/countries/asia/saudi-arabia/saudi_map.webp",
+    "food": "images/countries/asia/saudi-arabia/saudi_food.webp",
+    "place": "images/countries/asia/saudi-arabia/saudi_place.webp"
+  }
+},
+{
+  "country": "Afghanistan",
+  "capital": "Kabul",
+  "population": 42000000,
+  "area_km2": 652230,
+  "currency": "Afghan Afghani (AFN)",
+  "gdp_total_usd": 20000000000,
+  "national_day": "August 19",
+  "national_animal": "Snow Leopard",
+  "exports": [
+    "Dried Fruits & Nuts",
+    "Carpets & Rugs",
+    "Precious Stones (Lapis Lazuli)",
+    "Saffron"
+  ],
+  "popular_dishes": [
+    "Kabuli Pulao",
+    "Mantu",
+    "Bolani",
+    "Aush",
+    "Shorwa"
+  ],
+  "famous_people": [
+    "Ahmad Shah Massoud",
+    "Rumi (Jalal ad-Din Muhammad Rumi)",
+    "Abdur Rahman Khan",
+    "Abdul Rahman Pazhwak"
+  ],
+  "places_heritage": [
+    "Bamiyan Valley (Buddha Niches)",
+    "Minaret of Jam",
+    "Herat Citadel",
+    "Bagh-e Babur",
+    "Blue Mosque of Mazar-i-Sharif"
+  ],
+  "images": {
+    "flag": "images/countries/asia/afghanistan/afghanistan_flag.webp",
+    "map": "images/countries/asia/afghanistan/afghanistan_map.webp",
+    "food": "images/countries/asia/afghanistan/afghanistan_food.webp",
+    "place": "images/countries/asia/afghanistan/afghanistan_place.webp"
+  }
+},
+{
+  "country": "Syria",
+  "capital": "Damascus",
+  "population": 17500000,
+  "area_km2": 185180,
+  "currency": "Syrian Pound (SYP)",
+  "gdp_total_usd": 22000000000,
+  "national_day": "April 17",
+  "national_animal": "Arabian Oryx",
+  "exports": [
+    "Olive Oil",
+    "Textiles",
+    "Phosphates",
+    "Fruits and Vegetables"
+  ],
+  "popular_dishes": [
+    "Kibbeh",
+    "Shawarma",
+    "Fattoush",
+    "Mahshi",
+    "Tabbouleh"
+  ],
+  "famous_people": [
+    "Nizar Qabbani",
+    "Adonis (Ali Ahmad Said Esber)",
+    "Omar Sharif",
+    "Fares Al-Helou"
+  ],
+  "places_heritage": [
+    "Ancient City of Damascus",
+    "Ancient City of Aleppo",
+    "Palmyra",
+    "Crac des Chevaliers"
+  ],
+  "images": {
+    "flag": "images/countries/asia/syria/syria_flag.webp",
+    "map": "images/countries/asia/syria/syria_map.webp",
+    "food": "images/countries/asia/syria/syria_food.webp",
+    "place": "images/countries/asia/syria/syria_place.webp"
+  }
+}
 ]

@@ -46,6 +46,10 @@
 - Thailand
 - Vietnam
 - United Arab Emirates
+- Iraq
+- Saudi-Arabia
+- Afghanistan
+- Syria
 
 ## North America (3)
 - Canada
@@ -83,4 +87,3 @@
 - Samoa
 
 ## Countries to add
-UAE, switzerland, austria, belgium, czech republic, cuba, ireland, malaysia
