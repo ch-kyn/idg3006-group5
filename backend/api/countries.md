@@ -6,7 +6,7 @@
 
 **Note**: ALL IMAGES SHOULD BE IN .WEBP GUYS
 
-## Europe (11)
+## Europe (12)
 - France
 - Germany
 - Greece
@@ -20,7 +20,7 @@
 - Ukraine
 - United Kingdom
 
-## Asia (11)
+## Asia (13)
 - China
 - India
 - Indonesia
@@ -49,7 +49,7 @@
 - Peru
 - Venezuela
 
-## Africa (7)
+## Africa (8)
 - Algeria
 - Egypt
 - Kenya
@@ -57,6 +57,7 @@
 - Morocco
 - Nigeria
 - South-Africa
+- Sudan
 
 ## Oceania (5)
 - Australia
