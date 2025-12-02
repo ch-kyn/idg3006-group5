@@ -1878,5 +1878,47 @@
             "food": "images/countries/europe/ukraine/ukraine_borscht.webp",
             "place": "images/countries/europe/ukraine/ukraine_kyiv_lavra.webp"
         }
-    }
+    },
+    {
+  "country": "Iraq",
+  "capital": "Baghdad",
+  "population": 45000000,
+  "area_km2": 438317,
+  "currency": "Iraqi Dinar (IQD)",
+  "gdp_total_usd": 230000000000,
+  "national_day": "October 3",
+  "national_animal": "Goat (Symbolic), Arabian Horse (Cultural symbol)",
+  "exports": [
+    "Crude Oil",
+    "Petroleum Products",
+    "Chemicals",
+    "Dates"
+  ],
+  "popular_dishes": [
+    "Masgouf",
+    "Dolma",
+    "Kabsa",
+    "Kleicha",
+    "Tashreeb"
+  ],
+  "famous_people": [
+    "Sinan Antoon",
+    "Zaha Hadid",
+    "Nouri Al-Maliki",
+    "Kadhim Al-Sahir"
+  ],
+  "places_heritage": [
+    "Babylon Archaeological Site",
+    "Erbil Citadel",
+    "Ziggurat of Ur",
+    "The Ancient City of Hatra"
+  ],
+  "images": {
+    "flag": "images/countries/asia/iraq/iraq_flag.webp",
+    "map": "images/countries/asia/iraq/iraq_map.webp",
+    "food": "images/countries/asia/iraq/iraq_food.webp",
+    "place": "images/countries/asia/iraq/iraq_place.webp"
+  }
+}
+
 ]

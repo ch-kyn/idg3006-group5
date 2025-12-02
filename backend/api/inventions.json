@@ -1586,5 +1586,44 @@
 				"image": "images/inventions/asia/thailand/muay_thai_training_equipment.webp"
 			}
 		]
-	}
+	},
+	{
+  "country": "Iraq",
+  "inventions": [
+    {
+      "name": "The Wheel",
+      "inventor": "Sumerians (Ancient Mesopotamia)",
+      "year": "Around 3500 BCE",
+      "information": {
+        "general": "One of humanity's most important inventions, the wheel first appeared in ancient Mesopotamia, in what is now Iraq.",
+        "description": "Originally used for pottery, the wheel later enabled carts, transport, and mechanical devices, transforming human civilization.",
+        "extra": "The earliest known wheel was discovered near the ancient city of Ur, showing Iraq’s central role in early technological development."
+      },
+      "image": "images/asia/iraq/iraq_wheel.webp"
+    },
+    {
+      "name": "Cuneiform Writing",
+      "inventor": "Sumerians",
+      "year": "Around 3200 BCE",
+      "information": {
+        "general": "Cuneiform, the world’s first known writing system, was created in Mesopotamia to record trade, laws, and literature.",
+        "description": "It consisted of wedge-shaped marks pressed into clay tablets using a reed stylus, enabling administration and storytelling.",
+        "extra": "This writing system led to famous texts like the Epic of Gilgamesh and influenced future alphabets across the region."
+      },
+      "image": "images/asia/iraq/iraq_cuneiform.webp"
+    },
+    {
+      "name": "The First Laws: Code of Hammurabi",
+      "inventor": "Babylonian Scholars",
+      "year": "1754 BCE",
+      "information": {
+        "general": "The Code of Hammurabi, created in Babylon, is one of the earliest and most complete written legal codes.",
+        "description": "Carved into a basalt stele, the laws established standards for contracts, family issues, property, and justice.",
+        "extra": "Its famous phrase 'an eye for an eye' represents proportional justice, influencing legal traditions for millennia."
+      },
+      "image": "images/asia/iraq/iraq_hammurabi.webp"
+    }
+  ]
+}
+
 ]
