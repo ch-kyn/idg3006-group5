@@ -1530,7 +1530,7 @@
 					"extra": "They supported Ukraine's agricultural efficiency and contributed to the country's status as a major grain exporter."
 				},
 				"image": "images/inventions/europe/ukraine/tractor_adaptation.webp"
-				}
+			}
 		]
 	},
 	{
@@ -1586,5 +1586,575 @@
 				"image": "images/inventions/asia/thailand/muay_thai_training_equipment.webp"
 			}
 		]
-	}
+	},
+	{
+		"country": "Finland",
+		"inventions": [
+			{
+				"name": "Linux Operating System",
+				"inventor": "Linus Torvalds",
+				"year": "1991",
+				"information": {
+					"general": "Linux is a free and open-source operating system kernel created by Linus Torvalds.",
+					"description": "It is used in servers, smartphones (Android), supercomputers, and embedded systems.",
+					"extra": "It powered much of the modern internet and software infrastructure."
+				},
+				"image": "images/inventions/europe/finland/linux.webp"
+			},
+			{
+				"name": "Nokia Mobile Phone Innovations",
+				"inventor": "Nokia engineers",
+				"year": "1980s–2000s",
+				"information": {
+					"general": "Nokia helped pioneer mass-market mobile phone technology.",
+					"description": "They developed compact phones, long-lasting batteries, and reliable GSM standards.",
+					"extra": "Nokia phones dominated the global market for many years."
+				},
+				"image": "images/inventions/europe/finland/nokia.webp"
+			},
+			{
+				"name": "Heart Rate Monitor",
+				"inventor": "Seppo Säynäjäkangas / Polar Electro",
+				"year": "1977",
+				"information": {
+					"general": "The wearable heart rate monitor was first developed for athletes in Finland.",
+					"description": "It allowed real-time tracking of heart rate during training exercises.",
+					"extra": "This technology is now standard in fitness trackers and smartwatches."
+				},
+				"image": "images/inventions/europe/finland/heart_monitor.webp"
+			}
+		]
+	},
+	{
+		"country": "Denmark",
+		"inventions": [
+			{
+				"name": "The Modern Wind Turbine",
+				"inventor": "Johannes Juul",
+				"year": "1957",
+				"information": {
+					"general": "Denmark created the first efficient modern wind turbine for generating electricity.",
+					"description": "It used aerodynamic blades and a sturdy tower design still used today.",
+					"extra": "Denmark remains a global leader in wind energy technology."
+				},
+				"image": "images/inventions/europe/denmark/wind_turbine.webp"
+			},
+			{
+				"name": "Lego Brick",
+				"inventor": "Ole Kirk Christiansen",
+				"year": "1958",
+				"information": {
+					"general": "The interlocking Lego brick revolutionized the toy industry.",
+					"description": "Its simple but effective locking system allows endless construction variations.",
+					"extra": "Lego became one of the most successful toy companies in history."
+				},
+				"image": "images/inventions/europe/denmark/lego.webp"
+			},
+			{
+				"name": "Ultrasound Scanner",
+				"inventor": "Inge Edler & Hellmuth Hertz (with Danish contributions)",
+				"year": "1950s",
+				"information": {
+					"general": "Denmark played a key role in developing early medical ultrasound technology.",
+					"description": "Sound waves were used to create images of internal organs, especially the heart.",
+					"extra": "Ultrasound remains essential for modern medical diagnostics."
+				},
+				"image": "images/inventions/europe/denmark/ultrasound.webp"
+			}
+		]
+	},
+	{
+		"country": "Sweden",
+		"inventions": [
+			{
+				"name": "Dynamite",
+				"inventor": "Alfred Nobel",
+				"year": "1867",
+				"information": {
+					"general": "Alfred Nobel invented dynamite to make blasting safer and more controllable.",
+					"description": "It combined nitroglycerin with an absorbent material, making it more stable to transport and use.",
+					"extra": "It revolutionized construction, mining, and engineering worldwide."
+				},
+				"image": "images/inventions/europe/sweden/dynamite.webp"
+			},
+			{
+				"name": "Three-Point Seatbelt",
+				"inventor": "Nils Bohlin (Volvo)",
+				"year": "1959",
+				"information": {
+					"general": "Volvo introduced the first modern three-point seatbelt to improve car safety.",
+					"description": "It secures both the upper and lower body in a single continuous strap system.",
+					"extra": "Volvo made the patent free so other manufacturers could use it, saving millions of lives."
+				},
+				"image": "images/inventions/europe/sweden/seatbelt.webp"
+			},
+			{
+				"name": "Adjustable Wrench",
+				"inventor": "Johan Petter Johansson",
+				"year": "1891",
+				"information": {
+					"general": "The adjustable wrench was designed to fit multiple bolt sizes with one tool.",
+					"description": "It allowed engineers and mechanics to adjust the jaw width using a screw mechanism.",
+					"extra": "This became an essential tool in mechanical work worldwide."
+				},
+				"image": "images/inventions/europe/sweden/adjustable_wrench.webp"
+			}
+		]
+	},
+	{
+		"country": "Iceland",
+		"inventions": [
+			{
+				"name": "Geothermal Heating Systems",
+				"inventor": "Icelandic engineers",
+				"year": "1930s",
+				"information": {
+					"general": "Iceland pioneered large-scale use of natural geothermal energy for heating.",
+					"description": "Hot water from underground sources is piped into homes and buildings.",
+					"extra": "Over 90% of Iceland's homes are heated this way, serving as a model for clean energy."
+				},
+				"image": "images/inventions/europe/iceland/geothermal.webp"
+			},
+			{
+				"name": "Fish Leather (Modern Use)",
+				"inventor": "Icelandic designers",
+				"year": "1998",
+				"information": {
+					"general": "Iceland popularized the commercial use of fish skin as a durable leather.",
+					"description": "The skins of salmon, perch, and cod are turned into textiles for clothing and accessories.",
+					"extra": "It is considered a sustainable, eco-friendly material innovation."
+				},
+				"image": "images/inventions/europe/iceland/fish_leather.webp"
+			},
+			{
+				"name": "Lopapeysa (Icelandic Wool Sweater)",
+				"inventor": "Icelandic knitters",
+				"year": "1950s",
+				"information": {
+					"general": "The Lopapeysa is a traditional Icelandic sweater made from local sheep wool.",
+					"description": "It is known for its thick texture and circular yoke patterns that provide extreme warmth.",
+					"extra": "It has become a symbol of Icelandic culture and is worn worldwide."
+				},
+				"image": "images/inventions/europe/iceland/lopapeysa.webp"
+			}
+		]
+	},
+	{
+		"country": "Belarus",
+		"inventions": [
+			{
+				"name": "Minsk Tractors (MTZ Series)",
+				"inventor": "Minsk Tractor Works",
+				"year": "1946",
+				"information": {
+					"general": "The Minsk Tractor Works became one of the world's largest producers of agricultural tractors.",
+					"description": "MTZ tractors are known for their durability and use in farming, forestry, and construction.",
+					"extra": "They have been exported to over 100 countries and played a major role in Soviet and post-Soviet agriculture."
+				},
+				"image": "images/inventions/europe/belarus/mtz_tractor.webp"
+			},
+			{
+				"name": "BelAZ Super Heavy Dump Truck",
+				"inventor": "BelAZ",
+				"year": "1958",
+				"information": {
+					"general": "Belarus developed the world's largest mining dump trucks through the BelAZ company.",
+					"description": "These vehicles are used in large-scale mining operations and can carry over 400 tons of material.",
+					"extra": "They hold world records for the heaviest operational land vehicles ever built."
+				},
+				"image": "images/inventions/europe/belarus/belaz.webp"
+			}
+		]
+	},
+	{
+		"country": "Lithuania",
+		"inventions": [
+			{
+				"name": "Euthanasia Coaster",
+				"inventor": "Julijonas Urbonas",
+				"year": "2010",
+				"information": {
+					"general": "The Euthanasia Coaster is a theoretical roller coaster designed to humanely end a life using extreme G-forces.",
+					"description": "Engineered to gradually increase G-forces to induce cerebral hypoxia, the coaster spirals for several minutes until the rider loses consciousness and eventually dies. It was conceived as a blend of science, ethics, and engineering.",
+					"extra": "Designed by Lithuanian artist and engineer Julijonas Urbonas, it serves as a provocative exploration of mortality, ethics, and human fascination with death rather than a practical device."
+				},
+				"image": "images/inventions/europe/lithuania/euthanasia_coaster.webp"
+			},
+			{
+				"name": "Amber Jewelry",
+				"inventor": "Baltic Craftsmen",
+				"year": "Ancient times",
+				"information": {
+					"general": "Lithuania is renowned for crafting jewelry from Baltic amber, a resin from prehistoric trees.",
+					"description": "Artisans carve amber into beads, pendants, and ornaments. Its natural warm hues and inclusions make each piece unique.",
+					"extra": "Amber trade flourished along the Baltic Sea route. Lithuania remains a major exporter, blending traditional and modern designs."
+				},
+				"image": "images/inventions/europe/lithuania/amber_jewelry.webp"
+			},
+			{
+				"name": "Dainos (Folk Song Notation)",
+				"inventor": "Lithuanian Musicians",
+				"year": "19th century",
+				"information": {
+					"general": "Dainos are traditional Lithuanian folk songs, with early systems developed to record and preserve them.",
+					"description": "Musicians used simple notation to capture melodies and lyrics, keeping oral traditions alive through written form.",
+					"extra": "These notations helped protect Lithuania's cultural identity during foreign occupations, influencing modern ethnomusicology."
+				},
+				"image": "images/inventions/europe/lithuania/dainos.webp"
+			}
+		]
+	},
+	{
+		"country": "Democratic Republic of the Congo",
+		"inventions": [
+			{
+				"name": "Kuba Textile Weaving",
+				"inventor": "Kuba People",
+				"year": "15th century",
+				"information": {
+					"general": "The Kuba people developed intricate textile weaving techniques that produced richly decorated fabrics using raffia fibers.",
+					"description": "Using hand-loomed raffia fibers, they created geometric patterns and symbolic designs. These textiles were used for ceremonial purposes, clothing, and trade.",
+					"extra": "The designs often carry cultural and historical meanings, with motifs representing lineage, social status, and storytelling. Kuba textiles remain a world-renowned art form."
+				},
+				"image": "images/inventions/africa/dr_congo/kuba_textile.webp"
+			},
+			{
+				"name": "Ebola Diagnostic Kit",
+				"inventor": "Institut National de Recherche Biomédicale (INRB)",
+				"year": "2014",
+				"information": {
+					"general": "Developed during the Ebola outbreak, this rapid diagnostic kit allows field detection of Ebola virus.",
+					"description": "Compact and portable, it provides test results in hours instead of days, crucial for controlling outbreaks.",
+					"extra": "The kit has been deployed internationally and influenced rapid virus detection technology.",
+					"image": "images/inventions/africa/dr_congo/ebola_kit.webp"
+				}
+			}
+		]
+	},
+	{
+		"country": "Angola",
+		"inventions": [
+			{
+				"name": "Mbundu Quilting Techniques",
+				"inventor": "Mbundu People",
+				"year": "16th century",
+				"information": {
+					"general": "The Mbundu people of Angola developed traditional quilting and embroidery techniques for clothing and ceremonial garments.",
+					"description": "Using cotton and natural dyes, artisans stitched geometric patterns and motifs into textiles, reflecting social identity and spiritual beliefs.",
+					"extra": "These textiles were historically used in royal attire and ceremonies and influenced modern Angolan fashion and decorative arts."
+				},
+				"image": "images/inventions/africa/angola/mbundu_quilting.webp"
+			},
+			{
+				"name": "Marimba (Angolan Xylophone)",
+				"inventor": "Local Angolan Communities",
+				"year": "traditional / centuries-old",
+				"information": {
+					"general": "The Angolan marimba is a wooden percussion instrument used in music and dance, popular in festivals and celebrations.",
+					"description": "Constructed from tuned wooden bars placed over resonating gourds or wooden boxes, it produces melodic tones when struck with mallets. It's often played in ensembles and accompanies songs and dances.",
+					"extra": "The marimba is a fun, interactive instrument that has influenced modern African music and is still widely played in Angola today."
+				},
+				"image": "images/inventions/africa/angola/marimba.webp"
+			}
+		]
+	},
+	{
+		"country": "Chile",
+		"inventions": [
+			{
+				"name": "Wine Fermentation Tanks",
+				"inventor": "Chilean Winemakers",
+				"year": "1970s",
+				"information": {
+					"general": "Specialized stainless steel tanks designed to improve the fermentation process of wine production.",
+					"description": "These tanks allow precise temperature and oxygen control, resulting in higher quality wines and consistent production.",
+					"extra": "Chilean innovation in viticulture has helped the country become a world leader in premium wine exports."
+				},
+				"image": "images/inventions/south_america/chile/wine_tanks.webp"
+			},
+			{
+				"name": "Cerro Tololo Observatory Instruments",
+				"inventor": "Chilean and International Astronomers",
+				"year": "1960s",
+				"information": {
+					"general": "Advanced optical instruments designed for one of the world's leading astronomical observatories in Chile.",
+					"description": "These instruments, including telescopes and spectrographs, enabled high-precision observations of stars, galaxies, and exoplanets.",
+					"extra": "Cerro Tololo Observatory contributed to major discoveries in astronomy, positioning Chile as a global hub for space research.",
+					"image": "images/inventions/south_america/chile/cerro_tololo_instruments.webp"
+				}
+			}
+		]
+	},
+	{
+		"country": "UAE",
+		"inventions": [
+			{
+				"name": "Solar Desalination Pilot",
+				"inventor": "Mohammed bin Rashid Al Maktoum initiatives",
+				"year": "2000s",
+				"information": {
+					"general": "Developed to turn seawater into drinkable water using solar energy.",
+					"description": "The system uses solar panels to power desalination units, reducing energy consumption compared to traditional methods.",
+					"extra": "Inspired by the UAE's need for sustainable water solutions in a desert climate, this technology supports future urban planning and agriculture."
+				},
+				"image": "images/inventions/asia/uae/solar_desalination.webp"
+			},
+			{
+				"name": "Desert Solar Park",
+				"inventor": "Abu Dhabi National Energy Company (TAQA) & Masdar",
+				"year": "2013",
+				"information": {
+					"general": "One of the largest solar parks in the world for renewable energy generation.",
+					"description": "Uses photovoltaic and concentrated solar power technologies to generate electricity for the grid.",
+					"extra": "Part of UAE's commitment to clean energy and reducing carbon emissions."
+				},
+				"image": "images/inventions/asia/uae/desert_solar_park.webp"
+			}
+		]
+	},
+	{
+		"country": "Switzerland",
+		"inventions": [
+			{
+				"name": "Swiss Army Knife",
+				"inventor": "Karl Elsener",
+				"year": "1891",
+				"information": {
+					"general": "A compact multi-tool originally for soldiers.",
+					"description": "Combines blades, screwdrivers, and other tools in one portable device.",
+					"extra": "Elsener was inspired to make soldiers' tools safer and more versatile. It became a global icon of Swiss ingenuity."
+				},
+				"image": "images/inventions/europe/switzerland/swiss_army_knife.webp"
+			},
+			{
+				"name": "Velcro",
+				"inventor": "George de Mestral",
+				"year": "1941",
+				"information": {
+					"general": "Hook-and-loop fastener inspired by nature.",
+					"description": "He noticed burrs sticking to clothing and recreated the mechanism with synthetic materials.",
+					"extra": "Velcro became widely used in clothing, shoes, aerospace, and sports equipment."
+				},
+				"image": "images/inventions/europe/switzerland/velcro.webp"
+			},
+			{
+				"name": "Red Cross Symbol",
+				"inventor": "Henry Dunant (Swiss founder)",
+				"year": "1863",
+				"information": {
+					"general": "Universal emblem for humanitarian aid.",
+					"description": "Used on medical personnel and hospitals to signify neutrality in conflicts.",
+					"extra": "The Red Cross became globally recognized and inspired international humanitarian law."
+				},
+				"image": "images/inventions/europe/switzerland/red_cross.webp"
+			}
+		]
+	},
+	{
+		"country": "Austria",
+		"inventions": [
+			{
+				"name": "Snow Globe",
+				"inventor": "Erwin Perzy",
+				"year": "1900",
+				"information": {
+					"general": "Decorative glass spheres containing miniature scenes and artificial snow.",
+					"description": "Perzy experimented with light-reflecting powders to enhance the effect inside glass globes.",
+					"extra": "Initially intended as a scientific tool, it became a popular decorative souvenir."
+				},
+				"image": "images/inventions/europe/austria/snow_globe.webp"
+			},
+			{
+				"name": "Theremin",
+				"inventor": "Léon Theremin",
+				"year": "1920",
+				"information": {
+					"general": "One of the first electronic musical instruments controlled without physical contact.",
+					"description": "Played by moving hands near antennas to control pitch and volume electronically.",
+					"extra": "Influenced electronic music and inspired future innovations in sound synthesis and music technology."
+				},
+				"image": "images/inventions/europe/austria/theremin.webp"
+			},
+			{
+				"name": "Semmelweis Hand Hygiene Principles",
+				"inventor": "Ignaz Semmelweis",
+				"year": "1847",
+				"information": {
+					"general": "Pioneering hygiene practices in medicine to reduce infections.",
+					"description": "Introduced systematic handwashing in obstetric clinics, drastically lowering mortality rates.",
+					"extra": "Semmelweis’ work laid the foundation for modern antiseptic techniques and infection control."
+				},
+				"image": "images/inventions/europe/austria/semmelweis_hygiene.webp"
+			}
+		]
+	},
+	{
+		"country": "Belgium",
+		"inventions": [
+			{
+				"name": "Plastic Saxophone",
+				"inventor": "Adolphe Sax",
+				"year": "1846",
+				"information": {
+					"general": "Musical instrument blending woodwind and brass properties.",
+					"description": "Originally crafted from metal; modern adaptations include plastic to reduce weight.",
+					"extra": "Sax's invention revolutionized jazz, classical, and military music worldwide."
+				},
+				"image": "images/inventions/europe/belgium/saxophone.webp"
+			},
+			{
+				"name": "Body Mass Index (BMI)",
+				"inventor": "Adolphe Quetelet",
+				"year": "1832",
+				"information": {
+					"general": "Method to measure body fat based on height and weight.",
+					"description": "Uses a simple mathematical formula to categorize underweight, normal, overweight, and obesity.",
+					"extra": "Quetelet's index is still widely used in medicine, fitness, and nutrition research today."
+				},
+				"image": "images/inventions/europe/belgium/bmi.webp"
+			},
+			{
+				"name": "Cinematic Special Effects",
+				"inventor": "Georges Méliès Belgian collaborators",
+				"year": "1890s",
+				"information": {
+					"general": "Innovative techniques for early film effects.",
+					"description": "Used stop-motion, double exposure, and miniatures to create fantastical visuals.",
+					"extra": "Belgian cinema technicians helped spread these methods, influencing modern visual effects."
+				},
+				"image": "images/inventions/europe/belgium/special_effects.webp"
+			}
+		]
+	},
+	{
+		"country": "Czech Republic",
+		"inventions": [
+			{
+				"name": "Sugar Cube",
+				"inventor": "Jakub Kryštof Rad",
+				"year": "1843",
+				"information": {
+					"general": "Convenient cube-shaped sugar pieces.",
+					"description": "Compressed refined sugar into uniform cubes for easier use in beverages.",
+					"extra": "Rad was motivated by the inconvenience of cutting sugar from blocks in households and cafés."
+				},
+				"image": "images/inventions/europe/czech_republic/sugar_cube.webp"
+			},
+			{
+				"name": "Contact Lens Material Development",
+				"inventor": "Otto Wichterle",
+				"year": "1961",
+				"information": {
+					"general": "Soft hydrogel for modern contact lenses.",
+					"description": "Used polymer chemistry to produce lenses that are flexible and comfortable.",
+					"extra": "This breakthrough made daily-wear contact lenses practical for millions."
+				},
+				"image": "images/inventions/europe/czech_republic/contact_lens.webp"
+			}
+		]
+	},
+	{
+		"country": "Cuba",
+		"inventions": [
+			{
+				"name": "Cuban Cigar Innovation",
+				"inventor": "Local artisans",
+				"year": "1700s",
+				"information": {
+					"general": "Advanced cigar rolling and curing techniques.",
+					"description": "Enhanced quality, consistency, and flavor of hand-rolled cigars.",
+					"extra": "Cuba became globally renowned for its cigars, influencing tobacco production worldwide."
+				},
+				"image": "images/inventions/north_america/cuba/cuban_cigar.webp"
+			},
+			{
+				"name": "Cuban Musical Instruments (Tres Guitar)",
+				"inventor": "Cuban luthiers",
+				"year": "19th century",
+				"information": {
+					"general": "Three-course guitar used in Cuban Son music.",
+					"description": "Wooden body with three double strings, handcrafted for specific tonal qualities.",
+					"extra": "Instrument is central to Cuban music and represents traditional craftsmanship."
+				},
+				"image": "images/inventions/north_america/cuba/tres_guitar.webp"
+			}
+		]
+	},
+	{
+		"country": "Ireland",
+		"inventions": [
+			{
+				"name": "Submarine Telegraph Cable",
+				"inventor": "Cork engineers, 1850s",
+				"year": "1850s",
+				"information": {
+					"general": "Improved long-distance communication under the sea.",
+					"description": "Engineered insulated copper wires to transmit telegraph signals across oceans.",
+					"extra": "Irish innovation helped establish global telecommunication networks."
+				},
+				"image": "images/inventions/europe/ireland/submarine_cable.webp"
+			},
+			{
+				"name": "Portable Defibrillator",
+				"inventor": "Irish engineers, 1960s",
+				"year": "1965",
+				"information": {
+					"general": "Device to restore normal heart rhythm.",
+					"description": "Uses controlled electrical pulses to treat cardiac arrest.",
+					"extra": "It revolutionized emergency medical response and saved countless lives."
+				},
+				"image": "images/inventions/europe/ireland/defibrillator.webp"
+			},
+			 {
+                "name": "Guinness Beer Innovations",
+                "inventor": "Arthur Guinness",
+                "year": "1759",
+                "information": {
+                    "general": "Pioneered stout brewing methods.",
+                    "description": "Refined fermentation, roasting, and nitrogenation techniques to perfect Guinness.",
+                    "extra": "Influenced beer production worldwide and became an iconic Irish export."
+                },
+                "image": "images/inventions/europe/ireland/guinness.webp"
+            }
+		]
+	},
+{
+    "country": "Malaysia",
+    "inventions": [
+        {
+            "name": "Single-Chip USB Flash Drive",
+            "inventor": "Pua Khein Seng",
+            "year": "2000",
+            "information": {
+                "general": "Compact data storage device integrating all components on a single chip.",
+                "description": "Revolutionized portable digital storage by making USB flash drives smaller, faster, and more reliable.",
+                "extra": "This innovation helped Malaysia become a key player in global data storage technology."
+            },
+            "image": "images/inventions/asia/malaysia/usb_flash_drive.webp"
+        },
+        {
+            "name": "Biometric Passport",
+            "inventor": "IRIS Corporation Malaysia",
+            "year": "1998",
+            "information": {
+                "general": "Secure passport embedded with biometric identification technology.",
+                "description": "Includes fingerprint and facial recognition data to prevent forgery and improve border security.",
+                "extra": "IRIS Corp's innovation has been adopted by several countries worldwide for e-passports."
+            },
+            "image": "images/inventions/asia/malaysia/biometric_passport.webp"
+        },
+        {
+            "name": "Automatic Egg Boiler",
+            "inventor": "Malaysian engineers",
+            "year": "2005",
+            "information": {
+                "general": "Appliance to cook eggs perfectly without monitoring.",
+                "description": "Boils eggs to soft, medium, or hard consistency using automated temperature and timing controls.",
+                "extra": "Popularized household convenience in Malaysia and exported globally."
+            },
+            "image": "images/inventions/asia/malaysia/automatic_egg_boiler.webp"
+        }
+    ]
+}
+
 ]

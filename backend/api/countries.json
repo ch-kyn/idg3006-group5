@@ -1878,5 +1878,683 @@
             "food": "images/countries/europe/ukraine/ukraine_varenyky.webp",
             "place": "images/countries/europe/ukraine/ukraine_kyiv_lavra.webp"
         }
+    },
+    {
+        "country": "Belarus",
+        "capital": "Minsk",
+        "population": 9133000,
+        "area_km2": 207600,
+        "currency": "Belarusian Ruble (BYN)",
+        "gdp_total_usd": 73000000000,
+        "national_day": "July 3 (Independence Day / Statehood Day)",
+        "national_animal": "European Bison",
+        "exports": [
+            "Machinery & equipment",
+            "Mineral products",
+            "Agricultural products",
+            "Chemical products"
+        ],
+        "popular_dishes": [
+            "Draniki",
+            "Borscht",
+            "Kalduny",
+            "Kvass bread"
+        ],
+        "famous_people": [
+            "Yanka Kupala",
+            "Francysk Skaryna",
+            "Marc Chagall",
+            "Vladimir Korotkevich"
+        ],
+        "places_heritage": [
+            "Mir Castle",
+            "Belovezhskaya Pushcha",
+            "Old Town of Nesvizh",
+            "Minsk historic center"
+        ],
+        "images": {
+            "flag": "images/countries/europe/belarus/belarus_flag.webp",
+            "map": "images/countries/europe/belarus/belarus_map.webp",
+            "food": "images/countries/europe/belarus/belarus_draniki.webp",
+            "place": "images/countries/europe/belarus/belarus_mir_castle.webp"
+        }
+    },
+    {
+        "country": "Sweden",
+        "capital": "Stockholm",
+        "population": 10520000,
+        "area_km2": 447435,
+        "currency": "Swedish Krona (SEK)",
+        "gdp_total_usd": 650000000000,
+        "national_day": "June 6 (National Day)",
+        "national_animal": "Eurasian Elk (Moose)",
+        "exports": [
+            "Machinery & vehicles",
+            "Electronics & telecom equipment",
+            "Paper & wood products",
+            "Pharmaceuticals"
+        ],
+        "popular_dishes": [
+            "Meatballs (Köttbullar)",
+            "Gravlax",
+            "Smörgåstårta",
+            "Surströmming"
+        ],
+        "famous_people": [
+            "Alfred Nobel",
+            "Greta Garbo",
+            "Astrid Lindgren",
+            "Ingmar Bergman"
+        ],
+        "places_heritage": [
+            "Gamla Stan (Stockholm Old Town)",
+            "Drottningholm Palace",
+            "Visby (Gotland)",
+            "Abisko National Park"
+        ],
+        "images": {
+            "flag": "images/countries/europe/sweden/sweden_flag.webp",
+            "map": "images/countries/europe/sweden/sweden_map.webp",
+            "food": "images/countries/europe/sweden/sweden_meatballs.webp",
+            "place": "images/countries/europe/sweden/sweden_stockholm_old_town.webp"
+        }
+    },
+    {
+        "country": "Finland",
+        "capital": "Helsinki",
+        "population": 5520000,
+        "area_km2": 338424,
+        "currency": "Euro (EUR)",
+        "gdp_total_usd": 310000000000,
+        "national_day": "December 6 (Independence Day)",
+        "national_animal": "Brown Bear",
+        "exports": [
+            "Machinery & equipment",
+            "Wood & paper products",
+            "Electronics",
+            "Metals"
+        ],
+        "popular_dishes": [
+            "Karjalanpiirakka",
+            "Lihapullat",
+            "Kalakukko",
+            "Runeberg's torte"
+        ],
+        "famous_people": [
+            "Jean Sibelius",
+            "Linus Torvalds",
+            "Alvar Aalto",
+            "Tove Jansson"
+        ],
+        "places_heritage": [
+            "Suomenlinna Fortress",
+            "Old Town of Porvoo",
+            "Helsinki Cathedral",
+            "Lake Saimaa region"
+        ],
+        "images": {
+            "flag": "images/countries/europe/finland/finland_flag.webp",
+            "map": "images/countries/europe/finland/finland_map.webp",
+            "food": "images/countries/europe/finland/finland_karjalanpiirakka.webp",
+            "place": "images/countries/europe/finland/finland_suomenlinna.webp"
+        }
+    },
+    {
+        "country": "Iceland",
+        "capital": "Reykjavík",
+        "population": 375000,
+        "area_km2": 103000,
+        "currency": "Icelandic Króna (ISK)",
+        "gdp_total_usd": 30000000000,
+        "national_day": "June 17 (Independence Day 1944)",
+        "national_animal": "Gyrfalcon",
+        "exports": [
+            "Seafood (fish)",
+            "Aluminum",
+            "Silica",
+            "Tourism services"
+        ],
+        "popular_dishes": [
+            "Hákarl",
+            "Skyr",
+            "Plokkfiskur",
+            "Rye bread (Rúgbrauð)"
+        ],
+        "famous_people": [
+            "Halldór Laxness",
+            "Björk Guðmundsdóttir",
+            "Jón Sveinsson",
+            "Vigdís Finnbogadóttir"
+        ],
+        "places_heritage": [
+            "Þingvellir National Park",
+            "Blue Lagoon",
+            "Reykjavík Old Harbour",
+            "Vatnajökull Glacier"
+        ],
+        "images": {
+            "flag": "images/countries/europe/iceland/iceland_flag.webp",
+            "map": "images/countries/europe/iceland/iceland_map.webp",
+            "food": "images/countries/europe/iceland/iceland_skyr.webp",
+            "place": "images/countries/europe/iceland/iceland_thingvellir.webp"
+        }
+    },
+    {
+        "country": "Denmark",
+        "capital": "Copenhagen",
+        "population": 6000000,
+        "area_km2": 42933,
+        "currency": "Danish Krone (DKK)",
+        "gdp_total_usd": 430000000000,
+        "national_day": "June 5 (Constitution Day)",
+        "national_animal": "Mute Swan",
+        "exports": [
+            "Machinery & instruments",
+            "Pharmaceuticals",
+            "Food products (pork, dairy)",
+            "Fertilizers"
+        ],
+        "popular_dishes": [
+            "Smørrebrød",
+            "Frikadeller",
+            "Rugbrød",
+            "Danish pastry"
+        ],
+        "famous_people": [
+            "Hans Christian Andersen",
+            "Tycho Brahe",
+            "Niels Bohr",
+            "Søren Kierkegaard"
+        ],
+        "places_heritage": [
+            "Kronborg Castle",
+            "Nyhavn (Copenhagen)",
+            "Roskilde Cathedral",
+            "Jutland coastlines"
+        ],
+        "images": {
+            "flag": "images/countries/europe/denmark/denmark_flag.webp",
+            "map": "images/countries/europe/denmark/denmark_map.webp",
+            "food": "images/countries/europe/denmark/denmark_smorrebrod.webp",
+            "place": "images/countries/europe/denmark/denmark_kronborg.webp"
+        }
+    },
+    {
+        "country": "Lithuania",
+        "capital": "Vilnius",
+        "population": 2800000,
+        "area_km2": 65300,
+        "currency": "Euro (EUR)",
+        "gdp_total_usd": 72000000,
+        "national_day": "February 16 (Independence Day)",
+        "national_animal": "European Bison",
+        "exports": [
+            "Refined petroleum",
+            "Furniture",
+            "Food products",
+            "Machinery & equipment"
+        ],
+        "popular_dishes": [
+            "Cepelinai",
+            "Šaltibarščiai",
+            "Kugelis",
+            "Rye bread"
+        ],
+        "famous_people": [
+            "Adamkus Valdas",
+            "Vytautas the Great",
+            "Rūta Meilutytė",
+            "Mikalojus Konstantinas Čiurlionis"
+        ],
+        "places_heritage": [
+            "Vilnius Old Town",
+            "Trakai Castle",
+            "Curonian Spit",
+            "Hill of Crosses"
+        ],
+        "images": {
+            "flag": "images/countries/europe/lithuania/lithuania_flag.webp",
+            "map": "images/countries/europe/lithuania/lithuania_map.webp",
+            "food": "images/countries/europe/lithuania/lithuania_cepelinai.webp",
+            "place": "images/countries/europe/lithuania/lithuania_trakai_castle.webp"
+        }
+    },
+    {
+        "country": "Democratic Republic of the Congo",
+        "capital": "Kinshasa",
+        "population": 107000000,
+        "area_km2": 2345000,
+        "currency": "Congolese Franc (CDF)",
+        "gdp_total_usd": 50000000000,
+        "national_day": "June 30 (Independence Day)",
+        "national_animal": "Okapi",
+        "exports": [
+            "Cobalt",
+            "Copper",
+            "Diamonds",
+            "Wood products"
+        ],
+        "popular_dishes": [
+            "Fufu",
+            "Moambe chicken",
+            "Saka-saka",
+            "Liboké fish"
+        ],
+        "famous_people": [
+            "Patrice Lumumba",
+            "Joseph Kabila",
+            "Marie-Louise Mumbu",
+            "Papa Wemba"
+        ],
+        "places_heritage": [
+            "Virunga National Park",
+            "Garamba National Park",
+            "Kahuzi-Biega National Park",
+            "Lola Ya Bonobo Sanctuary"
+        ],
+        "images": {
+            "flag": "images/countries/africa/dr_congo/dr_congo_flag.webp",
+            "map": "images/countries/africa/dr_congo/dr_congo_map.webp",
+            "food": "images/countries/africa/dr_congo/dr_congo_fufu.webp",
+            "place": "images/countries/africa/dr_congo/dr_congo_virunga.webp"
+        }
+    },
+    {
+        "country": "Angola",
+        "capital": "Luanda",
+        "population": 37000000,
+        "area_km2": 1247000,
+        "currency": "Angolan Kwanza (AOA)",
+        "gdp_total_usd": 94000000,
+        "national_day": "November 11 (Independence Day)",
+        "national_animal": "Giant Sable Antelope",
+        "exports": [
+            "Crude oil",
+            "Diamonds",
+            "Gas",
+            "Coffee"
+        ],
+        "popular_dishes": [
+            "Funje",
+            "Moamba de galinha",
+            "Calulu",
+            "Kizaca"
+        ],
+        "famous_people": [
+            "Agostinho Neto",
+            "José Eduardo dos Santos",
+            "Paulo Flores",
+            "Mia Couto"
+        ],
+        "places_heritage": [
+            "Kissama National Park",
+            "Fortress of São Miguel",
+            "Tundavala Gap",
+            "Christ the King of Lubango"
+        ],
+        "images": {
+            "flag": "images/countries/africa/angola/angola_flag.webp",
+            "map": "images/countries/africa/angola/angola_map.webp",
+            "food": "images/countries/africa/angola/angola_funje.webp",
+            "place": "images/countries/africa/angola/angola_kissama.webp"
+        }
+    },
+    {
+        "country": "Chile",
+        "capital": "Santiago",
+        "population": 19200000,
+        "area_km2": 756102,
+        "currency": "Chilean Peso (CLP)",
+        "gdp_total_usd": 350000000000,
+        "national_day": "September 18 (Independence Day)",
+        "national_animal": "Andean Condor",
+        "exports": [
+            "Copper",
+            "Fruits",
+            "Wine",
+            "Fish and seafood"
+        ],
+        "popular_dishes": [
+            "Empanadas",
+            "Pastel de Choclo",
+            "Cazuela",
+            "Completo"
+        ],
+        "famous_people": [
+            "Pablo Neruda",
+            "Gabriela Mistral",
+            "Arturo Vidal",
+            "Isabel Allende"
+        ],
+        "places_heritage": [
+            "Easter Island",
+            "Valparaíso Historic Quarter",
+            "Atacama Desert",
+            "Torres del Paine National Park"
+        ],
+        "images": {
+            "flag": "images/countries/south_america/chile/chile_flag.webp",
+            "map": "images/countries/south_america/chile/chile_map.webp",
+            "food": "images/countries/south_america/chile/chile_empanadas.webp",
+            "place": "images/countries/south_america/chile/chile_torres_del_paine.webp"
+        }
+    },
+    {
+        "country": "UAE",
+        "capital": "Abu Dhabi",
+        "population": 9770529,
+        "area_km2": 83600,
+        "currency": "United Arab Emirates Dirham (AED)",
+        "gdp_total_usd": 421000000000,
+        "national_day": "December 2",
+        "national_animal": "Arabian Oryx",
+        "exports": [
+            "Crude oil",
+            "Natural gas",
+            "Petrochemicals",
+            "Gold"
+        ],
+        "popular_dishes": [
+            "Al Harees",
+            "Shawarma",
+            "Machboos",
+            "Luqaimat"
+        ],
+        "famous_people": [
+            "Sheikh Zayed bin Sultan Al Nahyan",
+            "Sheikh Mohammed bin Rashid Al Maktoum",
+            "Rashed Al-Majed"
+        ],
+        "places_heritage": [
+            "Burj Khalifa, Dubai",
+            "Sheikh Zayed Grand Mosque",
+            "Hatta Heritage Village",
+            "Liwa Oasis"
+        ],
+        "images": {
+            "flag": "images/countries/asia/uae/uae_flag.webp",
+            "map": "images/countries/asia/uae/uae_map.webp",
+            "food": "images/countries/asia/uae/uae_luqaimat.webp",
+            "place": "images/countries/asia/uae/uae_burj_khalifa.webp"
+        }
+    },
+    {
+        "country": "Switzerland",
+        "capital": "Bern",
+        "population": 8690000,
+        "area_km2": 41285,
+        "currency": "Swiss Franc (CHF)",
+        "gdp_total_usd": 824000000000,
+        "national_day": "August 1",
+        "national_animal": "Swiss Cow",
+        "exports": [
+            "Machinery",
+            "Chemicals",
+            "Pharmaceuticals",
+            "Watches"
+        ],
+        "popular_dishes": [
+            "Fondue",
+            "Raclette",
+            "Rösti",
+            "Chocolate"
+        ],
+        "famous_people": [
+            "Albert Einstein",
+            "Carl Jung",
+            "Jean-Luc Godard",
+            "Ursula Andress"
+        ],
+        "places_heritage": [
+            "Matterhorn",
+            "Château de Chillon",
+            "Old City of Bern",
+            "Jungfraujoch"
+        ],
+        "images": {
+            "flag": "images/countries/europe/switzerland/switzerland_flag.webp",
+            "map": "images/countries/europe/switzerland/switzerland_map.webp",
+            "food": "images/countries/europe/switzerland/switzerland_fondue.webp",
+            "place": "images/countries/europe/switzerland/switzerland_matterhorn.webp"
+        }
+    },
+    {
+        "country": "Austria",
+        "capital": "Vienna",
+        "population": 9000000,
+        "area_km2": 83879,
+        "currency": "Euro (EUR)",
+        "gdp_total_usd": 480000000000,
+        "national_day": "October 26",
+        "national_animal": "Lipizzaner Horse",
+        "exports": [
+            "Machinery",
+            "Vehicles",
+            "Metals",
+            "Chemicals"
+        ],
+        "popular_dishes": [
+            "Wiener Schnitzel",
+            "Apfelstrudel",
+            "Tafelspitz",
+            "Sachertorte"
+        ],
+        "famous_people": [
+            "Wolfgang Amadeus Mozart",
+            "Sigmund Freud",
+            "Gustav Klimt",
+            "Arnold Schwarzenegger"
+        ],
+        "places_heritage": [
+            "Schönbrunn Palace",
+            "Salzburg Old Town",
+            "St. Stephen's Cathedral",
+            "Hofburg Palace"
+        ],
+        "images": {
+            "flag": "images/countries/europe/austria/austria_flag.webp",
+            "map": "images/countries/europe/austria/austria_map.webp",
+            "food": "images/countries/europe/austria/austria_apfelstrudel.webp",
+            "place": "images/countries/europe/austria/austria_schonbrunn.webp"
+        }
+    },
+    {
+        "country": "Belgium",
+        "capital": "Brussels",
+        "population": 11500000,
+        "area_km2": 30528,
+        "currency": "Euro (EUR)",
+        "gdp_total_usd": 652000000000,
+        "national_day": "July 21",
+        "national_animal": "Lion",
+        "exports": [
+            "Machinery",
+            "Chemicals",
+            "Diamonds",
+            "Foodstuffs"
+        ],
+        "popular_dishes": [
+            "Belgian Waffles",
+            "Moules-Frites",
+            "Chocolate",
+            "Stoofvlees"
+        ],
+        "famous_people": [
+            "René Magritte",
+            "Audrey Hepburn",
+            "Eddy Merckx",
+            "Hergé"
+        ],
+        "places_heritage": [
+            "Grand Place, Brussels",
+            "Atomium",
+            "Canals of Bruges",
+            "Historic Center of Ghent"
+        ],
+        "images": {
+            "flag": "images/countries/europe/belgium/belgium_flag.webp",
+            "map": "images/countries/europe/belgium/belgium_map.webp",
+            "food": "images/countries/europe/belgium/belgium_waffle.webp",
+            "place": "images/countries/europe/belgium/belgium_grand_place.webp"
+        }
+    },
+    {
+        "country": "Czech Republic",
+        "capital": "Prague",
+        "population": 10700000,
+        "area_km2": 78865,
+        "currency": "Czech Koruna (CZK)",
+        "gdp_total_usd": 320000000000,
+        "national_day": "October 28",
+        "national_animal": "Double-tailed Lion",
+        "exports": [
+            "Automobiles",
+            "Machinery",
+            "Electronics",
+            "Beer"
+        ],
+        "popular_dishes": [
+            "Svíčková",
+            "Goulash",
+            "Trdelník",
+            "Knedlíky"
+        ],
+        "famous_people": [
+            "Antonín Dvořák",
+            "Franz Kafka",
+            "Miloš Forman",
+            "Václav Havel"
+        ],
+        "places_heritage": [
+            "Prague Castle",
+            "Charles Bridge",
+            "Old Town Square",
+            "Kutná Hora"
+        ],
+        "images": {
+            "flag": "images/countries/europe/czech_republic/czech_flag.webp",
+            "map": "images/countries/europe/czech_republic/czech_map.webp",
+            "food": "images/countries/europe/czech_republic/czech_svickova.webp",
+            "place": "images/countries/europe/czech_republic/czech_prague_castle.webp"
+        }
+    },
+    {
+        "country": "Cuba",
+        "capital": "Havana",
+        "population": 11300000,
+        "area_km2": 109884,
+        "currency": "Cuban Peso (CUP)",
+        "gdp_total_usd": 100000000000,
+        "national_day": "May 20",
+        "national_animal": "Tocororo (Cuban Trogon)",
+        "exports": [
+            "Sugar",
+            "Tobacco",
+            "Nickel",
+            "Rum"
+        ],
+        "popular_dishes": [
+            "Ropa Vieja",
+            "Moros y Cristianos",
+            "Tostones",
+            "Cuban Sandwich"
+        ],
+        "famous_people": [
+            "Fidel Castro",
+            "Ernest Hemingway",
+            "Celia Cruz",
+            "José Martí"
+        ],
+        "places_heritage": [
+            "Old Havana",
+            "Viñales Valley",
+            "Trinidad",
+            "Varadero Beach"
+        ],
+        "images": {
+            "flag": "images/countries/north_america/cuba/cuba_flag.webp",
+            "map": "images/countries/north_america/cuba/cuba_map.webp",
+            "food": "images/countries/north_america/cuba/cuba_ropa_vieja.webp",
+            "place": "images/countries/north_america/cuba/cuba_havana.webp"
+        }
+    },
+    {
+        "country": "Ireland",
+        "capital": "Dublin",
+        "population": 5000000,
+        "area_km2": 70273,
+        "currency": "Euro (EUR)",
+        "gdp_total_usd": 476000000000,
+        "national_day": "March 17",
+        "national_animal": "Red Deer",
+        "exports": [
+            "Pharmaceuticals",
+            "Machinery",
+            "Food & Drink",
+            "Software"
+        ],
+        "popular_dishes": [
+            "Irish Stew",
+            "Boxty",
+            "Soda Bread",
+            "Colcannon"
+        ],
+        "famous_people": [
+            "James Joyce",
+            "Bono",
+            "Oscar Wilde",
+            "W.B. Yeats"
+        ],
+        "places_heritage": [
+            "Cliffs of Moher",
+            "Ring of Kerry",
+            "Trinity College",
+            "Dublin Castle"
+        ],
+        "images": {
+            "flag": "images/countries/europe/ireland/ireland_flag.webp",
+            "map": "images/countries/europe/ireland/ireland_map.webp",
+            "food": "images/countries/europe/ireland/ireland_irish_stew.webp",
+            "place": "images/countries/europe/ireland/ireland_cliffs_moher.webp"
+        }
+    },
+    {
+        "country": "Malaysia",
+        "capital": "Kuala Lumpur",
+        "population": 33000000,
+        "area_km2": 330803,
+        "currency": "Malaysian Ringgit (MYR)",
+        "gdp_total_usd": 430000000000,
+        "national_day": "August 31",
+        "national_animal": "Malayan Tiger",
+        "exports": [
+            "Electronics",
+            "Palm oil",
+            "Petroleum products",
+            "Natural rubber"
+        ],
+        "popular_dishes": [
+            "Nasi Lemak",
+            "Rendang",
+            "Char Kway Teow",
+            "Satay"
+        ],
+        "famous_people": [
+            "Tun Dr. Mahathir Mohamad",
+            "Jimmy Choo",
+            "Lee Chong Wei"
+        ],
+        "places_heritage": [
+            "Petronas Twin Towers",
+            "George Town, Penang",
+            "Mount Kinabalu",
+            "Batu Caves"
+        ],
+        "images": {
+            "flag": "images/countries/asia/malaysia/malaysia_flag.webp",
+            "map": "images/countries/asia/malaysia/malaysia_map.webp",
+            "food": "images/countries/asia/malaysia/malaysia_nasi_lemak.webp",
+            "place": "images/countries/asia/malaysia/malaysia_petronas_towers.webp"
+        }
     }
 ]

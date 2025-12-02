@@ -6,16 +6,26 @@
 
 **Note**: ALL IMAGES SHOULD BE IN .WEBP GUYS
 
-## Europe (12)
+## Europe (17)
+- Austria
+- Belarus
+- Belgium
+- Czech Republic
+- Denmark
+- Finland
 - France
 - Germany
 - Greece
+- Iceland
 - Italy
+- Lithuania
 - Netherlands
 - Norway
 - Poland
 - Russia
 - Spain
+- Sweden
+- Switzerland
 - Turkey
 - Ukraine
 - United Kingdom
@@ -27,6 +37,7 @@
 - Iran
 - Japan
 - Kazakhstan
+- Malaysia
 - Mongolia
 - Pakistan
 - Philippines
@@ -34,16 +45,19 @@
 - Sudan
 - Thailand
 - Vietnam
+- United Arab Emirates
 
 ## North America (3)
 - Canada
+- Cuba
 - Mexico
 - United States
 
-## South America (7)
+## South America (8)
 - Argentina
 - Bolivia
 - Brazil
+- Chile
 - Colombia
 - Ecuador
 - Peru
@@ -51,6 +65,8 @@
 
 ## Africa (8)
 - Algeria
+- Angola
+- Democratic Republic of the Congo
 - Egypt
 - Kenya
 - Libya
@@ -67,3 +83,4 @@
 - Samoa
 
 ## Countries to add
+UAE, switzerland, austria, belgium, czech republic, cuba, ireland, malaysia
