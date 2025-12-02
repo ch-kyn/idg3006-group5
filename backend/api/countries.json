@@ -1590,7 +1590,7 @@
             "Borobudur Temple",
             "Komodo National Park",
             "Prambanan Temple",
-            "Bali’s Ubud and Rice Terraces"
+            "Bali's Ubud and Rice Terraces"
         ],
         "images": {
             "flag": "images/countries/asia/indonesia/indonesia_flag.webp",
@@ -1606,7 +1606,7 @@
         "area_km2": 41543,
         "currency": "Euro (EUR)",
         "gdp_total_usd": 1008000000000,
-        "national_day": "April 27 (King’s Day)",
+        "national_day": "April 27 (King's Day)",
         "national_animal": "Dutch Lion",
         "exports": [
             "Machinery & equipment",
@@ -1778,7 +1778,7 @@
             "Buuz",
             "Khuushuur",
             "Boodog",
-            "Airag (fermented mare’s milk)"
+            "Airag (fermented mare's milk)"
         ],
         "famous_people": [
             "Genghis Khan",
@@ -1806,7 +1806,7 @@
         "area_km2": 513120,
         "currency": "Thai Baht (THB)",
         "gdp_total_usd": 515000000000,
-        "national_day": "December 5 (King’s Birthday)",
+        "national_day": "December 5 (King's Birthday)",
         "national_animal": "Elephant",
         "exports": [
             "Electronics",
@@ -1875,7 +1875,7 @@
         "images": {
             "flag": "images/countries/europe/ukraine/ukraine_flag.webp",
             "map": "images/countries/europe/ukraine/ukraine_map.webp",
-            "food": "images/countries/europe/ukraine/ukraine_borscht.webp",
+            "food": "images/countries/europe/ukraine/ukraine_varenyky.webp",
             "place": "images/countries/europe/ukraine/ukraine_kyiv_lavra.webp"
         }
     }

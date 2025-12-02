@@ -1510,15 +1510,15 @@
 		"country": "Ukraine",
 		"inventions": [
 			{
-				"name": "Gas Lamp (Oil & Gas Lighting)",
-				"inventor": "Ivan Kulish",
-				"year": "1800s",
+				"name": "First Practical Helicopter (VS-300)",
+				"inventor": "Igor Sikorsky",
+				"year": "1939",
 				"information": {
-					"general": "Ivan Kulish contributed to early gas lamp designs in Ukraine, providing efficient urban lighting.",
-					"description": "These lamps used coal or natural gas, illuminating streets and public spaces before widespread electricity.",
-					"extra": "Such lighting improved urban safety and productivity and was later adapted in other European cities."
+					"general": "Ukrainian-born inventor Igor Sikorsky created the first successful, practical single-rotor helicopter.",
+					"description": "The VS-300 introduced the main rotor and tail rotor configuration that is still used in modern helicopters today.",
+					"extra": "This design became the foundation for global helicopter technology in rescue, military, transport, and medical missions."
 				},
-				"image": "images/inventions/europe/ukraine/gas_lamp.webp"
+				"image": "images/inventions/europe/ukraine/helicopter.webp"
 			},
 			{
 				"name": "Modern Tractor Adaptations",
@@ -1527,10 +1527,10 @@
 				"information": {
 					"general": "Ukraine developed modifications for tractors to better suit large-scale grain farming.",
 					"description": "These adaptations included stronger plows, larger wheels, and improved engines for heavy-duty fieldwork.",
-					"extra": "They supported Ukraine’s agricultural efficiency and contributed to the country’s status as a major grain exporter."
+					"extra": "They supported Ukraine's agricultural efficiency and contributed to the country's status as a major grain exporter."
 				},
 				"image": "images/inventions/europe/ukraine/tractor_adaptation.webp"
-			}
+				}
 		]
 	},
 	{
@@ -1579,9 +1579,9 @@
 				"inventor": "Thai martial artists",
 				"year": "c. 1800s",
 				"information": {
-					"general": "Specialized training tools were developed for Muay Thai, Thailand’s national sport.",
+					"general": "Specialized training tools were developed for Muay Thai, Thailand's national sport.",
 					"description": "This includes heavy bags, wooden dummies, and traditional pads to strengthen striking, agility, and endurance.",
-					"extra": "These inventions supported Thailand’s cultural heritage and influenced martial arts training equipment worldwide."
+					"extra": "These inventions supported Thailand's cultural heritage and influenced martial arts training equipment worldwide."
 				},
 				"image": "images/inventions/asia/thailand/muay_thai_training_equipment.webp"
 			}

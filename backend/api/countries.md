@@ -17,18 +17,22 @@
 - Russia
 - Spain
 - Turkey
+- Ukraine
 - United Kingdom
 
-## Asia (10)
+## Asia (11)
 - China
 - India
 - Indonesia
 - Iran
 - Japan
 - Kazakhstan
+- Mongolia
 - Pakistan
 - Philippines
 - South-Korea
+- Sudan
+- Thailand
 - Vietnam
 
 ## North America (3)
@@ -62,8 +66,3 @@
 - Samoa
 
 ## Countries to add
-(missing images)
-- Sudan
-- Mongolia
-- Thailand
-- Ukraine
