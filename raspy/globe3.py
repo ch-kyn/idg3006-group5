@@ -82,11 +82,6 @@ def sub(a,b):
 def scale(v,s):
     return (v[0]*s, v[1]*s, v[2]*s)
 
-def cross(a,b):
-    return (a[1]*b[2]-a[2]*b[1],
-            a[2]*b[0]-a[0]*b[2],
-            a[0]*b[1]-a[1]*b[0])
-
 # ----------------------------
 # CONFIG
 # ----------------------------
@@ -106,17 +101,18 @@ def key_pressed():
     return dr != []
 
 # ----------------------------
-# Calibration
+# Calibration with timeout
 # ----------------------------
-async def calibrate_point(point_name):
+async def calibrate_point(point_name, timeout=30):
     global north_unit, east_unit, ref_axis
-    print(f"Point at {point_name} and press 'c'")
+    print(f"Point at {point_name} and press 'c' (or wait {timeout}s to skip)")
+    start_time = time.time()
     while True:
         if key_pressed():
             ch = sys.stdin.read(1)
             if ch.lower() == 'c':
                 q = sensor.quaternion
-                if not q or len(q) !=4 or q==(0,0,0,0):
+                if not q or len(q)!=4 or q==(0,0,0,0):
                     continue
                 world_vec = rotate_vector_by_quat(sensor_axis, q)
                 world_vec = normalize(world_vec)
@@ -124,12 +120,14 @@ async def calibrate_point(point_name):
                     north_unit = world_vec
                     print("✅ North vector recorded")
                 elif point_name=="Null Island":
-                    # project onto plane perpendicular to north
                     proj = sub(world_vec, scale(north_unit, dot(world_vec, north_unit)))
                     east_unit = normalize(proj)
                     ref_axis = east_unit
                     print("✅ East/reference vector recorded")
                 return
+        if time.time() - start_time > timeout:
+            print(f"⏱ Timeout reached for {point_name}, skipping calibration.")
+            return
         await asyncio.sleep(0.05)
 
 # ----------------------------
@@ -141,7 +139,6 @@ def vector_to_latlon_2point(v):
     v = normalize(v)
     lat = math.degrees(math.asin(dot(v, north_unit)))
     lon = math.degrees(math.atan2(dot(v, east_unit), dot(v, ref_axis)))
-    # normalize longitude
     lon = (lon+180)%360 -180
     return lat, lon
 
@@ -153,9 +150,9 @@ async def send_coordinates():
     async with websockets.connect(WS_URI) as websocket:
         print("Connected to WebSocket server!")
 
-        # First, two-point calibration
+        # Two-point calibration
         await calibrate_point("North Pole")
-        await calibrate_point("Null Island (0°,0°)")
+        await calibrate_point("Null Island")
 
         print("✅ Two-point calibration done! Sending coordinates...")
 
@@ -167,10 +164,9 @@ async def send_coordinates():
                     continue
                 world_vec = rotate_vector_by_quat(sensor_axis, q)
                 lat, lon = vector_to_latlon_2point(world_vec)
-                if lat is None:
-                    await asyncio.sleep(0.01)
-                    continue
-
+                if lat is None or lon is None:
+                    # fallback if calibration skipped
+                    lat, lon = 0.0, 0.0
                 msg = json.dumps({"lat": round(lat,3), "lon": round(lon,3)})
                 await websocket.send(msg)
                 print("Sent:", msg)
