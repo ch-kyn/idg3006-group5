@@ -976,7 +976,7 @@
 		]
 	},
 	{
-		"country": "Turkey",
+		"country": "Türkiye",
 		"inventions": [
 			{
 				"name": "Tulip Cultivation",
@@ -2777,26 +2777,15 @@
 				"image": "images/inventions/asia/singapore/water_jet_pack.webp"
 			},
 			{
-				"name": "Artificial Heart Valve",
-				"inventor": "Prof. Lim Chuan Poh",
-				"year": "1990s",
+				"name": "Virtual Museums",
+				"inventor": "Lin Hsin Hsin",
+				"year": "1994",
 				"information": {
-					"general": "This device was developed to replace damaged heart valves and restore normal blood flow.",
-					"description": "Using biocompatible materials and precision engineering, it mimics natural valve function and reduces the risk of complications.",
-					"extra": "Inspired by the need for accessible cardiac solutions in Southeast Asia, this invention contributed to life-saving surgeries worldwide."
+					"general": "Virtual museums allow users to explore museum exhibits online through interactive digital platforms.",
+					"description": "The first virtual museum was created at the Lin Hsin Hsin Art Museum, utilizing early web technology to present art and cultural artifacts digitally.",
+					"extra": "This pioneering innovation made cultural heritage accessible over the internet and inspired subsequent developments in online museum experiences globally."
 				},
-				"image": "images/inventions/asia/singapore/artificial_heart_valve.webp"
-			},
-			{
-				"name": "Smart Traffic Management System",
-				"inventor": "Land Transport Authority Singapore",
-				"year": "2000s",
-				"information": {
-					"general": "Singapore pioneered adaptive traffic systems to reduce congestion and improve city mobility.",
-					"description": "Sensors and AI algorithms optimize traffic light timings, monitor flow, and reroute vehicles dynamically.",
-					"extra": "Inspired by urban density and the city's commitment to efficiency, this system became a global benchmark for smart city traffic management."
-				},
-				"image": "images/inventions/asia/singapore/smart_traffic_system.webp"
+				"image": "images/inventions/asia/singapore/virtual_museums.webp"
 			}
 		]
 	},
@@ -2804,15 +2793,15 @@
 		"country": "Nepal",
 		"inventions": [
 			{
-				"name": "Sherpa Load Harness",
-				"inventor": "Traditional Sherpa Communities",
-				"year": "Ancient",
+				"name": "Lokta Paper",
+				"inventor": "Traditional Nepali craftsmen",
+				"year": "1370",
 				"information": {
-					"general": "The Sherpa load harness was designed to carry heavy loads efficiently across Himalayan terrain.",
-					"description": "Made of ropes and woven straps, it balances weight across the back and head, enabling long-distance treks with minimal fatigue.",
-					"extra": "Inspired by the necessity of transporting goods through steep mountains, this traditional design influenced modern trekking and mountaineering equipment."
+					"general": "Handmade paper made from inner bark of Nepal's lokta shrubs, durable and resistant to tearing, humidity, insects and mildew.",
+					"description": "Lokta paper, also called Nepali kagaj, is produced from the fibrous inner bark of shrubs of the genus Daphne (Daphne bholua and Daphne papyracea). Historically it was used for religious scriptures and government documents.",
+					"extra": "Surviving documents printed on lokta paper date back to at least 1370, and the tradition continues to contribute to arts, official documents, and cultural heritage in Nepal."
 				},
-				"image": "images/inventions/asia/nepal/sherpa_harness.webp"
+				"image": "images/inventions/asia/nepal/lokta_paper.webp"
 			},
 			{
 				"name": "Himalayan Rope Bridges",
@@ -2826,16 +2815,16 @@
 				"image": "images/inventions/asia/nepal/rope_bridge.webp"
 			},
 			{
-				"name": "Yak Wool Textiles",
-				"inventor": "Traditional Himalayan Artisans",
-				"year": "Ancient",
+				"name": "Ginger (robot-waiter)",
+				"inventor": "Paaila Technology",
+				"year": "2018",
 				"information": {
-					"general": "Yak wool textiles were developed to produce warm, durable clothing in high-altitude regions.",
-					"description": "Fibers are spun and woven into blankets, jackets, and ropes capable of withstanding extreme cold.",
-					"extra": "Inspired by harsh mountain climates, this invention remains a vital cultural craft and export product, blending tradition with utility."
+					"general": "Autonomous service robot developed in Nepal for use in restaurants.",
+					"description": "Ginger serves food by picking up dishes from the kitchen and delivering them to tables, supporting voice recognition, navigation, and automatic docking.",
+					"extra": "Ginger was deployed at Naulo Restaurant – Nepal's first 'digitized robot restaurant' in South Asia. The robot demonstrates that Nepali engineers can develop commercial service robots."
 				},
-				"image": "images/inventions/asia/nepal/yak_wool_textiles.webp"
-			} 
+				"image": "images/inventions/asia/nepal/ginger_robot_waiter.webp"
+			}
 		]
 	},
 	{
@@ -2851,17 +2840,6 @@
 					"extra": "Inspired by abundant cinnamon trees, this method established Sri Lanka as a global leader in spice production."
 				},
 				"image": "images/inventions/asia/sri_lanka/cinnamon_processing.webp"
-			}, 
-			{
-				"name": "Tea Cultivation Techniques",
-				"inventor": "James Taylor",
-				"year": "1867",
-				"information": {
-					"general": "James Taylor developed modern tea cultivation methods in Sri Lanka.",
-					"description": "He introduced planting, irrigation, and processing techniques suitable for Ceylon's climate, producing high-quality teas.",
-					"extra": "Inspired by British colonial demand for tea, his work created Sri Lanka's lasting reputation as a premium tea exporter."
-				},
-				"image": "images/inventions/asia/sri_lanka/tea_cultivation.webp"
 			},
 			{
 				"name": "Stilt Fishing",
@@ -2889,17 +2867,6 @@
 					"extra": "Inspired by strategic defense and Buddhist principles, these structures define Bhutanese culture and architecture."
 				},
 				"image": "images/inventions/asia/bhutan/dzong_architecture.webp"
-			},
-			{
-				"name": "Traditional Paper Making",
-				"inventor": "Bhutanese Artisans",
-				"year": "Ancient",
-				"information": {
-					"general": "Handmade paper using plant fibers for religious texts and crafts.",
-					"description": "Fibers are boiled, beaten, and pressed into sheets, producing durable, textured paper.",
-					"extra": "Inspired by the need for sacred manuscripts, this method preserves cultural heritage and supports artisanal craftsmanship."
-				},
-				"image": "images/inventions/asia/bhutan/traditional_paper.webp"
 			},
 			{
 				"name": "Prayer Wheel Mechanism",
@@ -2938,19 +2905,8 @@
 					"extra": "Inspired by arid conditions, it demonstrates early hydraulic engineering and resourcefulness of ancient civilizations."
 				},
 				"image": "images/inventions/asia/jordan/petra_water_system.webp"
-			},
-			{
-				"name": "Traditional Bedouin Tents",
-				"inventor": "Bedouin Tribes",
-				"year": "Ancient",
-				"information": {
-					"general": "Portable tents designed for desert life.",
-					"description": "Made with goat hair and canvas, these tents provide ventilation, shade, and protection from harsh conditions.",
-					"extra": "Inspired by nomadic lifestyles, the design optimizes mobility and resilience in arid environments."
-				},
-				"image": "images/inventions/asia/jordan/bedouin_tent.webp"
 			}
-		] 
+		]
 	},
 	{
 		"country": "Lebanon",
@@ -2976,17 +2932,217 @@
 					"extra": "Inspired by the need for efficient trade communication, it became the foundation for Greek, Latin, and modern alphabets."
 				},
 				"image": "images/inventions/asia/lebanon/phoenician_alphabet.webp"
+			}
+		]
+	},
+	{
+		"country": "Estonia",
+		"inventions": [
+			{
+				"name": "Skype",
+				"inventor": "Estonian Developers",
+				"year": "2003",
+				"information": {
+					"general": "A revolutionary VoIP software enabling voice and video communication over the internet.",
+					"description": "Skype allows real-time audio and video calls, as well as instant messaging, connecting people globally.",
+					"extra": "Inspired by the need for seamless global communication, it became one of the most widely used communication platforms worldwide."
+				},
+				"image": "images/inventions/europe/estonia/skype.webp"
 			},
 			{
-				"name": "Arak Distillation",
-				"inventor": "Lebanese Artisans",
-				"year": "Ancient",
+				"name": "e-Residency Program",
+				"inventor": "Government of Estonia",
+				"year": "2014",
 				"information": {
-					"general": "A technique for producing an anise-flavored alcoholic drink.",
-					"description": "Fermentation and double distillation extract aromatic flavors from grapes and anise seeds.",
-					"extra": "Inspired by cultural rituals and hospitality traditions, Arak became a signature beverage of Lebanon."
+					"general": "A digital identity program allowing global entrepreneurs to start and run an EU-based company online.",
+					"description": "e-Residents can access Estonian services, sign documents digitally, and manage a business without being physically present.",
+					"extra": "This innovative approach to digital governance has inspired other nations to explore similar programs."
 				},
-				"image": "images/inventions/asia/lebanon/arak_distillation.webp"
+				"image": "images/inventions/europe/estonia/e_residency.webp"
+			}
+		]
+	},
+	{
+		"country": "Latvia",
+		"inventions": [
+			{
+				"name": "Air Baltic (National Airline Innovation)",
+				"inventor": "Latvian Aviation Engineers",
+				"year": "1995",
+				"information": {
+					"general": "An innovative airline model connecting Northern and Eastern Europe efficiently.",
+					"description": "Air Baltic pioneered low-cost and regionally-focused airline operations, improving accessibility to the Baltics.",
+					"extra": "Inspired by Latvia's geographic position, it became a model for regional airline networks."
+				},
+				"image": "images/inventions/europe/latvia/air_baltic.webp"
+			},
+			{
+				"name": "Laima Confectionery Innovations",
+				"inventor": "Latvian Chocolatiers",
+				"year": "19th–20th Century",
+				"information": {
+					"general": "Development of unique chocolate recipes and packaging innovations.",
+					"description": "Laima introduced high-quality, creatively packaged chocolates that became a cultural symbol.",
+					"extra": "These innovations helped establish Latvia's reputation in confectionery across Europe."
+				},
+				"image": "images/inventions/europe/latvia/laima_chocolate.webp"
+			}
+		]
+	},
+	{
+		"country": "Serbia",
+		"inventions": [
+			{
+				"name": "Tesla's Alternating Current (AC) Motor",
+				"inventor": "Nikola Tesla",
+				"year": "1887",
+				"information": {
+					"general": "A revolutionary AC motor design enabling efficient electricity transmission over long distances.",
+					"description": "Tesla's motor converts electrical energy into mechanical energy using alternating current principles.",
+					"extra": "Inspired by the need for efficient power distribution, it laid the foundation for modern electric power systems."
+				},
+				"image": "images/inventions/europe/serbia/tesla_ac_motor.webp"
+			},
+			{
+				"name": "Pupin Coil",
+				"inventor": "Mihajlo Pupin",
+				"year": "1899",
+				"information": {
+					"general": "An induction coil used to extend the range of long-distance telephone lines.",
+					"description": "By inserting coils at intervals along telephone lines, Pupin drastically reduced signal loss, enabling clearer long-distance communication.",
+					"extra": "This invention revolutionized telecommunications and laid the groundwork for modern telephone networks."
+				},
+				"image": "images/inventions/europe/serbia/pupin_coil.webp"
+			},
+			{
+				"name": "Manual Hair Clippers",
+				"inventor": "Nikola Bizumić",
+				"year": "1870s",
+				"information": {
+					"general": "A hand-operated device for cutting hair, predecessor to modern hair clippers.",
+					"description": "Bizumić’s invention allowed barbers to cut hair more efficiently and uniformly, revolutionizing grooming tools.",
+					"extra": "Inspired by the need for faster and more precise haircuts, it became widely adopted in Europe and beyond."
+				},
+				"image": "images/inventions/europe/serbia/nikola_bizumic_hair_clippers.webp"
+			}
+		]
+	},
+	{
+		"country": "Guatemala",
+		"inventions": [
+			{
+				"name": "Maya Calendar",
+				"inventor": "Ancient Maya Civilization",
+				"year": "c. 2000 BCE – 900 CE",
+				"information": {
+					"general": "A sophisticated system for tracking time and astronomical events.",
+					"description": "The calendar combined solar, lunar, and ritual cycles, allowing precise agricultural and ceremonial planning.",
+					"extra": "It influenced modern understanding of astronomy and timekeeping."
+				},
+				"image": "images/inventions/north_america/guatemala/maya_calendar.webp"
+			},
+			{
+				"name": "Chocolate Production",
+				"inventor": "Ancient Maya Civilization",
+				"year": "c. 1500 BCE",
+				"information": {
+					"general": "The Maya were among the first to cultivate cacao and produce chocolate beverages.",
+					"description": "Cacao beans were fermented, roasted, and ground to make drinks used in rituals and daily life.",
+					"extra": "This tradition laid the foundation for modern chocolate production worldwide."
+				},
+				"image": "images/inventions/north_america/guatemala/maya_chocolate.webp"
+			},
+			{
+				"name": "Mayan Rubber Ball",
+				"inventor": "Ancient Maya Civilization",
+				"year": "c. 1600 BCE",
+				"information": {
+					"general": "Early use of natural rubber to create balls for games and ceremonial activities.",
+					"description": "These balls were used in the Mesoamerican ballgame, a ritual and recreational sport.",
+					"extra": "It represents one of the earliest known uses of processed rubber."
+				},
+				"image": "images/inventions/north_america/guatemala/maya_rubber_ball.webp"
+			}
+		]
+	},
+	{
+		"country": "Costa Rica",
+		"inventions": [
+			{
+				"name": "Traditional Oxcart",
+				"inventor": "Costa Rican Craftsmen",
+				"year": "19th Century",
+				"information": {
+					"general": "Colorful, hand-painted wooden oxcarts used for transporting coffee and goods.",
+					"description": "Crafted with intricate designs and symbols, these oxcarts became a cultural icon of Costa Rica.",
+					"extra": "Originally a practical tool for coffee transport, it is now recognized as a national symbol and UNESCO heritage tradition."
+				},
+				"image": "images/inventions/north_america/costa_rica/traditional_oxcart.webp"
+			},
+			{
+				"name": "Ecotourism Model",
+				"inventor": "Costa Rican Conservationists",
+				"year": "Late 20th Century",
+				"information": {
+					"general": "A global model combining tourism with environmental conservation.",
+					"description": "Protected areas and national parks were promoted as tourist destinations while preserving biodiversity.",
+					"extra": "This approach has influenced ecotourism policies worldwide."
+				},
+				"image": "images/inventions/north_america/costa_rica/ecotourism_model.webp"
+			}
+		]
+	},
+	{
+		"country": "Honduras",
+		"inventions": [
+			{
+				"name": "Traditional Textile Weaving",
+				"inventor": "Lenca and Maya Communities",
+				"year": "Pre-Columbian Period",
+				"information": {
+					"general": "Techniques for weaving fabrics with natural dyes and symbolic patterns.",
+					"description": "Used for clothing, ceremonial attire, and decorative purposes.",
+					"extra": "These traditional methods preserve cultural identity and inspired modern textile art."
+				},
+				"image": "images/inventions/north_america/honduras/traditional_weaving.webp"
+			},
+			{
+				"name": "Cacao Processing Techniques",
+				"inventor": "Ancient Maya Civilization",
+				"year": "c. 1500 BCE",
+				"information": {
+					"general": "Advanced methods of fermenting, roasting, and grinding cacao beans.",
+					"description": "Produced chocolate drinks for ceremonial and everyday consumption.",
+					"extra": "Laid the foundation for modern chocolate use in Central America and Europe."
+				},
+				"image": "images/inventions/north_america/honduras/maya_cacao.webp"
+			}
+		]
+	},
+	{
+		"country": "Panama",
+		"inventions": [
+			{
+				"name": "Panama Canal Locks System",
+				"inventor": "John Frank Stevens & George Washington Goethals",
+				"year": "1914",
+				"information": {
+					"general": "Completed in 1914, the Panama Canal locks system was engineered to allow ships to traverse between the Atlantic and Pacific Oceans efficiently.",
+					"description": "The canal uses a series of locks to raise and lower ships across the Isthmus of Panama, overcoming the difference in sea levels and terrain. It revolutionized global trade by drastically shortening shipping routes.",
+					"extra": "While not a single inventor, John Frank Stevens and George Washington Goethals were instrumental in the canal’s construction and engineering. The system remains a vital maritime route and a symbol of engineering ingenuity."
+				},
+				"image": "images/inventions/americas/panama/panama_canal_locks.webp"
+			},
+			{
+				"name": "Panama Hat (Exported globally)",
+				"inventor": "Ecuadorian origin, popularized in Panama",
+				"year": "19th century",
+				"information": {
+					"general": "Although originally from Ecuador, the Panama hat gained worldwide recognition through the Panama trade routes and workers on the Panama Canal.",
+					"description": "Woven from the fibers of the toquilla straw, these lightweight hats are breathable and elegant. They became a symbol of tropical fashion, often associated with the isthmus.",
+					"extra": "The hat became globally famous when President Theodore Roosevelt was photographed wearing one during the Panama Canal construction. Panama became the central hub for export, giving the hat its modern name."
+				},
+				"image": "images/inventions/americas/panama/panama_hat.webp"
 			}
 		]
 	}
