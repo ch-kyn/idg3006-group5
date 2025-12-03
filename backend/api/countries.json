@@ -3614,6 +3614,49 @@
     "food": "images/countries/africa/chad/chad_food.webp",
     "place": "images/countries/africa/chad/chad_place.webp"
   }
+},
+{
+  "country": "Ghana",
+  "capital": "Accra",
+  "population": 33000000,
+  "area_km2": 238535,
+  "currency": "Ghanaian Cedi (GHS)",
+  "gdp_total_usd": 77000000000,
+  "national_day": "March 6",
+  "national_animal": "Tawny Eagle",
+  "exports": [
+    "Gold",
+    "Cocoa Beans",
+    "Crude Oil",
+    "Timber",
+    "Processed Cocoa Products"
+  ],
+  "popular_dishes": [
+    "Jollof Rice",
+    "Banku and Tilapia",
+    "Fufu with Light Soup",
+    "Kelewele",
+    "Waakye"
+  ],
+  "famous_people": [
+    "Kwame Nkrumah",
+    "Kofi Annan",
+    "Abeiku Santana",
+    "Ama Ata Aidoo"
+  ],
+  "places_heritage": [
+    "Cape Coast Castle",
+    "Kakum National Park",
+    "Lake Volta",
+    "Mole National Park"
+  ],
+  "images": {
+    "flag": "images/countries/africa/ghana/ghana_flag.webp",
+    "map": "images/countries/africa/ghana/ghana_map.webp",
+    "food": "images/countries/africa/ghana/ghana_food.webp",
+    "place": "images/countries/africa/ghana/ghana_place.webp"
+  }
 }
+
 
 ]
