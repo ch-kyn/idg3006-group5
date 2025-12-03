@@ -2334,5 +2334,660 @@
 				"image": "images/europe/romania/cybernetics.webp"
 			}
 		]
+	},
+	{
+		"country": "Uruguay",
+		"inventions": [
+			{
+				"name": "Selective Frost-Protection Device (SIS)",
+				"inventor": "Rafael Andrés Guarga Ferro",
+				"year": "Late 1990s",
+				"information": {
+					"general": "A device to protect agricultural plants from frost by selective inverted sink mechanism.",
+					"description": "The SIS device helps farmers prevent frost damage by controlling radiational frost in vulnerable crops.",
+					"extra": "This invention has helped improve agricultural resilience in frost-prone regions."
+				},
+				"image": "images/inventions/south_america/uruguay/frost_protection_device.webp"
+			},
+			{
+				"name": "Livestock-monitoring collar 'Chipsafer'",
+				"inventor": "María Victoria Alonsoperez",
+				"year": "2013",
+				"information": {
+					"general": "A solar-powered collar for cattle that tracks movement data and detects anomalies remotely.",
+					"description": "Chipsafer uses sensors to monitor cattle behavior, helping detect illness or theft early and enabling remote livestock management.",
+					"extra": "Recognized as an innovative ag-tech startup in Latin America, it exemplifies modern IoT-based agriculture solutions."
+				},
+				"image": "images/inventions/south_america/uruguay/chipsafer_collar.webp"
+			}
+		]
+	},
+	{
+		"country": "Paraguay",
+		"inventions": [
+			{
+				"name": "Tereré (Cold Herbal Infusion)",
+				"inventor": "Traditional Guaraní Communities",
+				"year": "Pre-Columbian Era",
+				"information": {
+					"general": "Tereré is a cold herbal infusion made from yerba mate and water, popularized in Paraguay and neighboring regions.",
+					"description": "Prepared by steeping yerba mate in cold water, often flavored with herbs or citrus, it is served in a guampa (hollowed-out horn) and drunk through a metal straw called a ‘bombilla.' It is both refreshing and culturally significant.",
+					"extra": "Tereré is not only a beverage but a social ritual, reflecting community, hospitality, and Guaraní traditions. UNESCO recognizes it as part of Paraguay's intangible cultural heritage."
+				},
+				"image": "images/inventions/south_america/paraguay/terere.webp"
+			},
+			{
+				"name": "Ñandutí Lace",
+				"inventor": "Paraguayan Artisans",
+				"year": "17th Century",
+				"information": {
+					"general": "Ñandutí is a traditional Paraguayan lace known for its intricate web-like patterns.",
+					"description": "Crafted by hand using fine threads, Ñandutí resembles a spider web (‘ñandutí' means spider web in Guaraní). It is used to decorate clothing, tablecloths, and ceremonial garments.",
+					"extra": "The craft combines Spanish lace techniques with indigenous Guaraní designs. It remains a symbol of Paraguayan artistry and cultural identity, exported worldwide as a decorative art form."
+				},
+				"image": "images/inventions/south_america/paraguay/nanduti_lace.webp"
+			}
+		]
+	},
+	{
+		"country": "Portugal",
+		"inventions": [
+			{
+				"name": "Caravel (Ship Design)",
+				"inventor": "Portuguese Shipbuilders",
+				"year": "15th Century",
+				"information": {
+					"general": "The caravel was a small, highly maneuverable ship developed for long-distance exploration.",
+					"description": "With its lateen sails and sleek design, the caravel allowed Portuguese explorers to navigate the Atlantic and African coasts, significantly advancing maritime discovery.",
+					"extra": "It played a crucial role during the Age of Discoveries, enabling voyages by Vasco da Gama and others that connected Europe to India and beyond."
+				},
+				"image": "images/inventions/europe/portugal/caravel.webp"
+			},
+			{
+				"name": "Portuguese Pavement (Calçada Portuguesa)",
+				"inventor": "Portuguese Artisans",
+				"year": "19th Century",
+				"information": {
+					"general": "Calçada Portuguesa is a decorative pavement made from small stones forming intricate patterns.",
+					"description": "Using black and white stones, artisans create geometric and figurative designs for streets, plazas, and walkways, blending artistry and functionality.",
+					"extra": "It remains an iconic feature of Portuguese cities and has influenced urban design in Brazil and other former colonies."
+				},
+				"image": "images/inventions/europe/portugal/portuguese_pavement.webp"
+			}
+		]
+	},
+	{
+		"country": "Hungary",
+		"inventions": [
+			{
+				"name": "Rubik's Cube",
+				"inventor": "Ernő Rubik",
+				"year": "1974",
+				"information": {
+					"general": "The Rubik's Cube is a 3D combination puzzle that challenges spatial reasoning and problem-solving skills.",
+					"description": "Consisting of a 3x3 cube with rotating sides, it requires aligning colors on each face, offering both a toy and a mathematical challenge.",
+					"extra": "Rubik originally designed it as a teaching tool for architecture students. It became a worldwide phenomenon and a symbol of intellectual play."
+				},
+				"image": "images/inventions/europe/hungary/rubiks_cube.webp"
+			},
+			{
+				"name": "Ballpoint Pen (Modern Design)",
+				"inventor": "László Bíró",
+				"year": "1938",
+				"information": {
+					"general": "The modern ballpoint pen uses a rolling ball to dispense ink smoothly and evenly on paper.",
+					"description": "Bíró's invention solved smudging problems of fountain pens, providing a practical tool for everyday writing.",
+					"extra": "His design revolutionized writing instruments globally and led to widespread commercial production."
+				},
+				"image": "images/inventions/europe/hungary/ballpoint_pen.webp"
+			},
+			{
+				"name": "Vitamin C Isolation",
+				"inventor": "Albert Szent-Györgyi",
+				"year": "1932",
+				"information": {
+					"general": "Albert Szent-Györgyi isolated vitamin C, crucial for human health and preventing scurvy.",
+					"description": "He extracted ascorbic acid from paprika and citrus fruits, paving the way for nutritional science and supplementation.",
+					"extra": "This discovery earned him the Nobel Prize in Physiology or Medicine in 1937 and had a global impact on medicine and dietetics."
+				},
+				"image": "images/inventions/europe/hungary/vitamin_c.webp"
+			}
+		]
+	},
+	{
+		"country": "Slovakia",
+		"inventions": [
+			{
+				"name": "Fujara (Traditional Shepherd's Flute)",
+				"inventor": "Slovak Artisans",
+				"year": "1700s",
+				"information": {
+					"general": "The fujara is a large, intricately decorated wooden flute from Slovakia.",
+					"description": "It produces deep, melodic tones and is traditionally played by shepherds in the countryside. Each fujara is handcrafted from wood, often with decorative carvings.",
+					"extra": "UNESCO recognizes the fujara as part of Slovakia's intangible cultural heritage, but it is a tangible, playable instrument central to Slovak folk culture."
+				},
+				"image": "images/inventions/europe/slovakia/fujara.webp"
+			},
+			{
+				"name": "Loden Wool (Traditional Textile)",
+				"inventor": "Slovak Craftsmen",
+				"year": "1200s",
+				"information": {
+					"general": "Loden wool is a water-resistant, dense textile used for clothing and outerwear.",
+					"description": "The wool is felted and brushed to create a thick, durable fabric ideal for mountain climates and outdoor wear.",
+					"extra": "It became widely used in Central Europe for coats and capes, maintaining its reputation as a functional, traditional material."
+				},
+				"image": "images/inventions/europe/slovakia/loden_wool.webp"
+			}
+		]
+	},
+	{
+		"country": "Bulgaria",
+		"inventions": [
+			{
+				"name": "Bulgarian Yogurt with Lactobacillus bulgaricus",
+				"inventor": "Stamen Grigorov",
+				"year": "1905",
+				"information": {
+					"general": "Bulgarian yogurt is characterized by its unique taste and health benefits.",
+					"description": "Grigorov identified Lactobacillus bulgaricus, the bacterium responsible for fermenting milk into yogurt, which contributed to probiotic science.",
+					"extra": "This discovery helped popularize yogurt globally and promoted research into beneficial bacteria for human health."
+				},
+				"image": "images/inventions/europe/bulgaria/bulgarian_yogurt.webp"
+			},
+			{
+				"name": "Rose Oil Extraction Techniques",
+				"inventor": "Bulgarian Distillers",
+				"year": "1820s",
+				"information": {
+					"general": "Bulgaria developed advanced methods for extracting essential oils from Rosa damascena.",
+					"description": "Using steam distillation, Bulgarian rose oil achieves high purity and aromatic quality, widely used in perfumery.",
+					"extra": "Bulgarian rose oil remains globally prized and supports a major cultural and economic industry in the Rose Valley."
+				},
+				"image": "images/inventions/europe/bulgaria/rose_oil.webp"
+			}
+		]
+	},
+	{
+		"country": "Croatia",
+		"inventions": [
+			{
+				"name": "Međimurje Pottery",
+				"inventor": "Croatian Artisans",
+				"year": "1300s",
+				"information": {
+					"general": "Traditional pottery from the Međimurje region of Croatia is known for its durability and decorative patterns.",
+					"description": "Handcrafted clay pots are often painted with floral or geometric motifs and used for storage, cooking, and cultural rituals.",
+					"extra": "This craft preserves centuries-old techniques and remains an important symbol of Croatian folk art."
+				},
+				"image": "images/inventions/europe/croatia/medimurje_pottery.webp"
+			},
+			{
+				"name": "Tuna Canning Industry",
+				"inventor": "Croatian Entrepreneurs",
+				"year": "1870s",
+				"information": {
+					"general": "Croatia pioneered modern tuna canning techniques along its Adriatic coast.",
+					"description": "Using sterilization and preservation methods, canned tuna became a reliable product for export and local consumption.",
+					"extra": "Croatia remains one of the leading European producers of canned seafood, linking innovation to its maritime tradition."
+				},
+				"image": "images/inventions/europe/croatia/tuna_canning.webp"
+			}
+		]
+	},
+	{
+		"country": "Bosnia and Herzegovina",
+		"inventions": [
+			{
+				"name": "Stećci (Medieval Tombstones)",
+				"inventor": "Medieval Bosnian Artisans",
+				"year": "1200s–1500s",
+				"information": {
+					"general": "Stećci are unique medieval tombstones decorated with symbolic carvings found across Bosnia and Herzegovina.",
+					"description": "Carved from limestone, they feature motifs like spirals, crosses, and hunting scenes, reflecting social, spiritual, and artistic values.",
+					"extra": "UNESCO recognizes stećci as part of the world's cultural heritage, showcasing medieval Bosnian craftsmanship."
+				},
+				"image": "images/inventions/europe/bosnia/stecci.webp"
+			},
+			{
+				"name": "Traditional Bosnian Embroidery (Vez)",
+				"inventor": "Bosnian Artisans",
+				"year": "1700s",
+				"information": {
+					"general": "Bosnian embroidery, or vez, is a traditional textile art featuring colorful geometric and floral designs.",
+					"description": "Applied to clothing, linens, and ceremonial garments, it reflects local identity and cultural continuity.",
+					"extra": "This craft is still taught and practiced today, maintaining its role in festivals, weddings, and daily life as a living tradition."
+				},
+				"image": "images/inventions/europe/bosnia/bosnian_embroidery.webp"
+			}
+		]
+	},
+	{
+		"country": "Ethiopia",
+		"inventions": [
+			{
+				"name": "Mesob (Injera Basket-Table)",
+				"inventor": "Harari and Ethiopian artisans (traditional craft)",
+				"year": "1500s",
+				"information": {
+					"general": "A woven basket used to store and serve injera.",
+					"description": "Provides a durable, breathable container and communal table for injera and stews, fostering communal eating.",
+					"extra": "Documented in the 16th century by Portuguese explorers."
+				},
+				"image": "images/inventions/africa/ethiopia/mesob.webp"
+			},
+			{
+				"name": "Automated Injera Baking Machine",
+				"inventor": "Yoseph Temesgen",
+				"year": "2008",
+				"information": {
+					"general": "Machine for baking injera automatically.",
+					"description": "Mixes batter, heats the surface, and cooks injera faster and more uniformly than traditional methods.",
+					"extra": "Allows mass production for diaspora communities and restaurants abroad."
+				},
+				"image": "images/inventions/africa/ethiopia/injera_machine.webp"
+			}
+		]
+	},
+	{
+		"country": "Bangladesh",
+		"inventions": [
+			{
+				"name": "Jamdani Textile",
+				"inventor": "Bangladeshi weavers",
+				"year": "200 BC",
+				"information": {
+					"general": "Delicate handwoven muslin fabric with intricate patterns.",
+					"description": "Artisans interlace threads to build floral and geometric patterns directly into the weave.",
+					"extra": "Recognized by UNESCO as intangible cultural heritage."
+				},
+				"image": "images/inventions/asia/bangladesh/jamdani_sari.webp"
+			},
+			{
+				"name": "Biodegradable Jute Bag (Sonali Bag)",
+				"inventor": "Mubarak Ahmad Khan",
+				"year": "2017",
+				"information": {
+					"general": "Eco-friendly jute-based bag.",
+					"description": "Made from jute cellulose with natural binders and dyes, biodegradable and compostable.",
+					"extra": "Alternative to plastic bags, promoting sustainability."
+				},
+				"image": "images/inventions/asia/bangladesh/sonali_bag.webp"
+			}
+		]
+	},
+	{
+		"country": "Myanmar (Burma)",
+		"inventions": [
+			{
+				"name": "Traditional Lacquerware",
+				"inventor": "Burmese artisans",
+				"year": "1200s",
+				"information": {
+					"general": "Handmade lacquered bowls and decorative items.",
+					"description": "Layers of lacquer applied to bamboo, paper, or wood with intricate designs.",
+					"extra": "Used for both practical and ceremonial purposes."
+				},
+				"image": "images/inventions/asia/myanmar/burmese_lacquerware.webp"
+			},
+			{
+				"name": "Bamboo Long-Boat",
+				"inventor": "Ethnic river communities of Myanmar",
+				"year": "500 BC",
+				"information": {
+					"general": "Long narrow bamboo boats for river transport.",
+					"description": "Lightweight, sturdy design ideal for rivers and trade.",
+					"extra": "Reflects adaptation to Myanmar's river geography."
+				},
+				"image": "images/inventions/asia/myanmar/burmese_bamboo_boat.webp"
+			}
+		]
+	},
+	{
+		"country": "Mali",
+		"inventions": [
+			{
+				"name": "Kora",
+				"inventor": "Mandinka griot musicians",
+				"year": "1200s",
+				"information": {
+					"general": "21-stringed harp-lute central to West African music.",
+					"description": "Calabash resonator with hardwood neck; played with thumbs and fingers.",
+					"extra": "Used for storytelling and praise-singing."
+				},
+				"image": "images/inventions/africa/mali/kora_instrument.webp"
+			},
+			{
+				"name": "M'Bolon",
+				"inventor": "Mandinka cultural communities",
+				"year": "1300s",
+				"information": {
+					"general": "Percussion instrument made from calabash and calfskin.",
+					"description": "Used to produce rhythmic sounds for ceremonies.",
+					"extra": "Played at weddings, funerals, and festivals."
+				},
+				"image": "images/inventions/africa/mali/mbolon_instrument.webp"
+			}
+		]
+	},
+	{
+		"country": "Niger",
+		"inventions": [
+			{
+				"name": "Tuareg Camel-Saddle Bags",
+				"inventor": "Tuareg craftsmen",
+				"year": "800",
+				"information": {
+					"general": "Leather bags for camel caravans.",
+					"description": "Durable design for transporting goods in the Sahara.",
+					"extra": "Represents centuries of nomadic innovation."
+				},
+				"image": "images/inventions/africa/niger/tuareg_saddle_bag.webp"
+			},
+			{
+				"name": "Tuareg Silver Cross (Agadez Cross)",
+				"inventor": "Tuareg silversmiths of Agadez",
+				"year": "1400s",
+				"information": {
+					"general": "A symbolic silver pendant worn by the Tuareg people.",
+					"description": "Hand-forged from silver, the Agadez Cross was traditionally given to Tuareg boys when they came of age and represented protection and guidance in the desert.",
+					"extra": "The design originated in the Agadez region of Niger and later became an unofficial national symbol."
+				},
+				"image": "images/inventions/africa/niger/agadez_cross.webp"
+			}
+		]
+	},
+	{
+		"country": "Yemen",
+		"inventions": [
+			{
+				"name": "Qadad Plastering",
+				"inventor": "Ancient Yemeni builders",
+				"year": "500 BC",
+				"information": {
+					"general": "Waterproof plaster used in construction.",
+					"description": "Mixture of lime, volcanic ash, and organic oils for durable walls.",
+					"extra": "Used in ancient dams and buildings, including Marib Dam."
+				},
+				"image": "images/inventions/asia/yemen/qadad_plastering.webp"
+			},
+			{
+				"name": "Jambiya Dagger",
+				"inventor": "Yemeni blacksmiths",
+				"year": "1000s",
+				"information": {
+					"general": "Curved dagger worn as a symbol of status.",
+					"description": "Steel blade with decorated handle and sheath.",
+					"extra": "Represents Yemeni heritage and traditional craftsmanship."
+				},
+				"image": "images/inventions/asia/yemen/jambiya_dagger.webp"
+			}
+		]
+	},
+	{
+		"country": "Israel",
+		"inventions": [
+			{
+				"name": "Iron Dome",
+				"inventor": "Rafael Advanced Defense Systems",
+				"year": "2011",
+				"information": {
+					"general": "The Iron Dome was developed to intercept short-range rockets and artillery shells in real time.",
+					"description": "Using radar and advanced tracking software, the system detects incoming threats and launches interceptors to neutralize them mid-air.",
+					"extra": "The project was inspired by the need to protect civilian populations from increasing rocket attacks. Iron Dome has since become a global model for missile defense systems."
+				},
+				"image": "images/inventions/asia/israel/iron_dome.webp"
+			},
+			{
+				"name": "USB Flash Drive",
+				"inventor": "Dov Moran",
+				"year": "1998",
+				"information": {
+					"general": "Dov Moran invented the USB flash drive to replace floppy disks with a more reliable and portable storage device.",
+					"description": "It uses flash memory and a USB interface, allowing users to store and transfer data easily between computers without additional software.",
+					"extra": "Moran's inspiration came from the growing need for compact, high-capacity storage. Today, USB drives are ubiquitous worldwide."
+				},
+				"image": "images/inventions/asia/israel/usb_flash_drive.webp"
+			},
+			{
+				"name": "Waze",
+				"inventor": "Uri Levine, Ehud Shabtai, Amir Shinar",
+				"year": "2006",
+				"information": {
+					"general": "Waze was developed to provide real-time navigation based on crowd-sourced traffic information.",
+					"description": "The app collects user-reported data to suggest faster routes, alerting drivers to traffic jams, accidents, and hazards.",
+					"extra": "Inspired by the challenges of daily commuting in congested cities, Waze revolutionized GPS navigation and social mapping worldwide."
+				},
+				"image": "images/inventions/asia/israel/waze.webp"
+			}
+		]
+	},
+	{
+		"country": "Singapore",
+		"inventions": [
+			{
+				"name": "Water-jet Pack",
+				"inventor": "JetLev",
+				"year": "2012",
+				"information": {
+					"general": "The water-jet pack was created to allow humans to fly above water using pressurized water streams.",
+					"description": "It uses a powerful water pump connected to a personal flight device, propelling the user into the air for recreation or rescue operations.",
+					"extra": "Inspired by the popularity of water sports in Singapore, this invention merged thrill with innovation, influencing personal aquatic flight technologies globally."
+				},
+				"image": "images/inventions/asia/singapore/water_jet_pack.webp"
+			},
+			{
+				"name": "Artificial Heart Valve",
+				"inventor": "Prof. Lim Chuan Poh",
+				"year": "1990s",
+				"information": {
+					"general": "This device was developed to replace damaged heart valves and restore normal blood flow.",
+					"description": "Using biocompatible materials and precision engineering, it mimics natural valve function and reduces the risk of complications.",
+					"extra": "Inspired by the need for accessible cardiac solutions in Southeast Asia, this invention contributed to life-saving surgeries worldwide."
+				},
+				"image": "images/inventions/asia/singapore/artificial_heart_valve.webp"
+			},
+			{
+				"name": "Smart Traffic Management System",
+				"inventor": "Land Transport Authority Singapore",
+				"year": "2000s",
+				"information": {
+					"general": "Singapore pioneered adaptive traffic systems to reduce congestion and improve city mobility.",
+					"description": "Sensors and AI algorithms optimize traffic light timings, monitor flow, and reroute vehicles dynamically.",
+					"extra": "Inspired by urban density and the city's commitment to efficiency, this system became a global benchmark for smart city traffic management."
+				},
+				"image": "images/inventions/asia/singapore/smart_traffic_system.webp"
+			}
+		]
+	},
+	{
+		"country": "Nepal",
+		"inventions": [
+			{
+				"name": "Sherpa Load Harness",
+				"inventor": "Traditional Sherpa Communities",
+				"year": "Ancient",
+				"information": {
+					"general": "The Sherpa load harness was designed to carry heavy loads efficiently across Himalayan terrain.",
+					"description": "Made of ropes and woven straps, it balances weight across the back and head, enabling long-distance treks with minimal fatigue.",
+					"extra": "Inspired by the necessity of transporting goods through steep mountains, this traditional design influenced modern trekking and mountaineering equipment."
+				},
+				"image": "images/inventions/asia/nepal/sherpa_harness.webp"
+			},
+			{
+				"name": "Himalayan Rope Bridges",
+				"inventor": "Nepalese Communities",
+				"year": "Ancient",
+				"information": {
+					"general": "These suspension bridges were invented to cross gorges and rivers in mountainous regions.",
+					"description": "Constructed with ropes and wooden planks, they offer a flexible yet stable pathway for people and animals.",
+					"extra": "Inspired by the challenging terrain of Nepal, these bridges became critical infrastructure for local trade and travel, influencing modern suspension bridge techniques."
+				},
+				"image": "images/inventions/asia/nepal/rope_bridge.webp"
+			},
+			{
+				"name": "Yak Wool Textiles",
+				"inventor": "Traditional Himalayan Artisans",
+				"year": "Ancient",
+				"information": {
+					"general": "Yak wool textiles were developed to produce warm, durable clothing in high-altitude regions.",
+					"description": "Fibers are spun and woven into blankets, jackets, and ropes capable of withstanding extreme cold.",
+					"extra": "Inspired by harsh mountain climates, this invention remains a vital cultural craft and export product, blending tradition with utility."
+				},
+				"image": "images/inventions/asia/nepal/yak_wool_textiles.webp"
+			} 
+		]
+	},
+	{
+		"country": "Sri Lanka",
+		"inventions": [
+			{
+				"name": "Ceylon Cinnamon Processing",
+				"inventor": "Ancient Sri Lankan Communities",
+				"year": "Ancient",
+				"information": {
+					"general": "A method to harvest and process cinnamon efficiently for trade and consumption.",
+					"description": "The technique involves peeling, drying, and rolling bark to produce aromatic, high-quality cinnamon sticks.",
+					"extra": "Inspired by abundant cinnamon trees, this method established Sri Lanka as a global leader in spice production."
+				},
+				"image": "images/inventions/asia/sri_lanka/cinnamon_processing.webp"
+			}, 
+			{
+				"name": "Tea Cultivation Techniques",
+				"inventor": "James Taylor",
+				"year": "1867",
+				"information": {
+					"general": "James Taylor developed modern tea cultivation methods in Sri Lanka.",
+					"description": "He introduced planting, irrigation, and processing techniques suitable for Ceylon's climate, producing high-quality teas.",
+					"extra": "Inspired by British colonial demand for tea, his work created Sri Lanka's lasting reputation as a premium tea exporter."
+				},
+				"image": "images/inventions/asia/sri_lanka/tea_cultivation.webp"
+			},
+			{
+				"name": "Stilt Fishing",
+				"inventor": "Coastal Sri Lankan Fishermen",
+				"year": "Ancient",
+				"information": {
+					"general": "A fishing method using vertical poles embedded in shallow waters for catching fish.",
+					"description": "Fishermen balance on stilts above the water while casting lines to catch fish efficiently.",
+					"extra": "Inspired by the need to fish in areas with strong currents or shallow reefs, stilt fishing became a cultural icon and practical solution."
+				},
+				"image": "images/inventions/asia/sri_lanka/stilt_fishing.webp"
+			}
+		]
+	},
+	{
+		"country": "Bhutan",
+		"inventions": [
+			{
+				"name": "Dzong Architecture",
+				"inventor": "Bhutanese Monastic Builders",
+				"year": "Ancient",
+				"information": {
+					"general": "A unique fortress-monastery design combining defense and spirituality.",
+					"description": "Dzongs feature massive walls, courtyards, temples, and administrative areas harmoniously integrated into the landscape.",
+					"extra": "Inspired by strategic defense and Buddhist principles, these structures define Bhutanese culture and architecture."
+				},
+				"image": "images/inventions/asia/bhutan/dzong_architecture.webp"
+			},
+			{
+				"name": "Traditional Paper Making",
+				"inventor": "Bhutanese Artisans",
+				"year": "Ancient",
+				"information": {
+					"general": "Handmade paper using plant fibers for religious texts and crafts.",
+					"description": "Fibers are boiled, beaten, and pressed into sheets, producing durable, textured paper.",
+					"extra": "Inspired by the need for sacred manuscripts, this method preserves cultural heritage and supports artisanal craftsmanship."
+				},
+				"image": "images/inventions/asia/bhutan/traditional_paper.webp"
+			},
+			{
+				"name": "Prayer Wheel Mechanism",
+				"inventor": "Bhutanese Monks",
+				"year": "Ancient",
+				"information": {
+					"general": "A device to rotate cylindrical prayer wheels for spiritual merit.",
+					"description": "Mechanisms allow continuous rotation, with inscribed mantras inside, activating blessings as wheels turn.",
+					"extra": "Inspired by Buddhist devotion practices, these wheels are both spiritual tools and engineering feats in traditional woodcraft."
+				},
+				"image": "images/inventions/asia/bhutan/prayer_wheel.webp"
+			}
+		]
+	},
+	{
+		"country": "Jordan",
+		"inventions": [
+			{
+				"name": "Desalination Techniques",
+				"inventor": "Jordanian Engineers",
+				"year": "2000s",
+				"information": {
+					"general": "Advanced methods to convert seawater into drinking water.",
+					"description": "Reverse osmosis and solar-powered desalination systems help mitigate water scarcity.",
+					"extra": "Inspired by the country's arid climate, these technologies support sustainable water management and agriculture."
+				},
+				"image": "images/inventions/asia/jordan/desalination.webp"
+			},
+			{
+				"name": "Petra Water Channel System",
+				"inventor": "Nabataean Civilization",
+				"year": "2nd century BCE",
+				"information": {
+					"general": "Ingenious water management channels and cisterns in the desert city of Petra.",
+					"description": "The system collects and stores rainwater, distributing it throughout the city for agriculture and daily use.",
+					"extra": "Inspired by arid conditions, it demonstrates early hydraulic engineering and resourcefulness of ancient civilizations."
+				},
+				"image": "images/inventions/asia/jordan/petra_water_system.webp"
+			},
+			{
+				"name": "Traditional Bedouin Tents",
+				"inventor": "Bedouin Tribes",
+				"year": "Ancient",
+				"information": {
+					"general": "Portable tents designed for desert life.",
+					"description": "Made with goat hair and canvas, these tents provide ventilation, shade, and protection from harsh conditions.",
+					"extra": "Inspired by nomadic lifestyles, the design optimizes mobility and resilience in arid environments."
+				},
+				"image": "images/inventions/asia/jordan/bedouin_tent.webp"
+			}
+		] 
+	},
+	{
+		"country": "Lebanon",
+		"inventions": [
+			{
+				"name": "Cedars Timber Construction",
+				"inventor": "Ancient Lebanese Builders",
+				"year": "Ancient",
+				"information": {
+					"general": "Use of durable cedar wood for construction and shipbuilding.",
+					"description": "Cedar timber is lightweight, aromatic, and resistant to pests, ideal for temples, palaces, and vessels.",
+					"extra": "Inspired by abundant cedar forests, this innovation influenced architecture and naval design in the Mediterranean region."
+				},
+				"image": "images/inventions/asia/lebanon/cedars_timber.webp"
+			},
+			{
+				"name": "Phoenician Alphabet",
+				"inventor": "Phoenicians",
+				"year": "c. 1050 BCE",
+				"information": {
+					"general": "One of the first phonetic writing systems, influencing alphabets worldwide.",
+					"description": "Simplified symbols represent sounds, enabling easier writing and record-keeping than complex pictographs.",
+					"extra": "Inspired by the need for efficient trade communication, it became the foundation for Greek, Latin, and modern alphabets."
+				},
+				"image": "images/inventions/asia/lebanon/phoenician_alphabet.webp"
+			},
+			{
+				"name": "Arak Distillation",
+				"inventor": "Lebanese Artisans",
+				"year": "Ancient",
+				"information": {
+					"general": "A technique for producing an anise-flavored alcoholic drink.",
+					"description": "Fermentation and double distillation extract aromatic flavors from grapes and anise seeds.",
+					"extra": "Inspired by cultural rituals and hospitality traditions, Arak became a signature beverage of Lebanon."
+				},
+				"image": "images/inventions/asia/lebanon/arak_distillation.webp"
+			}
+		]
 	}
 ]

@@ -2722,5 +2722,856 @@
             "food": "images/countries/asia/syria/syria_food.webp",
             "place": "images/countries/asia/syria/syria_place.webp"
         }
+    },
+    {
+        "country": "Paraguay",
+        "capital": "Asunción",
+        "population": 7453695,
+        "area_km2": 406752,
+        "currency": "Paraguayan Guaraní (PYG)",
+        "national_day": "15 May",
+        "national_animal": null,
+        "exports": [
+            "Soybeans",
+            "Meat (beef)",
+            "Cotton",
+            "Wood and timber products",
+            "Hydropower / electricity"
+        ],
+        "popular_dishes": [
+            "Sopa paraguaya",
+            "Chipa",
+            "Mbeju",
+            "Asado paraguayo"
+        ],
+        "famous_people": [
+            "José Gaspar Rodríguez de Francia",
+            "Augusto Roa Bastos",
+            "Luis Alberto del Paraná",
+            "Agustín Pío Barrios"
+        ],
+        "places_heritage": [
+            "Jesuit Missions of La Santísima Trinidad de Paraná and Jesús de Tavarangue"
+        ],
+        "images": {
+            "flag": "images/countries/south_america/paraguay/paraguay_flag.webp",
+            "map": "images/countries/south_america/paraguay/paraguay_map.webp",
+            "food": "images/countries/south_america/paraguay/paraguay_sopa_paraguaya.webp",
+            "place": "images/countries/south_america/paraguay/paraguay_jesuit_mission_trinidad.webp"
+        }
+    },
+    {
+        "country": "Uruguay",
+        "capital": "Montevideo",
+        "population": 3473000,
+        "area_km2": 176215,
+        "currency": "Uruguayan Peso (UYU)",
+        "national_day": "18 July",
+        "national_animal": null,
+        "exports": [
+            "Beef and meat products",
+            "Wool",
+            "Rice",
+            "Soybeans",
+            "Dairy products"
+        ],
+        "popular_dishes": [
+            "Asado",
+            "Chivito",
+            "Milanesa a la napolitana",
+            "Dulce de leche"
+        ],
+        "famous_people": [
+            "José Gervasio Artigas",
+            "Eduardo Galeano",
+            "Luis Suárez",
+            "Jorge Drexler"
+        ],
+        "places_heritage": [
+            "Historic Quarter of Colonia del Sacramento",
+            "Ciudad Vieja, Montevideo"
+        ],
+        "images": {
+            "flag": "images/countries/south_america/uruguay/uruguay_flag.webp",
+            "map": "images/countries/south_america/uruguay/uruguay_map.webp",
+            "food": "images/countries/south_america/uruguay/uruguay_chivito.webp",
+            "place": "images/countries/south_america/uruguay/uruguay_colonia_sacramento.webp"
+        }
+    },
+    {
+        "country": "Portugal",
+        "capital": "Lisbon",
+        "population": 10280000,
+        "area_km2": 92212,
+        "currency": "Euro (EUR)",
+        "gdp_total_usd": 264000000000,
+        "national_day": "June 10",
+        "national_animal": "Iberian Wolf",
+        "exports": [
+            "Vehicles",
+            "Machinery",
+            "Cork Products",
+            "Wine",
+            "Textiles"
+        ],
+        "popular_dishes": [
+            "Bacalhau à Brás",
+            "Francesinha",
+            "Caldo Verde",
+            "Pastel de Nata",
+            "Sardinhas Assadas"
+        ],
+        "famous_people": [
+            "Vasco da Gama",
+            "Luís de Camões",
+            "Cristiano Ronaldo",
+            "Amália Rodrigues"
+        ],
+        "places_heritage": [
+            "Jerónimos Monastery",
+            "Tower of Belém",
+            "Palácio da Pena",
+            "Historic Centre of Oporto",
+            "University of Coimbra"
+        ],
+        "images": {
+            "flag": "images/countries/europe/portugal/portugal_flag.webp",
+            "map": "images/countries/europe/portugal/portugal_map.webp",
+            "food": "images/countries/europe/portugal/portugal_sardinhas_assadas.webp",
+            "place": "images/countries/europe/portugal/portugal_jeronimos_monastery.webp"
+        }
+    },
+    {
+        "country": "Hungary",
+        "capital": "Budapest",
+        "population": 9700000,
+        "area_km2": 93030,
+        "currency": "Hungarian Forint (HUF)",
+        "gdp_total_usd": 250000000000,
+        "national_day": "March 15",
+        "national_animal": "Turul (mythical bird)",
+        "exports": [
+            "Machinery & Equipment",
+            "Vehicles",
+            "Pharmaceuticals",
+            "Food Products"
+        ],
+        "popular_dishes": [
+            "Gulyás",
+            "Lángos",
+            "Hortobágyi Palacsinta",
+            "Pörkölt",
+            "Dobos Torte"
+        ],
+        "famous_people": [
+            "Ferenc Puskás",
+            "László Bíró",
+            "Albert Szent-Györgyi",
+            "Ernő Rubik"
+        ],
+        "places_heritage": [
+            "Buda Castle",
+            "Hortobágy National Park",
+            "Pécs Early Christian Necropolis",
+            "Hollókő Village",
+            "Esztergom Basilica"
+        ],
+        "images": {
+            "flag": "images/countries/europe/hungary/hungary_flag.webp",
+            "map": "images/countries/europe/hungary/hungary_map.webp",
+            "food": "images/countries/europe/hungary/hungary_gulyas.webp",
+            "place": "images/countries/europe/hungary/hungary_buda_castle.webp"
+        }
+    },
+    {
+        "country": "Slovakia",
+        "capital": "Bratislava",
+        "population": 5450000,
+        "area_km2": 49035,
+        "currency": "Euro (EUR)",
+        "gdp_total_usd": 128000000000,
+        "national_day": "September 1",
+        "national_animal": "Tatra Chamois",
+        "exports": [
+            "Cars",
+            "Machinery",
+            "Electronics",
+            "Metals"
+        ],
+        "popular_dishes": [
+            "Bryndzové Halušky",
+            "Kapustnica",
+            "Lokše",
+            "Zemiakové Placky",
+            "Guláš"
+        ],
+        "famous_people": [
+            "Ľudovít Štúr",
+            "Milan Rastislav Štefánik",
+            "Peter Sagan",
+            "Dominik Tatarka"
+        ],
+        "places_heritage": [
+            "Spiš Castle",
+            "Banská Štiavnica Historic Town",
+            "Vlkolínec Village",
+            "Devín Castle",
+            "Bratislava Old Town"
+        ],
+        "images": {
+            "flag": "images/countries/europe/slovakia/slovakia_flag.webp",
+            "map": "images/countries/europe/slovakia/slovakia_map.webp",
+            "food": "images/countries/europe/slovakia/slovakia_bryndzove_halusky.webp",
+            "place": "images/countries/europe/slovakia/slovakia_spis_castle.webp"
+        }
+    },
+    {
+        "country": "Bulgaria",
+        "capital": "Sofia",
+        "population": 7000000,
+        "area_km2": 110994,
+        "currency": "Bulgarian Lev (BGN)",
+        "gdp_total_usd": 84000000000,
+        "national_day": "March 3",
+        "national_animal": "Lion",
+        "exports": [
+            "Machinery",
+            "Chemicals",
+            "Food Products",
+            "Textiles",
+            "Minerals"
+        ],
+        "popular_dishes": [
+            "Banitsa",
+            "Shopska Salad",
+            "Kavarma",
+            "Tarator",
+            "Meshana Skara"
+        ],
+        "famous_people": [
+            "Vasil Levski",
+            "Hristo Botev",
+            "Christo Javacheff",
+            "Dimitar Berbatov"
+        ],
+        "places_heritage": [
+            "Rila Monastery",
+            "Nessebar Historic City",
+            "Boyana Church",
+            "Ivanovo Rock Churches",
+            "Pirin National Park"
+        ],
+        "images": {
+            "flag": "images/countries/europe/bulgaria/bulgaria_flag.webp",
+            "map": "images/countries/europe/bulgaria/bulgaria_map.webp",
+            "food": "images/countries/europe/bulgaria/bulgaria_banitsa.webp",
+            "place": "images/countries/europe/bulgaria/bulgaria_rila_monastery.webp"
+        }
+    },
+    {
+        "country": "Croatia",
+        "capital": "Zagreb",
+        "population": 4100000,
+        "area_km2": 56594,
+        "currency": "Croatian Kuna (HRK)",
+        "gdp_total_usd": 78000000000,
+        "national_day": "June 25",
+        "national_animal": "Marten",
+        "exports": [
+            "Machinery",
+            "Chemicals",
+            "Food & Beverages",
+            "Textiles",
+            "Shipbuilding"
+        ],
+        "popular_dishes": [
+            "Peka",
+            "Sarma",
+            "Ćevapčići",
+            "Pašticada",
+            "Crni Rižot"
+        ],
+        "famous_people": [
+            "Nikola Tesla",
+            "Ivan Meštrović",
+            "Dora Pejačević",
+            "Luka Modrić"
+        ],
+        "places_heritage": [
+            "Plitvice Lakes National Park",
+            "Diocletian's Palace",
+            "Dubrovnik Old Town",
+            "Trogir Historic City",
+            "St. James Cathedral, Šibenik"
+        ],
+        "images": {
+            "flag": "images/countries/europe/croatia/croatia_flag.webp",
+            "map": "images/countries/europe/croatia/croatia_map.webp",
+            "food": "images/countries/europe/croatia/croatia_peka.webp",
+            "place": "images/countries/europe/croatia/croatia_plitvice_lakes.webp"
+        }
+    },
+    {
+        "country": "Bosnia and Herzegovina",
+        "capital": "Sarajevo",
+        "population": 3300000,
+        "area_km2": 51209,
+        "currency": "Convertible Mark (BAM)",
+        "gdp_total_usd": 20000000,
+        "national_day": "March 1",
+        "national_animal": "Golden Lily (symbolic)",
+        "exports": [
+            "Metals",
+            "Furniture",
+            "Textiles",
+            "Electrical Machinery",
+            "Food Products"
+        ],
+        "popular_dishes": [
+            "Ćevapi",
+            "Burek",
+            "Sogan-dolma",
+            "Begova Čorba",
+            "Sutlijaš"
+        ],
+        "famous_people": [
+            "Gazi Husrev-beg",
+            "Ivo Andrić",
+            "Emir Kusturica",
+            "Edin Džeko"
+        ],
+        "places_heritage": [
+            "Old Bridge of Mostar",
+            "Baščaršija, Sarajevo",
+            "Stećci Medieval Tombstones",
+            "Vrelo Bosne",
+            "Blagaj Tekke"
+        ],
+        "images": {
+            "flag": "images/countries/europe/bosnia/bosnia_flag.webp",
+            "map": "images/countries/europe/bosnia/bosnia_map.webp",
+            "food": "images/countries/europe/bosnia/bosnia_cevapi.webp",
+            "place": "images/countries/europe/bosnia/bosnia_old_bridge_mostar.webp"
+        }
+    },
+    {
+        "country": "Ethiopia",
+        "capital": "Addis Ababa",
+        "population": 127000000,
+        "area_km2": 1104300,
+        "currency": "Ethiopian Birr (ETB)",
+        "gdp_total_usd": 111300000000,
+        "national_day": "May 28",
+        "national_animal": "Lion",
+        "exports": [
+            "Coffee",
+            "Oilseeds",
+            "Gold",
+            "Livestock"
+        ],
+        "popular_dishes": [
+            "Injera with Doro Wat",
+            "Kitfo",
+            "Tibs",
+            "Shiro"
+        ],
+        "famous_people": [
+            "Haile Selassie",
+            "Meles Zenawi",
+            "Lucy (Australopithecus fossil)",
+            "Tewodros II"
+        ],
+        "places_heritage": [
+            "Lalibela Rock-Hewn Churches",
+            "Axum Obelisks",
+            "Simien Mountains National Park",
+            "Gondar Castle Complex"
+        ],
+        "images": {
+            "flag": "images/countries/africa/ethiopia/ethiopia_flag.webp",
+            "map": "images/countries/africa/ethiopia/ethiopia_map.webp",
+            "food": "images/countries/africa/ethiopia/ethiopia_doro_wat.webp",
+            "place": "images/countries/africa/ethiopia/ethiopia_lalibela_churches.webp"
+        }
+    },
+    {
+        "country": "Bangladesh",
+        "capital": "Dhaka",
+        "population": 173000000,
+        "area_km2": 147570,
+        "currency": "Bangladeshi Taka (BDT)",
+        "gdp_total_usd": 469000000000,
+        "national_day": "March 26",
+        "national_animal": "Royal Bengal Tiger",
+        "exports": [
+            "Textiles and garments",
+            "Jute products",
+            "Seafood",
+            "Leather goods"
+        ],
+        "popular_dishes": [
+            "Biryani",
+            "Panta Ilish",
+            "Hilsa fish curry",
+            "Bhuna Khichuri"
+        ],
+        "famous_people": [
+            "Sheikh Mujibur Rahman",
+            "Kazi Nazrul Islam",
+            "Rabindranath Tagore",
+            "Satyajit Ray"
+        ],
+        "places_heritage": [
+            "Sundarbans Mangrove Forest",
+            "Paharpur Buddhist Monastery Ruins",
+            "Ahsan Manzil, Dhaka",
+            "Lalbagh Fort"
+        ],
+        "images": {
+            "flag": "images/countries/asia/bangladesh/bangladesh_flag.webp",
+            "map": "images/countries/asia/bangladesh/bangladesh_map.webp",
+            "food": "images/countries/asia/bangladesh/bangladesh_biryani.webp",
+            "place": "images/countries/asia/bangladesh/bangladesh_paharpur_monastery.webp"
+        }
+    },
+    {
+        "country": "Myanmar (Burma)",
+        "capital": "Naypyidaw",
+        "population": 57000000,
+        "area_km2": 676578,
+        "currency": "Burmese Kyat (MMK)",
+        "gdp_total_usd": 71500000000,
+        "national_day": "January 4",
+        "national_animal": "Burmese Python",
+        "exports": [
+            "Natural gas",
+            "Rice",
+            "Wood and timber products",
+            "Gems and jade"
+        ],
+        "popular_dishes": [
+            "Mohinga",
+            "Tea Leaf Salad",
+            "Shan Noodles",
+            "Coconut Rice"
+        ],
+        "famous_people": [
+            "Aung San Suu Kyi",
+            "U Thant",
+            "Ba U",
+            "Thakin Kodaw Hmaing"
+        ],
+        "places_heritage": [
+            "Bagan Archaeological Zone",
+            "Shwedagon Pagoda",
+            "Inle Lake",
+            "Mrauk U Ruins"
+        ],
+        "images": {
+            "flag": "images/countries/asia/myanmar/myanmar_flag.webp",
+            "map": "images/countries/asia/myanmar/myanmar_map.webp",
+            "food": "images/countries/asia/myanmar/myanmar_mohinga.webp",
+            "place": "images/countries/asia/myanmar/myanmar_bagan_temple.webp"
+        }
+    },
+    {
+        "country": "Mali",
+        "capital": "Bamako",
+        "population": 23000000,
+        "area_km2": 1240192,
+        "currency": "West African CFA franc (XOF)",
+        "gdp_total_usd": 20000000000,
+        "national_day": "September 22",
+        "national_animal": "African Elephant",
+        "exports": [
+            "Gold",
+            "Cotton",
+            "Livestock",
+            "Salt"
+        ],
+        "popular_dishes": [
+            "Tô",
+            "Jollof rice",
+            "Fried fish with sauces",
+            "Maafe (peanut stew)"
+        ],
+        "famous_people": [
+            "Mansa Musa",
+            "Ali Farka Touré",
+            "Modibo Keïta",
+            "Salif Keita"
+        ],
+        "places_heritage": [
+            "Timbuktu",
+            "Djenné Mosque",
+            "Bandiagara Escarpment",
+            "Sankore University"
+        ],
+        "images": {
+            "flag": "images/countries/africa/mali/mali_flag.webp",
+            "map": "images/countries/africa/mali/mali_map.webp",
+            "food": "images/countries/africa/mali/mali_maafe.webp",
+            "place": "images/countries/africa/mali/mali_djenne_mosque.webp"
+        }
+    },
+    {
+        "country": "Niger",
+        "capital": "Niamey",
+        "population": 26000000,
+        "area_km2": 1267000,
+        "currency": "West African CFA franc (XOF)",
+        "gdp_total_usd": 14000000000,
+        "national_day": "August 3",
+        "national_animal": "Dama Gazelle",
+        "exports": [
+            "Uranium",
+            "Livestock",
+            "Agricultural products",
+            "Oil"
+        ],
+        "popular_dishes": [
+            "Jollof rice",
+            "Fried millet porridge",
+            "Grilled meat skewers",
+            "Stewed okra with millet"
+        ],
+        "famous_people": [
+            "Hamani Diori",
+            "Mahamadou Issoufou",
+            "Mariama Bâ",
+            "Oumarou Ganda"
+        ],
+        "places_heritage": [
+            "Agadez Mosque",
+            "Tenere Desert",
+            "Aïr Mountains",
+            "Zinder Old Town"
+        ],
+        "images": {
+            "flag": "images/countries/africa/niger/niger_flag.webp",
+            "map": "images/countries/africa/niger/niger_map.webp",
+            "food": "images/countries/africa/niger/niger_jollof_rice.webp",
+            "place": "images/countries/africa/niger/niger_agadez_mosque.webp"
+        }
+    },
+    {
+        "country": "Yemen",
+        "capital": "Sana'a",
+        "population": 33000000,
+        "area_km2": 527968,
+        "currency": "Yemeni Rial (YER)",
+        "gdp_total_usd": 28000000000,
+        "national_day": "May 22",
+        "national_animal": "Arabian Leopard",
+        "exports": [
+            "Coffee",
+            "Crude oil",
+            "Fish and seafood",
+            "Agricultural products"
+        ],
+        "popular_dishes": [
+            "Saltah",
+            "Fahsa",
+            "Bint Al-Sahn",
+            "Mandi"
+        ],
+        "famous_people": [
+            "Ali Abdullah Saleh",
+            "Abdrabbuh Mansur Hadi",
+            "Ali Al-Muqri",
+            "Zahra Al-Suwaidi"
+        ],
+        "places_heritage": [
+            "Old City of Sana'a",
+            "Shibam Hadramawt",
+            "Socotra Island",
+            "Al-Qahera Castle"
+        ],
+        "images": {
+            "flag": "images/countries/asia/yemen/yemen_flag.webp",
+            "map": "images/countries/asia/yemen/yemen_map.webp",
+            "food": "images/countries/asia/yemen/yemen_saltah.webp",
+            "place": "images/countries/asia/yemen/yemen_sana_old_city.webp"
+        }
+    },
+    {
+        "country": "Israel",
+        "capital": "Jerusalem",
+        "population": 9730000,
+        "area_km2": 22072,
+        "currency": "Israeli New Shekel (ILS)",
+        "gdp_total_usd": 532000000000,
+        "national_day": "April 19",
+        "national_animal": "Israeli Gazelle",
+        "exports": [
+            "Diamonds",
+            "Technology products",
+            "Pharmaceuticals",
+            "Agricultural products"
+        ],
+        "popular_dishes": [
+            "Falafel",
+            "Hummus",
+            "Shakshuka",
+            "Shawarma"
+        ],
+        "famous_people": [
+            "Golda Meir",
+            "David Ben-Gurion",
+            "Itzhak Rabin",
+            "Gal Gadot"
+        ],
+        "places_heritage": [
+            "Western Wall, Jerusalem",
+            "Masada",
+            "Bahá'í Gardens, Haifa",
+            "Dead Sea"
+        ],
+        "images": {
+            "flag": "images/countries/asia/israel/israel_flag.webp",
+            "map": "images/countries/asia/israel/israel_map.webp",
+            "food": "images/countries/asia/israel/israel_hummus.webp",
+            "place": "images/countries/asia/israel/israel_western_wall.webp"
+        }
+    },
+    {
+        "country": "Singapore",
+        "capital": "Singapore",
+        "population": 5700000,
+        "area_km2": 728,
+        "currency": "Singapore Dollar (SGD)",
+        "gdp_total_usd": 620000000000,
+        "national_day": "August 9",
+        "national_animal": "Lion",
+        "exports": [
+            "Electronics",
+            "Machinery",
+            "Pharmaceuticals",
+            "Refined petroleum"
+        ],
+        "popular_dishes": [
+            "Chilli Crab",
+            "Hainanese Chicken Rice",
+            "Laksa",
+            "Satay"
+        ],
+        "famous_people": [
+            "Lee Kuan Yew",
+            "Joseph Schooling",
+            "Tan Swie Hian",
+            "Fann Wong"
+        ],
+        "places_heritage": [
+            "Marina Bay Sands",
+            "Gardens by the Bay",
+            "Singapore Botanic Gardens",
+            "Raffles Hotel"
+        ],
+        "images": {
+            "flag": "images/countries/asia/singapore/singapore_flag.webp",
+            "map": "images/countries/asia/singapore/singapore_map.webp",
+            "food": "images/countries/asia/singapore/singapore_chilli_crab.webp",
+            "place": "images/countries/asia/singapore/singapore_marina_bay.webp"
+        }
+    },
+    {
+        "country": "Nepal",
+        "capital": "Kathmandu",
+        "population": 30300000,
+        "area_km2": 147181,
+        "currency": "Nepalese Rupee (NPR)",
+        "gdp_total_usd": 10600000000,
+        "national_day": "September 20",
+        "national_animal": "Cow",
+        "exports": [
+            "Textiles",
+            "Carpets",
+            "Handicrafts",
+            "Tea"
+        ],
+        "popular_dishes": [
+            "Dal Bhat",
+            "Momo",
+            "Sel Roti",
+            "Gundruk"
+        ],
+        "famous_people": [
+            "Tenzing Norgay",
+            "Pasang Lhamu Sherpa",
+            "Bishweshwar Prasad Koirala",
+            "Anuradha Koirala"
+        ],
+        "places_heritage": [
+            "Pashupatinath Temple",
+            "Boudhanath Stupa",
+            "Lumbini",
+            "Bhaktapur Durbar Square"
+        ],
+        "images": {
+            "flag": "images/countries/asia/nepal/nepal_flag.webp",
+            "map": "images/countries/asia/nepal/nepal_map.webp",
+            "food": "images/countries/asia/nepal/nepal_momo.webp",
+            "place": "images/countries/asia/nepal/nepal_boudhanath.webp"
+        }
+    },
+    {
+        "country": "Sri Lanka",
+        "capital": "Sri Jayawardenepura Kotte",
+        "population": 22400000,
+        "area_km2": 65610,
+        "currency": "Sri Lankan Rupee (LKR)",
+        "gdp_total_usd": 94000000000,
+        "national_day": "February 4",
+        "national_animal": "Sri Lankan Elephant",
+        "exports": [
+            "Tea",
+            "Textiles",
+            "Rubber",
+            "Coconut"
+        ],
+        "popular_dishes": [
+            "Rice and Curry",
+            "Kottu Roti",
+            "Hoppers",
+            "Pol Sambol"
+        ],
+        "famous_people": [
+            "Arthur C. Clarke",
+            "Mahela Jayawardene",
+            "Kumar Sangakkara",
+            "Chandrika Kumaratunga"
+        ],
+        "places_heritage": [
+            "Sigiriya",
+            "Temple of the Tooth, Kandy",
+            "Galle Fort",
+            "Anuradhapura"
+        ],
+        "images": {
+            "flag": "images/countries/asia/sri_lanka/sri_lanka_flag.webp",
+            "map": "images/countries/asia/sri_lanka/sri_lanka_map.webp",
+            "food": "images/countries/asia/sri_lanka/sri_lanka_kottu_roti.webp",
+            "place": "images/countries/asia/sri_lanka/sri_lanka_sigiriya.webp"
+        }
+    },
+    {
+        "country": "Bhutan",
+        "capital": "Thimphu",
+        "population": 800000,
+        "area_km2": 38394,
+        "currency": "Bhutanese Ngultrum (BTN)",
+        "gdp_total_usd": 2800000000,
+        "national_day": "December 17",
+        "national_animal": "Takin",
+        "exports": [
+            "Hydropower",
+            "Handicrafts",
+            "Agricultural products",
+            "Tourism"
+        ],
+        "popular_dishes": [
+            "Ema Datshi",
+            "Phaksha Paa",
+            "Jasha Maru",
+            "Momo"
+        ],
+        "famous_people": [
+            "King Jigme Singye Wangchuck",
+            "King Jigme Khesar Namgyel Wangchuck",
+            "Lyonpo Jigme Y. Thinley",
+            "Sonam Wangchuk"
+        ],
+        "places_heritage": [
+            "Paro Taktsang",
+            "Punakha Dzong",
+            "Thimphu Memorial Chorten",
+            "Dochula Pass"
+        ],
+        "images": {
+            "flag": "images/countries/asia/bhutan/bhutan_flag.webp",
+            "map": "images/countries/asia/bhutan/bhutan_map.webp",
+            "food": "images/countries/asia/bhutan/bhutan_ema_datshi.webp",
+            "place": "images/countries/asia/bhutan/bhutan_paro_taktsang.webp"
+        }
+    },
+    {
+        "country": "Jordan",
+        "capital": "Amman",
+        "population": 10400000,
+        "area_km2": 89342,
+        "currency": "Jordanian Dinar (JOD)",
+        "gdp_total_usd": 47000000000,
+        "national_day": "May 25",
+        "national_animal": "Arabian Oryx",
+        "exports": [
+            "Phosphates",
+            "Potash",
+            "Textiles",
+            "Agricultural products"
+        ],
+        "popular_dishes": [
+            "Mansaf",
+            "Maqluba",
+            "Falafel",
+            "Kebabs"
+        ],
+        "famous_people": [
+            "King Abdullah II",
+            "Queen Rania",
+            "Lawrence of Arabia",
+            "Ahed Al-Khazali"
+        ],
+        "places_heritage": [
+            "Petra",
+            "Wadi Rum",
+            "Dead Sea",
+            "Amman Citadel"
+        ],
+        "images": {
+            "flag": "images/countries/asia/jordan/jordan_flag.webp",
+            "map": "images/countries/asia/jordan/jordan_map.webp",
+            "food": "images/countries/asia/jordan/jordan_mansaf.webp",
+            "place": "images/countries/asia/jordan/jordan_petra.webp"
+        }
+    },
+    {
+        "country": "Lebanon",
+        "capital": "Beirut",
+        "population": 6820000,
+        "area_km2": 10452,
+        "currency": "Lebanese Pound (LBP)",
+        "gdp_total_usd": 21000000000,
+        "national_day": "November 22",
+        "national_animal": "Lebanese Cedar",
+        "exports": [
+            "Cement",
+            "Chemicals",
+            "Jewelry",
+            "Agricultural products"
+        ],
+        "popular_dishes": [
+            "Tabbouleh",
+            "Kibbeh",
+            "Hummus",
+            "Manakish"
+        ],
+        "famous_people": [
+            "Khalil Gibran",
+            "Fairuz",
+            "Rafik Hariri",
+            "Salma Hayek"
+        ],
+        "places_heritage": [
+            "Baalbek",
+            "Byblos",
+            "Jeita Grotto",
+            "Cedars of God"
+        ],
+        "images": {
+            "flag": "images/countries/asia/lebanon/lebanon_flag.webp",
+            "map": "images/countries/asia/lebanon/lebanon_map.webp",
+            "food": "images/countries/asia/lebanon/lebanon_tabouleh.webp",
+            "place": "images/countries/asia/lebanon/lebanon_baalbek.webp"
+        }
     }
 ]
