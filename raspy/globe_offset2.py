@@ -48,9 +48,6 @@ def quat_conjugate(q):
     x, y, z, w = q
     return (-x, -y, -z, w)
 
-def invert_quat(q):
-    return quat_conjugate(q)
-
 def quat_mul(q1, q2):
     x1, y1, z1, w1 = q1
     x2, y2, z2, w2 = q2
@@ -68,13 +65,20 @@ def rotate_vector_by_quat(v, q):
     return quat_mul(quat_mul(q, vq), qc)[:3]
 
 def normalize(v):
-    mag = math.sqrt(sum([x*x for x in v]))
+    mag = math.sqrt(sum(x*x for x in v))
     if mag == 0:
         return (0,0,0)
     return tuple(x/mag for x in v)
 
 def dot(a,b):
     return a[0]*b[0] + a[1]*b[1] + a[2]*b[2]
+
+def cross(a,b):
+    return (
+        a[1]*b[2]-a[2]*b[1],
+        a[2]*b[0]-a[0]*b[2],
+        a[0]*b[1]-a[1]*b[0]
+    )
 
 def sub(a,b):
     return (a[0]-b[0], a[1]-b[1], a[2]-b[2])
@@ -85,7 +89,7 @@ def scale(v,s):
 # ----------------------------
 # CONFIG
 # ----------------------------
-sensor_axis = (0.0,0.0,-1.0)  # sensor pointing downward
+sensor_axis = (0.0, 0.0, -1.0)  # sensor pointing downward
 north_unit = None
 east_unit = None
 ref_axis = None
@@ -117,9 +121,10 @@ async def calibrate_point(name, timeout=30):
                     north_unit = vec
                     print("✅ North vector recorded")
                 elif name=="Null Island":
-                    proj = sub(vec, scale(north_unit, dot(vec, north_unit)))
-                    east_unit = normalize(proj)
-                    ref_axis = east_unit
+                    # Compute orthonormal east vector
+                    east_unit = normalize(sub(vec, scale(north_unit, dot(vec, north_unit))))
+                    ref_axis = normalize(cross(north_unit, east_unit))
+                    east_unit = normalize(cross(ref_axis, north_unit))  # recompute east to be orthogonal
                     print("✅ East/reference vector recorded")
                 return
         if time.time()-start > timeout:
@@ -143,6 +148,7 @@ async def send_coordinates():
     global sensor
     async with websockets.connect(WS_URI) as websocket:
         print("Connected to WebSocket server!")
+
         # Run two-point calibration
         await calibrate_point("North Pole")
         await calibrate_point("Null Island")
@@ -154,9 +160,9 @@ async def send_coordinates():
                 if not q or len(q)!=4 or q==(0,0,0,0):
                     await asyncio.sleep(0.01)
                     continue
-                vec = rotate_vector_by_quat(sensor_axis, q)
+                vec = rotate_vector_by_quat(sensor_axis,q)
                 lat, lon = vector_to_latlon_2point(vec)
-                if lat is None:
+                if lat is None or lon is None:
                     lat, lon = 0.0, 0.0
                 msg = json.dumps({"lat":round(lat,3),"lon":round(lon,3)})
                 await websocket.send(msg)
