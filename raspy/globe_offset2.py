@@ -31,10 +31,11 @@ i2c = busio.I2C(board.SCL, board.SDA)
 def init_sensor():
     print("Initializing BNO08X...")
     reset_pin.value = False
-    time.sleep(0.01)
+    time.sleep(0.1)
     reset_pin.value = True
-    time.sleep(0.25)
+    time.sleep(1.0)
     sensor = BNO08X_I2C(i2c, address=0x4A)
+    time.sleep(0.2)
     sensor.enable_feature(BNO_REPORT_ROTATION_VECTOR)
     return sensor
 
@@ -66,37 +67,28 @@ def rotate_vector_by_quat(v, q):
     qc = quat_conjugate(q)
     return quat_mul(quat_mul(q, vq), qc)[:3]
 
-# ----------------------------
-# Convert vector to lat/lon
-# ----------------------------
-def vector_to_latlon(v):
-    vx, vy, vz = v
-    mag = math.sqrt(vx*vx + vy*vy + vz*vz)
+def normalize(v):
+    mag = math.sqrt(sum([x*x for x in v]))
     if mag == 0:
-        return None, None
-    vx /= mag
-    vy /= mag
-    vz /= mag
-    lat = math.degrees(math.asin(vz))
-    lon = math.degrees(math.atan2(vy, vx))
-    return lat, lon
+        return (0,0,0)
+    return tuple(x/mag for x in v)
+
+def dot(a,b):
+    return a[0]*b[0] + a[1]*b[1] + a[2]*b[2]
+
+def sub(a,b):
+    return (a[0]-b[0], a[1]-b[1], a[2]-b[2])
+
+def scale(v,s):
+    return (v[0]*s, v[1]*s, v[2]*s)
 
 # ----------------------------
 # CONFIG
 # ----------------------------
-# Set sensor_axis to match the actual sensor orientation.
-# Example: sensor pointing downward to South Pole
-sensor_axis = (0.0, 0.0, -1.0)
-calibration_quat = (0, 0, 0, 1)  # identity
-
-# ----------------------------
-# Single-point calibration
-# ----------------------------
-def calibrate(q_current):
-    global calibration_quat
-    q_target = (0, 0, 0, 1)
-    calibration_quat = quat_mul(invert_quat(q_current), q_target)
-    print("\n🎯 Calibration set! Orientation now aligns to 0° lat / 0° lon.\n")
+sensor_axis = (0.0,0.0,-1.0)  # sensor pointing downward
+north_unit = None
+east_unit = None
+ref_axis = None
 
 # ----------------------------
 # Keyboard helper
@@ -106,39 +98,70 @@ def key_pressed():
     return dr != []
 
 # ----------------------------
+# Two-point calibration
+# ----------------------------
+async def calibrate_point(name, timeout=30):
+    global north_unit, east_unit, ref_axis
+    print(f"Point at {name} and press 'c' (timeout {timeout}s)")
+    start = time.time()
+    while True:
+        if key_pressed():
+            ch = sys.stdin.read(1)
+            if ch.lower()=='c':
+                q = sensor.quaternion
+                if not q or len(q)!=4 or q==(0,0,0,0):
+                    continue
+                vec = rotate_vector_by_quat(sensor_axis,q)
+                vec = normalize(vec)
+                if name=="North Pole":
+                    north_unit = vec
+                    print("✅ North vector recorded")
+                elif name=="Null Island":
+                    proj = sub(vec, scale(north_unit, dot(vec, north_unit)))
+                    east_unit = normalize(proj)
+                    ref_axis = east_unit
+                    print("✅ East/reference vector recorded")
+                return
+        if time.time()-start > timeout:
+            print(f"⏱ Timeout reached for {name}, skipping")
+            return
+        await asyncio.sleep(0.05)
+
+def vector_to_latlon_2point(v):
+    if not north_unit or not east_unit or not ref_axis:
+        return None,None
+    v = normalize(v)
+    lat = math.degrees(math.asin(dot(v, north_unit)))
+    lon = math.degrees(math.atan2(dot(v, east_unit), dot(v, ref_axis)))
+    lon = (lon+180)%360 -180
+    return lat, lon
+
+# ----------------------------
 # Main loop
 # ----------------------------
 async def send_coordinates():
     global sensor
     async with websockets.connect(WS_URI) as websocket:
         print("Connected to WebSocket server!")
+        # Run two-point calibration
+        await calibrate_point("North Pole")
+        await calibrate_point("Null Island")
+        print("✅ Two-point calibration done, sending coordinates...")
 
         while True:
-            # Calibration trigger
-            if key_pressed():
-                ch = sys.stdin.read(1)
-                if ch.lower() == "c":
-                    calibrate(sensor.quaternion)
-
             try:
                 q = sensor.quaternion
-                if not q or len(q) != 4 or q == (0,0,0,0):
+                if not q or len(q)!=4 or q==(0,0,0,0):
                     await asyncio.sleep(0.01)
                     continue
-
-                corrected_q = quat_mul(calibration_quat, q)
-                world_vec = rotate_vector_by_quat(sensor_axis, corrected_q)
-                lat, lon = vector_to_latlon(world_vec)
+                vec = rotate_vector_by_quat(sensor_axis, q)
+                lat, lon = vector_to_latlon_2point(vec)
                 if lat is None:
-                    await asyncio.sleep(0.01)
-                    continue
-
-                msg = json.dumps({"lat": round(lat,3), "lon": round(lon,3)})
+                    lat, lon = 0.0, 0.0
+                msg = json.dumps({"lat":round(lat,3),"lon":round(lon,3)})
                 await websocket.send(msg)
                 print("Sent:", msg)
-
                 await asyncio.sleep(0.1)
-
             except OSError:
                 print("\n⚠️ I2C error — resetting sensor…")
                 sensor = init_sensor()
@@ -150,7 +173,7 @@ async def send_coordinates():
 # ----------------------------
 # Entry
 # ----------------------------
-if __name__ == "__main__":
+if __name__=="__main__":
     import tty, termios
     fd = sys.stdin.fileno()
     old = termios.tcgetattr(fd)
