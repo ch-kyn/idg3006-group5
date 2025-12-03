@@ -140,12 +140,16 @@ def vector_to_latlon_2point(v):
     if not north_unit or not east_unit or not ref_axis or origin_vec is None:
         return None, None
     v = normalize(v)
-    # compute relative vector from origin
-    delta_v = sub(v, origin_vec)
-    # latitude: projection along north_unit
-    lat = math.degrees(math.asin(dot(delta_v, north_unit)))
-    # longitude: projection along east_unit
-    lon = math.degrees(math.atan2(dot(delta_v, east_unit), dot(delta_v, ref_axis)))
+    lat = math.degrees(math.asin(dot(v, north_unit)))
+    lon = math.degrees(math.atan2(dot(v, east_unit), dot(v, ref_axis)))
+    
+    # subtract origin longitude to make Null Island (0,0)
+    lon_origin = math.degrees(math.atan2(dot(origin_vec, east_unit),
+                                         dot(origin_vec, ref_axis)))
+    lon -= lon_origin
+    
+    # normalize longitude to -180..180
+    lon = (lon + 180) % 360 - 180
     return lat, lon
 
 # ----------------------------
