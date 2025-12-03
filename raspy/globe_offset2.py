@@ -90,9 +90,11 @@ def scale(v,s):
 # CONFIG
 # ----------------------------
 sensor_axis = (0.0, 0.0, -1.0)  # sensor pointing downward
+
 north_unit = None
 east_unit = None
 ref_axis = None
+origin_vec = None  # vector at Null Island for zero reference
 
 # ----------------------------
 # Keyboard helper
@@ -105,7 +107,7 @@ def key_pressed():
 # Two-point calibration
 # ----------------------------
 async def calibrate_point(name, timeout=30):
-    global north_unit, east_unit, ref_axis
+    global north_unit, east_unit, ref_axis, origin_vec
     print(f"Point at {name} and press 'c' (timeout {timeout}s)")
     start = time.time()
     while True:
@@ -121,24 +123,29 @@ async def calibrate_point(name, timeout=30):
                     north_unit = vec
                     print("✅ North vector recorded")
                 elif name=="Null Island":
-                    # Compute orthonormal east vector
-                    east_unit = normalize(sub(vec, scale(north_unit, dot(vec, north_unit))))
-                    ref_axis = normalize(cross(north_unit, east_unit))
-                    east_unit = normalize(cross(ref_axis, north_unit))  # recompute east to be orthogonal
-                    print("✅ East/reference vector recorded")
+                    origin_vec = vec  # store origin for zero
+                    ref_axis = normalize(cross(north_unit, origin_vec))
+                    east_unit = normalize(cross(ref_axis, north_unit))
+                    print("✅ Null Island / east/reference vector recorded")
                 return
         if time.time()-start > timeout:
             print(f"⏱ Timeout reached for {name}, skipping")
             return
         await asyncio.sleep(0.05)
 
+# ----------------------------
+# Convert vector to lat/lon relative to Null Island
+# ----------------------------
 def vector_to_latlon_2point(v):
-    if not north_unit or not east_unit or not ref_axis:
-        return None,None
+    if not north_unit or not east_unit or not ref_axis or origin_vec is None:
+        return None, None
     v = normalize(v)
-    lat = math.degrees(math.asin(dot(v, north_unit)))
-    lon = math.degrees(math.atan2(dot(v, east_unit), dot(v, ref_axis)))
-    lon = (lon+180)%360 -180
+    # compute relative vector from origin
+    delta_v = sub(v, origin_vec)
+    # latitude: projection along north_unit
+    lat = math.degrees(math.asin(dot(delta_v, north_unit)))
+    # longitude: projection along east_unit
+    lon = math.degrees(math.atan2(dot(delta_v, east_unit), dot(delta_v, ref_axis)))
     return lat, lon
 
 # ----------------------------
