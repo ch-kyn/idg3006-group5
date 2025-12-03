@@ -2,8 +2,8 @@ import sharp from "sharp";
 import fs from "fs-extra";
 import path from "path";
 
-const inputFolder = "./public/images/south_america/argentina";      // folder with your original images
-const outputFolder = "./public/images/south_america/argentina";   // folder to save .webp files
+const inputFolder = "./public/images/countries/asia/yemen";      // folder with your original images
+const outputFolder = "./public/images/countries/asia/yemen";          // folder to save .webp files
 
 async function convertImages() {
   await fs.ensureDir(outputFolder);
@@ -12,7 +12,7 @@ async function convertImages() {
 
   for (const file of files) {
     const ext = path.extname(file).toLowerCase();
-    if (![".jpg", ".jpeg", ".png", ".gif", ".tiff", ".bmp"].includes(ext)) {
+    if (![".jpg", ".jpeg", ".png", ".gif", ".tiff", ".bmp", ".avif"].includes(ext)) {
       console.log(`Skipping unsupported file: ${file}`);
       continue;
     }
