@@ -3573,5 +3573,47 @@
             "food": "images/countries/asia/lebanon/lebanon_tabouleh.webp",
             "place": "images/countries/asia/lebanon/lebanon_baalbek.webp"
         }
-    }
+    },
+    {
+  "country": "Chad",
+  "capital": "N'Djamena",
+  "population": 18000000,
+  "area_km2": 1284000,
+  "currency": "Central African CFA Franc (XAF)",
+  "gdp_total_usd": 12000000000,
+  "national_day": "August 11",
+  "national_animal": "Goat (symbolic), Lion (cultural)",
+  "exports": [
+    "Crude Oil",
+    "Cotton",
+    "Livestock",
+    "Gum Arabic"
+  ],
+  "popular_dishes": [
+    "Daraba",
+    "Jarret de bœuf",
+    "Aiyash",
+    "Kisra",
+    "La boule"
+  ],
+  "famous_people": [
+    "Hissène Habré",
+    "Idriss Déby",
+    "Souleymane Cissé (film influence in region)",
+    "Mounira Mitchala"
+  ],
+  "places_heritage": [
+    "Zakouma National Park",
+    "Ennedi Massif",
+    "Lakes of Ounianga",
+    "N'Djamena Grand Mosque"
+  ],
+  "images": {
+    "flag": "images/countries/africa/chad/chad_flag.webp",
+    "map": "images/countries/africa/chad/chad_map.webp",
+    "food": "images/countries/africa/chad/chad_food.webp",
+    "place": "images/countries/africa/chad/chad_place.webp"
+  }
+}
+
 ]
