@@ -15,7 +15,7 @@ from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR
 # ----------------------------
 # WebSocket config
 # ----------------------------
-WS_URI = "ws://10.22.16.94:8765"
+WS_URI = "ws://192.168.166.154:8765"
 
 # ----------------------------
 # RESET PIN
@@ -73,10 +73,11 @@ def normalize(v):
     return tuple(x/mag for x in v)
 
 # ----------------------------
-# Global configuration
+# Global config
 # ----------------------------
-sensor_axis = (0.0, 0.0, -1.0)  # sensor pointing down
-calibration_quat = (0,0,0,1)    # identity by default
+sensor_axis = (0.0, 0.0, -1.0)  # sensor pointing downward
+calibration_quat = (0, 0, 0, 1)  # identity
+calibration_points = []
 
 # ----------------------------
 # Keyboard helper
@@ -86,50 +87,43 @@ def key_pressed():
     return dr != []
 
 # ----------------------------
-# Multi-point calibration (optional)
+# 4-point globe calibration
 # ----------------------------
-calibration_vectors = []
+GLOBE_POINTS = [
+    "Equator & Prime Meridian (0°, 0°)",
+    "Equator & 90°E (0°, 90°E)",
+    "Equator & 90°W (0°, 90°W)",
+    "North Pole (90°, 0°)"
+]
 
-def calibrate_point():
-    """
-    Press 'c' while pointing sensor in a known orientation.
-    Collect multiple points for better calibration.
-    """
-    global calibration_vectors
+def record_calibration_point():
     q = sensor.quaternion
     if not q or len(q)!=4 or q==(0,0,0,0):
         print("❌ Invalid quaternion, try again")
         return
-    calibration_vectors.append(q)
-    print(f"✅ Calibration point recorded ({len(calibration_vectors)} points)")
+    calibration_points.append(q)
+    print(f"✅ Calibration point recorded ({len(calibration_points)}/4): {GLOBE_POINTS[len(calibration_points)-1]}")
+    if len(calibration_points) == 4:
+        print("🎯 4 points recorded, press 'a' to apply calibration")
 
-def compute_calibration():
-    """
-    Compute average calibration quaternion from multiple points.
-    For simplicity, we just take the first point if only one is recorded.
-    """
-    global calibration_quat, calibration_vectors
-    if not calibration_vectors:
-        print("⚠️ No calibration points recorded")
+def apply_calibration():
+    global calibration_quat
+    if len(calibration_points) != 4:
+        print("⚠️ You must record all 4 calibration points first!")
         return
-    # For real applications, you can compute best-fit rotation here
-    calibration_quat = invert_quat(calibration_vectors[0])
-    print("🎯 Calibration applied!")
+    # Basic method: invert the first point
+    # Can be improved with quaternion averaging
+    calibration_quat = invert_quat(calibration_points[0])
+    print("🎯 Calibration applied! Sensor now aligned globally.")
 
 # ----------------------------
-# Convert rotated vector to global lat/lon
+# Convert vector to lat/lon
 # ----------------------------
 def vector_to_latlon(v):
     v = normalize(v)
     vx, vy, vz = v
-
-    # Latitude from down vector
-    lat = math.degrees(math.asin(-vz))  # negative because down points toward Earth center
-
-    # Longitude from XY-plane
+    lat = math.degrees(math.asin(-vz))  # down vector toward Earth center
     lon = math.degrees(math.atan2(vy, vx))
-
-    # Normalize longitude to -180..180
     lon = (lon + 180) % 360 - 180
     return lat, lon
 
@@ -139,41 +133,29 @@ def vector_to_latlon(v):
 async def send_coordinates():
     global sensor
     async with websockets.connect(WS_URI) as websocket:
-        print("Connected to WebSocket server!")
-        print("Press 'c' to record calibration points, then 'a' to apply calibration")
+        print("Connected! Press 'c' to record calibration points, 'a' to apply calibration.")
 
         while True:
-            # Keyboard check
             if key_pressed():
                 ch = sys.stdin.read(1)
                 if ch.lower() == "c":
-                    calibrate_point()
+                    record_calibration_point()
                 elif ch.lower() == "a":
-                    compute_calibration()
+                    apply_calibration()
 
             try:
-                # Read quaternion
                 x, y, z, w = sensor.quaternion
                 if (x, y, z, w) == (0,0,0,0):
                     await asyncio.sleep(0.01)
                     continue
                 raw_q = (x, y, z, w)
-
-                # Apply calibration
                 corrected_q = quat_mul(calibration_quat, raw_q)
-
-                # Rotate sensor down vector into world frame
                 world_vec = rotate_vector_by_quat(sensor_axis, corrected_q)
-
-                # Convert to lat/lon
                 lat, lon = vector_to_latlon(world_vec)
-
                 msg = json.dumps({"lat": round(lat,3), "lon": round(lon,3)})
                 await websocket.send(msg)
                 print("Sent:", msg)
-
                 await asyncio.sleep(0.1)
-
             except OSError:
                 print("\n⚠️ I2C error — resetting sensor…")
                 sensor = init_sensor()
