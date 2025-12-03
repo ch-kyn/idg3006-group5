@@ -30,12 +30,10 @@ i2c = busio.I2C(board.SCL, board.SDA)
 
 def init_sensor():
     print("Initializing BNO08X...")
-
     reset_pin.value = False
-    time.sleep(0.1)   # longer reset
+    time.sleep(0.1)
     reset_pin.value = True
-    time.sleep(1.0)   # wait for sensor to boot fully
-
+    time.sleep(1.0)
     sensor = BNO08X_I2C(i2c, address=0x4A)
     time.sleep(0.2)
     sensor.enable_feature(BNO_REPORT_ROTATION_VECTOR)
@@ -69,40 +67,36 @@ def rotate_vector_by_quat(v, q):
     qc = quat_conjugate(q)
     return quat_mul(quat_mul(q, vq), qc)[:3]
 
-# ----------------------------
-# Convert vector to lat/lon
-# ----------------------------
-def vector_to_latlon(v):
-    vx, vy, vz = v
-    mag = math.sqrt(vx*vx + vy*vy + vz*vz)
+def normalize(v):
+    mag = math.sqrt(sum([x*x for x in v]))
     if mag == 0:
-        return None, None
+        return (0,0,0)
+    return tuple(x/mag for x in v)
 
-    vx /= mag
-    vy /= mag
-    vz /= mag
+def dot(a,b):
+    return a[0]*b[0] + a[1]*b[1] + a[2]*b[2]
 
-    # Earth-like coordinate orientation
-    lat = math.degrees(math.asin(vz))               # -90..+90
-    lon = math.degrees(math.atan2(vy, vx))          # -180..+180
+def sub(a,b):
+    return (a[0]-b[0], a[1]-b[1], a[2]-b[2])
 
-    return lat, lon
+def scale(v,s):
+    return (v[0]*s, v[1]*s, v[2]*s)
+
+def cross(a,b):
+    return (a[1]*b[2]-a[2]*b[1],
+            a[2]*b[0]-a[0]*b[2],
+            a[0]*b[1]-a[1]*b[0])
 
 # ----------------------------
 # CONFIG
 # ----------------------------
-sensor_axis = (0.0, 0.0, -1.0)  # sensor points downward to South Pole
-calibration_quat = (0, 0, 0, 1)  # identity
-LON_OFFSET = -115  # tweak as needed for your mount
+sensor_axis = (0.0, 0.0, -1.0)  # points roughly downward
+calibration_quat = (0,0,0,1)
 
-# ----------------------------
-# Improved calibration
-# ----------------------------
-def calibrate(q_current):
-    global calibration_quat
-    q_target = (0, 0, 0, 1)
-    calibration_quat = quat_mul(invert_quat(q_current), q_target)
-    print("\n🎯 Calibration set! Orientation now aligns to 0° lat / 0° lon.\n")
+# Two-point calibration storage
+north_unit = None
+east_unit = None
+ref_axis = None
 
 # ----------------------------
 # Keyboard helper
@@ -112,6 +106,46 @@ def key_pressed():
     return dr != []
 
 # ----------------------------
+# Calibration
+# ----------------------------
+async def calibrate_point(point_name):
+    global north_unit, east_unit, ref_axis
+    print(f"Point at {point_name} and press 'c'")
+    while True:
+        if key_pressed():
+            ch = sys.stdin.read(1)
+            if ch.lower() == 'c':
+                q = sensor.quaternion
+                if not q or len(q) !=4 or q==(0,0,0,0):
+                    continue
+                world_vec = rotate_vector_by_quat(sensor_axis, q)
+                world_vec = normalize(world_vec)
+                if point_name=="North Pole":
+                    north_unit = world_vec
+                    print("✅ North vector recorded")
+                elif point_name=="Null Island":
+                    # project onto plane perpendicular to north
+                    proj = sub(world_vec, scale(north_unit, dot(world_vec, north_unit)))
+                    east_unit = normalize(proj)
+                    ref_axis = east_unit
+                    print("✅ East/reference vector recorded")
+                return
+        await asyncio.sleep(0.05)
+
+# ----------------------------
+# Convert vector to lat/lon using two-point calibration
+# ----------------------------
+def vector_to_latlon_2point(v):
+    if north_unit is None or east_unit is None or ref_axis is None:
+        return None,None
+    v = normalize(v)
+    lat = math.degrees(math.asin(dot(v, north_unit)))
+    lon = math.degrees(math.atan2(dot(v, east_unit), dot(v, ref_axis)))
+    # normalize longitude
+    lon = (lon+180)%360 -180
+    return lat, lon
+
+# ----------------------------
 # Main loop
 # ----------------------------
 async def send_coordinates():
@@ -119,43 +153,28 @@ async def send_coordinates():
     async with websockets.connect(WS_URI) as websocket:
         print("Connected to WebSocket server!")
 
-        while True:
-            # Calibration trigger
-            if key_pressed():
-                ch = sys.stdin.read(1)
-                if ch.lower() == "c":
-                    calibrate(sensor.quaternion)
+        # First, two-point calibration
+        await calibrate_point("North Pole")
+        await calibrate_point("Null Island (0°,0°)")
 
+        print("✅ Two-point calibration done! Sending coordinates...")
+
+        while True:
             try:
-                # Read quaternion
                 q = sensor.quaternion
-                if not q or len(q) != 4 or q == (0,0,0,0):
+                if not q or len(q)!=4 or q==(0,0,0,0):
                     await asyncio.sleep(0.01)
                     continue
-
-                raw_q = q
-                corrected_q = quat_mul(calibration_quat, raw_q)
-                world_vec = rotate_vector_by_quat(sensor_axis, corrected_q)
-
-                lat, lon = vector_to_latlon(world_vec)
+                world_vec = rotate_vector_by_quat(sensor_axis, q)
+                lat, lon = vector_to_latlon_2point(world_vec)
                 if lat is None:
                     await asyncio.sleep(0.01)
                     continue
 
-                # Apply longitude offset & normalize
-                lon += LON_OFFSET
-                lon = (lon + 180) % 360 - 180
-
-                msg = json.dumps({
-                    "lat": round(lat, 3),
-                    "lon": round(lon, 3),
-                })
-
+                msg = json.dumps({"lat": round(lat,3), "lon": round(lon,3)})
                 await websocket.send(msg)
                 print("Sent:", msg)
-
-                await asyncio.sleep(0.1)  # ~10 Hz
-
+                await asyncio.sleep(0.1)
             except OSError:
                 print("\n⚠️ I2C error — resetting sensor…")
                 time.sleep(1.0)
@@ -168,7 +187,7 @@ async def send_coordinates():
 # ----------------------------
 # Entry
 # ----------------------------
-if __name__ == "__main__":
+if __name__=="__main__":
     import tty, termios
     fd = sys.stdin.fileno()
     old = termios.tcgetattr(fd)
