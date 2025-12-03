@@ -6,58 +6,94 @@
 
 **Note**: ALL IMAGES SHOULD BE IN .WEBP GUYS
 
-## Europe (11)
+## Europe (30)
+- Austria
+- Belarus
+- Belgium
+- Bosnia and Herzegovina
+- Bulgaria
+- Croatia
+- Czech Republic
+- Denmark
+- Finland
 - France
 - Germany
 - Greece
+- Hungary
+- Iceland
+- Ireland
 - Italy
+- Lithuania
 - Netherlands
 - Norway
 - Poland
+- Portugal
+- Romania
 - Russia
+- Slovakia
 - Spain
+- Sweden
+- Switzerland
 - Turkey
+- Ukraine
 - United Kingdom
 - Romania
 
-## Asia (10)
+## Asia (21)
+- Afghanistan
+- Bangladesh
 - China
 - India
 - Indonesia
 - Iran
+- Iraq
 - Japan
 - Kazakhstan
+- Malaysia
+- Mongolia
+- Myanmar (Burma)
 - Pakistan
 - Philippines
-- South-Korea
-- Vietnam
-- Iraq
 - Saudi-Arabia
-- Afghanistan
+- South-Korea
 - Syria
+- Thailand
+- United Arab Emirates
+- Vietnam
+- Yemen
 
-## North America (3)
+## North America (4)
 - Canada
+- Cuba
 - Mexico
 - United States
 
-## South America (7)
+## South America (10)
 - Argentina
 - Bolivia
 - Brazil
+- Chile
 - Colombia
 - Ecuador
+- Paraguay
 - Peru
+- Uruguay
 - Venezuela
 
-## Africa (7)
+## Africa (12)
 - Algeria
+- Angola
+- Democratic Republic of the Congo
 - Egypt
+- Ethiopia
 - Kenya
 - Libya
+- Mali
 - Morocco
+- Niger
 - Nigeria
 - South-Africa
+- Sudan
 
 ## Oceania (5)
 - Australia
@@ -67,8 +103,28 @@
 - Samoa
 
 ## Countries to add
-(missing images)
-- Sudan
-- Mongolia
-- Thailand
-- Ukraine
+### Asia 
+- Israel (MISSING IMAGES)
+- Singapore (MISSING IMAGES)
+- Nepal (MISSING IMAGES)
+- Sri Lanka (MISSING IMAGES)
+- Bhutan (MISSING IMAGES)
+- Jordan (MISSING IMAGES)
+- Lebanon (MISSING IMAGES)
+
+### Africa
+- Ghana
+- Senegal
+- Tanzania
+
+### North America / Central America
+- Panama
+- Guatemala
+- Costa Rica
+- El Salvador
+- Honduras
+
+### Europe
+- Estonia
+- Latvia
+- Serbia
