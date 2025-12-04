@@ -1,4 +1,3 @@
-
 import asyncio
 import websockets
 import json
@@ -16,7 +15,7 @@ from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR
 # ----------------------------
 # WebSocket config
 # ----------------------------
-WS_URI = "ws://10.22.62.162:8765"
+WS_URI = "ws://10.22.16.94:8765" # christine var her
 
 # ----------------------------
 # RESET PIN
@@ -50,13 +49,6 @@ def quat_conjugate(q):
     x, y, z, w = q
     return (-x, -y, -z, w)
 
-def quat_norm(q):
-    x, y, z, w = q
-    n = math.sqrt(x*x + y*y + z*z + w*w)
-    if n == 0:
-        return (0.0, 0.0, 0.0, 1.0)
-    return (x/n, y/n, z/n, w/n)
-
 def invert_quat(q):
     return quat_conjugate(q)
 
@@ -71,12 +63,10 @@ def quat_mul(q1, q2):
     )
 
 def rotate_vector_by_quat(v, q):
-    qn = quat_norm(q)
     vx, vy, vz = v
     vq = (vx, vy, vz, 0.0)
-    qc = quat_conjugate(qn)
-    r = quat_mul(quat_mul(qn, vq), qc)
-    return r[:3]
+    qc = quat_conjugate(q)
+    return quat_mul(quat_mul(q, vq), qc)[:3]
 
 
 # ----------------------------
@@ -94,7 +84,7 @@ def vector_to_latlon(v):
 
     # Earth-like coordinate orientation
     lat = math.degrees(math.asin(vz))               # -90..+90
-    lon = -math.degrees(math.atan2(vy, vx))          # -180..+180
+    lon = math.degrees(math.atan2(vy, vx))          # -180..+180
 
     return lat, lon
 
@@ -102,7 +92,8 @@ def vector_to_latlon(v):
 # ----------------------------
 # CONFIG
 # ----------------------------
-sensor_axis = (0.0, -1.0, 0.0)  # your sensor's forward direction
+# sensor_axis = (1.0, 0.0, 0.0)  # your sensor's forward direction
+sensor_axis = (0.0, 0.0, -1.0)
 calibration_quat = (0, 0, 0, 1)  # identity
 
 
@@ -115,13 +106,12 @@ def calibrate(q_current):
     the current forward vector to (1,0,0) → lat=0, lon=0.
     """
     global calibration_quat
-    qc = quat_norm(q_current)
+
     # Target world-forward quaternion: identity (0,0,0,1)
-    q_target = (0.0, 0.0, 0.0, 1.0)
+    q_target = (0, 0, 0, 1)
 
     # calibration = inverse(current) * target
-    calibration_quat = quat_mul(q_target, invert_quat(qc))
-    calivration_quat = quat_norm(calivration_quat)
+    calibration_quat = quat_mul(invert_quat(q_current), q_target)
 
     print("\n🎯 Calibration set! Orientation now aligns to 0° lat / 0° lon.\n")
 
@@ -147,8 +137,7 @@ async def send_coordinates():
             # Calibration trigger
             if key_pressed():
                 ch = sys.stdin.read(1)
-                if ch.lower() == "c":
-                    calibrate(sensor.quaternion)
+                if ch.lower() == "c":                    calibrate(sensor.quaternion)
 
             try:
                 # Read quaternion
@@ -158,37 +147,39 @@ async def send_coordinates():
                     continue
 
                 raw_q = (x, y, z, w)
-		        raw_q = quat_norm(raw_q)
 
                 # Apply calibration
-                corrected_q = quat_mul(calibration_quat, raw_q)
-		        corrected_q = quat_norm(corrected_q)
-                # Rotate forward-vector
-                world_vec = rotate_vector_by_quat(sensor_axis, corrected_q)
+                corrected_q = quaquat, raw_q)
 
-                # Convert to lat/lon
-                lat, lon = vector_to_latlon(world_vec)
-                if lat is None:
-                    await asyncio.sleep(0.01)
-                    continue
+               # Rotate forward-vector into world space
+		world_vec = rotate_vector_by_quat(sensor_axis, corrected_q)
 
-                msg = json.dumps({
-                    "lat": round(lat, 3),
-                    "lon": round(lon, 3),
-                })
+# Convert to lat/lon
+		lat, lon = vector_to_latlon(world_vec)
+		if lat is None:
+   			 await asyncio.sleep(0.01)
+   			 continue
+
+# Apply longitude offset
+		LON_OFFSET = -115
+		lon += LON_OFFSET
+
+		# Normalize to -180..180
+		lon = (lon + 180) % 360 - 180
+
+		msg = json.dumps({
+			"lat": round(lat, 3),
+			"lon": round(lon, 3),
+		})
+
 
                 await websocket.send(msg)
                 print("Sent:", msg)
 
-                await asyncio.sleep(1.0)  # ~10 Hz
+                await asyncio.sleep(0.1)  # ~10 Hz
 
             except OSError:
-                print("\n⚠️ I2C error — resetting sensor…")
-                sensor = init_sensor()
-                await asyncio.sleep(0.2)
-            except Exception as e:
-                print("Unexpected error:", e)
-                await asyncio.sleep(0.2)
+                print("\n⚠️ I2C error — resetting se
 
 
 # ----------------------------
