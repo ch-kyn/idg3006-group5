@@ -15,7 +15,7 @@ from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR
 # ----------------------------
 # WebSocket config
 # ----------------------------
-WS_URI = "ws://192.168.166.154:8765"
+WS_URI = "ws://10.22.62.39:8765"
 
 # ----------------------------
 # RESET PIN
