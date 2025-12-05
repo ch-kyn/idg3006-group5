@@ -8,7 +8,6 @@ import busio
 import digitalio
 import sys
 import select
-
 from adafruit_bno08x.i2c import BNO08X_I2C
 from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR
 
@@ -90,9 +89,9 @@ def vector_to_latlon(v):
 # ----------------------------
 def calibrate(current_quat):
     global cal_quat
-    # Compute calibration: maps current orientation to reference (0,0)
+    # Compute quaternion that maps current orientation to world frame
     cal_quat = quat_conjugate(current_quat)
-    print("\n🎯 Calibration set: current orientation → (lat, lon) = (0,0)\n")
+    print("\n🎯 Calibration set! Aim at equator → latitude 0\n")
 
 # ----------------------------
 # Keyboard helper
@@ -109,11 +108,10 @@ async def send_coordinates():
     async with websockets.connect(WS_URI) as websocket:
         print("Connected to WebSocket server!")
 
-        # Sensor forward vector (aiming direction)
-        sensor_forward = (1, 0, 0)
+        sensor_forward = (1, 0, 0)  # forward axis = aiming direction
 
         while True:
-            # Check for calibration key
+            # Calibration key
             if key_pressed():
                 ch = sys.stdin.read(1)
                 if ch.lower() == "c":
@@ -126,13 +124,9 @@ async def send_coordinates():
                     continue
 
                 raw_q = (x, y, z, w)
-                # Apply calibration quaternion
                 corrected_q = quat_mul(cal_quat, raw_q)
 
-                # Rotate forward vector to world coordinates
                 world_vec = rotate_vector_by_quat(sensor_forward, corrected_q)
-
-                # Compute latitude and longitude
                 lat, lon = vector_to_latlon(world_vec)
                 if lat is None:
                     await asyncio.sleep(0.01)
@@ -144,7 +138,6 @@ async def send_coordinates():
                 })
                 await websocket.send(msg)
                 print("Sent:", msg)
-
                 await asyncio.sleep(0.1)
 
             except OSError:
