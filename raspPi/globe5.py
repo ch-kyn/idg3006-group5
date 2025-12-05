@@ -108,11 +108,12 @@ async def send_coordinates():
     async with websockets.connect(WS_URI) as websocket:
         print("Connected to WebSocket server!")
 
-        # Sensor forward axis (aiming direction)
-        sensor_forward = (1,0,0)
+        # Define sensor axes
+        forward_axis = (1,0,0)  # sensor aiming direction
+        up_axis      = (0,0,1)  # sensor top direction
 
         while True:
-            # Check calibration key
+            # Calibration key
             if key_pressed():
                 ch = sys.stdin.read(1)
                 if ch.lower() == "c":
@@ -125,14 +126,19 @@ async def send_coordinates():
                     continue
 
                 raw_q = (x,y,z,w)
-                # Apply calibration quaternion
                 corrected_q = quat_mul(cal_quat, raw_q)
 
-                # Rotate forward vector to world coordinates
-                world_vec = rotate_vector_by_quat(sensor_forward, corrected_q)
+                # Rotate both axes into world coordinates
+                fw_world = rotate_vector_by_quat(forward_axis, corrected_q)
+                up_world = rotate_vector_by_quat(up_axis, corrected_q)
 
-                # Compute latitude and longitude
-                lat, lon = vector_to_latlon(world_vec)
+                # Pick vector with largest |z| to compute latitude
+                if abs(fw_world[2]) > abs(up_world[2]):
+                    chosen_vec = fw_world
+                else:
+                    chosen_vec = up_world
+
+                lat, lon = vector_to_latlon(chosen_vec)
                 if lat is None:
                     await asyncio.sleep(0.01)
                     continue
@@ -141,9 +147,9 @@ async def send_coordinates():
                     "lat": round(lat,3),
                     "lon": round(lon,3),
                 })
+
                 await websocket.send(msg)
                 print("Sent:", msg)
-
                 await asyncio.sleep(0.1)
 
             except OSError:
