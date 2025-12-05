@@ -12,12 +12,10 @@ import select
 from adafruit_bno08x.i2c import BNO08X_I2C
 from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR
 
-
 # ----------------------------
 # WebSocket config
 # ----------------------------
 WS_URI = "ws://192.168.166.154:8765"
-
 
 # ----------------------------
 # RESET PIN
@@ -25,105 +23,105 @@ WS_URI = "ws://192.168.166.154:8765"
 reset_pin = digitalio.DigitalInOut(board.D17)
 reset_pin.direction = digitalio.Direction.OUTPUT
 
-
 # ----------------------------
 # I2C INIT
 # ----------------------------
 i2c = busio.I2C(board.SCL, board.SDA)
 
-
 def init_sensor():
     print("Initializing BNO08X...")
-
     reset_pin.value = False
     time.sleep(0.01)
     reset_pin.value = True
     time.sleep(0.25)
-
     sensor = BNO08X_I2C(i2c, address=0x4A)
     sensor.enable_feature(BNO_REPORT_ROTATION_VECTOR)
     return sensor
 
-
 sensor = init_sensor()
 
+# ----------------------------
+# Calibration offsets
+# ----------------------------
+cal_quat = (0, 0, 0, 1)  # identity quaternion
 
-# ----------------------------------------
-# CALIBRATION OFFSETS (pitch, yaw)
-# ----------------------------------------
-cal_pitch = 0.0
-cal_yaw = 0.0
+# ----------------------------
+# Quaternion helpers
+# ----------------------------
+def quat_conjugate(q):
+    x, y, z, w = q
+    return (-x, -y, -z, w)
 
+def quat_mul(q1, q2):
+    x1, y1, z1, w1 = q1
+    x2, y2, z2, w2 = q2
+    return (
+        w1*x2 + x1*w2 + y1*z2 - z1*y2,
+        w1*y2 - x1*z2 + y1*w2 + z1*x2,
+        w1*z2 + x1*y2 - y1*x2 + z1*w2,
+        w1*w2 - x1*x2 - y1*y2 - z1*z2,
+    )
 
-# ----------------------------------------
+def rotate_vector_by_quat(v, q):
+    # v is (vx,vy,vz), q is quaternion (x,y,z,w)
+    vx, vy, vz = v
+    qx, qy, qz, qw = q
+    # Convert v to quaternion
+    vq = (vx, vy, vz, 0)
+    q_conj = quat_conjugate(q)
+    qv = quat_mul(quat_mul(q, vq), q_conj)
+    return qv[:3]
+
+# ----------------------------
+# Vector → lat/lon
+# ----------------------------
+def vector_to_latlon(v):
+    vx, vy, vz = v
+    mag = math.sqrt(vx*vx + vy*vy + vz*vz)
+    if mag == 0:
+        return None, None
+    vx /= mag
+    vy /= mag
+    vz /= mag
+
+    lat = math.degrees(math.asin(vz))  # -90..90
+    lon = math.degrees(math.atan2(vy, vx))  # -180..180
+    lon = ((lon + 180) % 360) - 180      # wrap to [-180,180]
+    return lat, lon
+
+# ----------------------------
+# Calibration
+# ----------------------------
+def calibrate(current_quat):
+    global cal_quat
+    # calibration = inverse(current) * identity
+    cal_quat = quat_conjugate(current_quat)
+    print("\n🎯 Calibration set: current orientation → (0,0)\n")
+
+# ----------------------------
 # Keyboard helper
-# ----------------------------------------
+# ----------------------------
 def key_pressed():
     dr, dw, de = select.select([sys.stdin], [], [], 0)
     return dr != []
 
-
-# ----------------------------------------
-# Quaternion → Euler angles
-#
-# yaw   = heading (longitude)
-# pitch = tilt up/down (latitude)
-# roll  = tilt sideways
-#
-# This avoids gimbal lock because BNO08X orientation
-# is already fused and stable.
-# ----------------------------------------
-def quat_to_euler(x, y, z, w):
-    # yaw (Z axis)
-    yaw = math.atan2(
-        2.0 * (w*z + x*y),
-        1.0 - 2.0 * (y*y + z*z)
-    )
-
-    # pitch (X axis)
-    sinp = 2.0 * (w*x - y*z)
-    if abs(sinp) >= 1:
-        pitch = math.copysign(math.pi/2, sinp)   # 90° clamp
-    else:
-        pitch = math.asin(sinp)
-
-    # roll (Y axis) - not used for lat/lon
-    roll = math.atan2(
-        2.0 * (w*y + z*x),
-        1.0 - 2.0 * (x*x + y*y)
-    )
-
-    return pitch, yaw, roll
-
-
-# ----------------------------------------
-# Calibration
-# ----------------------------------------
-def calibrate(pitch, yaw):
-    global cal_pitch, cal_yaw
-    cal_pitch = -pitch
-    cal_yaw   = -yaw
-    print("\n🎯 Calibration saved! Orientation → (0,0)\n")
-
-
-# ----------------------------------------
+# ----------------------------
 # Main loop
-# ----------------------------------------
+# ----------------------------
 async def send_coordinates():
     global sensor
-
     async with websockets.connect(WS_URI) as websocket:
         print("Connected to WebSocket server!")
 
-        while True:
+        # sensor forward axis
+        sensor_axis = (1.0, 0.0, 0.0)  # adjust if your sensor points differently
 
-            # Keyboard calibration
+        while True:
+            # Check calibration key
             if key_pressed():
                 ch = sys.stdin.read(1)
                 if ch.lower() == "c":
-                    x, y, z, w = sensor.quaternion
-                    pitch, yaw, _ = quat_to_euler(x, y, z, w)
-                    calibrate(pitch, yaw)
+                    calibrate(sensor.quaternion)
 
             try:
                 x, y, z, w = sensor.quaternion
@@ -131,21 +129,23 @@ async def send_coordinates():
                     await asyncio.sleep(0.01)
                     continue
 
-                pitch, yaw, roll = quat_to_euler(x, y, z, w)
-
+                raw_q = (x, y, z, w)
                 # Apply calibration
-                pitch += cal_pitch
-                yaw   += cal_yaw
+                corrected_q = quat_mul(cal_quat, raw_q)
 
-                # Convert to degrees
-                lat = math.degrees(pitch)   # -90..+90
-                lon = math.degrees(yaw)     # -180..+180
+                # Rotate forward vector to world
+                world_vec = rotate_vector_by_quat(sensor_axis, corrected_q)
+
+                # Convert to lat/lon
+                lat, lon = vector_to_latlon(world_vec)
+                if lat is None:
+                    await asyncio.sleep(0.01)
+                    continue
 
                 msg = json.dumps({
                     "lat": round(lat, 3),
                     "lon": round(lon, 3),
                 })
-
                 await websocket.send(msg)
                 print("Sent:", msg)
 
@@ -155,15 +155,13 @@ async def send_coordinates():
                 print("\n⚠️ I2C error — resetting sensor…")
                 sensor = init_sensor()
                 await asyncio.sleep(0.2)
-
             except Exception as e:
                 print("Unexpected error:", e)
                 await asyncio.sleep(0.2)
 
-
-# ----------------------------------------
+# ----------------------------
 # Entry
-# ----------------------------------------
+# ----------------------------
 if __name__ == "__main__":
     import tty, termios
     fd = sys.stdin.fileno()
