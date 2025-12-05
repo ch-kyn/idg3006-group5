@@ -5,7 +5,7 @@
     // flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 3rem;
+    gap: calc(1rem + 4vw);
     flex-flow: wrap;
 }
 
@@ -27,7 +27,7 @@
 .btm {
     display: flex;
     flex-direction: row;
-    gap: 5rem;
+    gap: calc(1rem + 4vw);
 
     &__cont {
         display: flex;
@@ -115,7 +115,7 @@
         border: none;
         border-radius: 0.6rem;
         height: 3rem;
-        width: 10rem;
+        width: calc(8rem + 2vw);
         font-size: 1.1rem;
         font-weight: 800;
         color: white;
@@ -149,7 +149,7 @@
     border-radius: 0.4rem;
 
     .quizButton {
-        width: 4.5rem;
+        width: calc(4rem + 1vw);
         height: 3rem;
         padding: 0.4rem 0.8rem;
         border: none;
@@ -205,7 +205,6 @@
     width: 15rem;
     padding: 20px;
     background-color: c.$whiteBlue;
-    // border: 2px solid #1e90ff;
     border-radius: 12px;
     font-family: Arial, sans-serif;
     color: c.$muteBlack;

@@ -43,6 +43,8 @@ const AboutPage = () => {
                             <div className={`${styles.col} ${styles.col__right}`}>
                                 <AboutCard title="Popular Dishes" dataArr={info.popular_dishes} image={`${import.meta.env.VITE_SOCKET_URL}${info.images['food']}`} />
                                 <AboutCard title="Famous People" dataArr={info.famous_people} />
+                            </div>
+                            <div className={`${styles.col} ${styles.col__right}`}>
                                 <AboutCard title="Exports" dataArr={info.exports} />
                                 <AboutCard title="Heritage Places" dataArr={info.places_heritage} image={`${import.meta.env.VITE_SOCKET_URL}${info.images['place']}`} />
                             </div>
