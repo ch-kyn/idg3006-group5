@@ -40,6 +40,7 @@
 - Türkiye
 - Ukraine
 - United Kingdom
+- Romania
 
 ## Asia (28)
 - Afghanistan
