@@ -1,6 +1,5 @@
 
 
-
 import asyncio
 import websockets
 import json
@@ -104,7 +103,7 @@ def vector_to_latlon(v):
 # ----------------------------
 # CONFIG
 # ----------------------------
-sensor_axis = (0.0, 0.0, 1.0)  # your sensor's forward direction
+sensor_axis = (0.0, -1.0, 0.0)  # your sensor's forward direction
 calibration_quat = (0, 0, 0, 1)  # identity
 
 
@@ -113,28 +112,21 @@ calibration_quat = (0, 0, 0, 1)  # identity
 # ----------------------------
 def calibrate(q_current):
     """
-    Set current orientation as 0° lat / 0° lon.
+    When user points at Null Island (0,0), we compute a quaternion that maps
+    the current forward vector to (1,0,0) → lat=0, lon=0.
     """
     global calibration_quat
     qc = quat_norm(q_current)
+    # Target world-forward quaternion: identity (0,0,0,1)
+    q_target = (0.0, 0.0, 0.0, 1.0)
 
-    # Rotate sensor forward vector to world-forward (1,0,0)
-    fwd_current = rotate_vector_by_quat(sensor_axis, qc)
-    fwd_mag = math.sqrt(sum(c*c for c in fwd_current))
-    if fwd_mag == 0:
-        print("Calibration failed: forward vector zero")
-        return
-    fwd_current = tuple(c/fwd_mag for c in fwd_current)
-
-    # Compute rotation needed to align fwd_current → (1,0,0)
-    # Use simple 2D rotation on X/Y plane for longitude
-    angle = math.atan2(fwd_current[1], fwd_current[0])
-    # quaternion representing rotation around Z-axis
-    sin_h = math.sin(-angle/2)
-    cos_h = math.cos(-angle/2)
-    calibration_quat = (0, 0, sin_h, cos_h)
+    # calibration = inverse(current) * target
+    calibration_quat = quat_mul(q_target, invert_quat(qc))
+    calivration_quat = quat_norm(calivration_quat)
 
     print("\n🎯 Calibration set! Orientation now aligns to 0° lat / 0° lon.\n")
+
+
 # ----------------------------
 # Keyboard helper
 # ----------------------------
@@ -167,11 +159,11 @@ async def send_coordinates():
                     continue
 
                 raw_q = (x, y, z, w)
-                #raw_q = quat_norm(raw_q)
+                raw_q = quat_norm(raw_q)
 
                 # Apply calibration
                 corrected_q = quat_mul(calibration_quat, raw_q)
-                corrected_q = quat_norm(corrected_q)
+		corrected_q = quat_norm(corrected_q)
                 # Rotate forward-vector
                 world_vec = rotate_vector_by_quat(sensor_axis, corrected_q)
 

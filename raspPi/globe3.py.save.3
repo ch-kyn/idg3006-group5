@@ -1,6 +1,3 @@
-
-
-
 import asyncio
 import websockets
 import json
@@ -52,13 +49,6 @@ def quat_conjugate(q):
     x, y, z, w = q
     return (-x, -y, -z, w)
 
-def quat_norm(q):
-    x, y, z, w = q
-    n = math.sqrt(x*x + y*y + z*z + w*w)
-    if n == 0:
-        return (0.0, 0.0, 0.0, 1.0)
-    return (x/n, y/n, z/n, w/n)
-
 def invert_quat(q):
     return quat_conjugate(q)
 
@@ -73,12 +63,10 @@ def quat_mul(q1, q2):
     )
 
 def rotate_vector_by_quat(v, q):
-    qn = quat_norm(q)
     vx, vy, vz = v
     vq = (vx, vy, vz, 0.0)
-    qc = quat_conjugate(qn)
-    r = quat_mul(quat_mul(qn, vq), qc)
-    return r[:3]
+    qc = quat_conjugate(q)
+    return quat_mul(quat_mul(q, vq), qc)[:3]
 
 
 # ----------------------------
@@ -96,7 +84,7 @@ def vector_to_latlon(v):
 
     # Earth-like coordinate orientation
     lat = math.degrees(math.asin(vz))               # -90..+90
-    lon = -math.degrees(math.atan2(vy, vx))          # -180..+180
+    lon = math.degrees(math.atan2(vy, vx))          # -180..+180
 
     return lat, lon
 
@@ -104,7 +92,24 @@ def vector_to_latlon(v):
 # ----------------------------
 # CONFIG
 # ----------------------------
-sensor_axis = (0.0, 0.0, 1.0)  # your sensor's forward direction
+sensor_axis = (0.0, 0.0, -1.0)  # your sensor's forward direction
+def vector_to_latlon(v):
+    vx, vy, vz = v
+    mag = math.sqrt(vx*vx + vy*vy + vz*vz)
+    if mag == 0:
+        return None, None
+
+    vx /= mag
+    vy /= mag
+    vz /= mag
+
+    # Latitude: flip Z
+    lat = math.degrees(math.asin(-vz))
+
+    # Longitude: flip to match east = positive
+    lon = -math.degrees(math.atan2(vy, vx))
+
+    return lat, lon
 calibration_quat = (0, 0, 0, 1)  # identity
 
 
@@ -113,28 +118,20 @@ calibration_quat = (0, 0, 0, 1)  # identity
 # ----------------------------
 def calibrate(q_current):
     """
-    Set current orientation as 0° lat / 0° lon.
+    When user points at Null Island (0,0), we compute a quaternion that maps
+    the current forward vector to (1,0,0) → lat=0, lon=0.
     """
     global calibration_quat
-    qc = quat_norm(q_current)
 
-    # Rotate sensor forward vector to world-forward (1,0,0)
-    fwd_current = rotate_vector_by_quat(sensor_axis, qc)
-    fwd_mag = math.sqrt(sum(c*c for c in fwd_current))
-    if fwd_mag == 0:
-        print("Calibration failed: forward vector zero")
-        return
-    fwd_current = tuple(c/fwd_mag for c in fwd_current)
+    # Target world-forward quaternion: identity (0,0,0,1)
+    q_target = (0, 0, 0, 1)
 
-    # Compute rotation needed to align fwd_current → (1,0,0)
-    # Use simple 2D rotation on X/Y plane for longitude
-    angle = math.atan2(fwd_current[1], fwd_current[0])
-    # quaternion representing rotation around Z-axis
-    sin_h = math.sin(-angle/2)
-    cos_h = math.cos(-angle/2)
-    calibration_quat = (0, 0, sin_h, cos_h)
+    # calibration = inverse(current) * target
+    calibration_quat = quat_mul(invert_quat(q_current), q_target)
 
     print("\n🎯 Calibration set! Orientation now aligns to 0° lat / 0° lon.\n")
+
+
 # ----------------------------
 # Keyboard helper
 # ----------------------------
@@ -167,11 +164,10 @@ async def send_coordinates():
                     continue
 
                 raw_q = (x, y, z, w)
-                #raw_q = quat_norm(raw_q)
 
                 # Apply calibration
                 corrected_q = quat_mul(calibration_quat, raw_q)
-                corrected_q = quat_norm(corrected_q)
+
                 # Rotate forward-vector
                 world_vec = rotate_vector_by_quat(sensor_axis, corrected_q)
 
@@ -189,7 +185,7 @@ async def send_coordinates():
                 await websocket.send(msg)
                 print("Sent:", msg)
 
-                await asyncio.sleep(1.0)  # ~10 Hz
+                await asyncio.sleep(0.1)  # ~10 Hz
 
             except OSError:
                 print("\n⚠️ I2C error — resetting sensor…")
