@@ -3981,5 +3981,46 @@
             "food": "images/countries/north_america/panama/panama_sancocho.webp",
             "place": "images/countries/north_america/panama/panama_canal.webp"
         }
+    },
+    {
+        "country": "Romania",
+        "region": "Europe",
+        "capital": "Bucharest",
+        "population": 19200000,
+        "area_km2": 238397,
+        "currency": "Romanian Leu (RON)",
+        "gdp_total_usd": 284000000000,
+        "national_day": "December 1",
+        "national_animal": "Eurasian Lynx",
+        "exports": [
+            "Machinery",
+            "Vehicles",
+            "Metals",
+            "Textiles"
+        ],
+        "popular_dishes": [
+            "Sarmale",
+            "Mămăligă",
+            "Ciorbă de burtă",
+            "Mititei"
+        ],
+        "famous_people": [
+            "Nadia Comăneci",
+            "George Enescu",
+            "Constantin Brâncuși",
+            "Simona Halep"
+        ],
+        "places_heritage": [
+            "Palace of the Parliament",
+            "Bran Castle",
+            "Painted Monasteries of Bucovina",
+            "Danube Delta"
+        ],
+        "images": {
+            "flag": "images/countries/europe/romania/romania_flag.webp",
+            "map": "images/countries/europe/romania/romania_map.webp",
+            "food": "images/countries/europe/romania/romania_food.webp",
+            "place": "images/countries/europe/romania/romania_place.webp"
+        }
     }
 ]
