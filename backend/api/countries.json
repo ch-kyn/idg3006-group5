@@ -3575,89 +3575,89 @@
         }
     },
     {
-  "country": "Chad",
-  "capital": "N'Djamena",
-  "population": 18000000,
-  "area_km2": 1284000,
-  "currency": "Central African CFA Franc (XAF)",
-  "gdp_total_usd": 12000000000,
-  "national_day": "August 11",
-  "national_animal": "Goat (symbolic), Lion (cultural)",
-  "exports": [
-    "Crude Oil",
-    "Cotton",
-    "Livestock",
-    "Gum Arabic"
-  ],
-  "popular_dishes": [
-    "Daraba",
-    "Jarret de bœuf",
-    "Aiyash",
-    "Kisra",
-    "La boule"
-  ],
-  "famous_people": [
-    "Hissène Habré",
-    "Idriss Déby",
-    "Souleymane Cissé (film influence in region)",
-    "Mounira Mitchala"
-  ],
-  "places_heritage": [
-    "Zakouma National Park",
-    "Ennedi Massif",
-    "Lakes of Ounianga",
-    "N'Djamena Grand Mosque"
-  ],
-  "images": {
-    "flag": "images/countries/africa/chad/chad_flag.webp",
-    "map": "images/countries/africa/chad/chad_map.webp",
-    "food": "images/countries/africa/chad/chad_food.webp",
-    "place": "images/countries/africa/chad/chad_place.webp"
-  }
-},
-{
-  "country": "Ghana",
-  "capital": "Accra",
-  "population": 33000000,
-  "area_km2": 238535,
-  "currency": "Ghanaian Cedi (GHS)",
-  "gdp_total_usd": 77000000000,
-  "national_day": "March 6",
-  "national_animal": "Tawny Eagle",
-  "exports": [
-    "Gold",
-    "Cocoa Beans",
-    "Crude Oil",
-    "Timber",
-    "Processed Cocoa Products"
-  ],
-  "popular_dishes": [
-    "Jollof Rice",
-    "Banku and Tilapia",
-    "Fufu with Light Soup",
-    "Kelewele",
-    "Waakye"
-  ],
-  "famous_people": [
-    "Kwame Nkrumah",
-    "Kofi Annan",
-    "Abeiku Santana",
-    "Ama Ata Aidoo"
-  ],
-  "places_heritage": [
-    "Cape Coast Castle",
-    "Kakum National Park",
-    "Lake Volta",
-    "Mole National Park"
-  ],
-  "images": {
-    "flag": "images/countries/africa/ghana/ghana_flag.webp",
-    "map": "images/countries/africa/ghana/ghana_map.webp",
-    "food": "images/countries/africa/ghana/ghana_food.webp",
-    "place": "images/countries/africa/ghana/ghana_place.webp"
-  }
-},
-{
+        "country": "Chad",
+        "capital": "N'Djamena",
+        "population": 18000000,
+        "area_km2": 1284000,
+        "currency": "Central African CFA Franc (XAF)",
+        "gdp_total_usd": 12000000000,
+        "national_day": "August 11",
+        "national_animal": "Goat (symbolic), Lion (cultural)",
+        "exports": [
+            "Crude Oil",
+            "Cotton",
+            "Livestock",
+            "Gum Arabic"
+        ],
+        "popular_dishes": [
+            "Daraba",
+            "Jarret de bœuf",
+            "Aiyash",
+            "Kisra",
+            "La boule"
+        ],
+        "famous_people": [
+            "Hissène Habré",
+            "Idriss Déby",
+            "Souleymane Cissé (film influence in region)",
+            "Mounira Mitchala"
+        ],
+        "places_heritage": [
+            "Zakouma National Park",
+            "Ennedi Massif",
+            "Lakes of Ounianga",
+            "N'Djamena Grand Mosque"
+        ],
+        "images": {
+            "flag": "images/countries/africa/chad/chad_flag.webp",
+            "map": "images/countries/africa/chad/chad_map.webp",
+            "food": "images/countries/africa/chad/chad_food.webp",
+            "place": "images/countries/africa/chad/chad_place.webp"
+        }
+    },
+    {
+        "country": "Ghana",
+        "capital": "Accra",
+        "population": 33000000,
+        "area_km2": 238535,
+        "currency": "Ghanaian Cedi (GHS)",
+        "gdp_total_usd": 77000000000,
+        "national_day": "March 6",
+        "national_animal": "Tawny Eagle",
+        "exports": [
+            "Gold",
+            "Cocoa Beans",
+            "Crude Oil",
+            "Timber",
+            "Processed Cocoa Products"
+        ],
+        "popular_dishes": [
+            "Jollof Rice",
+            "Banku and Tilapia",
+            "Fufu with Light Soup",
+            "Kelewele",
+            "Waakye"
+        ],
+        "famous_people": [
+            "Kwame Nkrumah",
+            "Kofi Annan",
+            "Abeiku Santana",
+            "Ama Ata Aidoo"
+        ],
+        "places_heritage": [
+            "Cape Coast Castle",
+            "Kakum National Park",
+            "Lake Volta",
+            "Mole National Park"
+        ],
+        "images": {
+            "flag": "images/countries/africa/ghana/ghana_flag.webp",
+            "map": "images/countries/africa/ghana/ghana_map.webp",
+            "food": "images/countries/africa/ghana/ghana_food.webp",
+            "place": "images/countries/africa/ghana/ghana_place.webp"
+        }
+    },
+    {
         "country": "Estonia",
         "capital": "Tallinn",
         "population": 1330000,
@@ -3981,4 +3981,5 @@
             "food": "images/countries/north_america/panama/panama_sancocho.webp",
             "place": "images/countries/north_america/panama/panama_canal.webp"
         }
-    }]
+    }
+]

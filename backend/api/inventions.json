@@ -1372,7 +1372,7 @@
 					"description": "The celengan is made from clay or terracotta and includes a slit at the top where coins can be inserted for safe keeping.",
 					"extra": "One of the oldest known pig-shaped money boxes dates back to the Majapahit period in Java, making it one of the earliest forms of the modern piggy bank."
 				},
-				"image": "images/inventions/asia/indonesia/celengan.webp"
+				"image": "images/inventions/asia/indonesia/piggy_bank.webp"
 			}
 		]
 	},
@@ -3147,98 +3147,95 @@
 		]
 	},
 	{
-  "country": "Chad",
-  "inventions": [
-    {
-      "name": "Adobe Fortress Architecture",
-      "inventor": "Sahelian Civilizations (Kanem-Bornu Region)",
-      "year": "Medieval Era",
-      "information": {
-        "general": "Chadian architects developed durable adobe fortifications adapted to arid climates.",
-        "description": "Built from mud-brick, these structures maintained cool interiors and resisted desert temperatures, influencing architecture across the Sahel.",
-        "extra": "The style can still be seen in old settlements and royal sites around the Kanem-Bornu area."
-      },
-      "image": "images/africa/chad/chad_adobe_architecture.webp"
-    },
-    {
-      "name": "Rock Art Techniques of the Ennedi Plateau",
-      "inventor": "Ancient Saharan Peoples",
-      "year": "6000–1000 BCE",
-      "information": {
-        "general": "Chad is home to thousands of prehistoric rock paintings and engravings that represent early artistic innovation.",
-        "description": "Using natural pigments and stone carving tools, artists depicted wildlife, rituals, and daily life in stunning detail.",
-        "extra": "The Ennedi rock art is a UNESCO World Heritage treasure and one of Africa’s richest archaeological archives."
-      },
-      "image": "images/africa/chad/chad_rock_art.webp"
-    }
-  ]
-},
-{
-  "country": "Ghana",
-  "inventions": [
-    {
-      "name": "Kente Weaving",
-      "inventor": "Akan People (Ashanti & Ewe)",
-      "year": "Pre-1600s",
-      "information": {
-        "general": "Kente cloth is one of Africa’s most iconic textile innovations, originating from Ghana’s Ashanti and Ewe cultures.",
-        "description": "Woven on narrow-strip looms, Kente uses complex geometric patterns and vibrant colors, each with symbolic spiritual meanings.",
-        "extra": "Traditionally worn by royalty, Kente is now a global cultural symbol celebrated in fashion and ceremony."
-      },
-      "image": "images/africa/ghana/ghana_kente.webp"
-    },
-    {
-      "name": "The Akan Gold Weighing System",
-      "inventor": "Akan Civilization",
-      "year": "14th–18th Century",
-      "information": {
-        "general": "The Akan developed an advanced system of gold weights for trade, mathematics, and economic regulation.",
-        "description": "Bronze figurines and geometric brass weights represented standardized units, enabling precise measurement of gold dust, the region’s currency.",
-        "extra": "These weights also depict proverbs and stories, combining engineering with philosophy."
-      },
-      "image": "images/africa/ghana/ghana_goldweights.webp"
-    },
-    {
-      "name": "Veronica Bucket (Hygiene Device)",
-      "inventor": "Veronica Bekoe",
-      "year": "1990s",
-      "information": {
-        "general": "The Veronica Bucket is a Ghanaian handwashing invention widely used across Africa.",
-        "description": "It consists of a bucket with a tap placed above a basin, enabling running-water hygiene in areas without plumbing.",
-        "extra": "It played a crucial role during the Ebola and COVID-19 outbreaks, saving countless lives."
-      },
-      "image": "images/africa/ghana/ghana_veronica_bucket.webp"
-    }
-  ]
-},
-{
-  "country": "Senegal",
-  "inventions": [
-    {
-      "name": "Traditional West African Gum Arabic Processing",
-      "inventor": "Wolof and Fulani Communities",
-      "year": "Ancient–Medieval Period",
-      "information": {
-        "general": "Senegalese communities refined natural techniques for harvesting and processing gum arabic, a critical global export.",
-        "description": "Collected from acacia trees, gum arabic is purified using methods perfected over generations for trade and preservation.",
-        "extra": "This innovation supports global industries such as food stabilization, cosmetics, and pharmaceuticals."
-      },
-      "image": "images/africa/senegal/senegal_gumarabic.webp"
-    },
-    {
-      "name": "The Kora (Musical Instrument Innovation)",
-      "inventor": "Mandinka Griots",
-      "year": "13th Century",
-      "information": {
-        "general": "The kora, a 21-string harp-lute, is one of West Africa's most important musical inventions, deeply tied to Senegalese griot culture.",
-        "description": "Made from a calabash resonator covered in cowhide, with a long hardwood neck, the kora creates melodic, harp-like tones.",
-        "extra": "It remains central to the storytelling and musical traditions of the region, and Senegal is one of its principal cultural homes."
-      },
-      "image": "images/africa/senegal/senegal_kora.webp"
-    }
-  ]
-}
-
-
-
+		"country": "Chad",
+		"inventions": [
+			{
+				"name": "Adobe Fortress Architecture",
+				"inventor": "Sahelian Civilizations (Kanem-Bornu Region)",
+				"year": "Medieval Era",
+				"information": {
+					"general": "Chadian architects developed durable adobe fortifications adapted to arid climates.",
+					"description": "Built from mud-brick, these structures maintained cool interiors and resisted desert temperatures, influencing architecture across the Sahel.",
+					"extra": "The style can still be seen in old settlements and royal sites around the Kanem-Bornu area."
+				},
+				"image": "images/africa/chad/chad_adobe_architecture.webp"
+			},
+			{
+				"name": "Rock Art Techniques of the Ennedi Plateau",
+				"inventor": "Ancient Saharan Peoples",
+				"year": "6000–1000 BCE",
+				"information": {
+					"general": "Chad is home to thousands of prehistoric rock paintings and engravings that represent early artistic innovation.",
+					"description": "Using natural pigments and stone carving tools, artists depicted wildlife, rituals, and daily life in stunning detail.",
+					"extra": "The Ennedi rock art is a UNESCO World Heritage treasure and one of Africa’s richest archaeological archives."
+				},
+				"image": "images/africa/chad/chad_rock_art.webp"
+			}
+		]
+	},
+	{
+		"country": "Ghana",
+		"inventions": [
+			{
+				"name": "Kente Weaving",
+				"inventor": "Akan People (Ashanti & Ewe)",
+				"year": "Pre-1600s",
+				"information": {
+					"general": "Kente cloth is one of Africa’s most iconic textile innovations, originating from Ghana’s Ashanti and Ewe cultures.",
+					"description": "Woven on narrow-strip looms, Kente uses complex geometric patterns and vibrant colors, each with symbolic spiritual meanings.",
+					"extra": "Traditionally worn by royalty, Kente is now a global cultural symbol celebrated in fashion and ceremony."
+				},
+				"image": "images/africa/ghana/ghana_kente.webp"
+			},
+			{
+				"name": "The Akan Gold Weighing System",
+				"inventor": "Akan Civilization",
+				"year": "14th–18th Century",
+				"information": {
+					"general": "The Akan developed an advanced system of gold weights for trade, mathematics, and economic regulation.",
+					"description": "Bronze figurines and geometric brass weights represented standardized units, enabling precise measurement of gold dust, the region’s currency.",
+					"extra": "These weights also depict proverbs and stories, combining engineering with philosophy."
+				},
+				"image": "images/africa/ghana/ghana_goldweights.webp"
+			},
+			{
+				"name": "Veronica Bucket (Hygiene Device)",
+				"inventor": "Veronica Bekoe",
+				"year": "1990s",
+				"information": {
+					"general": "The Veronica Bucket is a Ghanaian handwashing invention widely used across Africa.",
+					"description": "It consists of a bucket with a tap placed above a basin, enabling running-water hygiene in areas without plumbing.",
+					"extra": "It played a crucial role during the Ebola and COVID-19 outbreaks, saving countless lives."
+				},
+				"image": "images/africa/ghana/ghana_veronica_bucket.webp"
+			}
+		]
+	},
+	{
+		"country": "Senegal",
+		"inventions": [
+			{
+				"name": "Traditional West African Gum Arabic Processing",
+				"inventor": "Wolof and Fulani Communities",
+				"year": "Ancient–Medieval Period",
+				"information": {
+					"general": "Senegalese communities refined natural techniques for harvesting and processing gum arabic, a critical global export.",
+					"description": "Collected from acacia trees, gum arabic is purified using methods perfected over generations for trade and preservation.",
+					"extra": "This innovation supports global industries such as food stabilization, cosmetics, and pharmaceuticals."
+				},
+				"image": "images/africa/senegal/senegal_gumarabic.webp"
+			},
+			{
+				"name": "The Kora (Musical Instrument Innovation)",
+				"inventor": "Mandinka Griots",
+				"year": "13th Century",
+				"information": {
+					"general": "The kora, a 21-string harp-lute, is one of West Africa's most important musical inventions, deeply tied to Senegalese griot culture.",
+					"description": "Made from a calabash resonator covered in cowhide, with a long hardwood neck, the kora creates melodic, harp-like tones.",
+					"extra": "It remains central to the storytelling and musical traditions of the region, and Senegal is one of its principal cultural homes."
+				},
+				"image": "images/africa/senegal/senegal_kora.webp"
+			}
+		]
+	}
 ]

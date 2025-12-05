@@ -40,7 +40,6 @@
 - Türkiye
 - Ukraine
 - United Kingdom
-- Romania
 
 ## Asia (28)
 - Afghanistan
@@ -94,18 +93,21 @@
 - Uruguay
 - Venezuela
 
-## Africa (13)
+## Africa (16)
 - Algeria
 - Angola
+- Chad
 - Democratic Republic of the Congo
 - Egypt
 - Ethiopia
+- Ghana
 - Kenya
 - Libya
 - Mali
 - Morocco
 - Niger
 - Nigeria
+- Senegal
 - South-Africa
 - Sudan
 
@@ -115,10 +117,3 @@
 - Papua New Guinea
 - New Zealand
 - Samoa
-
-## Countries to add
-### Africa
-- Chad
-- Ghana
-- Senegal
-- Tanzania
