@@ -1825,9 +1825,9 @@
 				"information": {
 					"general": "Developed during the Ebola outbreak, this rapid diagnostic kit allows field detection of Ebola virus.",
 					"description": "Compact and portable, it provides test results in hours instead of days, crucial for controlling outbreaks.",
-					"extra": "The kit has been deployed internationally and influenced rapid virus detection technology.",
-					"image": "images/inventions/africa/dr_congo/ebola_kit.webp"
-				}
+					"extra": "The kit has been deployed internationally and influenced rapid virus detection technology."
+				},
+				"image": "images/inventions/africa/dr_congo/ebola_kit.webp"
 			}
 		]
 	},
@@ -2168,7 +2168,7 @@
 					"description": "Originally used for pottery, the wheel later enabled carts, transport, and mechanical devices, transforming human civilization.",
 					"extra": "The earliest known wheel was discovered near the ancient city of Ur, showing Iraq's central role in early technological development."
 				},
-				"image": "images/asia/iraq/wheel.webp"
+				"image": "images/inventions/asia/iraq/wheel.webp"
 			},
 			{
 				"name": "Cuneiform Writing",
@@ -2179,7 +2179,7 @@
 					"description": "It consisted of wedge-shaped marks pressed into clay tablets using a reed stylus, enabling administration and storytelling.",
 					"extra": "This writing system led to famous texts like the Epic of Gilgamesh and influenced future alphabets across the region."
 				},
-				"image": "images/asia/iraq/cuneiform.webp"
+				"image": "images/inventions/asia/iraq/cuneiform.webp"
 			},
 			{
 				"name": "The First Laws: Code of Hammurabi",
@@ -2190,7 +2190,7 @@
 					"description": "Carved into a basalt stele, the laws established standards for contracts, family issues, property, and justice.",
 					"extra": "Its famous phrase 'an eye for an eye' represents proportional justice, influencing legal traditions for millennia."
 				},
-				"image": "images/asia/iraq/hammurabi.webp"
+				"image": "images/inventions/asia/iraq/hammurabi.webp"
 			}
 		]
 	},
@@ -2206,7 +2206,7 @@
 					"description": "Their enhancements improved accuracy for prayer times, navigation, and astronomical calculations.",
 					"extra": "These advancements were developed in major Arabian centers including Mecca and Medina, influencing global navigation and science."
 				},
-				"image": "images/asia/saudi_arabia/astrolabe.webp"
+				"image": "images/inventions/asia/saudi_arabia/astrolabe.webp"
 			},
 			{
 				"name": "Oil Extraction & Drilling Innovations",
@@ -2217,7 +2217,7 @@
 					"description": "Advances included deeper drilling, enhanced oil recovery, and large-scale offshore extraction technologies.",
 					"extra": "These innovations helped Saudi Arabia become a global leader in petroleum technology and energy production."
 				},
-				"image": "images/asia/saudi_arabia/drilling.webp"
+				"image": "images/inventions/asia/saudi_arabia/drilling.webp"
 			},
 			{
 				"name": "Desalination Technologies",
@@ -2228,7 +2228,7 @@
 					"description": "The country developed massive reverse osmosis and multi-stage flash distillation plants to supply water to cities and farms.",
 					"extra": "Saudi Arabia is now the world's largest producer of desalinated water, influencing global water sustainability efforts."
 				},
-				"image": "images/asia/saudi_arabia/desalination.webp"
+				"image": "images/inventions/asia/saudi_arabia/desalination.webp"
 			}
 		]
 	},
@@ -2244,7 +2244,7 @@
 					"description": "These mills used vertical sails to grind grain and pump water, functioning in the windy plateaus of eastern Persia and western Afghanistan.",
 					"extra": "Their design influenced later windmill developments across the Middle East and Central Asia."
 				},
-				"image": "images/asia/afghanistan/windmill.webp"
+				"image": "images/inventions/asia/afghanistan/windmill.webp"
 			},
 			{
 				"name": "The Rubab",
@@ -2255,7 +2255,7 @@
 					"description": "Carved from mulberry wood and covered with goat skin, it produces deep, resonant tones central to Afghan folk music.",
 					"extra": "Its musical influence spread into India, inspiring the creation of the sarod — a key instrument in classical Hindustani music."
 				},
-				"image": "images/asia/afghanistan/rubab.webp"
+				"image": "images/inventions/asia/afghanistan/rubab.webp"
 			}
 		]
 	},
@@ -2271,7 +2271,7 @@
 					"description": "Crafted using advanced forging techniques, Damascus steel swords were prized across Europe and Asia for their durability and beauty.",
 					"extra": "Although the original process has been lost, modern metallurgy continues to study Damascus steel to replicate its unique makeup."
 				},
-				"image": "images/asia/syria/damascus_steel.webp"
+				"image": "images/inventions/asia/syria/damascus_steel.webp"
 			},
 			{
 				"name": "Aleppo Soap",
@@ -2282,7 +2282,7 @@
 					"description": "Produced using traditional hot process techniques, Aleppo soap influenced the development of soap-making in Europe.",
 					"extra": "It is considered the ancestor of Marseille soap and continues to be crafted in Aleppo today."
 				},
-				"image": "images/asia/syria/aleppo_soap.webp"
+				"image": "images/inventions/asia/syria/aleppo_soap.webp"
 			},
 			{
 				"name": "Ugaritic Alphabet",
@@ -2293,7 +2293,7 @@
 					"description": "The 30-letter cuneiform alphabet simplified writing compared to complex pictographic systems.",
 					"extra": "It influenced later alphabetic systems and is considered a major step in the history of written language."
 				},
-				"image": "images/asia/syria/ugaritic_alphabet.webp"
+				"image": "images/inventions/asia/syria/ugaritic_alphabet.webp"
 			}
 		]
 	},
@@ -2309,7 +2309,7 @@
 					"description": "His aircraft used a pioneering engine that expelled air at high speed, creating thrust — a concept fundamental to modern jet engines.",
 					"extra": "Coandă also discovered the Coandă Effect, crucial in aerodynamics and fluid dynamics."
 				},
-				"image": "images/europe/romania/jet_engine.webp"
+				"image": "images/inventions/europe/romania/jet_engine.webp"
 			},
 			{
 				"name": "Insulin (Co-discovery Contribution)",
@@ -2320,7 +2320,7 @@
 					"description": "He isolated a pancreatic extract he named 'pancreina', which lowered blood sugar levels — an essential step toward modern insulin.",
 					"extra": "Although the Nobel Prize went to Banting and Best, many historians argue that Paulescu should share credit for the discovery."
 				},
-				"image": "images/europe/romania/insulin.webp"
+				"image": "images/inventions/europe/romania/insulin.webp"
 			},
 			{
 				"name": "Cybernetics Foundations",
@@ -2331,7 +2331,7 @@
 					"description": "His work 'Psychologie consonantiste' introduced concepts such as feedback mechanisms years before Norbert Wiener formalized cybernetics.",
 					"extra": "Odobleja's theories influenced systems science, robotics, and computer science."
 				},
-				"image": "images/europe/romania/cybernetics.webp"
+				"image": "images/inventions/europe/romania/cybernetics.webp"
 			}
 		]
 	},
@@ -3158,7 +3158,7 @@
 					"description": "Built from mud-brick, these structures maintained cool interiors and resisted desert temperatures, influencing architecture across the Sahel.",
 					"extra": "The style can still be seen in old settlements and royal sites around the Kanem-Bornu area."
 				},
-				"image": "images/africa/chad/chad_adobe_architecture.webp"
+				"image": "images/inventions/africa/chad/adobe_architecture.webp"
 			},
 			{
 				"name": "Rock Art Techniques of the Ennedi Plateau",
@@ -3169,7 +3169,7 @@
 					"description": "Using natural pigments and stone carving tools, artists depicted wildlife, rituals, and daily life in stunning detail.",
 					"extra": "The Ennedi rock art is a UNESCO World Heritage treasure and one of Africa’s richest archaeological archives."
 				},
-				"image": "images/africa/chad/chad_rock_art.webp"
+				"image": "images/inventions/africa/chad/rock_art.webp"
 			}
 		]
 	},
@@ -3185,7 +3185,7 @@
 					"description": "Woven on narrow-strip looms, Kente uses complex geometric patterns and vibrant colors, each with symbolic spiritual meanings.",
 					"extra": "Traditionally worn by royalty, Kente is now a global cultural symbol celebrated in fashion and ceremony."
 				},
-				"image": "images/africa/ghana/ghana_kente.webp"
+				"image": "images/inventions/africa/ghana/kente.webp"
 			},
 			{
 				"name": "The Akan Gold Weighing System",
@@ -3196,7 +3196,7 @@
 					"description": "Bronze figurines and geometric brass weights represented standardized units, enabling precise measurement of gold dust, the region’s currency.",
 					"extra": "These weights also depict proverbs and stories, combining engineering with philosophy."
 				},
-				"image": "images/africa/ghana/ghana_goldweights.webp"
+				"image": "images/inventions/africa/ghana/goldweights.webp"
 			},
 			{
 				"name": "Veronica Bucket (Hygiene Device)",
@@ -3207,7 +3207,7 @@
 					"description": "It consists of a bucket with a tap placed above a basin, enabling running-water hygiene in areas without plumbing.",
 					"extra": "It played a crucial role during the Ebola and COVID-19 outbreaks, saving countless lives."
 				},
-				"image": "images/africa/ghana/ghana_veronica_bucket.webp"
+				"image": "images/inventions/africa/ghana/veronica_bucket.webp"
 			}
 		]
 	},
@@ -3223,7 +3223,7 @@
 					"description": "Collected from acacia trees, gum arabic is purified using methods perfected over generations for trade and preservation.",
 					"extra": "This innovation supports global industries such as food stabilization, cosmetics, and pharmaceuticals."
 				},
-				"image": "images/africa/senegal/senegal_gumarabic.webp"
+				"image": "images/inventions/africa/senegal/gumarabic.webp"
 			},
 			{
 				"name": "The Kora (Musical Instrument Innovation)",
@@ -3234,7 +3234,7 @@
 					"description": "Made from a calabash resonator covered in cowhide, with a long hardwood neck, the kora creates melodic, harp-like tones.",
 					"extra": "It remains central to the storytelling and musical traditions of the region, and Senegal is one of its principal cultural homes."
 				},
-				"image": "images/africa/senegal/senegal_kora.webp"
+				"image": "images/inventions/africa/senegal/kora.webp"
 			}
 		]
 	}
