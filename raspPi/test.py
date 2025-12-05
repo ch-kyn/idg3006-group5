@@ -1,64 +1,77 @@
 import time
 import board
 import busio
-from adafruit_bno08x import BNO08X_I2C, BNO_REPORT_ROTATION_VECTOR, BNO_REPORT_LINEAR_ACCELERATION
-from pyquaternion import Quaternion
 import numpy as np
+from pyquaternion import Quaternion
+
+# Correct import for the sensor driver:
+from adafruit_bno08x.i2c import BNO08X_I2C
+from adafruit_bno08x import (
+    BNO_REPORT_ROTATION_VECTOR,
+    BNO_REPORT_LINEAR_ACCELERATION
+)
 
 # ----------------------------
-# I2C and sensor setup
+# I2C Setup
 # ----------------------------
 i2c = busio.I2C(board.SCL, board.SDA)
 sensor = BNO08X_I2C(i2c)
 
-# Enable reports
+# Enable sensor features
 sensor.enable_feature(BNO_REPORT_ROTATION_VECTOR)
 sensor.enable_feature(BNO_REPORT_LINEAR_ACCELERATION)
 
 # ----------------------------
-# Calibration quaternion
+# Calibration quaternion (identity for now)
 # ----------------------------
-cal_quat = Quaternion(0, 0, 0, 1)  # identity (no rotation yet)
+cal_quat = Quaternion(0, 0, 0, 1)
 
 # ----------------------------
-# Initialize position & velocity
+# State variables
 # ----------------------------
-position = np.array([0.0, 0.0, 0.0])  # x, y, z in meters
-velocity = np.array([0.0, 0.0, 0.0])  # m/s
-
+position = np.array([0.0, 0.0, 0.0])
+velocity = np.array([0.0, 0.0, 0.0])
 prev_time = time.time()
+
+print("Starting coordinate tracking...")
+print("Move the sensor gently to test.\n")
 
 # ----------------------------
 # Main loop
 # ----------------------------
 while True:
-    # Get current time
     now = time.time()
     dt = now - prev_time
     prev_time = now
 
-    # ----------------------------
-    # Read rotation vector (quaternion)
-    # ----------------------------
-    if sensor.quaternion is not None:
-        q = Quaternion(sensor.quaternion)  # x, y, z, w
-        # Apply calibration: relative orientation
+    # Read orientation quaternion
+    quat_raw = sensor.quaternion
+    if quat_raw is not None:
+        q = Quaternion(quat_raw[0], quat_raw[1], quat_raw[2], quat_raw[3])
         q_rel = cal_quat.inverse * q
+    else:
+        continue  # No quaternion yet
 
-    # ----------------------------
-    # Read linear acceleration
-    # ----------------------------
-    if sensor.linear_acceleration is not None:
-        acc = np.array(sensor.linear_acceleration)  # [ax, ay, az] in m/s²
-        # Rotate acceleration to world frame
+    # Read linear acceleration (gravity removed)
+    acc_raw = sensor.linear_acceleration
+    if acc_raw is not None:
+        acc = np.array(acc_raw)
+
+        # Rotate acceleration into world frame
         acc_world = q_rel.rotate(acc)
 
         # Integrate acceleration → velocity
         velocity += acc_world * dt
+
         # Integrate velocity → position
         position += velocity * dt
 
-    print(f"Position: x={position[0]:.3f}, y={position[1]:.3f}, z={position[2]:.3f}")
-    
-    time.sleep(1)  # 100 Hz update
-# ----------------------------
+        # Print coordinates
+        print(
+            f"Position: "
+            f"X={position[0]:.3f} m, "
+            f"Y={position[1]:.3f} m, "
+            f"Z={position[2]:.3f} m"
+        )
+
+    time.sleep(0.01)  # ~100 Hz
