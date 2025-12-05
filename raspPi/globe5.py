@@ -10,14 +10,12 @@ import sys
 import select
 
 from adafruit_bno08x.i2c import BNO08X_I2C
-from adafruit_bno08x import BNO_REPORT_GRAVITY
-
+from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR
 
 # ----------------------------
 # WebSocket config
 # ----------------------------
-WS_URI = "ws://192.168.166.154:8765"
-
+WS_URI = "ws://10.22.62.39:8765"
 
 # ----------------------------
 # RESET PIN
@@ -25,74 +23,82 @@ WS_URI = "ws://192.168.166.154:8765"
 reset_pin = digitalio.DigitalInOut(board.D17)
 reset_pin.direction = digitalio.Direction.OUTPUT
 
-
 # ----------------------------
 # I2C INIT
 # ----------------------------
 i2c = busio.I2C(board.SCL, board.SDA)
 
-
 def init_sensor():
     print("Initializing BNO08X...")
-
     reset_pin.value = False
     time.sleep(0.01)
     reset_pin.value = True
     time.sleep(0.25)
-
     sensor = BNO08X_I2C(i2c, address=0x4A)
-    sensor.enable_feature(BNO_REPORT_GRAVITY)
+    sensor.enable_feature(BNO_REPORT_ROTATION_VECTOR)
     return sensor
-
 
 sensor = init_sensor()
 
+# ----------------------------
+# Calibration quaternion
+# ----------------------------
+cal_quat = (0,0,0,1)  # identity
 
 # ----------------------------
-# GLOBAL CALIBRATION OFFSETS
+# Quaternion helpers
 # ----------------------------
-cal_offset_lat = 0.0
-cal_offset_lon = 0.0
+def quat_conjugate(q):
+    x,y,z,w = q
+    return (-x,-y,-z,w)
 
+def quat_mul(q1,q2):
+    x1,y1,z1,w1 = q1
+    x2,y2,z2,w2 = q2
+    return (
+        w1*x2 + x1*w2 + y1*z2 - z1*y2,
+        w1*y2 - x1*z2 + y1*w2 + z1*x2,
+        w1*z2 + x1*y2 - y1*x2 + z1*w2,
+        w1*w2 - x1*x2 - y1*y2 - z1*z2,
+    )
+
+def rotate_vector_by_quat(v,q):
+    vx,vy,vz = v
+    vq = (vx,vy,vz,0)
+    q_conj = quat_conjugate(q)
+    res = quat_mul(quat_mul(q,vq),q_conj)
+    return res[:3]
+
+# ----------------------------
+# Vector → lat/lon
+# ----------------------------
+def vector_to_latlon(v):
+    vx,vy,vz = v
+    mag = math.sqrt(vx*vx + vy*vy + vz*vz)
+    if mag == 0:
+        return None,None
+    vx/=mag
+    vy/=mag
+    vz/=mag
+    lat = math.degrees(math.asin(vz))             # -90..+90
+    lon = math.degrees(math.atan2(vy,vx))         # -180..+180
+    lon = ((lon + 180) % 360) - 180              # wrap longitude
+    return lat, lon
+
+# ----------------------------
+# Calibration
+# ----------------------------
+def calibrate(current_quat):
+    global cal_quat
+    cal_quat = quat_conjugate(current_quat)
+    print("\n🎯 Calibration set: current orientation → (lat, lon) = (0,0)\n")
 
 # ----------------------------
 # Keyboard helper
 # ----------------------------
 def key_pressed():
-    dr, dw, de = select.select([sys.stdin], [], [], 0)
+    dr,dw,de = select.select([sys.stdin],[],[],0)
     return dr != []
-
-
-# ----------------------------
-# Lat/lon from gravity vector
-# ----------------------------
-def gravity_to_latlon(gx, gy, gz):
-    mag = math.sqrt(gx*gx + gy*gy + gz*gz)
-    if mag == 0:
-        return None, None
-
-    gx /= mag
-    gy /= mag
-    gz /= mag
-
-    # Gravity vector points DOWN, invert Z
-    gz = -gz
-
-    lat = math.degrees(math.asin(gz))          # -90..90
-    lon = math.degrees(math.atan2(gy, gx))      # -180..180
-
-    return lat, lon
-
-
-# ----------------------------
-# Calibration function
-# ----------------------------
-def calibrate(lat, lon):
-    global cal_offset_lat, cal_offset_lon
-    cal_offset_lat = -lat
-    cal_offset_lon = -lon
-    print("\n🎯 Calibration saved! Current orientation → (0,0)\n")
-
 
 # ----------------------------
 # Main loop
@@ -102,37 +108,39 @@ async def send_coordinates():
     async with websockets.connect(WS_URI) as websocket:
         print("Connected to WebSocket server!")
 
-        while True:
+        # Sensor forward axis (aiming direction)
+        sensor_forward = (1,0,0)
 
-            # Calibration key
+        while True:
+            # Check calibration key
             if key_pressed():
                 ch = sys.stdin.read(1)
                 if ch.lower() == "c":
-                    try:
-                        gx, gy, gz = sensor.gravity
-                        lat, lon = gravity_to_latlon(gx, gy, gz)
-                        if lat is not None:
-                            calibrate(lat, lon)
-                    except:
-                        pass
+                    calibrate(sensor.quaternion)
 
             try:
-                gx, gy, gz = sensor.gravity
-                lat, lon = gravity_to_latlon(gx, gy, gz)
+                x,y,z,w = sensor.quaternion
+                if (x,y,z,w) == (0,0,0,0):
+                    await asyncio.sleep(0.01)
+                    continue
 
+                raw_q = (x,y,z,w)
+                # Apply calibration quaternion
+                corrected_q = quat_mul(cal_quat, raw_q)
+
+                # Rotate forward vector to world coordinates
+                world_vec = rotate_vector_by_quat(sensor_forward, corrected_q)
+
+                # Compute latitude and longitude
+                lat, lon = vector_to_latlon(world_vec)
                 if lat is None:
                     await asyncio.sleep(0.01)
                     continue
 
-                # Apply calibration offsets
-                lat += cal_offset_lat
-                lon += cal_offset_lon
-
                 msg = json.dumps({
-                    "lat": round(lat, 3),
-                    "lon": round(lon, 3),
+                    "lat": round(lat,3),
+                    "lon": round(lon,3),
                 })
-
                 await websocket.send(msg)
                 print("Sent:", msg)
 
@@ -145,7 +153,6 @@ async def send_coordinates():
             except Exception as e:
                 print("Unexpected error:", e)
                 await asyncio.sleep(0.2)
-
 
 # ----------------------------
 # Entry
