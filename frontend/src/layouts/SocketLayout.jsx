@@ -83,7 +83,7 @@ const SocketLayout = ({ namespace, title, children }) => {
 	}, [namespace]);
 
 	// activate controller listener only when not loading
-	useControllerListener(!loading);
+	useControllerListener();
 
 	if (loading) return <Spinner />;
 	return <>{children(data)}</>;
