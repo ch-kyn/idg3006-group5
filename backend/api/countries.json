@@ -640,7 +640,7 @@
         }
     },
     {
-        "country": "Turkey",
+        "country": "Türkiye",
         "capital": "Ankara",
         "population": 86000000,
         "area_km2": 783562,
@@ -3656,7 +3656,329 @@
     "food": "images/countries/africa/ghana/ghana_food.webp",
     "place": "images/countries/africa/ghana/ghana_place.webp"
   }
-}
-
-
-]
+},
+{
+        "country": "Estonia",
+        "capital": "Tallinn",
+        "population": 1330000,
+        "area_km2": 45227,
+        "currency": "Euro (EUR)",
+        "gdp_total_usd": 44000000,
+        "national_day": "February 24",
+        "national_animal": "Wolf",
+        "exports": [
+            "Electronics",
+            "Machinery",
+            "Wood and paper products",
+            "Textiles"
+        ],
+        "popular_dishes": [
+            "Kama",
+            "Verivorst",
+            "Rosolje",
+            "Hapukapsas"
+        ],
+        "famous_people": [
+            "Arvo Pärt",
+            "Kerli Kõiv",
+            "Kristjan Järvi",
+            "Jaan Kross"
+        ],
+        "places_heritage": [
+            "Tallinn Old Town",
+            "Tartu University",
+            "Lahemaa National Park",
+            "Pärnu Beach"
+        ],
+        "images": {
+            "flag": "images/countries/europe/estonia/estonia_flag.webp",
+            "map": "images/countries/europe/estonia/estonia_map.webp",
+            "food": "images/countries/europe/estonia/estonia_kama.webp",
+            "place": "images/countries/europe/estonia/estonia_tallinn.webp"
+        }
+    },
+    {
+        "country": "Latvia",
+        "capital": "Riga",
+        "population": 1900000,
+        "area_km2": 64589,
+        "currency": "Euro (EUR)",
+        "gdp_total_usd": 37000000,
+        "national_day": "November 18",
+        "national_animal": "Latvian Brown Bear",
+        "exports": [
+            "Wood and timber products",
+            "Electronics",
+            "Food products",
+            "Textiles"
+        ],
+        "popular_dishes": [
+            "Rupjmaize",
+            "Sklandrausis",
+            "Grey peas with bacon",
+            "Pīrāgi"
+        ],
+        "famous_people": [
+            "Mikhail Baryshnikov",
+            "Mariss Jansons",
+            "Rainis",
+            "Laima Vaikule"
+        ],
+        "places_heritage": [
+            "Riga Old Town",
+            "Jurmala Beach",
+            "Gauja National Park",
+            "Rundāle Palace"
+        ],
+        "images": {
+            "flag": "images/countries/europe/latvia/latvia_flag.webp",
+            "map": "images/countries/europe/latvia/latvia_map.webp",
+            "food": "images/countries/europe/latvia/latvia_rupjmaize.webp",
+            "place": "images/countries/europe/latvia/latvia_riga.webp"
+        }
+    },
+    {
+        "country": "Serbia",
+        "capital": "Belgrade",
+        "population": 6800000,
+        "area_km2": 88361,
+        "currency": "Serbian Dinar (RSD)",
+        "gdp_total_usd": 65000000,
+        "national_day": "February 15",
+        "national_animal": "White Eagle",
+        "exports": [
+            "Automobiles and machinery",
+            "Agricultural products",
+            "Electrical equipment",
+            "Metals"
+        ],
+        "popular_dishes": [
+            "Ćevapi",
+            "Sarma",
+            "Pljeskavica",
+            "Ajvar"
+        ],
+        "famous_people": [
+            "Nikola Tesla",
+            "Novak Djokovic",
+            "Emir Kusturica",
+            "Mihajlo Pupin"
+        ],
+        "places_heritage": [
+            "Belgrade Fortress",
+            "Studenica Monastery",
+            "Drvengrad",
+            "Đavolja Varoš"
+        ],
+        "images": {
+            "flag": "images/countries/europe/serbia/serbia_flag.webp",
+            "map": "images/countries/europe/serbia/serbia_map.webp",
+            "food": "images/countries/europe/serbia/serbia_cevapi.webp",
+            "place": "images/countries/europe/serbia/serbia_belgrade.webp"
+        }
+    },
+    {
+        "country": "Guatemala",
+        "region": "North America",
+        "capital": "Guatemala City",
+        "population": 18000000,
+        "area_km2": 108889,
+        "currency": "Guatemalan Quetzal (GTQ)",
+        "gdp_total_usd": 86000000000,
+        "national_day": "September 15",
+        "national_animal": "Resplendent Quetzal",
+        "exports": [
+            "Coffee",
+            "Sugar",
+            "Bananas",
+            "Vegetables"
+        ],
+        "popular_dishes": [
+            "Pepian",
+            "Kak'ik",
+            "Jocon",
+            "Tamales"
+        ],
+        "famous_people": [
+            "Rigoberta Menchú",
+            "Carlos Mérida",
+            "Miguel Ángel Asturias",
+            "Gaby Moreno"
+        ],
+        "places_heritage": [
+            "Tikal",
+            "Lake Atitlán",
+            "Semuc Champey",
+            "Antigua Guatemala"
+        ],
+        "images": {
+            "flag": "images/countries/north_america/guatemala/guatemala_flag.webp",
+            "map": "images/countries/north_america/guatemala/guatemala_map.webp",
+            "food": "images/countries/north_america/guatemala/guatemala_pepian.webp",
+            "place": "images/countries/north_america/guatemala/guatemala_tikal.webp"
+        }
+    },
+    {
+        "country": "Costa Rica",
+        "region": "North America",
+        "capital": "San José",
+        "population": 5200000,
+        "area_km2": 51100,
+        "currency": "Costa Rican Colón (CRC)",
+        "gdp_total_usd": 64000000000,
+        "national_day": "September 15",
+        "national_animal": "Yigüirro (Clay-colored Thrush)",
+        "exports": [
+            "Bananas",
+            "Coffee",
+            "Pineapples",
+            "Electronics"
+        ],
+        "popular_dishes": [
+            "Gallo Pinto",
+            "Casado",
+            "Olla de Carne",
+            "Chifrijo"
+        ],
+        "famous_people": [
+            "Óscar Arias",
+            "Claudia Poll",
+            "Keylor Navas",
+            "María Fernanda Flores"
+        ],
+        "places_heritage": [
+            "Arenal Volcano",
+            "Monteverde Cloud Forest",
+            "Manuel Antonio National Park",
+            "Tortuguero National Park"
+        ],
+        "images": {
+            "flag": "images/countries/north_america/costa_rica/costa_rica_flag.webp",
+            "map": "images/countries/north_america/costa_rica/costa_rica_map.webp",
+            "food": "images/countries/north_america/costa_rica/costa_rica_gallo_pinto.webp",
+            "place": "images/countries/north_america/costa_rica/costa_rica_arenal.webp"
+        }
+    },
+    {
+        "country": "Honduras",
+        "region": "North America",
+        "capital": "Tegucigalpa",
+        "population": 10100000,
+        "area_km2": 112492,
+        "currency": "Honduran Lempira (HNL)",
+        "gdp_total_usd": 25000000000,
+        "national_day": "September 15",
+        "national_animal": "White-tailed Deer",
+        "exports": [
+            "Coffee",
+            "Bananas",
+            "Shrimp",
+            "Textiles"
+        ],
+        "popular_dishes": [
+            "Baleadas",
+            "Sopa de Caracol",
+            "Tamales",
+            "Carne Asada"
+        ],
+        "famous_people": [
+            "Carlos Mencia",
+            "Lempira",
+            "Gladys Landaverde",
+            "David Suazo"
+        ],
+        "places_heritage": [
+            "Copán Ruins",
+            "Cayos Cochinos",
+            "La Tigra National Park",
+            "Pico Bonito National Park"
+        ],
+        "images": {
+            "flag": "images/countries/north_america/honduras/honduras_flag.webp",
+            "map": "images/countries/north_america/honduras/honduras_map.webp",
+            "food": "images/countries/north_america/honduras/honduras_baleadas.webp",
+            "place": "images/countries/north_america/honduras/honduras_copan.webp"
+        }
+    },
+    {
+        "country": "Panama",
+        "region": "North America",
+        "capital": "Panama City",
+        "population": 4300000,
+        "area_km2": 75417,
+        "currency": "Panamanian Balboa (PAB), US Dollar (USD)",
+        "gdp_total_usd": 70000000000,
+        "national_day": "November 3",
+        "national_animal": "Harpy Eagle",
+        "exports": [
+            "Bananas",
+            "Seafood",
+            "Sugar",
+            "Pharmaceuticals"
+        ],
+        "popular_dishes": [
+            "Sancocho",
+            "Tamales",
+            "Ceviche",
+            "Arroz con Pollo"
+        ],
+        "famous_people": [
+            "Rubén Blades",
+            "Mariano Rivera",
+            "Ernesto Pérez Balladares",
+            "Claribel Alegría"
+        ],
+        "places_heritage": [
+            "Panama Canal",
+            "Casco Viejo",
+            "Metropolitan Natural Park",
+            "San Blas Islands"
+        ],
+        "images": {
+            "flag": "images/countries/north_america/panama/panama_flag.webp",
+            "map": "images/countries/north_america/panama/panama_map.webp",
+            "food": "images/countries/north_america/panama/panama_sancocho.webp",
+            "place": "images/countries/north_america/panama/panama_canal.webp"
+        }
+    },
+    {
+        "country": "Panama",
+        "region": "North America",
+        "capital": "Panama City",
+        "population": 4300000,
+        "area_km2": 75417,
+        "currency": "Panamanian Balboa (PAB), US Dollar (USD)",
+        "gdp_total_usd": 70000000000,
+        "national_day": "November 3",
+        "national_animal": "Harpy Eagle",
+        "exports": [
+            "Bananas",
+            "Seafood",
+            "Sugar",
+            "Pharmaceuticals"
+        ],
+        "popular_dishes": [
+            "Sancocho",
+            "Tamales",
+            "Ceviche",
+            "Arroz con Pollo"
+        ],
+        "famous_people": [
+            "Rubén Blades",
+            "Mariano Rivera",
+            "Ernesto Pérez Balladares",
+            "Claribel Alegría"
+        ],
+        "places_heritage": [
+            "Panama Canal",
+            "Casco Viejo",
+            "Metropolitan Natural Park",
+            "San Blas Islands"
+        ],
+        "images": {
+            "flag": "images/countries/north_america/panama/panama_flag.webp",
+            "map": "images/countries/north_america/panama/panama_map.webp",
+            "food": "images/countries/north_america/panama/panama_sancocho.webp",
+            "place": "images/countries/north_america/panama/panama_canal.webp"
+        }
+    }]
