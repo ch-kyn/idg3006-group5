@@ -71,31 +71,53 @@ def rotate_vector_by_quat(v, q):
     r = quat_mul(quat_mul(qn, vq), qc)
     return r[:3]
 
+def normalize(v):
+    norm = math.sqrt(sum([c*c for c in v]))
+    if norm == 0:
+        return (0.0, 0.0, 1.0)
+    return tuple(c/norm for c in v)
+
 # ----------------------------
-# Vector to lat/lon (handles flipped globe)
+# Stable Earth-anchored latitude/longitude
 # ----------------------------
 def vector_to_latlon(forward, up):
-    # Latitude from up vector
-    ux, uy, uz = up
-    lat = math.degrees(math.asin(uz))  # +90 top, -90 bottom
+    ux, uy, uz = normalize(up)
 
-    # Project forward vector onto plane perpendicular to up
+    # Latitude from up vector
+    lat = math.degrees(math.asin(uz))
+    
+    # Project forward vector onto horizontal plane
     fx, fy, fz = forward
     dot = fx*ux + fy*uy + fz*uz
     hx = fx - dot*ux
     hy = fy - dot*uy
-    hz = fz - dot*uz
 
-    # If latitude < 0 (south pole on top), flip hx/hy for longitude
-    if lat < 0:
-        hx, hy = -hx, -hy
+    h_len = math.sqrt(hx*hx + hy*hy)
+    if h_len < 1e-6:  # near poles
+        lon = 0.0
+    else:
+        lon = math.degrees(math.atan2(hy, hx))
 
-    lon = -math.degrees(math.atan2(hy, hx))
-
-    # Normalize longitude to -180 … +180
-    lon = (lon + 180) % 360 - 180
+    # Wrap longitude to [-180,180]
+    if lon > 180:
+        lon -= 360
+    elif lon < -180:
+        lon += 360
 
     return lat, lon
+
+# ----------------------------
+# Detect special locations
+# ----------------------------
+def check_special_locations(lat, lon):
+    if lat >= 89:
+        print("📍 North Pole detected!")
+    elif lat <= -89:
+        print("📍 South Pole detected!")
+    elif abs(lat) < 1 and abs(lon) < 1:
+        print("📍 Null Island detected!")
+    elif abs(lat) < 1:
+        print("📍 Equator detected!")
 
 # ----------------------------
 # CONFIG
@@ -166,17 +188,24 @@ def main_loop():
             corrected_q = quat_mul(calibration_quat, quat)
             corrected_q = quat_norm(corrected_q)
 
+            # Use corrected quaternion to get world vectors
             world_forward = rotate_vector_by_quat(sensor_forward, corrected_q)
-            world_up      = rotate_vector_by_quat(sensor_up, corrected_q)
 
-            # Compute latitude and longitude using up vector as top
+            # Use accelerometer directly as stable 'up' vector
+            world_up = normalize(accel)
+
+            # Compute latitude and longitude
             lat, lon = vector_to_latlon(world_forward, world_up)
 
+            # Print sensor info
             print("Corrected Quat:", tuple(round(c,4) for c in corrected_q))
             print("Forward Vector:", tuple(round(f,4) for f in world_forward))
             print("Up Vector:", tuple(round(u,4) for u in world_up))
             print(f"Latitude: {lat:.3f}°, Longitude: {lon:.3f}°")
             print("-------------------------------")
+
+            # Detect special locations
+            check_special_locations(lat, lon)
 
             time.sleep(0.1)
 
