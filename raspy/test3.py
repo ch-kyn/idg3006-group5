@@ -72,28 +72,29 @@ def rotate_vector_by_quat(v, q):
     return r[:3]
 
 # ----------------------------
-# Vector to lat/lon
+# Vector to lat/lon (up = top of globe)
 # ----------------------------
 def vector_to_latlon(forward, up):
-    # Latitude comes from up vector
     ux, uy, uz = up
-    lat = math.degrees(math.asin(uz))  # top = +90, bottom = -90
+    # Latitude from top vector
+    lat = math.degrees(math.asin(uz))  # +90 top, -90 bottom
 
-    # Project forward vector onto plane perpendicular to up for longitude
+    # Project forward vector onto plane perpendicular to up
     fx, fy, fz = forward
     dot = fx*ux + fy*uy + fz*uz
     hx = fx - dot*ux
     hy = fy - dot*uy
     hz = fz - dot*uz
+    # Longitude in plane
     lon = -math.degrees(math.atan2(hy, hx))
     return lat, lon
 
 # ----------------------------
 # CONFIG
 # ----------------------------
-sensor_forward = (1.0, 0.0, 0.0)  # Red arrow direction
-sensor_up      = (0.0, 0.0, 1.0)  # Blue arrow pointing top of globe
-calibration_quat = None            # Will auto-set on startup
+sensor_forward = (1.0, 0.0, 0.0)  # Red arrow forward
+sensor_up      = (0.0, 0.0, 1.0)  # Blue arrow pointing top
+calibration_quat = None            # Auto-set on startup
 
 # ----------------------------
 # Calibration
@@ -122,7 +123,7 @@ def main_loop():
     global sensor, calibration_quat
     print("Press 'c' to recalibrate 0° longitude\n")
 
-    # Auto-set calibration on startup
+    # Auto-set calibration at startup
     calibrate(sensor.quaternion)
 
     while True:
@@ -160,7 +161,7 @@ def main_loop():
             world_forward = rotate_vector_by_quat(sensor_forward, corrected_q)
             world_up      = rotate_vector_by_quat(sensor_up, corrected_q)
 
-            # Compute latitude and longitude using up vector as top
+            # Compute latitude and longitude
             lat, lon = vector_to_latlon(world_forward, world_up)
 
             print("Corrected Quat:", tuple(round(c,4) for c in corrected_q))
