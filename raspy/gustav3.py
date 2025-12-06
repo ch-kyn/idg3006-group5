@@ -1,4 +1,3 @@
-import json
 import time
 import math
 import board
@@ -37,10 +36,10 @@ def init_sensor():
 
 sensor = init_sensor()
 
+# ======================================================
+#               Quaternion Helpers
+# ======================================================
 
-# ----------------------------
-# Quaternion Helpers
-# ----------------------------
 def quat_conjugate(q):
     x, y, z, w = q
     return (-x, -y, -z, w)
@@ -48,10 +47,10 @@ def quat_conjugate(q):
 
 def quat_norm(q):
     x, y, z, w = q
-    n = math.sqrt(x*x + y*y + z*z + w*w)
+    n = math.sqrt(x * x + y * y + z * z + w * w)
     if n == 0:
         return (0.0, 0.0, 0.0, 1.0)
-    return (x/n, y/n, z/n, w/n)
+    return (x / n, y / n, z / n, w / n)
 
 
 def quat_mul(q1, q2):
@@ -59,15 +58,17 @@ def quat_mul(q1, q2):
     x2, y2, z2, w2 = q2
 
     return (
-        w1*x2 + x1*w2 + y1*z2 - z1*y2,
-        w1*y2 - x1*z2 + y1*w2 + z1*x2,
-        w1*z2 + x1*y2 - y1*x2 + z1*w2,
-        w1*w2 - x1*x2 - y1*y2 - z1*z2,
+        w1 * x2 + x1 * w2 + y1 * z2 - z1 * y2,
+        w1 * y2 - x1 * z2 + y1 * w2 + z1 * x2,
+        w1 * z2 + x1 * y2 - y1 * x2 + z1 * w2,
+        w1 * w2 - x1 * x2 - y1 * y2 - z1 * z2,
     )
 
 
 def rotate_vector_by_quat(v, q):
-    """Rotate vector v by quaternion q."""
+    """
+    Rotate vector v by quaternion q.
+    """
     qn = quat_norm(q)
     vx, vy, vz = v
     vq = (vx, vy, vz, 0.0)
@@ -77,81 +78,120 @@ def rotate_vector_by_quat(v, q):
 
 
 # ======================================================
-#           LATITUDE / LONGITUDE MATH
+#       Vector -> latitude/longitude on globe
 # ======================================================
-# IMU +Y points toward SOUTH pole
-# => North pole is -Y direction
+# Board mounting:
+#   +Y axis points toward SOUTH pole
+#   -Y axis points toward NORTH pole
+#   +Z axis points outward through globe surface (the "ray")
 #
-# Outward direction vector is obtained by rotating (0,0,1)
+# After calibration, we treat the calibrated vector as:
+#   gx, gy, gz in "globe frame"
 # ======================================================
 
-def vector_to_latlon(world_vec):
-    wx, wy, wz = world_vec
+def vector_to_latlon(globe_vec):
+    gx, gy, gz = globe_vec
 
-    mag = math.sqrt(wx*wx + wy*wy + wz*wz)
+    mag = math.sqrt(gx * gx + gy * gy + gz * gz)
     if mag == 0:
         return None, None
 
-    wx /= mag
-    wy /= mag
-    wz /= mag
+    gx /= mag
+    gy /= mag
+    gz /= mag
 
-    # LATITUDE:
-    # wy > 0 → pointing toward south (negative latitude)
-    # wy < 0 → pointing toward north (positive latitude)
-    lat = math.degrees(math.asin(-wy))
+    # Latitude:
+    #  gy < 0  -> pointing toward NORTH pole  (positive latitude)
+    #  gy > 0  -> pointing toward SOUTH pole  (negative latitude)
+    lat = math.degrees(math.asin(-gy))
 
-    # LONGITUDE:
-    lon = math.degrees(math.atan2(wx, wz))
+    # Longitude:
+    #  atan2(X, Z) -> 0° at +Z, +90° at +X
+    lon = math.degrees(math.atan2(gx, gz))
 
     return lat, lon
 
 
 # ======================================================
-#                SIMPLE CALIBRATION
-# ======================================================
-# Pressing “c” sets the current lat/lon to become (0,0)
-# by storing offsets.
+#           Calibration via quaternion
 # ======================================================
 
-sensor_axis = (0.0, 0.0, 1.0)  # outward direction
-calib_lat = 0.0
-calib_lon = 0.0
+# The sensor's +Z is the "outward ray" from globe center
+sensor_axis = (0.0, 0.0, 1.0)
+
+# This quaternion rotates raw vectors into the calibrated frame
+calibration_quat = (0.0, 0.0, 0.0, 1.0)  # identity
+
+
+def quat_from_two_vectors(v_from, v_to):
+    fx, fy, fz = v_from
+    tx, ty, tz = v_to
+
+    cross = (
+        fy * tz - fz * ty,
+        fz * tx - fx * tz,
+        fx * ty - fy * tx,
+    )
+    dot = fx * tx + fy * ty + fz * tz
+
+    w = math.sqrt(
+        (fx * fx + fy * fy + fz * fz) *
+        (tx * tx + ty * ty + tz * tz)
+    ) + dot
+
+    q = (cross[0], cross[1], cross[2], w)
+    return quat_norm(q)
 
 
 def calibrate(q_current):
-    """Make CURRENT direction become (0°,0°)."""
-    global calib_lat, calib_lon
+    """
+    Make CURRENT pointing direction become (lat=0°, lon=0°).
+
+    We do this by:
+      1) Get the current outward vector (sensor +Z rotated by q_current)
+      2) Compute a quaternion that rotates that vector to (0,0,1)
+      3) Store that quaternion as calibration_quat
+    """
+    global calibration_quat
 
     qc = quat_norm(q_current)
 
-    # Outward vector
-    world_vec = rotate_vector_by_quat(sensor_axis, qc)
+    # Step 1: current outward ray from globe
+    fwd = rotate_vector_by_quat(sensor_axis, qc)
 
-    lat, lon = vector_to_latlon(world_vec)
-    if lat is None:
-        print("Calibration failed.")
+    mag = math.sqrt(fwd[0] * fwd[0] + fwd[1] * fwd[1] + fwd[2] * fwd[2])
+    if mag == 0:
+        print("Calibration failed (zero vector)")
         return
 
-    # Store offsets
-    calib_lat = lat
-    calib_lon = lon
+    fwd_norm = (fwd[0] / mag, fwd[1] / mag, fwd[2] / mag)
+
+    # Step 2: define (0°,0°) as outward along +Z in calibrated frame
+    target = (0.0, 0.0, 1.0)
+
+    # Step 3: build rotation that sends fwd_norm -> target
+    q_align = quat_from_two_vectors(fwd_norm, target)
+
+    calibration_quat = q_align
 
     print("\n🎯 Calibration OK — this direction is now (0°,0°)\n")
 
 
+# ----------------------------
+# Keyboard Helper
+# ----------------------------
 def key_pressed():
     dr, _, _ = select.select([sys.stdin], [], [], 0)
     return dr != []
 
 
-# ======================================================
-#                MAIN LOOP
-# ======================================================
+# ----------------------------
+# Main Loop
+# ----------------------------
 def main_loop():
-    global sensor, calib_lat, calib_lon
-
-    print("Running. Press 'c' to calibrate (set current direction to 0° lat, 0° lon).")
+    global sensor
+    print("Running.")
+    print("Point your chosen (0°,0°) spot at the fixed target, then press 'c' to calibrate.")
 
     while True:
         if key_pressed():
@@ -161,28 +201,23 @@ def main_loop():
 
         try:
             x, y, z, w = sensor.quaternion
-            if (x, y, z, w) == (0, 0, 0, 0):
+            if (x, y, z, w) == (0.0, 0.0, 0.0, 0.0):
                 time.sleep(0.01)
                 continue
 
             raw_q = quat_norm((x, y, z, w))
 
-            # Outward direction
+            # 1) Outward ray in some global reference
             world_vec = rotate_vector_by_quat(sensor_axis, raw_q)
 
-            lat, lon = vector_to_latlon(world_vec)
+            # 2) Apply calibration rotation (rigid 3D rotation of sphere)
+            world_vec_calibrated = rotate_vector_by_quat(world_vec, calibration_quat)
+
+            # 3) Convert calibrated vector to lat/lon
+            lat, lon = vector_to_latlon(world_vec_calibrated)
             if lat is None:
+                time.sleep(0.01)
                 continue
-
-            # Apply calibration offsets
-            lat -= calib_lat
-            lon -= calib_lon
-
-            # Normalize lon into [-180, 180]
-            if lon > 180:
-                lon -= 360
-            if lon < -180:
-                lon += 360
 
             print(f"lat: {lat:.3f}, lon: {lon:.3f}")
 
@@ -198,11 +233,12 @@ def main_loop():
             time.sleep(0.2)
 
 
-# ======================================================
-#                ENTRY POINT
-# ======================================================
+# ----------------------------
+# Entry
+# ----------------------------
 if __name__ == "__main__":
-    import tty, termios
+    import tty
+    import termios
     fd = sys.stdin.fileno()
     old = termios.tcgetattr(fd)
     try:
