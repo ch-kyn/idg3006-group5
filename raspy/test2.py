@@ -5,8 +5,13 @@ import busio
 import digitalio
 import sys
 import select
+
 from adafruit_bno08x.i2c import BNO08X_I2C
-from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR, BNO_REPORT_ACCELEROMETER, BNO_REPORT_GYROSCOPE
+from adafruit_bno08x import (
+    BNO_REPORT_ROTATION_VECTOR,
+    BNO_REPORT_ACCELEROMETER,
+    BNO_REPORT_GYROSCOPE
+)
 
 # ----------------------------
 # RESET PIN
@@ -25,6 +30,7 @@ def init_sensor():
     time.sleep(0.01)
     reset_pin.value = True
     time.sleep(0.25)
+
     sensor = BNO08X_I2C(i2c, address=0x4A)
     sensor.enable_feature(BNO_REPORT_ROTATION_VECTOR)
     sensor.enable_feature(BNO_REPORT_ACCELEROMETER)
@@ -65,33 +71,47 @@ def rotate_vector_by_quat(v, q):
     r = quat_mul(quat_mul(qn, vq), qc)
     return r[:3]
 
-def vector_to_latlon(v):
-    vx, vy, vz = v
-    mag = math.sqrt(vx*vx + vy*vy + vz*vz)
-    if mag == 0:
-        return None, None
-    vx /= mag
-    vy /= mag
-    vz /= mag
-    lat = math.degrees(math.asin(vz))
-    lon = math.degrees(math.atan2(vy, vx))
+# ----------------------------
+# Vector to lat/lon (handles flipped globe)
+# ----------------------------
+def vector_to_latlon(forward, up):
+    # Latitude from up vector
+    ux, uy, uz = up
+    lat = math.degrees(math.asin(uz))  # +90 top, -90 bottom
+
+    # Project forward vector onto plane perpendicular to up
+    fx, fy, fz = forward
+    dot = fx*ux + fy*uy + fz*uz
+    hx = fx - dot*ux
+    hy = fy - dot*uy
+    hz = fz - dot*uz
+
+    # If latitude < 0 (south pole on top), flip hx/hy for longitude
+    if lat < 0:
+        hx, hy = -hx, -hy
+
+    lon = -math.degrees(math.atan2(hy, hx))
     return lat, lon
 
 # ----------------------------
-# Config
+# CONFIG
 # ----------------------------
-sensor_forward = (1.0, 0.0, 0.0)  # Red arrow
-sensor_up      = (0.0, 0.0, 1.0)  # Blue arrow
-BASE = None  # Base orientation (set with 'c')
+sensor_forward = (1.0, 0.0, 0.0)  # Red arrow direction
+sensor_up      = (0.0, 0.0, 1.0)  # Blue arrow pointing top of globe
+calibration_quat = None            # Will auto-set on startup
 
 # ----------------------------
 # Calibration
 # ----------------------------
-def calibrate():
-    global BASE
-    BASE = quat_norm(sensor.quaternion)
-    print("\n🎯 BASE orientation set!")
-    print("Stored quaternion:", BASE, "\n")
+def calibrate(q_current):
+    global calibration_quat
+    qc = quat_norm(q_current)
+    fwd = rotate_vector_by_quat(sensor_forward, qc)
+    angle = math.atan2(fwd[1], fwd[0])
+    sin_h = math.sin(-angle/2)
+    cos_h = math.cos(-angle/2)
+    calibration_quat = (0, 0, sin_h, cos_h)
+    print("\n🎯 Calibration set! 0° longitude aligned.\n")
 
 # ----------------------------
 # Keyboard helper
@@ -104,72 +124,76 @@ def key_pressed():
 # Main loop
 # ----------------------------
 def main_loop():
+    global sensor, calibration_quat
+    print("Press 'c' to recalibrate 0° longitude\n")
+
+    # Auto-set calibration on startup
+    calibrate(sensor.quaternion)
+
+    while True:
+        if key_pressed():
+            ch = sys.stdin.read(1)
+            if ch.lower() == "c":
+                calibrate(sensor.quaternion)
+
+        try:
+            # Read sensor data
+            try:
+                accel = sensor.acceleration
+                print("Accel:", tuple(round(a,4) for a in accel))
+            except:
+                print("Accel: N/A")
+
+            try:
+                gyro = sensor.gyro
+                print("Gyro:", tuple(round(g,4) for g in gyro))
+            except:
+                print("Gyro: N/A")
+
+            try:
+                quat = sensor.quaternion
+                quat = quat_norm(quat)
+                print("Raw Quat:", tuple(round(q,4) for q in quat))
+            except:
+                quat = (0,0,0,1)
+                print("Quat: N/A")
+
+            # Apply calibration
+            corrected_q = quat_mul(calibration_quat, quat)
+            corrected_q = quat_norm(corrected_q)
+
+            world_forward = rotate_vector_by_quat(sensor_forward, corrected_q)
+            world_up      = rotate_vector_by_quat(sensor_up, corrected_q)
+
+            # Compute latitude and longitude using up vector as top
+            lat, lon = vector_to_latlon(world_forward, world_up)
+
+            print("Corrected Quat:", tuple(round(c,4) for c in corrected_q))
+            print("Forward Vector:", tuple(round(f,4) for f in world_forward))
+            print("Up Vector:", tuple(round(u,4) for u in world_up))
+            print(f"Latitude: {lat:.3f}°, Longitude: {lon:.3f}°")
+            print("-------------------------------")
+
+            time.sleep(0.1)
+
+        except OSError:
+            print("⚠️ I2C error — resetting sensor")
+            sensor = init_sensor()
+            time.sleep(0.2)
+
+        except Exception as e:
+            print("Unexpected error:", e)
+            time.sleep(0.2)
+
+# ----------------------------
+# Entry
+# ----------------------------
+if __name__ == "__main__":
     import tty, termios
     fd = sys.stdin.fileno()
     old = termios.tcgetattr(fd)
     try:
         tty.setcbreak(fd)
-        print("Press 'c' to set BASE orientation")
-        while True:
-            if key_pressed():
-                ch = sys.stdin.read(1)
-                if ch.lower() == 'c':
-                    calibrate()
-
-            try:
-                # ---------------- SENSOR READINGS ----------------
-                try:
-                    accel = sensor.acceleration
-                    print("Accel:", tuple(round(a,4) for a in accel))
-                except Exception as e:
-                    print("Accel: N/A", e)
-
-                try:
-                    gyro = sensor.gyro
-                    print("Gyro:", tuple(round(g,4) for g in gyro))
-                except Exception as e:
-                    print("Gyro: N/A", e)
-
-                try:
-                    quat = sensor.quaternion
-                    quat = quat_norm(quat)
-                    print("Raw Quat:", tuple(round(q,4) for q in quat))
-                except Exception as e:
-                    quat = (0,0,0,1)
-                    print("Quat: N/A", e)
-
-                # ---------------- APPLY BASE ----------------
-                delta = quat_mul(quat, quat_conjugate(BASE)) if BASE else quat
-
-                world_forward = rotate_vector_by_quat(sensor_forward, delta)
-                world_up      = rotate_vector_by_quat(sensor_up, delta)
-                lat, lon = vector_to_latlon(world_forward)
-
-                # ---------------- PRINT ARROWS & COORDS ----------------
-                print("Corrected Quat:", tuple(round(c,4) for c in delta))
-                print("Forward Vector:", tuple(round(f,4) for f in world_forward))
-                print("Up Vector:", tuple(round(u,4) for u in world_up))
-                if lat is not None:
-                    print(f"Latitude: {lat:.3f}°, Longitude: {lon:.3f}°")
-                else:
-                    print("Latitude/Longitude: N/A")
-
-                print("-"*40)
-                time.sleep(0.1)
-
-            except OSError:
-                print("⚠️ I2C error — resetting sensor")
-                sensor = init_sensor()
-                time.sleep(0.2)
-            except Exception as e:
-                print("Unexpected error:", e)
-                time.sleep(0.2)
-
+        main_loop()
     finally:
         termios.tcsetattr(fd, termios.TCSADRAIN, old)
-
-# ----------------------------
-# Entry point
-# ----------------------------
-if __name__ == "__main__":
-    main_loop()

@@ -91,6 +91,10 @@ def vector_to_latlon(forward, up):
         hx, hy = -hx, -hy
 
     lon = -math.degrees(math.atan2(hy, hx))
+
+    # Normalize longitude to -180 … +180
+    lon = (lon + 180) % 360 - 180
+
     return lat, lon
 
 # ----------------------------
