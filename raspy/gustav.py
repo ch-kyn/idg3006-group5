@@ -1,8 +1,3 @@
-
-
-
-import asyncio
-import websockets
 import json
 import time
 import math
@@ -14,11 +9,6 @@ import select
 
 from adafruit_bno08x.i2c import BNO08X_I2C
 from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR
-
-# ----------------------------
-# WebSocket config
-# ----------------------------
-WS_URI = "ws://10.22.62.162:8765"
 
 # ----------------------------
 # RESET PIN
@@ -80,7 +70,6 @@ def rotate_vector_by_quat(v, q):
     r = quat_mul(quat_mul(qn, vq), qc)
     return r[:3]
 
-
 # ----------------------------
 # Convert vector to lat/lon
 # ----------------------------
@@ -94,31 +83,24 @@ def vector_to_latlon(v):
     vy /= mag
     vz /= mag
 
-    # Earth-like coordinate orientation
-    lat = math.degrees(math.asin(vz))               # -90..+90
-    lon = -math.degrees(math.atan2(vy, vx))          # -180..+180
+    lat = math.degrees(math.asin(vz))
+    lon = -math.degrees(math.atan2(vy, vx))
 
     return lat, lon
-
 
 # ----------------------------
 # CONFIG
 # ----------------------------
-sensor_axis = (0.0, 1.0, 0.0)  # your sensor's forward direction
-calibration_quat = (0, 0, 0, 1)  # identity
-
+sensor_axis = (0.0, 1.0, 0.0)
+calibration_quat = (0, 0, 0, 1)
 
 # ----------------------------
-# Improved calibration
+# Calibration
 # ----------------------------
 def calibrate(q_current):
-    """
-    Set current orientation as 0° lat / 0° lon.
-    """
     global calibration_quat
     qc = quat_norm(q_current)
 
-    # Rotate sensor forward vector to world-forward (1,0,0)
     fwd_current = rotate_vector_by_quat(sensor_axis, qc)
     fwd_mag = math.sqrt(sum(c*c for c in fwd_current))
     if fwd_mag == 0:
@@ -126,79 +108,65 @@ def calibrate(q_current):
         return
     fwd_current = tuple(c/fwd_mag for c in fwd_current)
 
-    # Compute rotation needed to align fwd_current → (1,0,0)
-    # Use simple 2D rotation on X/Y plane for longitude
     angle = math.atan2(fwd_current[1], fwd_current[0])
-    # quaternion representing rotation around Z-axis
+
     sin_h = math.sin(-angle/2)
     cos_h = math.cos(-angle/2)
     calibration_quat = (0, 0, sin_h, cos_h)
 
     print("\n🎯 Calibration set! Orientation now aligns to 0° lat / 0° lon.\n")
+
 # ----------------------------
 # Keyboard helper
 # ----------------------------
+import select
+
 def key_pressed():
-    dr, dw, de = select.select([sys.stdin], [], [], 0)
+    dr, _, _ = select.select([sys.stdin], [], [], 0)
     return dr != []
 
-
 # ----------------------------
-# Main loop
+# Main loop (NO WEBSOCKET)
 # ----------------------------
-async def send_coordinates():
+def main_loop():
     global sensor
-    async with websockets.connect(WS_URI) as websocket:
-        print("Connected to WebSocket server!")
+    print("Running without WebSocket. Press 'c' to calibrate.\n")
 
-        while True:
+    while True:
+        if key_pressed():
+            ch = sys.stdin.read(1)
+            if ch.lower() == "c":
+                calibrate(sensor.quaternion)
 
-            # Calibration trigger
-            if key_pressed():
-                ch = sys.stdin.read(1)
-                if ch.lower() == "c":
-                    calibrate(sensor.quaternion)
+        try:
+            x, y, z, w = sensor.quaternion
+            if (x, y, z, w) == (0, 0, 0, 0):
+                time.sleep(0.01)
+                continue
 
-            try:
-                # Read quaternion
-                x, y, z, w = sensor.quaternion
-                if (x, y, z, w) == (0, 0, 0, 0):
-                    await asyncio.sleep(0.01)
-                    continue
+            raw_q = (x, y, z, w)
+            corrected_q = quat_mul(calibration_quat, raw_q)
+            corrected_q = quat_norm(corrected_q)
 
-                raw_q = (x, y, z, w)
-                #raw_q = quat_norm(raw_q)
+            world_vec = rotate_vector_by_quat(sensor_axis, corrected_q)
 
-                # Apply calibration
-                corrected_q = quat_mul(calibration_quat, raw_q)
-                corrected_q = quat_norm(corrected_q)
-                # Rotate forward-vector
-                world_vec = rotate_vector_by_quat(sensor_axis, corrected_q)
+            lat, lon = vector_to_latlon(world_vec)
+            if lat is None:
+                time.sleep(0.01)
+                continue
 
-                # Convert to lat/lon
-                lat, lon = vector_to_latlon(world_vec)
-                if lat is None:
-                    await asyncio.sleep(0.01)
-                    continue
+            print(f"lat: {lat:.3f}, lon: {lon:.3f}")
 
-                msg = json.dumps({
-                    "lat": round(lat, 3),
-                    "lon": round(lon, 3),
-                })
+            time.sleep(0.1)
 
-                await websocket.send(msg)
-                print("Sent:", msg)
+        except OSError:
+            print("\n⚠️ I2C error — resetting sensor…")
+            sensor = init_sensor()
+            time.sleep(0.2)
 
-                await asyncio.sleep(1.0)  # ~10 Hz
-
-            except OSError:
-                print("\n⚠️ I2C error — resetting sensor…")
-                sensor = init_sensor()
-                await asyncio.sleep(0.2)
-            except Exception as e:
-                print("Unexpected error:", e)
-                await asyncio.sleep(0.2)
-
+        except Exception as e:
+            print("Unexpected error:", e)
+            time.sleep(0.2)
 
 # ----------------------------
 # Entry
@@ -209,6 +177,6 @@ if __name__ == "__main__":
     old = termios.tcgetattr(fd)
     try:
         tty.setcbreak(fd)
-        asyncio.run(send_coordinates())
+        main_loop()
     finally:
         termios.tcsetattr(fd, termios.TCSADRAIN, old)
