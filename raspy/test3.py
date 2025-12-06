@@ -80,31 +80,46 @@ def normalize(v):
 # ----------------------------
 # Stable Earth-anchored latitude/longitude
 # ----------------------------
-def vector_to_latlon(forward, up):
+def vector_to_latlon(forward, up, zero_forward=(1,0,0)):
+    """
+    Convert sensor vectors to latitude and longitude anchored to Earth.
+    zero_forward: reference forward direction for 0° longitude
+    """
     ux, uy, uz = normalize(up)
-
+    
     # Latitude from up vector
     lat = math.degrees(math.asin(uz))
     
-    # Project forward vector onto horizontal plane
-    fx, fy, fz = forward
-    dot = fx*ux + fy*uy + fz*uz
-    hx = fx - dot*ux
-    hy = fy - dot*uy
-
-    h_len = math.sqrt(hx*hx + hy*hy)
-    if h_len < 1e-6:  # near poles
+    # Longitude
+    # Near poles, longitude is undefined → fix to 0
+    if abs(lat) > 89.999:  # effectively at pole
         lon = 0.0
     else:
-        lon = math.degrees(math.atan2(hy, hx))
-
-    # Wrap longitude to [-180,180]
-    if lon > 180:
-        lon -= 360
-    elif lon < -180:
-        lon += 360
-
+        # Project zero_forward onto horizontal plane perpendicular to up
+        zx, zy, zz = zero_forward
+        dot_zero = zx*ux + zy*uy + zz*uz
+        hx0 = zx - dot_zero*ux
+        hy0 = zy - dot_zero*uy
+        
+        # Project sensor forward onto horizontal plane
+        fx, fy, fz = forward
+        dot_f = fx*ux + fy*uy + fz*uz
+        hx = fx - dot_f*ux
+        hy = fy - dot_f*uy
+        
+        # atan2 of cross/dot between projected vectors gives longitude
+        cross = hx0*hy - hy0*hx
+        dot = hx0*hx + hy0*hy
+        lon = math.degrees(math.atan2(cross, dot))
+        
+        # Wrap to [-180,180]
+        if lon > 180:
+            lon -= 360
+        elif lon < -180:
+            lon += 360
+    
     return lat, lon
+
 
 # ----------------------------
 # Detect special locations
