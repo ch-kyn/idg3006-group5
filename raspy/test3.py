@@ -74,16 +74,33 @@ def rotate_vector_by_quat(v, q):
 # ----------------------------
 # Vector to lat/lon
 # ----------------------------
-def vector_to_latlon(v):
-    vx, vy, vz = v
-    mag = math.sqrt(vx*vx + vy*vy + vz*vz)
-    if mag == 0:
-        return None, None
-    vx /= mag
-    vy /= mag
-    vz /= mag
-    lat = math.degrees(math.asin(vz))       # +90 top, -90 bottom
-    lon = -math.degrees(math.atan2(vy, vx)) # 0 longitude aligned to calibration
+# def vector_to_latlon(v):
+#     vx, vy, vz = v
+#     mag = math.sqrt(vx*vx + vy*vy + vz*vz)
+#     if mag == 0:
+#         return None, None
+#     vx /= mag
+#     vy /= mag
+#     vz /= mag
+#     lat = math.degrees(math.asin(vz))       # +90 top, -90 bottom
+#     lon = -math.degrees(math.atan2(vy, vx)) # 0 longitude aligned to calibration
+#     return lat, lon
+
+def vector_to_latlon(forward, up):
+    # Latitude comes from up vector
+    ux, uy, uz = up
+    lat = math.degrees(math.asin(uz))  # top = +90, bottom = -90
+
+    # Project forward vector onto plane perpendicular to up for longitude
+    # horizontal plane = plane orthogonal to up
+    fx, fy, fz = forward
+    # Remove component along up
+    dot = fx*ux + fy*uy + fz*uz
+    hx = fx - dot*ux
+    hy = fy - dot*uy
+    hz = fz - dot*uz
+    # Longitude from atan2
+    lon = -math.degrees(math.atan2(hy, hx))
     return lat, lon
 
 # ----------------------------
