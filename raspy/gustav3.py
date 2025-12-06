@@ -67,9 +67,7 @@ def quat_mul(q1, q2):
 
 
 def rotate_vector_by_quat(v, q):
-    """
-    Rotate vector v by quaternion q.
-    """
+    """Rotate vector v by quaternion q."""
     qn = quat_norm(q)
     vx, vy, vz = v
     vq = (vx, vy, vz, 0.0)
@@ -79,136 +77,81 @@ def rotate_vector_by_quat(v, q):
 
 
 # ======================================================
-#   Axis remap: IMU frame -> Globe frame
+#           LATITUDE / LONGITUDE MATH
 # ======================================================
-def imu_vec_to_globe_vec(imu_vec):
-    """
-    Map IMU vector into the globe's coordinate frame.
-
-        gx = wz          (equator direction)
-        gy = -wx         (south pole axis)
-        gz = -wy         (forward/outward)
-    """
-    wx, wy, wz = imu_vec
-
-    gx = wz
-    gy = -wx
-    gz = -wy
-
-    return (gx, gy, gz)
-
-
+# IMU +Y points toward SOUTH pole
+# => North pole is -Y direction
+#
+# Outward direction vector is obtained by rotating (0,0,1)
 # ======================================================
-#           Correct latitude/longitude
-# ======================================================
-def vector_to_latlon(globe_vec):
-    gx, gy, gz = globe_vec
 
-    mag = math.sqrt(gx*gx + gy*gy + gz*gz)
+def vector_to_latlon(world_vec):
+    wx, wy, wz = world_vec
+
+    mag = math.sqrt(wx*wx + wy*wy + wz*wz)
     if mag == 0:
         return None, None
 
-    gx /= mag
-    gy /= mag
-    gz /= mag
+    wx /= mag
+    wy /= mag
+    wz /= mag
 
-    # LATITUDE (north/south)
-    # gy < 0 -> pointing more toward north pole -> positive latitude
-    # gy > 0 -> pointing more toward south pole -> negative latitude
-    lat = -math.degrees(math.asin(gy))
+    # LATITUDE:
+    # wy > 0 → pointing toward south (negative latitude)
+    # wy < 0 → pointing toward north (positive latitude)
+    lat = math.degrees(math.asin(-wy))
 
-    # LONGITUDE (rotation around pole)
-    lon = math.degrees(math.atan2(gx, gz))
+    # LONGITUDE:
+    lon = math.degrees(math.atan2(wx, wz))
 
     return lat, lon
 
 
 # ======================================================
-#              Calibration (OPTION A: manual)
+#                SIMPLE CALIBRATION
+# ======================================================
+# Pressing “c” sets the current lat/lon to become (0,0)
+# by storing offsets.
 # ======================================================
 
-# The IMU's +Z points outward
-sensor_axis = (0.0, 0.0, 1.0)
-
-# Calibration rotation is applied in GLOBE-SPACE, not IMU-space
-calibration_quat = (0.0, 0.0, 0.0, 1.0)  # identity
-
-
-def quat_from_two_vectors(v_from, v_to):
-    fx, fy, fz = v_from
-    tx, ty, tz = v_to
-
-    cross = (
-        fy*tz - fz*ty,
-        fz*tx - fx*tz,
-        fx*ty - fy*tx,
-    )
-    dot = fx*tx + fy*ty + fz*tz
-
-    w = math.sqrt((fx*fx + fy*fy + fz*fz) *
-                  (tx*tx + ty*ty + tz*tz)) + dot
-
-    q = (cross[0], cross[1], cross[2], w)
-    return quat_norm(q)
+sensor_axis = (0.0, 0.0, 1.0)  # outward direction
+calib_lat = 0.0
+calib_lon = 0.0
 
 
 def calibrate(q_current):
-    """
-    Make CURRENT pointing direction become (lat=0°, lon=0°).
-
-    IMPORTANT:
-    - This is done in *globe-space*, so we:
-      1) get IMU forward vector
-      2) map it into globe coordinates
-      3) compute a rotation that sends that vector -> (0,0,1)
-      4) store that rotation in calibration_quat
-    """
-    global calibration_quat
+    """Make CURRENT direction become (0°,0°)."""
+    global calib_lat, calib_lon
 
     qc = quat_norm(q_current)
 
-    # Step 1: IMU forward direction (sensor +Z rotated by IMU quaternion)
-    fwd_imu = rotate_vector_by_quat(sensor_axis, qc)
+    # Outward vector
+    world_vec = rotate_vector_by_quat(sensor_axis, qc)
 
-    # Step 2: Convert to globe forward direction
-    fwd_globe = imu_vec_to_globe_vec(fwd_imu)
-
-    mag = math.sqrt(sum(c*c for c in fwd_globe))
-    if mag == 0:
-        print("Calibration failed (zero vector)")
+    lat, lon = vector_to_latlon(world_vec)
+    if lat is None:
+        print("Calibration failed.")
         return
 
-    fwd_globe = (
-        fwd_globe[0] / mag,
-        fwd_globe[1] / mag,
-        fwd_globe[2] / mag,
-    )
+    # Store offsets
+    calib_lat = lat
+    calib_lon = lon
 
-    # Step 3: (0°,0°) on YOUR globe = outward direction = (0,0,1)
-    target = (0.0, 0.0, 1.0)
-
-    # Step 4: build rotation that sends fwd_globe -> target, in globe-space
-    q_align = quat_from_two_vectors(fwd_globe, target)
-
-    calibration_quat = q_align
-
-    print("\n🎯 Calibration OK — This direction is now (0°,0°)\n")
+    print("\n🎯 Calibration OK — this direction is now (0°,0°)\n")
 
 
-# ----------------------------
-# Keyboard Helper
-# ----------------------------
 def key_pressed():
     dr, _, _ = select.select([sys.stdin], [], [], 0)
     return dr != []
 
 
-# ----------------------------
-# Main Loop
-# ----------------------------
+# ======================================================
+#                MAIN LOOP
+# ======================================================
 def main_loop():
-    global sensor
-    print("Running. Press 'c' to calibrate (OPTION A).")
+    global sensor, calib_lat, calib_lon
+
+    print("Running. Press 'c' to calibrate (set current direction to 0° lat, 0° lon).")
 
     while True:
         if key_pressed():
@@ -222,22 +165,24 @@ def main_loop():
                 time.sleep(0.01)
                 continue
 
-            raw_q = (x, y, z, w)
+            raw_q = quat_norm((x, y, z, w))
 
-            # 1) IMU forward direction
-            world_vec_imu = rotate_vector_by_quat(sensor_axis, raw_q)
+            # Outward direction
+            world_vec = rotate_vector_by_quat(sensor_axis, raw_q)
 
-            # 2) Convert to globe frame
-            world_vec_globe = imu_vec_to_globe_vec(world_vec_imu)
-
-            # 3) Apply calibration rotation in GLOBE-SPACE
-            world_vec_calibrated = rotate_vector_by_quat(world_vec_globe, calibration_quat)
-
-            # 4) Convert calibrated globe vector to lat/lon
-            lat, lon = vector_to_latlon(world_vec_calibrated)
+            lat, lon = vector_to_latlon(world_vec)
             if lat is None:
-                time.sleep(0.01)
                 continue
+
+            # Apply calibration offsets
+            lat -= calib_lat
+            lon -= calib_lon
+
+            # Normalize lon into [-180, 180]
+            if lon > 180:
+                lon -= 360
+            if lon < -180:
+                lon += 360
 
             print(f"lat: {lat:.3f}, lon: {lon:.3f}")
 
@@ -253,9 +198,9 @@ def main_loop():
             time.sleep(0.2)
 
 
-# ----------------------------
-# Entry
-# ----------------------------
+# ======================================================
+#                ENTRY POINT
+# ======================================================
 if __name__ == "__main__":
     import tty, termios
     fd = sys.stdin.fileno()

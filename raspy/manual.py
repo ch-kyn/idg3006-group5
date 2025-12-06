@@ -39,12 +39,14 @@ sensor = init_sensor()
 def quat_conjugate(q):
     x, y, z, w = q
     return (-x, -y, -z, w)
+
 def quat_norm(q):
     x, y, z, w = q
     n = math.sqrt(x*x + y*y + z*z + w*w)
     if n == 0:
         return (0,0,0,1)
     return (x/n, y/n, z/n, w/n)
+
 def quat_mul(q1,q2):
     x1,y1,z1,w1 = q1
     x2,y2,z2,w2 = q2
@@ -54,6 +56,7 @@ def quat_mul(q1,q2):
         w1*z2 + x1*y2 - y1*x2 + z1*w2,
         w1*w2 - x1*x2 - y1*y2 - z1*z2
     )
+
 def rotate_vector_by_quat(v,q):
     qn = quat_norm(q)
     vx,vy,vz = v
@@ -61,6 +64,7 @@ def rotate_vector_by_quat(v,q):
     qc = quat_conjugate(qn)
     r = quat_mul(quat_mul(qn,vq),qc)
     return r[:3]
+
 def normalize(v):
     norm = math.sqrt(sum([c*c for c in v]))
     if norm==0:
@@ -68,26 +72,33 @@ def normalize(v):
     return tuple(c/norm for c in v)
 
 # ----------------------------
-# Latitude + longitude (manual mapping)
+# Latitude + longitude (manual mapping fixed)
 # ----------------------------
 def vector_to_latlon(forward, up):
     ux,uy,uz = normalize(up)
     fx,fy,fz = normalize(forward)
 
-    # latitude
+    # Latitude from up vector
     lat = math.degrees(math.asin(uz))
 
-    # longitude based on horizontal forward vector
-    if abs(lat) > 89.999:
-        lon = 0
-    else:
-        hx = fx - (fx*ux + fy*uy + fz*uz)*ux
-        hy = fy - (fx*ux + fy*uy + fz*uz)*uy
-        lon = math.degrees(math.atan2(hy,hx))
+    # Project forward onto horizontal plane
+    hx = fx - (fx*ux + fy*uy + fz*uz)*ux
+    hy = fy - (fx*ux + fy*uy + fz*uz)*uy
 
-        # manual offset to place continents where you want
-        lon_offset = 90  # shift so Asia at top, etc.
-        lon = (lon + lon_offset + 180)%360 -180
+    # Basic atan2
+    lon = math.degrees(math.atan2(hy,hx))
+
+    # -------- Manual mapping fix --------
+    # Example: define rotation offsets per hemisphere to place continents
+    if lat > 0:
+        # Northern hemisphere
+        lon_offset = 0  # Europe/Asia aligned
+    else:
+        # Southern hemisphere
+        lon_offset = 180  # Americas/Australia aligned
+
+    # Apply offset and wrap [-180,180]
+    lon = (lon + lon_offset + 180)%360 - 180
 
     return lat, lon
 

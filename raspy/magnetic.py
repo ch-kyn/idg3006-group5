@@ -10,7 +10,7 @@ from adafruit_bno08x.i2c import BNO08X_I2C
 from adafruit_bno08x import (
     BNO_REPORT_ROTATION_VECTOR,
     BNO_REPORT_ACCELEROMETER,
-    BNO_REPORT_GYROSCOPE
+    BNO_REPORT_MAGNETOMETER
 )
 
 # ----------------------------
@@ -34,7 +34,7 @@ def init_sensor():
     sensor = BNO08X_I2C(i2c, address=0x4A)
     sensor.enable_feature(BNO_REPORT_ROTATION_VECTOR)
     sensor.enable_feature(BNO_REPORT_ACCELEROMETER)
-    sensor.enable_feature(BNO_REPORT_GYROSCOPE)
+    sensor.enable_feature(BNO_REPORT_MAGNETOMETER)
     return sensor
 
 sensor = init_sensor()
@@ -78,25 +78,30 @@ def normalize(v):
     return tuple(c/norm for c in v)
 
 # ----------------------------
-# Latitude/Longitude using Magnetic North
+# Latitude / Longitude using magnetometer
 # ----------------------------
-def vector_to_latlon(forward, up):
+def vector_to_latlon(forward, up, mag):
+    """
+    Compute latitude and longitude:
+    - Latitude from 'up' vector (gravity)
+    - Longitude from magnetometer heading
+    """
     ux, uy, uz = normalize(up)
     fx, fy, fz = normalize(forward)
+    mx, my, mz = normalize(mag)
 
     # Latitude from up vector
     lat = math.degrees(math.asin(uz))
 
-    # Longitude from forward rotation around up
-    if abs(lat) > 89.999:
-        lon = 0.0
-    else:
-        # Project forward onto horizontal plane
-        hx = fx - (fx*ux + fy*uy + fz*uz)*ux
-        hy = fy - (fx*ux + fy*uy + fz*uz)*uy
-        lon = math.degrees(math.atan2(hy, hx))  # heading relative to magnetic north
+    # Compute magnetic heading in horizontal plane
+    # Project magnetometer vector onto horizontal plane perpendicular to up
+    mag_dot_up = mx*ux + my*uy + mz*uz
+    hx = mx - mag_dot_up*ux
+    hy = my - mag_dot_up*uy
 
-    # Wrap
+    lon = math.degrees(math.atan2(hy, hx))  # heading relative to magnetic north
+
+    # Wrap longitude
     if lon > 180:
         lon -= 360
     elif lon < -180:
@@ -159,14 +164,19 @@ def main_loop():
                 calibrate(sensor.quaternion)
 
         try:
+            # Sensor readings
             accel = sensor.acceleration
             quat = quat_norm(sensor.quaternion)
+            mag = sensor.magnetic
+
+            # Correct orientation
             corrected_q = quat_mul(calibration_quat, quat)
             corrected_q = quat_norm(corrected_q)
             world_forward = rotate_vector_by_quat(sensor_forward, corrected_q)
             world_up = normalize(accel)
 
-            lat, lon = vector_to_latlon(world_forward, world_up)
+            # Compute lat/lon using magnetometer
+            lat, lon = vector_to_latlon(world_forward, world_up, mag)
 
             print(f"Latitude: {lat:.2f}°, Longitude: {lon:.2f}°")
             check_special_locations(lat, lon)
