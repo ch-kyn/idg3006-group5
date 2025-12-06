@@ -159,7 +159,6 @@ def main_loop():
 
             except OSError:
                 print("⚠️ I2C error — resetting sensor")
-                global sensor
                 sensor = init_sensor()
                 time.sleep(0.2)
             except Exception as e:
