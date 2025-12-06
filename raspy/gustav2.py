@@ -87,13 +87,10 @@ def vector_to_latlon(v):
     vy /= mag
     vz /= mag
 
-    # LATITUDE:
-    # +Y = south pole, -Y = north pole
-    # So latitude = -asin(Y)
+    # LATITUDE: -asin(Y)
     lat = -math.degrees(math.asin(vy))
 
-    # LONGITUDE:
-    # Based on rotation in X-Z plane
+    # LONGITUDE: atan2(X, Z)
     lon = math.degrees(math.atan2(vx, vz))
 
     return lat, lon
@@ -156,7 +153,7 @@ def calibrate(q_current):
 
     calibration_quat = q_align
 
-    print("\n🎯 Full calibration done — this direction is now (0°,0°)\n")
+    print("\n🎯 Full 3D calibration complete — this direction is now (0°,0°)\n")
 
 
 # ----------------------------
@@ -195,6 +192,9 @@ def main_loop():
 
             # Compute world pointing direction
             world_vec = rotate_vector_by_quat(sensor_axis, corrected_q)
+
+            # DEBUG PRINT (important!)
+            print("WORLD_VEC:", world_vec)
 
             lat, lon = vector_to_latlon(world_vec)
             if lat is None:
