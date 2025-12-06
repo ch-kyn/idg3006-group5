@@ -33,6 +33,9 @@ def vectors_to_lat_lon(up, forward):
     ux, uy, uz = up
     fx, fy, fz = forward
 
+    # Clamp uz to [-1,1] to avoid math domain errors
+    uz = max(-1.0, min(1.0, uz))
+    
     # Latitude: angle from equator plane (XY-plane)
     latitude = math.degrees(math.asin(uz))
 
@@ -52,8 +55,8 @@ def vectors_to_lat_lon(up, forward):
 # Main loop
 # ----------------------------
 # Define device-space reference vectors
-UP_VEC = (0, 0, 1)       # points "up" on device
-FORWARD_VEC = (0, 1, 0)  # points "forward" on device
+UP_VEC = (0, 1, 0)       # points "up" on device
+FORWARD_VEC = (0, 0, 1)  # points "forward" on device
 
 while True:
     quat = bno.quaternion  # (w, x, y, z)
