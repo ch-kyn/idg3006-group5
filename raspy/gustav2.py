@@ -38,7 +38,7 @@ def init_sensor():
 sensor = init_sensor()
 
 # ----------------------------
-# Quaternion helpers
+# Quaternion Helpers
 # ----------------------------
 def quat_conjugate(q):
     x, y, z, w = q
@@ -72,36 +72,41 @@ def rotate_vector_by_quat(v, q):
     r = quat_mul(quat_mul(qn, vq), qc)
     return r[:3]
 
-# ----------------------------
-# Convert world vector → latitude/longitude
-# ----------------------------
+
+# ======================================================
+#           Correct latitude/longitude
+# ======================================================
 def vector_to_latlon(v):
     vx, vy, vz = v
+
+    # Normalize
     mag = math.sqrt(vx*vx + vy*vy + vz*vz)
     if mag == 0:
         return None, None
-
     vx /= mag
     vy /= mag
     vz /= mag
 
-    # Latitude = up/down tilt (Z axis)
-    lat = math.degrees(math.asin(vz))
+    # LATITUDE:
+    # +Y = south pole, -Y = north pole
+    # So latitude = -asin(Y)
+    lat = -math.degrees(math.asin(vy))
 
-    # Longitude = rotation around vertical axis
-    lon = -math.degrees(math.atan2(vy, vx))
+    # LONGITUDE:
+    # Based on rotation in X-Z plane
+    lon = math.degrees(math.atan2(vx, vz))
 
     return lat, lon
 
 
-# ============================================================
-#                  ABSOLUTE GEOGRAPHIC CALIBRATION
-# ============================================================
+# ======================================================
+#              Calibration (OPTION B)
+# ======================================================
 
-# Z axis is the pointing direction (OUTWARD through globe)
+# Z axis points outward from the globe:
 sensor_axis = (0.0, 0.0, 1.0)
 
-# calibration quaternion
+# Identity quaternion
 calibration_quat = (0, 0, 0, 1)
 
 
@@ -115,8 +120,6 @@ def quat_from_two_vectors(v_from, v_to):
         fz*tx - fx*tz,
         fx*ty - fy*tx,
     )
-
-    # Dot product
     dot = fx*tx + fy*ty + fz*tz
 
     w = math.sqrt((fx*fx + fy*fy + fz*fz) *
@@ -127,20 +130,16 @@ def quat_from_two_vectors(v_from, v_to):
 
 
 def calibrate(q_current):
-    """
-    FULL 3D calibration:
-    Make the CURRENT pointing direction = (0°, 0°).
-    """
     global calibration_quat
 
     qc = quat_norm(q_current)
 
-    # The direction the globe is currently pointing in world-space
+    # Current pointing direction in world space
     fwd_current = rotate_vector_by_quat(sensor_axis, qc)
 
     mag = math.sqrt(sum(c*c for c in fwd_current))
     if mag == 0:
-        print("Calibration failed: forward vector zero.")
+        print("Calibration failed (zero vector)")
         return
 
     fwd_current = (
@@ -149,19 +148,19 @@ def calibrate(q_current):
         fwd_current[2] / mag
     )
 
-    # The direction representing geographic (0°,0°)
-    target = (1.0, 0.0, 0.0)  # X axis
+    # Geographic target for (0°,0°):
+    target = (1.0, 0.0, 0.0)  # +X
 
-    # Quaternion rotating current → target
+    # Build quaternion rotating current → target
     q_align = quat_from_two_vectors(fwd_current, target)
 
     calibration_quat = q_align
 
-    print("\n🎯 FULL 3D calibration complete — this direction is now (0°,0°)\n")
+    print("\n🎯 Full calibration done — this direction is now (0°,0°)\n")
 
 
 # ----------------------------
-# Keyboard helper
+# Keyboard Helper
 # ----------------------------
 def key_pressed():
     dr, _, _ = select.select([sys.stdin], [], [], 0)
@@ -169,11 +168,11 @@ def key_pressed():
 
 
 # ----------------------------
-# Main loop
+# Main Loop
 # ----------------------------
 def main_loop():
     global sensor
-    print("Press 'c' to calibrate. Calibration sets current direction = (0°,0°).")
+    print("Running. Press 'c' to calibrate (OPTION B).")
 
     while True:
         if key_pressed():
@@ -183,6 +182,7 @@ def main_loop():
 
         try:
             x, y, z, w = sensor.quaternion
+
             if (x, y, z, w) == (0, 0, 0, 0):
                 time.sleep(0.01)
                 continue
@@ -193,10 +193,9 @@ def main_loop():
             corrected_q = quat_mul(calibration_quat, raw_q)
             corrected_q = quat_norm(corrected_q)
 
-            # Rotate the pointing axis
+            # Compute world pointing direction
             world_vec = rotate_vector_by_quat(sensor_axis, corrected_q)
 
-            # Convert to lat/lon
             lat, lon = vector_to_latlon(world_vec)
             if lat is None:
                 time.sleep(0.01)
