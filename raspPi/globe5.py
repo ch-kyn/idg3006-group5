@@ -49,7 +49,6 @@ def quat_conjugate(q):
     return (-x, -y, -z, w)
 
 def invert_quat(q):
-    # For unit quaternions inverse == conjugate
     return quat_conjugate(q)
 
 def quat_mul(q1, q2):
@@ -79,23 +78,16 @@ def normalize(v):
 # ----------------------------
 # CONFIG
 # ----------------------------
-# Local sensor axes (used for rotating into world space each frame)
-local_x = (1.0, 0.0, 0.0)
-local_y = (0.0, 1.0, 0.0)
-local_z = (0.0, 0.0, 1.0)
-
-calibration_quat = (0.0, 0.0, 0.0, 1.0)  # identity
+forward_axis = (1.0, 0.0, 0.0)   # sensor forward direction
+upward_axis = (0.0, 0.0, 1.0)    # sensor upward direction
+calibration_quat = (0, 0, 0, 1)  # identity
 
 # ----------------------------
 # Calibration
 # ----------------------------
 def calibrate(q_current):
-    """
-    Press 'c' while pointing at the globe's reference (0°,0°).
-    We set calibration so that current orientation becomes identity.
-    """
     global calibration_quat
-    q_target = (0.0, 0.0, 0.0, 1.0)
+    q_target = (0, 0, 0, 1)
     calibration_quat = quat_mul(invert_quat(q_current), q_target)
     print("\n🎯 Calibration set! Orientation aligned to 0° lat / 0° lon.\n")
 
@@ -111,90 +103,61 @@ def key_pressed():
 # ----------------------------
 async def send_coordinates():
     global sensor
+
     async with websockets.connect(WS_URI) as websocket:
         print("Connected to WebSocket server!")
 
         while True:
-            # allow calibration via 'c'
+
+            # Calibration trigger
             if key_pressed():
                 ch = sys.stdin.read(1)
                 if ch.lower() == "c":
                     calibrate(sensor.quaternion)
 
             try:
-                # Read quaternion from sensor
+                # Read quaternion
                 x, y, z, w = sensor.quaternion
                 if (x, y, z, w) == (0, 0, 0, 0):
                     await asyncio.sleep(0.01)
                     continue
 
                 raw_q = (x, y, z, w)
-
-                # Apply calibration correction
                 corrected_q = quat_mul(calibration_quat, raw_q)
 
-                # Rotate all local axes into world space
-                world_x = normalize(rotate_vector_by_quat(local_x, corrected_q))
-                world_y = normalize(rotate_vector_by_quat(local_y, corrected_q))
-                world_z = normalize(rotate_vector_by_quat(local_z, corrected_q))
+                # Rotate sensor axes
+                world_up = normalize(rotate_vector_by_quat(upward_axis, corrected_q))
+                world_forward = normalize(rotate_vector_by_quat(forward_axis, corrected_q))
 
-                # --- Optionally enable these debug prints temporarily ---
-                # print("world_x:", world_x, "world_y:", world_y, "world_z:", world_z)
-
-                # Choose which axis is closest to world vertical (largest abs Z)
-                axes = [world_x, world_y, world_z]
-                abs_z_vals = [abs(a[2]) for a in axes]
-                up_index = abs_z_vals.index(max(abs_z_vals))
-                world_up = axes[up_index]
-
-                # The other two axes are heading candidates
-                heading_candidates = [axes[i] for i in range(3) if i != up_index]
-
-                # --- Latitude (Option A: tilt angle from horizontal) ---
+                # ----------------------------
+                # Latitude: respond to pitch and roll
+                # ----------------------------
                 ux, uy, uz = world_up
                 horiz_mag = math.sqrt(ux*ux + uy*uy)
-                lat = math.degrees(math.atan2(uz, horiz_mag))  # -90..+90 robust
+                lat = math.degrees(math.atan2(uz, horiz_mag))  # robust tilt
 
-                # --- Longitude / Heading (choose best horizontal candidate) ---
-                best = None
-                best_proj = -1.0
-                for cand in heading_candidates:
-                    cx, cy, cz = cand
-                    proj = math.sqrt(cx*cx + cy*cy)
-                    if proj > best_proj:
-                        best_proj = proj
-                        best = cand
-
-                if best_proj > 1e-6:
-                    cx, cy, cz = best
-                    lon = math.degrees(math.atan2(cy, cx))
+                # ----------------------------
+                # Longitude: horizontal projection of forward vector
+                # ----------------------------
+                fx, fy, fz = world_forward
+                proj_mag = math.sqrt(fx*fx + fy*fy)
+                if proj_mag > 1e-6:
+                    lon = math.degrees(math.atan2(fy, fx))
                 else:
-                    # Degenerate: both candidates nearly vertical. Use cross product fallback.
-                    f = heading_candidates[0]
-                    rx = f[1]*world_up[2] - f[2]*world_up[1]
-                    ry = f[2]*world_up[0] - f[0]*world_up[2]
-                    rz = f[0]*world_up[1] - f[1]*world_up[0]
+                    # fallback if forward is vertical
+                    rx = world_forward[1]*world_up[2] - world_forward[2]*world_up[1]
+                    ry = world_forward[2]*world_up[0] - world_forward[0]*world_up[2]
+                    rz = world_forward[0]*world_up[1] - world_forward[1]*world_up[0]
                     r = normalize((rx, ry, rz))
-
-                    # if still degenerate, project global X onto plane orthogonal to world_up
                     if abs(r[0]) < 1e-6 and abs(r[1]) < 1e-6:
-                        ux, uy, uz = world_up
-                        dot = 1.0*ux + 0.0*uy + 0.0*uz
-                        vx = 1.0 - dot*ux
-                        vy = 0.0 - dot*uy
-                        # vz = 0.0 - dot*uz  # we intentionally zero vz for pure horizontal
-                        r = normalize((vx, vy, 0.0))
-
+                        r = normalize((1.0 - ux*ux, -ux*uy, 0.0))
                     lon = math.degrees(math.atan2(r[1], r[0]))
 
-                # Normalize longitude into -180..180
+                # Normalize longitude
                 if lon > 180:
                     lon -= 360
                 elif lon < -180:
                     lon += 360
-
-                # --- Optional debug: print chosen up axis and heading candidate ---
-                # print("up_index:", up_index, "world_up:", world_up, "lat:", lat, "lon:", lon)
 
                 msg = json.dumps({
                     "lat": round(lat, 3),
@@ -204,7 +167,7 @@ async def send_coordinates():
                 await websocket.send(msg)
                 print("Sent:", msg)
 
-                await asyncio.sleep(0.05)  # ~20 Hz
+                await asyncio.sleep(0.05)
 
             except OSError:
                 print("\n⚠️ I2C error — resetting sensor…")
