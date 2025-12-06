@@ -6,7 +6,11 @@ import digitalio
 import sys
 import select
 from adafruit_bno08x.i2c import BNO08X_I2C
-from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR, BNO_REPORT_ACCELEROMETER, BNO_REPORT_GYROSCOPE
+from adafruit_bno08x import (
+    BNO_REPORT_ROTATION_VECTOR,
+    BNO_REPORT_ACCELEROMETER,
+    BNO_REPORT_GYROSCOPE
+)
 
 # ----------------------------
 # RESET PIN
@@ -82,7 +86,7 @@ def vector_to_latlon(v):
 # ----------------------------
 sensor_forward = (1.0, 0.0, 0.0)  # Red arrow
 sensor_up      = (0.0, 0.0, 1.0)  # Blue arrow
-BASE = None  # Base orientation (set with 'c')
+BASE = None  # Base orientation for reference
 
 # ----------------------------
 # Calibration
@@ -91,13 +95,13 @@ def calibrate():
     global BASE
     BASE = quat_norm(sensor.quaternion)
     print("\n🎯 BASE orientation set!")
-    print("Stored quaternion:", BASE, "\n")
+    print("Current quaternion stored as BASE:", BASE, "\n")
 
 # ----------------------------
 # Keyboard helper
 # ----------------------------
 def key_pressed():
-    dr, _, _ = select.select([sys.stdin], [], [], 0)
+    dr, dw, de = select.select([sys.stdin], [], [], 0)
     return dr != []
 
 # ----------------------------
@@ -113,39 +117,41 @@ def main_loop():
         while True:
             if key_pressed():
                 ch = sys.stdin.read(1)
-                if ch.lower() == 'c':
+                if ch.lower() == "c":
                     calibrate()
 
             try:
-                # ---------------- SENSOR READINGS ----------------
+                # ---------------- SENSOR DATA ----------------
                 try:
                     accel = sensor.acceleration
                     print("Accel:", tuple(round(a,4) for a in accel))
-                except Exception as e:
-                    print("Accel: N/A", e)
+                except:
+                    print("Accel: N/A")
 
                 try:
                     gyro = sensor.gyro
                     print("Gyro:", tuple(round(g,4) for g in gyro))
-                except Exception as e:
-                    print("Gyro: N/A", e)
+                except:
+                    print("Gyro: N/A")
 
                 try:
                     quat = sensor.quaternion
                     quat = quat_norm(quat)
                     print("Raw Quat:", tuple(round(q,4) for q in quat))
-                except Exception as e:
+                except:
                     quat = (0,0,0,1)
-                    print("Quat: N/A", e)
+                    print("Quat: N/A")
 
                 # ---------------- APPLY BASE ----------------
-                delta = quat_mul(quat, quat_conjugate(BASE)) if BASE else quat
+                if BASE is not None:
+                    delta = quat_mul(quat, quat_conjugate(BASE))
+                else:
+                    delta = quat
 
                 world_forward = rotate_vector_by_quat(sensor_forward, delta)
                 world_up      = rotate_vector_by_quat(sensor_up, delta)
                 lat, lon = vector_to_latlon(world_forward)
 
-                # ---------------- PRINT ARROWS & COORDS ----------------
                 print("Corrected Quat:", tuple(round(c,4) for c in delta))
                 print("Forward Vector:", tuple(round(f,4) for f in world_forward))
                 print("Up Vector:", tuple(round(u,4) for u in world_up))
@@ -165,7 +171,6 @@ def main_loop():
             except Exception as e:
                 print("Unexpected error:", e)
                 time.sleep(0.2)
-
     finally:
         termios.tcsetattr(fd, termios.TCSADRAIN, old)
 
