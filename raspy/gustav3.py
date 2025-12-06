@@ -67,6 +67,9 @@ def quat_mul(q1, q2):
 
 
 def rotate_vector_by_quat(v, q):
+    """
+    Rotate vector v by quaternion q.
+    """
     qn = quat_norm(q)
     vx, vy, vz = v
     vq = (vx, vy, vz, 0.0)
@@ -110,6 +113,8 @@ def vector_to_latlon(globe_vec):
     gz /= mag
 
     # LATITUDE (north/south)
+    # gy < 0 -> pointing more toward north pole -> positive latitude
+    # gy > 0 -> pointing more toward south pole -> negative latitude
     lat = -math.degrees(math.asin(gy))
 
     # LONGITUDE (rotation around pole)
@@ -125,7 +130,8 @@ def vector_to_latlon(globe_vec):
 # The IMU's +Z points outward
 sensor_axis = (0.0, 0.0, 1.0)
 
-calibration_quat = (0, 0, 0, 1)
+# Calibration rotation is applied in GLOBE-SPACE, not IMU-space
+calibration_quat = (0.0, 0.0, 0.0, 1.0)  # identity
 
 
 def quat_from_two_vectors(v_from, v_to):
@@ -149,15 +155,22 @@ def quat_from_two_vectors(v_from, v_to):
 def calibrate(q_current):
     """
     Make CURRENT pointing direction become (lat=0°, lon=0°).
+
+    IMPORTANT:
+    - This is done in *globe-space*, so we:
+      1) get IMU forward vector
+      2) map it into globe coordinates
+      3) compute a rotation that sends that vector -> (0,0,1)
+      4) store that rotation in calibration_quat
     """
     global calibration_quat
 
     qc = quat_norm(q_current)
 
-    # IMU forward direction
+    # Step 1: IMU forward direction (sensor +Z rotated by IMU quaternion)
     fwd_imu = rotate_vector_by_quat(sensor_axis, qc)
 
-    # Convert to globe forward direction
+    # Step 2: Convert to globe forward direction
     fwd_globe = imu_vec_to_globe_vec(fwd_imu)
 
     mag = math.sqrt(sum(c*c for c in fwd_globe))
@@ -171,10 +184,10 @@ def calibrate(q_current):
         fwd_globe[2] / mag,
     )
 
-    # IMPORTANT FIX:
-    # (0°,0°) on YOUR globe = outward direction = (0,0,1)
+    # Step 3: (0°,0°) on YOUR globe = outward direction = (0,0,1)
     target = (0.0, 0.0, 1.0)
 
+    # Step 4: build rotation that sends fwd_globe -> target, in globe-space
     q_align = quat_from_two_vectors(fwd_globe, target)
 
     calibration_quat = q_align
@@ -211,17 +224,17 @@ def main_loop():
 
             raw_q = (x, y, z, w)
 
-            # Apply calibration
-            corrected_q = quat_mul(calibration_quat, raw_q)
-            corrected_q = quat_norm(corrected_q)
+            # 1) IMU forward direction
+            world_vec_imu = rotate_vector_by_quat(sensor_axis, raw_q)
 
-            # IMU forward direction
-            world_vec_imu = rotate_vector_by_quat(sensor_axis, corrected_q)
-
-            # Convert to globe frame
+            # 2) Convert to globe frame
             world_vec_globe = imu_vec_to_globe_vec(world_vec_imu)
 
-            lat, lon = vector_to_latlon(world_vec_globe)
+            # 3) Apply calibration rotation in GLOBE-SPACE
+            world_vec_calibrated = rotate_vector_by_quat(world_vec_globe, calibration_quat)
+
+            # 4) Convert calibrated globe vector to lat/lon
+            lat, lon = vector_to_latlon(world_vec_calibrated)
             if lat is None:
                 time.sleep(0.01)
                 continue
