@@ -1,192 +1,69 @@
-import asyncio
-import websockets
-import json
-import time
 import math
+import time
 import board
 import busio
-import digitalio
-import sys
-import select
-
 from adafruit_bno08x.i2c import BNO08X_I2C
 from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR
 
 # ----------------------------
-# WebSocket config
-# ----------------------------
-WS_URI = "ws://10.22.62.39:8765"
-
-# ----------------------------
-# RESET PIN
-# ----------------------------
-reset_pin = digitalio.DigitalInOut(board.D17)
-reset_pin.direction = digitalio.Direction.OUTPUT
-
-# ----------------------------
-# I2C INIT
+# Setup I2C and sensor
 # ----------------------------
 i2c = busio.I2C(board.SCL, board.SDA)
+bno = BNO08X_I2C(i2c)
 
-def init_sensor():
-    print("Initializing BNO08X...")
-    reset_pin.value = False
-    time.sleep(0.01)
-    reset_pin.value = True
-    time.sleep(0.25)
-
-    sensor = BNO08X_I2C(i2c, address=0x4A)
-    sensor.enable_feature(BNO_REPORT_ROTATION_VECTOR)
-    return sensor
-
-sensor = init_sensor()
+# Enable rotation vector (quaternion)
+bno.enable_feature(BNO_REPORT_ROTATION_VECTOR)
 
 # ----------------------------
-# Quaternion helpers
+# Helper: rotate any vector by quaternion
 # ----------------------------
-def quat_conjugate(q):
-    x, y, z, w = q
-    return (-x, -y, -z, w)
-
-def invert_quat(q):
-    return quat_conjugate(q)
-
-def quat_mul(q1, q2):
-    x1, y1, z1, w1 = q1
-    x2, y2, z2, w2 = q2
-    return (
-        w1*x2 + x1*w2 + y1*z2 - z1*y2,
-        w1*y2 - x1*z2 + y1*w2 + z1*x2,
-        w1*z2 + x1*y2 - y1*x2 + z1*w2,
-        w1*w2 - x1*x2 - y1*y2 - z1*z2,
-    )
-
-def rotate_vector_by_quat(v, q):
+def rotate_vector(quat, v):
+    w, x, y, z = quat
     vx, vy, vz = v
-    vq = (vx, vy, vz, 0.0)
-    qc = quat_conjugate(q)
-    rx, ry, rz, rw = quat_mul(quat_mul(q, vq), qc)
-    return (rx, ry, rz)
-
-def normalize(v):
-    x, y, z = v
-    m = math.sqrt(x*x + y*y + z*z)
-    if m == 0:
-        return (0.0, 0.0, 0.0)
-    return (x/m, y/m, z/m)
+    # Quaternion rotation: v' = q * v * q^-1
+    rx = (1 - 2*(y*y + z*z))*vx + 2*(x*y - w*z)*vy + 2*(x*z + w*y)*vz
+    ry = 2*(x*y + w*z)*vx + (1 - 2*(x*x + z*z))*vy + 2*(y*z - w*x)*vz
+    rz = 2*(x*z - w*y)*vx + 2*(y*z + w*x)*vy + (1 - 2*(x*x + y*y))*vz
+    return rx, ry, rz
 
 # ----------------------------
-# CONFIG
+# Convert rotated vectors to latitude and longitude
 # ----------------------------
-forward_axis = (1.0, 0.0, 0.0)   # sensor forward direction
-upward_axis = (0.0, 0.0, 1.0)    # sensor upward direction
-calibration_quat = (0, 0, 0, 1)  # identity
+def vectors_to_lat_lon(up, forward):
+    ux, uy, uz = up
+    fx, fy, fz = forward
 
-# ----------------------------
-# Calibration
-# ----------------------------
-def calibrate(q_current):
-    global calibration_quat
-    q_target = (0, 0, 0, 1)
-    calibration_quat = quat_mul(invert_quat(q_current), q_target)
-    print("\n🎯 Calibration set! Orientation aligned to 0° lat / 0° lon.\n")
+    # Latitude: angle from equator plane (XY-plane)
+    latitude = math.degrees(math.asin(uz))
 
-# ----------------------------
-# Keyboard helper
-# ----------------------------
-def key_pressed():
-    dr, dw, de = select.select([sys.stdin], [], [], 0)
-    return dr != []
+    # Longitude: projection of forward vector onto XY-plane
+    lon_rad = math.atan2(fy, fx)
+    longitude = math.degrees(lon_rad)
+
+    # Normalize longitude to -180..180
+    if longitude > 180:
+        longitude -= 360
+    elif longitude < -180:
+        longitude += 360
+
+    return latitude, longitude
 
 # ----------------------------
 # Main loop
 # ----------------------------
-async def send_coordinates():
-    global sensor
+# Define device-space reference vectors
+UP_VEC = (0, 0, 1)       # points "up" on device
+FORWARD_VEC = (0, 1, 0)  # points "forward" on device
 
-    async with websockets.connect(WS_URI) as websocket:
-        print("Connected to WebSocket server!")
+while True:
+    quat = bno.quaternion  # (w, x, y, z)
 
-        while True:
+    # Rotate reference vectors into world coordinates
+    up_world = rotate_vector(quat, UP_VEC)
+    forward_world = rotate_vector(quat, FORWARD_VEC)
 
-            # Calibration trigger
-            if key_pressed():
-                ch = sys.stdin.read(1)
-                if ch.lower() == "c":
-                    calibrate(sensor.quaternion)
+    # Compute latitude and longitude
+    lat, lon = vectors_to_lat_lon(up_world, forward_world)
 
-            try:
-                # Read quaternion
-                x, y, z, w = sensor.quaternion
-                if (x, y, z, w) == (0, 0, 0, 0):
-                    await asyncio.sleep(0.01)
-                    continue
-
-                raw_q = (x, y, z, w)
-                corrected_q = quat_mul(calibration_quat, raw_q)
-
-                # Rotate sensor axes
-                world_up = normalize(rotate_vector_by_quat(upward_axis, corrected_q))
-                world_forward = normalize(rotate_vector_by_quat(forward_axis, corrected_q))
-
-                # ----------------------------
-                # Latitude: respond to pitch and roll
-                # ----------------------------
-                ux, uy, uz = world_up
-                horiz_mag = math.sqrt(ux*ux + uy*uy)
-                lat = math.degrees(math.atan2(uz, horiz_mag))  # robust tilt
-
-                # ----------------------------
-                # Longitude: horizontal projection of forward vector
-                # ----------------------------
-                fx, fy, fz = world_forward
-                proj_mag = math.sqrt(fx*fx + fy*fy)
-                if proj_mag > 1e-6:
-                    lon = math.degrees(math.atan2(fy, fx))
-                else:
-                    # fallback if forward is vertical
-                    rx = world_forward[1]*world_up[2] - world_forward[2]*world_up[1]
-                    ry = world_forward[2]*world_up[0] - world_forward[0]*world_up[2]
-                    rz = world_forward[0]*world_up[1] - world_forward[1]*world_up[0]
-                    r = normalize((rx, ry, rz))
-                    if abs(r[0]) < 1e-6 and abs(r[1]) < 1e-6:
-                        r = normalize((1.0 - ux*ux, -ux*uy, 0.0))
-                    lon = math.degrees(math.atan2(r[1], r[0]))
-
-                # Normalize longitude
-                if lon > 180:
-                    lon -= 360
-                elif lon < -180:
-                    lon += 360
-
-                msg = json.dumps({
-                    "lat": round(lat, 3),
-                    "lon": round(lon, 3),
-                })
-
-                await websocket.send(msg)
-                print("Sent:", msg)
-
-                await asyncio.sleep(0.05)
-
-            except OSError:
-                print("\n⚠️ I2C error — resetting sensor…")
-                sensor = init_sensor()
-                await asyncio.sleep(0.3)
-
-            except Exception as e:
-                print("Unexpected error:", e)
-                await asyncio.sleep(0.3)
-
-# ----------------------------
-# Entry
-# ----------------------------
-if __name__ == "__main__":
-    import tty, termios
-    fd = sys.stdin.fileno()
-    old = termios.tcgetattr(fd)
-    try:
-        tty.setcbreak(fd)
-        asyncio.run(send_coordinates())
-    finally:
-        termios.tcsetattr(fd, termios.TCSADRAIN, old)
+    print(f"Lat: {lat:6.2f}°, Lon: {lon:7.2f}°")
+    time.sleep(1)
