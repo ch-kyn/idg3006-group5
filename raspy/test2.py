@@ -27,6 +27,7 @@ def init_sensor():
     time.sleep(0.25)
     sensor = BNO08X_I2C(i2c, address=0x4A)
     sensor.enable_feature(BNO_REPORT_ROTATION_VECTOR)
+    time.sleep(0.5)
     return sensor
 
 sensor = init_sensor()
@@ -34,16 +35,16 @@ sensor = init_sensor()
 # ----------------------------
 # Quaternion helpers
 # ----------------------------
-def quat_conjugate(q):
-    x, y, z, w = q
-    return (-x, -y, -z, w)
-
 def quat_norm(q):
     x, y, z, w = q
     n = math.sqrt(x*x + y*y + z*z + w*w)
     if n == 0:
         return (0.0, 0.0, 0.0, 1.0)
     return (x/n, y/n, z/n, w/n)
+
+def quat_conjugate(q):
+    x, y, z, w = q
+    return (-x, -y, -z, w)
 
 def quat_mul(q1, q2):
     x1, y1, z1, w1 = q1
@@ -52,7 +53,7 @@ def quat_mul(q1, q2):
         w1*x2 + x1*w2 + y1*z2 - z1*y2,
         w1*y2 - x1*z2 + y1*w2 + z1*x2,
         w1*z2 + x1*y2 - y1*x2 + z1*w2,
-        w1*w2 - x1*x2 - y1*y2 - z1*z2,
+        w1*w2 - x1*x2 - y1*y2 - z1*z2
     )
 
 def rotate_vector_by_quat(v, q):
@@ -71,8 +72,8 @@ def vector_to_latlon(v):
     vx /= mag
     vy /= mag
     vz /= mag
-    lat = math.degrees(math.asin(vz))
-    lon = math.degrees(math.atan2(vy, vx))
+    lat = math.degrees(math.asin(vz))          # -90..+90
+    lon = math.degrees(math.atan2(vy, vx))     # -180..+180
     return lat, lon
 
 # ----------------------------
@@ -80,25 +81,7 @@ def vector_to_latlon(v):
 # ----------------------------
 sensor_forward = (1.0, 0.0, 0.0)  # red arrow
 sensor_up      = (0.0, 0.0, 1.0)  # blue arrow
-calibration_quat = (0, 0, 0, 1)
-
-# ----------------------------
-# Calibration
-# ----------------------------
-def calibrate(q_current):
-    global calibration_quat
-    qc = quat_norm(q_current)
-    fwd_current = rotate_vector_by_quat(sensor_forward, qc)
-    fwd_mag = math.sqrt(sum(c*c for c in fwd_current))
-    if fwd_mag == 0:
-        print("Calibration failed")
-        return
-    fwd_current = tuple(c/fwd_mag for c in fwd_current)
-    angle = math.atan2(fwd_current[1], fwd_current[0])
-    sin_h = math.sin(-angle/2)
-    cos_h = math.cos(-angle/2)
-    calibration_quat = (0, 0, sin_h, cos_h)
-    print("Calibration set!")
+BASE = None
 
 # ----------------------------
 # Keyboard helper
@@ -111,20 +94,27 @@ def key_pressed():
 # Main loop
 # ----------------------------
 def main_loop():
+    global BASE
     import tty, termios
     fd = sys.stdin.fileno()
     old = termios.tcgetattr(fd)
     try:
         tty.setcbreak(fd)
-        print("Press 'c' to calibrate orientation")
+        print("Press ENTER to set BASE orientation")
+        input()
+        BASE = quat_norm(sensor.quaternion)
+        print("BASE quaternion set:", BASE)
+        print("-------------------------------")
+
         while True:
             if key_pressed():
                 ch = sys.stdin.read(1)
                 if ch.lower() == "c":
-                    calibrate(sensor.quaternion)
+                    BASE = quat_norm(sensor.quaternion)
+                    print("Re-calibrated BASE quaternion:", BASE)
 
             try:
-                # Safe reading of all fields
+                # Read sensor data safely
                 try:
                     accel = sensor.acceleration
                     print("Accel:", tuple(round(a,4) for a in accel))
@@ -139,26 +129,25 @@ def main_loop():
 
                 try:
                     quat = sensor.quaternion
+                    quat = quat_norm(quat)
                     print("Raw Quat:", tuple(round(q,4) for q in quat))
                 except:
-                    quat = (0,0,0,0)
+                    quat = (0,0,0,1)
                     print("Quat: N/A")
 
-                # Correct quaternion and compute vectors
-                corrected_q = quat_mul(calibration_quat, quat)
-                corrected_q = quat_norm(corrected_q)
-                world_forward = rotate_vector_by_quat(sensor_forward, corrected_q)
-                world_up      = rotate_vector_by_quat(sensor_up, corrected_q)
+                # Compute delta quaternion relative to BASE
+                delta = quat_mul(quat, quat_conjugate(BASE))
+                # Rotate forward and up vectors
+                world_forward = rotate_vector_by_quat(sensor_forward, delta)
+                world_up = rotate_vector_by_quat(sensor_up, delta)
                 lat, lon = vector_to_latlon(world_forward)
 
-                print("Corrected Quat:", tuple(round(c,4) for c in corrected_q))
                 print("Forward Vector:", tuple(round(f,4) for f in world_forward))
                 print("Up Vector:", tuple(round(u,4) for u in world_up))
                 if lat is not None:
                     print(f"Latitude: {lat:.3f}°, Longitude: {lon:.3f}°")
                 else:
                     print("Latitude/Longitude: N/A")
-
                 print("-------------------------------")
                 time.sleep(0.1)
 
