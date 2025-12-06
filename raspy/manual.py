@@ -72,33 +72,38 @@ def normalize(v):
     return tuple(c/norm for c in v)
 
 # ----------------------------
-# Latitude + longitude (manual mapping fixed)
+# Continent mapping (manual)
 # ----------------------------
-def vector_to_latlon(forward, up):
+CONTINENT_OFFSETS = {
+    "NorthPole": 0,
+    "SouthPole": 0,
+    "NullIsland": 0,
+    "Equator": 0,
+    "USA": -100,
+    "Europe": 10,
+    "Asia": 90,
+    "Australia": 150,
+    "SouthAmerica": -60,
+    "Africa": 20,
+}
+
+def vector_to_latlon(forward, up, continent=None):
     ux,uy,uz = normalize(up)
     fx,fy,fz = normalize(forward)
 
-    # Latitude from up vector
+    # Latitude from up
     lat = math.degrees(math.asin(uz))
 
-    # Project forward onto horizontal plane
+    # Horizontal forward projection
     hx = fx - (fx*ux + fy*uy + fz*uz)*ux
     hy = fy - (fx*ux + fy*uy + fz*uz)*uy
 
-    # Basic atan2
     lon = math.degrees(math.atan2(hy,hx))
 
-    # -------- Manual mapping fix --------
-    # Example: define rotation offsets per hemisphere to place continents
-    if lat > 0:
-        # Northern hemisphere
-        lon_offset = 0  # Europe/Asia aligned
-    else:
-        # Southern hemisphere
-        lon_offset = 180  # Americas/Australia aligned
-
-    # Apply offset and wrap [-180,180]
-    lon = (lon + lon_offset + 180)%360 - 180
+    # Apply continent-specific offset if given
+    if continent and continent in CONTINENT_OFFSETS:
+        lon_offset = CONTINENT_OFFSETS[continent]
+        lon = (lon + lon_offset + 180) % 360 - 180
 
     return lat, lon
 
@@ -121,6 +126,7 @@ def check_special_locations(lat, lon):
 sensor_forward = (1,0,0)
 sensor_up = (0,0,1)
 calibration_quat = None
+
 def calibrate(q):
     global calibration_quat
     qc = quat_norm(q)
@@ -143,6 +149,10 @@ def main_loop():
     calibrate(sensor.quaternion)
     print("Press 'c' to recalibrate 0° longitude")
 
+    # Choose which continent to display in the mini world
+    # For testing, cycle through: "USA", "Europe", "Asia", "Australia"
+    CONTINENT_TO_DISPLAY = "USA"
+
     while True:
         if key_pressed():
             ch = sys.stdin.read(1)
@@ -157,8 +167,8 @@ def main_loop():
             world_forward = rotate_vector_by_quat(sensor_forward, corrected_q)
             world_up = normalize(accel)
 
-            lat, lon = vector_to_latlon(world_forward, world_up)
-            print(f"Latitude: {lat:.2f}°, Longitude: {lon:.2f}°")
+            lat, lon = vector_to_latlon(world_forward, world_up, continent=CONTINENT_TO_DISPLAY)
+            print(f"Continent: {CONTINENT_TO_DISPLAY} | Latitude: {lat:.2f}°, Longitude: {lon:.2f}°")
             check_special_locations(lat, lon)
             time.sleep(0.1)
         except Exception as e:
