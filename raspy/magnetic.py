@@ -87,7 +87,8 @@ def vector_to_latlon(forward, up):
     hy = fy - (fx*ux + fy*uy + fz*uz)*uy
 
     # Longitude from atan2 of horizontal forward
-    lon = math.degrees(math.atan2(hy, hx))
+    lon = math.degrees(math.atan2(-hy, -hx))
+    # lon = math.degrees(math.atan2(hy, hx))
     if lon > 180:
         lon -= 360
     elif lon < -180:

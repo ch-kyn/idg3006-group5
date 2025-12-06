@@ -10,7 +10,9 @@ from adafruit_bno08x.i2c import BNO08X_I2C
 from adafruit_bno08x import (
     BNO_REPORT_ROTATION_VECTOR,
     BNO_REPORT_ACCELEROMETER,
-    BNO_REPORT_GYROSCOPE
+    BNO_REPORT_GYROSCOPE,
+    BNO_REPORT_MAGNETOMETER,
+    BNO_REPORT_GEOMAGNETIC_ROTATION_VECTOR
 )
 
 # ----------------------------
@@ -26,10 +28,16 @@ def init_sensor():
     time.sleep(0.01)
     reset_pin.value = True
     time.sleep(0.25)
+
     sensor = BNO08X_I2C(i2c, address=0x4A)
-    sensor.enable_feature(BNO_REPORT_ROTATION_VECTOR)
+
     sensor.enable_feature(BNO_REPORT_ACCELEROMETER)
     sensor.enable_feature(BNO_REPORT_GYROSCOPE)
+    sensor.enable_feature(BNO_REPORT_MAGNETOMETER)
+
+    # THIS is the important one: Earth referenced quaternion
+    sensor.enable_feature(BNO_REPORT_GEOMAGNETIC_ROTATION_VECTOR)
+
     return sensor
 
 sensor = init_sensor()
@@ -73,19 +81,22 @@ def normalize(v):
     return tuple(c/norm for c in v)
 
 # ----------------------------
-# Latitude / Longitude from rotation vector
+# Latitude / Longitude
 # ----------------------------
 def vector_to_latlon(forward, up):
-    fx, fy, fz = normalize(forward)
     ux, uy, uz = normalize(up)
+    fx, fy, fz = normalize(forward)
 
-    # Latitude from forward Z component
-    lat = math.degrees(math.asin(fz))
+    # Latitude = gravity
+    lat = math.degrees(math.asin(uz))
 
-    # Longitude from forward X/Y components
-    lon = math.degrees(math.atan2(fy, fx))
+    # Project forward onto horizontal
+    hx = fx - (fx*ux + fy*uy + fz*uz) * ux
+    hy = fy - (fx*ux + fy*uy + fz*uz) * uy
 
-    # Wrap longitude to -180..180
+    # TRUE longitude (Earth locked now)
+    lon = math.degrees(math.atan2(hy, hx))
+
     if lon > 180:
         lon -= 360
     elif lon < -180:
@@ -107,57 +118,27 @@ def check_special_locations(lat, lon):
         print("📍 Equator detected!")
 
 # ----------------------------
-# Configuration + calibration
+# World vectors
 # ----------------------------
 sensor_forward = (1.0, 0.0, 0.0)
 sensor_up = (0.0, 0.0, 1.0)
-calibration_quat = None
 
-def calibrate(q_current):
-    global calibration_quat
-    qc = quat_norm(q_current)
-    fwd = rotate_vector_by_quat(sensor_forward, qc)
-    angle = math.atan2(fwd[1], fwd[0])
-    sin_h = math.sin(-angle/2)
-    cos_h = math.cos(-angle/2)
-    calibration_quat = (0, 0, sin_h, cos_h)
-    print("\n🎯 Calibration set! 0° longitude aligned.\n")
-
-def key_pressed():
-    dr, _, _ = select.select([sys.stdin], [], [], 0)
-    return dr != []
-
-# ----------------------------
-# Main loop
-# ----------------------------
 def main_loop():
-    global sensor, calibration_quat
-    print("Press 'c' to recalibrate 0° longitude")
-    calibrate(sensor.quaternion)
+    print("Using TRUE geomagnetic frame (real North & longitude)")
 
     while True:
-        if key_pressed():
-            ch = sys.stdin.read(1)
-            if ch.lower() == "c":
-                calibrate(sensor.quaternion)
-
         try:
-            accel = sensor.acceleration
-            quat = quat_norm(sensor.quaternion)
+            # THIS IS THE MAGIC LINE
+            quat = quat_norm(sensor.geomagnetic_quaternion)
 
-            # Apply calibration
-            corrected_q = quat_mul(calibration_quat, quat)
-            corrected_q = quat_norm(corrected_q)
+            world_forward = rotate_vector_by_quat(sensor_forward, quat)
+            world_up = rotate_vector_by_quat(sensor_up, quat)
 
-            # World vectors
-            world_forward = rotate_vector_by_quat(sensor_forward, corrected_q)
-            world_up = rotate_vector_by_quat(sensor_up, corrected_q)
-
-            # Compute lat/lon
             lat, lon = vector_to_latlon(world_forward, world_up)
 
             print(f"Latitude: {lat:.2f}°, Longitude: {lon:.2f}°")
             check_special_locations(lat, lon)
+
             time.sleep(0.1)
 
         except Exception as e:
@@ -168,11 +149,4 @@ def main_loop():
 # Entry
 # ----------------------------
 if __name__ == "__main__":
-    import tty, termios
-    fd = sys.stdin.fileno()
-    old = termios.tcgetattr(fd)
-    try:
-        tty.setcbreak(fd)
-        main_loop()
-    finally:
-        termios.tcsetattr(fd, termios.TCSADRAIN, old)
+    main_loop()
