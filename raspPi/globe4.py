@@ -1,50 +1,176 @@
+import asyncio
+import websockets
+import json
+import time
 import math
 import board
 import busio
-from adafruit_bno08x import BNO08X_I2C
+import digitalio
+import sys
+import select
 
-# ------------------------------------------
-# Setup I2C and sensor
-# ------------------------------------------
+from adafruit_bno08x.i2c import BNO08X_I2C
+from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR
+
+# ----------------------------
+# WebSocket config
+# ----------------------------
+WS_URI = "ws://10.22.62.39:8765"
+
+# ----------------------------
+# RESET PIN
+# ----------------------------
+reset_pin = digitalio.DigitalInOut(board.D17)
+reset_pin.direction = digitalio.Direction.OUTPUT
+
+# ----------------------------
+# I2C INIT
+# ----------------------------
 i2c = busio.I2C(board.SCL, board.SDA)
-bno = BNO08X_I2C(i2c)
 
-# Enable rotation vector (quaternion)
-bno.enable_feature(BNO08X_I2C.FEATURE_ROTATION_VECTOR)
+def init_sensor():
+    print("Initializing BNO08X...")
 
-# ------------------------------------------
-# Helper: rotate UP vector (0,0,1) by quaternion
-# This produces the device's UP direction in world coordinates
-# ------------------------------------------
-def rotate_up(quat):
-    qw, qx, qy, qz = quat
+    reset_pin.value = False
+    time.sleep(0.01)
+    reset_pin.value = True
+    time.sleep(0.25)
 
-    # Rotated UP vector (0,0,1)
-    ux = 2 * (qx*qz + qw*qy)
-    uy = 2 * (qy*qz - qw*qx)
-    uz = qw*qw - qx*qx - qy*qy + qz*qz
+    sensor = BNO08X_I2C(i2c, address=0x4A)
+    sensor.enable_feature(BNO_REPORT_ROTATION_VECTOR)
+    return sensor
 
-    return (ux, uy, uz)
+sensor = init_sensor()
 
-# ------------------------------------------
+# ----------------------------
+# Quaternion helpers
+# ----------------------------
+def quat_conjugate(q):
+    x, y, z, w = q
+    return (-x, -y, -z, w)
+
+def invert_quat(q):
+    return quat_conjugate(q)
+
+def quat_mul(q1, q2):
+    x1, y1, z1, w1 = q1
+    x2, y2, z2, w2 = q2
+    return (
+        w1*x2 + x1*w2 + y1*z2 - z1*y2,
+        w1*y2 - x1*z2 + y1*w2 + z1*x2,
+        w1*z2 + x1*y2 - y1*x2 + z1*w2,
+        w1*w2 - x1*x2 - y1*y2 - z1*z2,
+    )
+
+def rotate_vector_by_quat(v, q):
+    vx, vy, vz = v
+    vq = (vx, vy, vz, 0.0)
+    qc = quat_conjugate(q)
+    return quat_mul(quat_mul(q, vq), qc)[:3]
+
+def normalize(v):
+    x, y, z = v
+    m = math.sqrt(x*x + y*y + z*z)
+    if m == 0:
+        return (0.0, 0.0, 0.0)
+    return (x/m, y/m, z/m)
+
+# ----------------------------
+# CONFIG
+# ----------------------------
+forward_axis = (1.0, 0.0, 0.0)  # Sensor forward direction
+upward_axis = (0.0, 0.0, 1.0)   # Sensor upward direction
+calibration_quat = (0, 0, 0, 1)  # identity
+
+# ----------------------------
+# Calibration
+# ----------------------------
+def calibrate(q_current):
+    """
+    User presses 'c' while pointing at 0° lat / 0° lon.
+    We compute a correction quaternion so forward vector becomes (1,0,0).
+    """
+    global calibration_quat
+    q_target = (0, 0, 0, 1)
+    calibration_quat = quat_mul(invert_quat(q_current), q_target)
+    print("\n🎯 Calibration set! Orientation now aligns to 0° lat / 0° lon.\n")
+
+# ----------------------------
+# Keyboard helper
+# ----------------------------
+def key_pressed():
+    dr, dw, de = select.select([sys.stdin], [], [], 0)
+    return dr != []
+
+# ----------------------------
 # Main loop
-# ------------------------------------------
-while True:
-    quat = bno.quaternion  # (w, x, y, z)
+# ----------------------------
+async def send_coordinates():
+    global sensor
+    async with websockets.connect(WS_URI) as websocket:
+        print("Connected to WebSocket server!")
 
-    # 1. Get sensor UP vector in world space
-    ux, uy, uz = rotate_up(quat)
+        while True:
 
-    # 2. Latitude = tilt relative to vertical (gravity)
-    latitude = math.degrees(math.asin(uz))
+            # Calibration
+            if key_pressed():
+                ch = sys.stdin.read(1)
+                if ch.lower() == "c":
+                    calibrate(sensor.quaternion)
 
-    # 3. Longitude = rotation around vertical axis
-    longitude = math.degrees(math.atan2(ux, uy))
+            try:
+                # Read quaternion
+                x, y, z, w = sensor.quaternion
+                if (x, y, z, w) == (0, 0, 0, 0):
+                    await asyncio.sleep(0.01)
+                    continue
 
-    # Normalize longitude to -180..180
-    if longitude > 180:
-        longitude -= 360
-    if longitude < -180:
-        longitude += 360
+                raw_q = (x, y, z, w)
 
-    print(f"Lat: {latitude:6.2f}°,   Lon: {longitude:7.2f}°")
+                # Apply calibration
+                corrected_q = quat_mul(calibration_quat, raw_q)
+
+                # Rotate sensor local axes into world space
+                world_up = rotate_vector_by_quat(upward_axis, corrected_q)
+                world_forward = rotate_vector_by_quat(forward_axis, corrected_q)
+
+                world_up = normalize(world_up)
+                world_forward = normalize(world_forward)
+
+                # Latitude = device vertical tilt
+                lat = math.degrees(math.asin(world_up[2]))  # world_up.z
+
+                # Longitude = horizontal heading from forward vector
+                lon = math.degrees(math.atan2(world_forward[1], world_forward[0]))
+
+                msg = json.dumps({
+                    "lat": round(lat, 3),
+                    "lon": round(lon, 3),
+                })
+
+                await websocket.send(msg)
+                print("Sent:", msg)
+
+                await asyncio.sleep(0.1)
+
+            except OSError:
+                print("\n⚠️ I2C error — resetting sensor…")
+                sensor = init_sensor()
+                await asyncio.sleep(0.2)
+
+            except Exception as e:
+                print("Unexpected error:", e)
+                await asyncio.sleep(0.2)
+
+# ----------------------------
+# Entry
+# ----------------------------
+if __name__ == "__main__":
+    import tty, termios
+    fd = sys.stdin.fileno()
+    old = termios.tcgetattr(fd)
+    try:
+        tty.setcbreak(fd)
+        asyncio.run(send_coordinates())
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old)
