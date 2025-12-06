@@ -65,6 +65,9 @@ def quat_mul(q1, q2):
 
 
 def rotate_vector_by_quat(v, q):
+    """
+    Rotate vector v by quaternion q.
+    """
     qn = quat_norm(q)
     vx, vy, vz = v
     vq = (vx, vy, vz, 0.0)
@@ -74,33 +77,67 @@ def rotate_vector_by_quat(v, q):
 
 
 # ======================================================
+#   Axis remap: IMU frame -> Globe frame
+# ======================================================
+def imu_vec_to_globe_vec(imu_vec):
+    """
+    Map the IMU/world vector into the globe's logical axes.
+
+    imu_vec = (wx, wy, wz) from rotate_vector_by_quat(sensor_axis, q)
+
+    We discovered from WORLD_VEC inspection that the IMU's
+    axes don't match how the globe is mounted. This mapping
+    rotates them into a 'globe' frame where:
+
+      - gz = pointing outward on the globe
+      - gy = south pole axis
+      - gx = around the equator
+
+    Adjusted mapping (derived from your data):
+
+        gx =  wz
+        gy = -wx
+        gz = -wy
+    """
+    wx, wy, wz = imu_vec
+    gx = wz
+    gy = -wx
+    gz = -wy
+    return (gx, gy, gz)
+
+
+# ======================================================
 #           Correct latitude/longitude
 # ======================================================
-def vector_to_latlon(v):
-    vx, vy, vz = v
+def vector_to_latlon(globe_vec):
+    gx, gy, gz = globe_vec
 
     # Normalize
-    mag = math.sqrt(vx*vx + vy*vy + vz*vz)
+    mag = math.sqrt(gx*gx + gy*gy + gz*gz)
     if mag == 0:
         return None, None
-    vx /= mag
-    vy /= mag
-    vz /= mag
+    gx /= mag
+    gy /= mag
+    gz /= mag
 
-    # LATITUDE: -asin(Y)
-    lat = -math.degrees(math.asin(vy))
+    # LATITUDE:
+    # gy > 0  -> pointing more toward south pole  -> negative latitude
+    # gy < 0  -> pointing more toward north pole  -> positive latitude
+    lat = -math.degrees(math.asin(gy))
 
-    # LONGITUDE: atan2(X, Z)
-    lon = math.degrees(math.atan2(vx, vz))
+    # LONGITUDE:
+    # rotation around the south-pole axis (gy)
+    # using gx (equator direction) and gz (forward/back along equator)
+    lon = math.degrees(math.atan2(gx, gz))
 
     return lat, lon
 
 
 # ======================================================
-#              Calibration (OPTION B)
+#              Calibration (OPTION A: manual)
 # ======================================================
 
-# Z axis points outward from the globe:
+# Z axis is the sensor's physical "outward" axis.
 sensor_axis = (0.0, 0.0, 1.0)
 
 # Identity quaternion
@@ -127,29 +164,40 @@ def quat_from_two_vectors(v_from, v_to):
 
 
 def calibrate(q_current):
+    """
+    Manual calibration (Option A):
+    Make the CURRENT pointing direction = (lat=0°, lon=0°).
+
+    That means:
+      - Whatever the globe is pointing at when you press 'c'
+        becomes the new geographic origin.
+    """
     global calibration_quat
 
     qc = quat_norm(q_current)
 
-    # Current pointing direction in world space
-    fwd_current = rotate_vector_by_quat(sensor_axis, qc)
+    # Current IMU-space pointing direction of +Z
+    fwd_imu = rotate_vector_by_quat(sensor_axis, qc)
 
-    mag = math.sqrt(sum(c*c for c in fwd_current))
+    # Convert to globe-space vector
+    fwd_globe = imu_vec_to_globe_vec(fwd_imu)
+
+    mag = math.sqrt(sum(c*c for c in fwd_globe))
     if mag == 0:
         print("Calibration failed (zero vector)")
         return
 
-    fwd_current = (
-        fwd_current[0] / mag,
-        fwd_current[1] / mag,
-        fwd_current[2] / mag
+    fwd_globe = (
+        fwd_globe[0] / mag,
+        fwd_globe[1] / mag,
+        fwd_globe[2] / mag,
     )
 
-    # Geographic target for (0°,0°):
-    target = (1.0, 0.0, 0.0)  # +X
+    # Target: +X in globe-space is our definition of (0°,0°)
+    target = (1.0, 0.0, 0.0)
 
-    # Build quaternion rotating current → target
-    q_align = quat_from_two_vectors(fwd_current, target)
+    # Quaternion rotating current globe direction → target
+    q_align = quat_from_two_vectors(fwd_globe, target)
 
     calibration_quat = q_align
 
@@ -169,7 +217,7 @@ def key_pressed():
 # ----------------------------
 def main_loop():
     global sensor
-    print("Running. Press 'c' to calibrate (OPTION B).")
+    print("Running. Press 'c' to calibrate (OPTION A: current direction -> 0°,0°).")
 
     while True:
         if key_pressed():
@@ -190,13 +238,16 @@ def main_loop():
             corrected_q = quat_mul(calibration_quat, raw_q)
             corrected_q = quat_norm(corrected_q)
 
-            # Compute world pointing direction
-            world_vec = rotate_vector_by_quat(sensor_axis, corrected_q)
+            # IMU-space forward vector
+            world_vec_imu = rotate_vector_by_quat(sensor_axis, corrected_q)
 
-            # DEBUG PRINT (important!)
-            print("WORLD_VEC:", world_vec)
+            # Convert to globe-space
+            world_vec_globe = imu_vec_to_globe_vec(world_vec_imu)
 
-            lat, lon = vector_to_latlon(world_vec)
+            # If you still want to debug:
+            # print("IMU_VEC:", world_vec_imu, "GLOBE_VEC:", world_vec_globe)
+
+            lat, lon = vector_to_latlon(world_vec_globe)
             if lat is None:
                 time.sleep(0.01)
                 continue
