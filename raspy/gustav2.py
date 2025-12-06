@@ -21,6 +21,7 @@ reset_pin.direction = digitalio.Direction.OUTPUT
 # ----------------------------
 i2c = busio.I2C(board.SCL, board.SDA)
 
+
 def init_sensor():
     print("Initializing BNO08X...")
 
@@ -33,6 +34,7 @@ def init_sensor():
     sensor.enable_feature(BNO_REPORT_ROTATION_VECTOR)
     return sensor
 
+
 sensor = init_sensor()
 
 # ----------------------------
@@ -42,6 +44,7 @@ def quat_conjugate(q):
     x, y, z, w = q
     return (-x, -y, -z, w)
 
+
 def quat_norm(q):
     x, y, z, w = q
     n = math.sqrt(x*x + y*y + z*z + w*w)
@@ -49,8 +52,6 @@ def quat_norm(q):
         return (0.0, 0.0, 0.0, 1.0)
     return (x/n, y/n, z/n, w/n)
 
-def invert_quat(q):
-    return quat_conjugate(q)
 
 def quat_mul(q1, q2):
     x1, y1, z1, w1 = q1
@@ -62,6 +63,7 @@ def quat_mul(q1, q2):
         w1*w2 - x1*x2 - y1*y2 - z1*z2,
     )
 
+
 def rotate_vector_by_quat(v, q):
     qn = quat_norm(q)
     vx, vy, vz = v
@@ -71,7 +73,7 @@ def rotate_vector_by_quat(v, q):
     return r[:3]
 
 # ----------------------------
-# Convert vector to lat/lon
+# Convert world vector → latitude/longitude
 # ----------------------------
 def vector_to_latlon(v):
     vx, vy, vz = v
@@ -83,54 +85,95 @@ def vector_to_latlon(v):
     vy /= mag
     vz /= mag
 
+    # Latitude = up/down tilt (Z axis)
     lat = math.degrees(math.asin(vz))
+
+    # Longitude = rotation around vertical axis
     lon = -math.degrees(math.atan2(vy, vx))
 
     return lat, lon
 
-# ----------------------------
-# CONFIG
-# ----------------------------
+
+# ============================================================
+#                  ABSOLUTE GEOGRAPHIC CALIBRATION
+# ============================================================
+
+# Z axis is the pointing direction (OUTWARD through globe)
 sensor_axis = (0.0, 0.0, 1.0)
+
+# calibration quaternion
 calibration_quat = (0, 0, 0, 1)
 
-# ----------------------------
-# Calibration
-# ----------------------------
+
+def quat_from_two_vectors(v_from, v_to):
+    fx, fy, fz = v_from
+    tx, ty, tz = v_to
+
+    # Cross product
+    cross = (
+        fy*tz - fz*ty,
+        fz*tx - fx*tz,
+        fx*ty - fy*tx,
+    )
+
+    # Dot product
+    dot = fx*tx + fy*ty + fz*tz
+
+    w = math.sqrt((fx*fx + fy*fy + fz*fz) *
+                  (tx*tx + ty*ty + tz*tz)) + dot
+
+    q = (cross[0], cross[1], cross[2], w)
+    return quat_norm(q)
+
+
 def calibrate(q_current):
+    """
+    FULL 3D calibration:
+    Make the CURRENT pointing direction = (0°, 0°).
+    """
     global calibration_quat
+
     qc = quat_norm(q_current)
 
+    # The direction the globe is currently pointing in world-space
     fwd_current = rotate_vector_by_quat(sensor_axis, qc)
-    fwd_mag = math.sqrt(sum(c*c for c in fwd_current))
-    if fwd_mag == 0:
-        print("Calibration failed: forward vector zero")
+
+    mag = math.sqrt(sum(c*c for c in fwd_current))
+    if mag == 0:
+        print("Calibration failed: forward vector zero.")
         return
-    fwd_current = tuple(c/fwd_mag for c in fwd_current)
 
-    angle = math.atan2(fwd_current[1], fwd_current[0])
+    fwd_current = (
+        fwd_current[0] / mag,
+        fwd_current[1] / mag,
+        fwd_current[2] / mag
+    )
 
-    sin_h = math.sin(-angle/2)
-    cos_h = math.cos(-angle/2)
-    calibration_quat = (0, 0, sin_h, cos_h)
+    # The direction representing geographic (0°,0°)
+    target = (1.0, 0.0, 0.0)  # X axis
 
-    print("\n🎯 Calibration set! Orientation now aligns to 0° lat / 0° lon.\n")
+    # Quaternion rotating current → target
+    q_align = quat_from_two_vectors(fwd_current, target)
+
+    calibration_quat = q_align
+
+    print("\n🎯 FULL 3D calibration complete — this direction is now (0°,0°)\n")
+
 
 # ----------------------------
 # Keyboard helper
 # ----------------------------
-import select
-
 def key_pressed():
     dr, _, _ = select.select([sys.stdin], [], [], 0)
     return dr != []
 
+
 # ----------------------------
-# Main loop (NO WEBSOCKET)
+# Main loop
 # ----------------------------
 def main_loop():
     global sensor
-    print("Running without WebSocket. Press 'c' to calibrate.\n")
+    print("Press 'c' to calibrate. Calibration sets current direction = (0°,0°).")
 
     while True:
         if key_pressed():
@@ -145,11 +188,15 @@ def main_loop():
                 continue
 
             raw_q = (x, y, z, w)
+
+            # Apply calibration
             corrected_q = quat_mul(calibration_quat, raw_q)
             corrected_q = quat_norm(corrected_q)
 
+            # Rotate the pointing axis
             world_vec = rotate_vector_by_quat(sensor_axis, corrected_q)
 
+            # Convert to lat/lon
             lat, lon = vector_to_latlon(world_vec)
             if lat is None:
                 time.sleep(0.01)
@@ -167,6 +214,7 @@ def main_loop():
         except Exception as e:
             print("Unexpected error:", e)
             time.sleep(0.2)
+
 
 # ----------------------------
 # Entry
