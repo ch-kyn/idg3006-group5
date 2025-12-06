@@ -15,7 +15,7 @@ from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR
 # ----------------------------
 # WebSocket config
 # ----------------------------
-WS_URI = "ws://10.22.62.39:8765"
+WS_URI = "ws://192.168.166.154:8765"
 
 # ----------------------------
 # RESET PIN
@@ -78,8 +78,8 @@ def normalize(v):
 # ----------------------------
 # CONFIG
 # ----------------------------
-forward_axis = (1.0, 0.0, 0.0)  # Sensor forward direction
-upward_axis = (0.0, 0.0, 1.0)   # Sensor upward direction
+forward_axis = (1.0, 0.0, 0.0)   # sensor forward direction
+upward_axis = (0.0, 0.0, 1.0)    # sensor upward direction
 calibration_quat = (0, 0, 0, 1)  # identity
 
 # ----------------------------
@@ -87,13 +87,12 @@ calibration_quat = (0, 0, 0, 1)  # identity
 # ----------------------------
 def calibrate(q_current):
     """
-    User presses 'c' while pointing at 0° lat / 0° lon.
-    We compute a correction quaternion so forward vector becomes (1,0,0).
+    User points at (lat, lon) = (0°, 0°)
     """
     global calibration_quat
     q_target = (0, 0, 0, 1)
     calibration_quat = quat_mul(invert_quat(q_current), q_target)
-    print("\n🎯 Calibration set! Orientation now aligns to 0° lat / 0° lon.\n")
+    print("\n🎯 Calibration set! You are now pointing at 0° lat / 0° lon.\n")
 
 # ----------------------------
 # Keyboard helper
@@ -107,12 +106,13 @@ def key_pressed():
 # ----------------------------
 async def send_coordinates():
     global sensor
+
     async with websockets.connect(WS_URI) as websocket:
         print("Connected to WebSocket server!")
 
         while True:
 
-            # Calibration
+            # Calibration check
             if key_pressed():
                 ch = sys.stdin.read(1)
                 if ch.lower() == "c":
@@ -130,18 +130,48 @@ async def send_coordinates():
                 # Apply calibration
                 corrected_q = quat_mul(calibration_quat, raw_q)
 
-                # Rotate sensor local axes into world space
+                # Rotate sensor axes
                 world_up = rotate_vector_by_quat(upward_axis, corrected_q)
                 world_forward = rotate_vector_by_quat(forward_axis, corrected_q)
 
                 world_up = normalize(world_up)
                 world_forward = normalize(world_forward)
 
-                # Latitude = device vertical tilt
-                lat = math.degrees(math.asin(world_up[2]))  # world_up.z
+                # ----------------------------
+                # Robust latitude computation
+                # ----------------------------
+                ux, uy, uz = world_up
+                horiz_mag = math.sqrt(ux*ux + uy*uy)
+                lat = math.degrees(math.atan2(uz, horiz_mag))  # robust
 
-                # Longitude = horizontal heading from forward vector
-                lon = math.degrees(math.atan2(world_forward[1], world_forward[0]))
+                # ----------------------------
+                # Robust longitude computation
+                # ----------------------------
+                fx, fy, fz = world_forward
+                proj_mag = math.sqrt(fx*fx + fy*fy)
+
+                if proj_mag > 1e-6:
+                    # Normal case
+                    lon = math.degrees(math.atan2(fy, fx))
+                else:
+                    # Forward vector is nearly vertical — fallback needed
+                    # Compute a horizontal "right" vector from cross product
+                    rx = world_forward[1]*world_up[2] - world_forward[2]*world_up[1]
+                    ry = world_forward[2]*world_up[0] - world_forward[0]*world_up[2]
+                    rz = world_forward[0]*world_up[1] - world_forward[1]*world_up[0]
+                    r = normalize((rx, ry, rz))
+
+                    # If still degenerate, fallback to world X reference
+                    if abs(r[0]) < 1e-6 and abs(r[1]) < 1e-6:
+                        r = normalize((1.0 - ux*ux, -ux*uy, 0.0))
+
+                    lon = math.degrees(math.atan2(r[1], r[0]))
+
+                # Normalize longitude to -180..180
+                if lon > 180:
+                    lon -= 360
+                elif lon < -180:
+                    lon += 360
 
                 msg = json.dumps({
                     "lat": round(lat, 3),
@@ -151,16 +181,16 @@ async def send_coordinates():
                 await websocket.send(msg)
                 print("Sent:", msg)
 
-                await asyncio.sleep(0.1)
+                await asyncio.sleep(0.05)
 
             except OSError:
                 print("\n⚠️ I2C error — resetting sensor…")
                 sensor = init_sensor()
-                await asyncio.sleep(0.2)
+                await asyncio.sleep(0.3)
 
             except Exception as e:
                 print("Unexpected error:", e)
-                await asyncio.sleep(0.2)
+                await asyncio.sleep(0.3)
 
 # ----------------------------
 # Entry
