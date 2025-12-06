@@ -37,11 +37,11 @@ def vectors_to_lat_lon(up, forward):
     uz = max(-1.0, min(1.0, uz))
     
     # Latitude: angle from equator plane (XY-plane)
-    latitude = math.degrees(math.asin(uz))
+    latitude = math.degrees(math.asin(-uz))
 
     # Longitude: projection of forward vector onto XY-plane
     lon_rad = math.atan2(fy, fx)
-    longitude = math.degrees(lon_rad)
+    longitude = math.degrees(-lon_rad)
 
     # Normalize longitude to -180..180
     if longitude > 180:
