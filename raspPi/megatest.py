@@ -175,7 +175,7 @@ async def send_coordinates():
                 await websocket.send(msg)
                 print("Sent:", msg)
 
-                await asyncio.sleep(0.1)  # ~10 Hz
+                await asyncio.sleep(1)  # ~10 Hz
 
             except OSError:
                 print("\n⚠️ I2C error — resetting sensor…")
