@@ -85,13 +85,19 @@ UP_VEC = (0, 1, 0)
 FORWARD_VEC = (0, 0, 1)
 
 def vectors_to_lat_lon(up, forward):
+    """
+    Compute geographic latitude and longitude from rotated UP and FORWARD vectors.
+    Latitude: north/south from UP vector Y
+    Longitude: east/west from FORWARD vector X/Z
+    """
+    ux, uy, uz = up
     fx, fy, fz = forward
 
     # Latitude: positive north, negative south
-    fy = max(-1.0, min(1.0, fy))
-    latitude = math.degrees(math.asin(fy))
+    uy = max(-1.0, min(1.0, uy))
+    latitude = math.degrees(math.asin(uy))
 
-    # Longitude: atan2 of X/Z for east/west
+    # Longitude: atan2 of X/Z from FORWARD vector for east/west heading
     longitude = math.degrees(math.atan2(fx, fz))
 
     # Normalize longitude
@@ -101,6 +107,7 @@ def vectors_to_lat_lon(up, forward):
         longitude += 360
 
     return latitude, longitude
+
 
 # ----------------------------
 # CONFIG
