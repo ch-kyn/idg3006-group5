@@ -68,7 +68,7 @@ def rotate_vector_by_quat(v, q):
     return quat_mul(quat_mul(q, vq), qc)[:3]
 
 # ----------------------------
-# Rotate vector function
+# Rotation helpers
 # ----------------------------
 def rotate_vector(quat, v):
     w, x, y, z = quat
@@ -78,29 +78,38 @@ def rotate_vector(quat, v):
     rz = 2*(x*z - w*y)*vx + 2*(y*z + w*x)*vy + (1 - 2*(x*x + y*y))*vz
     return rx, ry, rz
 
+def quat_from_axis_angle(axis, angle_deg):
+    angle_rad = math.radians(angle_deg) / 2
+    x, y, z = axis
+    s = math.sin(angle_rad)
+    w = math.cos(angle_rad)
+    return (x*s, y*s, z*s, w)
+
 # ----------------------------
-# Vectors to latitude/longitude
+# New: rotate and compute lat/lon using UP + FORWARD vectors
 # ----------------------------
-UP_VEC = (0, 1, 0)
-FORWARD_VEC = (0, 0, 1)
+UP_VEC = (0, 1, 0)       # points "up" on device
+FORWARD_VEC = (0, 0, 1)  # points "forward" on device
+
+# Sensor tilt (degrees)
+SENSOR_TILT_DEG = 70
+TILT_QUAT = quat_from_axis_angle((1, 0, 0), -SENSOR_TILT_DEG)  # negative tilt forward
 
 def vectors_to_lat_lon(up, forward):
-    """
-    Compute geographic latitude and longitude from rotated UP and FORWARD vectors.
-    Latitude: north/south from UP vector Y
-    Longitude: east/west from FORWARD vector X/Z
-    """
     ux, uy, uz = up
     fx, fy, fz = forward
 
-    # Latitude: positive north, negative south
-    uy = max(-1.0, min(1.0, uy))
-    latitude = math.degrees(math.asin(uy))
+    # Clamp uz to [-1,1] to avoid asin domain errors
+    uz = max(-1.0, min(1.0, uz))
 
-    # Longitude: atan2 of X/Z from FORWARD vector for east/west heading
-    longitude = math.degrees(math.atan2(fx, fz))
+    # Latitude: angle from equator plane (XY-plane)
+    latitude = math.degrees(math.asin(-uz))
 
-    # Normalize longitude
+    # Longitude: projection of forward vector onto XY-plane
+    lon_rad = math.atan2(fy, fx)
+    longitude = math.degrees(-lon_rad)
+
+    # Normalize longitude to -180..180
     if longitude > 180:
         longitude -= 360
     elif longitude < -180:
@@ -108,31 +117,26 @@ def vectors_to_lat_lon(up, forward):
 
     return latitude, longitude
 
-
 # ----------------------------
 # CONFIG
 # ----------------------------
-calibration_quat = (0, 0, 0, 1)
+calibration_quat = (0, 0, 0, 1)  # identity
 
+# ----------------------------
+# Calibration
+# ----------------------------
 def calibrate(q_current):
     global calibration_quat
     q_target = (0, 0, 0, 1)
     calibration_quat = quat_mul(invert_quat(q_current), q_target)
     print("\n🎯 Calibration set! Orientation now aligns to 0° lat / 0° lon.\n")
 
+# ----------------------------
+# Keyboard helper
+# ----------------------------
 def key_pressed():
     dr, dw, de = select.select([sys.stdin], [], [], 0)
     return dr != []
-
-# Offset latitude with proper polar wrap
-def offset_lat(lat, offset):
-    lat_new = lat + offset
-    while lat_new > 90 or lat_new < -90:
-        if lat_new > 90:
-            lat_new = 180 - lat_new  # reflect over north pole
-        elif lat_new < -90:
-            lat_new = -180 - lat_new  # reflect over south pole
-    return lat_new
 
 # ----------------------------
 # Main loop
@@ -143,27 +147,34 @@ async def send_coordinates():
         print("Connected to WebSocket server!")
 
         while True:
+            # Calibration trigger
             if key_pressed():
                 ch = sys.stdin.read(1)
                 if ch.lower() == "c":
                     calibrate(sensor.quaternion)
 
             try:
+                # Read quaternion
                 x, y, z, w = sensor.quaternion
                 if (x, y, z, w) == (0, 0, 0, 0):
                     await asyncio.sleep(0.01)
                     continue
 
                 raw_q = (x, y, z, w)
+
+                # Apply calibration
                 corrected_q = quat_mul(calibration_quat, raw_q)
 
+                # Rotate device-space reference vectors
                 up_world = rotate_vector(corrected_q, UP_VEC)
                 forward_world = rotate_vector(corrected_q, FORWARD_VEC)
 
-                lat, lon = vectors_to_lat_lon(up_world, forward_world)
+                # Apply tilt compensation
+                up_corrected = rotate_vector(TILT_QUAT, up_world)
+                forward_corrected = rotate_vector(TILT_QUAT, forward_world)
 
-                # Force latitude offset with proper hemisphere handling
-                lat = offset_lat(lat, 65)
+                # Compute latitude and longitude
+                lat, lon = vectors_to_lat_lon(up_corrected, forward_corrected)
 
                 msg = json.dumps({
                     "lat": round(lat, 3),
@@ -173,7 +184,7 @@ async def send_coordinates():
                 await websocket.send(msg)
                 print("Sent:", msg)
 
-                await asyncio.sleep(0.1)
+                await asyncio.sleep(0.1)  # ~10 Hz
 
             except OSError:
                 print("\n⚠️ I2C error — resetting sensor…")
