@@ -15,7 +15,7 @@ from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR
 # ----------------------------
 # WebSocket config
 # ----------------------------
-WS_URI = "ws://192.168.166.154:8765"
+WS_URI = "ws://10.22.62.39:8765"
 
 # ----------------------------
 # RESET PIN
@@ -68,13 +68,17 @@ def rotate_vector_by_quat(v, q):
     return quat_mul(quat_mul(q, vq), qc)[:3]
 
 # ----------------------------
-# Two-vector latitude/longitude calculation
+# New: rotate and compute lat/lon using UP + FORWARD vectors
 # ----------------------------
 UP_VEC = (0, 1, 0)       # points "up" on device
 FORWARD_VEC = (0, 0, 1)  # points "forward" on device
 
+lat_offset = 0.0
+lon_offset = 0.0
+
+
 def rotate_vector(quat, v):
-    w, x, y, z = quat
+    x, y, z, w = quat
     vx, vy, vz = v
     rx = (1 - 2*(y*y + z*z))*vx + 2*(x*y - w*z)*vy + 2*(x*z + w*y)*vz
     ry = 2*(x*y + w*z)*vx + (1 - 2*(x*x + z*z))*vy + 2*(y*z - w*x)*vz
@@ -104,18 +108,26 @@ def vectors_to_lat_lon(up, forward):
     return latitude, longitude
 
 # ----------------------------
-# Calibration
+# CONFIG
 # ----------------------------
 calibration_quat = (0, 0, 0, 1)  # identity
 
-def calibrate(q_current):
-    """
-    Calibrate both latitude and longitude.
-    Sets the current physical orientation to lat=0, lon=0.
-    """
-    global calibration_quat
-    calibration_quat = invert_quat(q_current)
-    print("\n🎯 Calibration set! Orientation now aligns to 0° lat / 0° lon.\n")
+# ----------------------------
+# Calibration
+# ----------------------------
+def calibrate(q_current, lat_measured, lon_measured):
+    global calibration_quat, lat_offset, lon_offset
+
+    # orientation calibration
+    q_target = (0, 0, 0, 1)
+    calibration_quat = quat_mul(invert_quat(q_current), q_target)
+
+    # coordinate offset calibration
+    lat_offset = -lat_measured
+    lon_offset = -lon_measured
+
+    print("\n🎯 Calibration complete!")
+    print(f"New offsets: lat_offset={lat_offset}, lon_offset={lon_offset}\n")
 
 # ----------------------------
 # Keyboard helper
@@ -128,17 +140,11 @@ def key_pressed():
 # Main loop
 # ----------------------------
 async def send_coordinates():
-    global sensor
+    global sensor, lat_offset, lon_offset
     async with websockets.connect(WS_URI) as websocket:
         print("Connected to WebSocket server!")
 
         while True:
-            # Calibration trigger
-            if key_pressed():
-                ch = sys.stdin.read(1)
-                if ch.lower() == "c":
-                    calibrate(sensor.quaternion)
-
             try:
                 # Read quaternion
                 x, y, z, w = sensor.quaternion
@@ -148,15 +154,30 @@ async def send_coordinates():
 
                 raw_q = (x, y, z, w)
 
-                # Apply calibration
+                # Apply calibration quaternion
                 corrected_q = quat_mul(calibration_quat, raw_q)
 
-                # Rotate device-space reference vectors
+                # Get world vectors
                 up_world = rotate_vector(corrected_q, UP_VEC)
                 forward_world = rotate_vector(corrected_q, FORWARD_VEC)
 
-                # Compute latitude and longitude
+                # Compute lat/lon
                 lat, lon = vectors_to_lat_lon(up_world, forward_world)
+
+                # Apply calibration offsets
+                lat += lat_offset
+                lon += lon_offset
+
+                # ----------------------------
+                # Handle calibration key here
+                # AFTER lat/lon have been computed
+                # ----------------------------
+                if key_pressed():
+                    ch = sys.stdin.read(1)
+                    if ch.lower() == "c":
+                        calibrate(raw_q, lat, lon)
+                        continue  # skip sending current sample
+                # ----------------------------
 
                 msg = json.dumps({
                     "lat": round(lat, 3),
@@ -166,7 +187,7 @@ async def send_coordinates():
                 await websocket.send(msg)
                 print("Sent:", msg)
 
-                await asyncio.sleep(0.1)  # ~10 Hz
+                await asyncio.sleep(0.1)
 
             except OSError:
                 print("\n⚠️ I2C error — resetting sensor…")
