@@ -44,13 +44,6 @@ sensor = init_sensor()
 # ----------------------------
 # Quaternion helpers
 # ----------------------------
-def quat_conjugate(q):
-    x, y, z, w = q
-    return (-x, -y, -z, w)
-
-def invert_quat(q):
-    return quat_conjugate(q)
-
 def quat_mul(q1, q2):
     x1, y1, z1, w1 = q1
     x2, y2, z2, w2 = q2
@@ -61,92 +54,82 @@ def quat_mul(q1, q2):
         w1*w2 - x1*x2 - y1*y2 - z1*z2,
     )
 
-def rotate_vector_by_quat(v, q):
+def quat_conjugate(q):
+    x, y, z, w = q
+    return (-x, -y, -z, w)
+
+def rotate_vector(q, v):
+    # q must be (x, y, z, w)
     vx, vy, vz = v
-    vq = (vx, vy, vz, 0.0)
-    qc = quat_conjugate(q)
-    return quat_mul(quat_mul(q, vq), qc)[:3]
+    vq = (vx, vy, vz, 0)
+    return quat_mul(quat_mul(q, vq), quat_conjugate(q))[:3]
 
 # ----------------------------
-# New: rotate and compute lat/lon using UP + FORWARD vectors
+# DEVICE ORIENTATION VECTORS
 # ----------------------------
-UP_VEC = (0, 1, 0)       # points "up" on device
-FORWARD_VEC = (0, 0, 1)  # points "forward" on device
+# Your sensor is rotated 90° LEFT
+# → OLD forward(+Z) becomes left(-X)
+# → OLD up(+Y) stays the same
+
+UP_VEC = (0, 1, 0)
+FORWARD_VEC = (-1, 0, 0)   # rotated 90° left
 
 lat_offset = 0.0
 lon_offset = 0.0
+calibration_quat = (0, 0, 0, 1)
 
-
-def rotate_vector(quat, v):
-    x, y, z, w = quat
-    vx, vy, vz = v
-    rx = (1 - 2*(y*y + z*z))*vx + 2*(x*y - w*z)*vy + 2*(x*z + w*y)*vz
-    ry = 2*(x*y + w*z)*vx + (1 - 2*(x*x + z*z))*vy + 2*(y*z - w*x)*vz
-    rz = 2*(x*z - w*y)*vx + 2*(y*z + w*x)*vy + (1 - 2*(x*x + y*y))*vz
-    return rx, ry, rz
-
+# ----------------------------
+# Convert vectors → lat/lon
+# ----------------------------
 def vectors_to_lat_lon(up, forward):
     ux, uy, uz = up
     fx, fy, fz = forward
 
-    # Clamp uz to [-1,1] to avoid asin domain errors
-    uz = max(-1.0, min(1.0, uz))
-
-    # Latitude: angle from equator plane (XY-plane)
+    uz = max(-1, min(1, uz))
     latitude = math.degrees(math.asin(-uz))
 
-    # Longitude: projection of forward vector onto XY-plane
     lon_rad = math.atan2(fy, fx)
-    longitude = math.degrees(-lon_rad)
+    longitude = -math.degrees(lon_rad)
 
-    # Normalize longitude to -180..180
-    if longitude > 180:
-        longitude -= 360
-    elif longitude < -180:
-        longitude += 360
+    if longitude > 180: longitude -= 360
+    if longitude < -180: longitude += 360
 
     return latitude, longitude
 
 # ----------------------------
-# CONFIG
-# ----------------------------
-calibration_quat = (0, 0, 0, 1)  # identity
-
-# ----------------------------
 # Calibration
 # ----------------------------
-def calibrate(q_current, lat_measured, lon_measured):
+def calibrate(q_current, lat_unoffset, lon_unoffset):
     global calibration_quat, lat_offset, lon_offset
 
-    # orientation calibration
-    q_target = (0, 0, 0, 1)
-    calibration_quat = quat_mul(invert_quat(q_current), q_target)
+    # Make current orientation be identity
+    calibration_quat = quat_conjugate(q_current)
 
-    # coordinate offset calibration
-    lat_offset = -lat_measured
-    lon_offset = -lon_measured
+    # Adjust offsets so current pointing becomes (0,0)
+    lat_offset = -lat_unoffset
+    lon_offset = -lon_unoffset
 
     print("\n🎯 Calibration complete!")
-    print(f"New offsets: lat_offset={lat_offset}, lon_offset={lon_offset}\n")
+    print(f"lat_offset={lat_offset}, lon_offset={lon_offset}\n")
 
 # ----------------------------
 # Keyboard helper
 # ----------------------------
 def key_pressed():
-    dr, dw, de = select.select([sys.stdin], [], [], 0)
-    return dr != []
+    dr, _, _ = select.select([sys.stdin], [], [], 0)
+    return bool(dr)
 
 # ----------------------------
 # Main loop
 # ----------------------------
 async def send_coordinates():
-    global sensor, lat_offset, lon_offset
+    global sensor
+
     async with websockets.connect(WS_URI) as websocket:
         print("Connected to WebSocket server!")
 
         while True:
             try:
-                # Read quaternion
                 x, y, z, w = sensor.quaternion
                 if (x, y, z, w) == (0, 0, 0, 0):
                     await asyncio.sleep(0.01)
@@ -157,27 +140,25 @@ async def send_coordinates():
                 # Apply calibration quaternion
                 corrected_q = quat_mul(calibration_quat, raw_q)
 
-                # Get world vectors
-                up_world = rotate_vector(corrected_q, UP_VEC)
-                forward_world = rotate_vector(corrected_q, FORWARD_VEC)
+                # Rotate the UP and FORWARD vectors into world space
+                up_w = rotate_vector(corrected_q, UP_VEC)
+                forward_w = rotate_vector(corrected_q, FORWARD_VEC)
 
-                # Compute lat/lon
-                lat, lon = vectors_to_lat_lon(up_world, forward_world)
+                # Convert to lat/lon
+                lat, lon = vectors_to_lat_lon(up_w, forward_w)
 
-                # Apply calibration offsets
+                # Apply zero-point offsets
+                lat_unoffset = lat
+                lon_unoffset = lon
                 lat += lat_offset
                 lon += lon_offset
 
-                # ----------------------------
-                # Handle calibration key here
-                # AFTER lat/lon have been computed
-                # ----------------------------
+                # Handle calibration key AFTER computing coords
                 if key_pressed():
                     ch = sys.stdin.read(1)
                     if ch.lower() == "c":
-                        calibrate(raw_q, lat, lon)
-                        continue  # skip sending current sample
-                # ----------------------------
+                        calibrate(corrected_q, lat_unoffset, lon_unoffset)
+                        continue
 
                 msg = json.dumps({
                     "lat": round(lat, 3),
@@ -193,6 +174,7 @@ async def send_coordinates():
                 print("\n⚠️ I2C error — resetting sensor…")
                 sensor = init_sensor()
                 await asyncio.sleep(0.2)
+
             except Exception as e:
                 print("Unexpected error:", e)
                 await asyncio.sleep(0.2)
