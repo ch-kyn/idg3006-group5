@@ -69,22 +69,6 @@ def rotate_vector(quat, v):
     rz = 2*(x*z - w*y)*vx + 2*(y*z + w*x)*vy + (1 - 2*(x*x + y*y))*vz
     return rx, ry, rz
 
-def dot(a, b):
-    return a[0]*b[0] + a[1]*b[1] + a[2]*b[2]
-
-def cross(a, b):
-    return (
-        a[1]*b[2] - a[2]*b[1],
-        a[2]*b[0] - a[0]*b[2],
-        a[0]*b[1] - a[1]*b[0],
-    )
-
-def normalize(v):
-    mag = math.sqrt(v[0]**2 + v[1]**2 + v[2]**2)
-    if mag == 0:
-        return (0,0,0)
-    return (v[0]/mag, v[1]/mag, v[2]/mag)
-
 # ----------------------------
 # Reference vectors
 # ----------------------------
@@ -97,21 +81,16 @@ lat_offset = 0.0
 lon_offset = 0.0
 
 # ----------------------------
-# Stable lat/lon computation
+# Lat/Lon computation
 # ----------------------------
-def compute_lat_lon(up_world, forward_world):
-    # latitude from up vector
-    lat = math.degrees(math.asin(up_world[2]))
+def vectors_to_lat_lon(up, forward):
+    # latitude from up vector z-component
+    ux, uy, uz = up
+    lat = math.degrees(math.asin(-uz))
 
-    # define east/north in plane perpendicular to up_world
-    world_up = (0,0,1)
-    east = normalize(cross(world_up, up_world))
-    north = cross(up_world, east)
-
-    # longitude = angle of forward in north/east plane
-    lon = math.degrees(math.atan2(dot(forward_world, east), dot(forward_world, north)))
-
-    # normalize longitude
+    # longitude from forward vector projected onto XY-plane
+    fx, fy, fz = forward
+    lon = math.degrees(math.atan2(fy, fx))
     if lon > 180: lon -= 360
     if lon < -180: lon += 360
 
@@ -122,14 +101,9 @@ def compute_lat_lon(up_world, forward_world):
 # ----------------------------
 def calibrate(raw_q, lat_measured, lon_measured):
     global calibration_quat, lat_offset, lon_offset
-
-    # orientation calibration
     calibration_quat = quat_mul(invert_quat(raw_q), (0,0,0,1))
-
-    # lat/lon offset calibration
     lat_offset = -lat_measured
     lon_offset = -lon_measured
-
     print("\n🎯 Calibration complete!")
     print(f"lat_offset={lat_offset}, lon_offset={lon_offset}\n")
 
@@ -156,21 +130,21 @@ async def send_coordinates():
                     continue
                 raw_q = (x,y,z,w)
 
-                # apply calibration quaternion
+                # Apply calibration
                 corrected_q = quat_mul(calibration_quat, raw_q)
 
-                # rotate reference vectors
+                # Rotate reference vectors
                 up_world = rotate_vector(corrected_q, UP_VEC)
                 forward_world = rotate_vector(corrected_q, FORWARD_VEC)
 
-                # compute lat/lon
-                lat_unoffset, lon_unoffset = compute_lat_lon(up_world, forward_world)
+                # Compute lat/lon
+                lat, lon = vectors_to_lat_lon(up_world, forward_world)
 
-                # apply calibration offsets
-                lat = lat_unoffset + lat_offset
-                lon = lon_unoffset + lon_offset
+                # Apply offsets
+                lat += lat_offset
+                lon += lon_offset
 
-                # handle calibration key after computing lat/lon
+                # Handle calibration key
                 if key_pressed():
                     ch = sys.stdin.read(1)
                     if ch.lower() == "c":
