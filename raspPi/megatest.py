@@ -61,15 +61,6 @@ def quat_mul(q1, q2):
         w1*w2 - x1*x2 - y1*y2 - z1*z2,
     )
 
-def rotate_vector_by_quat(v, q):
-    vx, vy, vz = v
-    vq = (vx, vy, vz, 0.0)
-    qc = quat_conjugate(q)
-    return quat_mul(quat_mul(q, vq), qc)[:3]
-
-# ----------------------------
-# Rotation helpers
-# ----------------------------
 def rotate_vector(quat, v):
     w, x, y, z = quat
     vx, vy, vz = v
@@ -86,15 +77,18 @@ def quat_from_axis_angle(axis, angle_deg):
     return (x*s, y*s, z*s, w)
 
 # ----------------------------
-# New: rotate and compute lat/lon using UP + FORWARD vectors
+# Reference vectors
 # ----------------------------
-UP_VEC = (0, 1, 0)       # points "up" on device
-FORWARD_VEC = (0, 0, 1)  # points "forward" on device
+UP_VEC = (0, 1, 0)       # "up" on device
+FORWARD_VEC = (0, 0, 1)  # "forward" on device
 
 # Sensor tilt (degrees)
 SENSOR_TILT_DEG = 70
 TILT_QUAT = quat_from_axis_angle((1, 0, 0), -SENSOR_TILT_DEG)  # negative tilt forward
 
+# ----------------------------
+# Convert vectors to lat/lon
+# ----------------------------
 def vectors_to_lat_lon(up, forward):
     ux, uy, uz = up
     fx, fy, fz = forward
@@ -118,13 +112,10 @@ def vectors_to_lat_lon(up, forward):
     return latitude, longitude
 
 # ----------------------------
-# CONFIG
-# ----------------------------
-calibration_quat = (0, 0, 0, 1)  # identity
-
-# ----------------------------
 # Calibration
 # ----------------------------
+calibration_quat = (0, 0, 0, 1)
+
 def calibrate(q_current):
     global calibration_quat
     q_target = (0, 0, 0, 1)
@@ -165,16 +156,16 @@ async def send_coordinates():
                 # Apply calibration
                 corrected_q = quat_mul(calibration_quat, raw_q)
 
-                # Rotate device-space reference vectors
-                up_world = rotate_vector(corrected_q, UP_VEC)
-                forward_world = rotate_vector(corrected_q, FORWARD_VEC)
+                # --- Apply tilt in local device frame ---
+                up_tilted = rotate_vector(TILT_QUAT, UP_VEC)
+                forward_tilted = rotate_vector(TILT_QUAT, FORWARD_VEC)
 
-                # Apply tilt compensation
-                up_corrected = rotate_vector(TILT_QUAT, up_world)
-                forward_corrected = rotate_vector(TILT_QUAT, forward_world)
+                # Rotate into world coordinates
+                up_world = rotate_vector(corrected_q, up_tilted)
+                forward_world = rotate_vector(corrected_q, forward_tilted)
 
                 # Compute latitude and longitude
-                lat, lon = vectors_to_lat_lon(up_corrected, forward_corrected)
+                lat, lon = vectors_to_lat_lon(up_world, forward_world)
 
                 msg = json.dumps({
                     "lat": round(lat, 3),
