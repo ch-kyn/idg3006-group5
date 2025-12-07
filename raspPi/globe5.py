@@ -113,6 +113,23 @@ def key_pressed():
     dr, dw, de = select.select([sys.stdin], [], [], 0)
     return dr != []
 
+#offset function (60 degrees)
+def offset_lat(lat, offset):
+    """
+    Add an offset to latitude, correctly wrapping over the poles
+    and keeping movement consistent south or north.
+    """
+    lat_new = lat + offset
+
+    while lat_new > 90 or lat_new < -90:
+        if lat_new > 90:
+            lat_new = 180 - lat_new  # reflect over north pole
+        elif lat_new < -90:
+            lat_new = -180 - lat_new  # reflect over south pole
+
+    return lat_new
+
+
 # ----------------------------
 # Main loop
 # ----------------------------
@@ -145,12 +162,7 @@ async def send_coordinates():
                 # ⭐ TEST OFFSET — force lat + 65 degrees
                 # -------------------------------------
            # Force lat + 65 degrees with proper polar wrap
-                lat = lat + 65
-                
-                if lat > 90:
-                    lat = 180 - lat
-                elif lat < -90:
-                    lat = -180 - lat
+                lat = offset_lat(lat, 65)
                 # -------------------------------------
 
                 msg = json.dumps({
