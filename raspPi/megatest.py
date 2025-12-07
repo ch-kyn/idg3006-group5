@@ -68,11 +68,8 @@ def rotate_vector_by_quat(v, q):
     return quat_mul(quat_mul(q, vq), qc)[:3]
 
 # ----------------------------
-# Rotate vectors using quaternion
+# Rotate vector function
 # ----------------------------
-UP_VEC = (0, 1, 0)
-FORWARD_VEC = (0, 0, 1)
-
 def rotate_vector(quat, v):
     w, x, y, z = quat
     vx, vy, vz = v
@@ -81,17 +78,23 @@ def rotate_vector(quat, v):
     rz = 2*(x*z - w*y)*vx + 2*(y*z + w*x)*vy + (1 - 2*(x*x + y*y))*vz
     return rx, ry, rz
 
+# ----------------------------
+# Vectors to latitude/longitude
+# ----------------------------
+UP_VEC = (0, 1, 0)
+FORWARD_VEC = (0, 0, 1)
+
 def vectors_to_lat_lon(up, forward):
-    ux, uy, uz = up
     fx, fy, fz = forward
 
-    # Clamp for numerical stability
-    uz = max(-1.0, min(1.0, uz))
-    latitude = math.degrees(math.asin(-uz))
+    # Latitude: positive north, negative south
+    fy = max(-1.0, min(1.0, fy))
+    latitude = math.degrees(math.asin(fy))
 
-    lon_rad = math.atan2(fy, fx)
-    longitude = math.degrees(-lon_rad)
+    # Longitude: atan2 of X/Z for east/west
+    longitude = math.degrees(math.atan2(fx, fz))
 
+    # Normalize longitude
     if longitude > 180:
         longitude -= 360
     elif longitude < -180:
@@ -100,7 +103,7 @@ def vectors_to_lat_lon(up, forward):
     return latitude, longitude
 
 # ----------------------------
-# Calibration
+# CONFIG
 # ----------------------------
 calibration_quat = (0, 0, 0, 1)
 
@@ -114,23 +117,15 @@ def key_pressed():
     dr, dw, de = select.select([sys.stdin], [], [], 0)
     return dr != []
 
-# ----------------------------
-# Latitude offset helper
-# ----------------------------
-def offset_lat(lat, offset_deg):
-    """
-    Add an offset to latitude smoothly while handling poles correctly.
-    """
-    # Convert latitude to colatitude (0 at north pole, 180 at south)
-    colat = 90 - lat
-    # Subtract offset (positive offset moves north)
-    colat -= offset_deg
-    # Wrap colatitude properly
-    colat = colat % 360
-    if colat > 180:
-        colat = 360 - colat
-    # Convert back to latitude
-    return 90 - colat
+# Offset latitude with proper polar wrap
+def offset_lat(lat, offset):
+    lat_new = lat + offset
+    while lat_new > 90 or lat_new < -90:
+        if lat_new > 90:
+            lat_new = 180 - lat_new  # reflect over north pole
+        elif lat_new < -90:
+            lat_new = -180 - lat_new  # reflect over south pole
+    return lat_new
 
 # ----------------------------
 # Main loop
@@ -160,11 +155,8 @@ async def send_coordinates():
 
                 lat, lon = vectors_to_lat_lon(up_world, forward_world)
 
-                # -------------------------------------
-                # Force latitude offset (test hack)
-                # -------------------------------------
+                # Force latitude offset with proper hemisphere handling
                 lat = offset_lat(lat, 65)
-                # -------------------------------------
 
                 msg = json.dumps({
                     "lat": round(lat, 3),
