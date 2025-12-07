@@ -34,7 +34,6 @@ def init_sensor():
     time.sleep(0.01)
     reset_pin.value = True
     time.sleep(0.25)
-
     sensor = BNO08X_I2C(i2c, address=0x4A)
     sensor.enable_feature(BNO_REPORT_ROTATION_VECTOR)
     return sensor
@@ -42,7 +41,7 @@ def init_sensor():
 sensor = init_sensor()
 
 # ----------------------------
-# Quaternion helpers
+# Quaternion helpers (q = (x,y,z,w))
 # ----------------------------
 def quat_mul(q1, q2):
     x1, y1, z1, w1 = q1
@@ -59,58 +58,56 @@ def quat_conjugate(q):
     return (-x, -y, -z, w)
 
 def rotate_vector(q, v):
-    # q must be (x, y, z, w)
+    # rotate vector v by quaternion q (q is x,y,z,w)
     vx, vy, vz = v
-    vq = (vx, vy, vz, 0)
-    return quat_mul(quat_mul(q, vq), quat_conjugate(q))[:3]
+    vq = (vx, vy, vz, 0.0)
+    tmp = quat_mul(q, vq)
+    res = quat_mul(tmp, quat_conjugate(q))
+    return res[:3]
 
 # ----------------------------
-# DEVICE ORIENTATION VECTORS
+# Device vectors (adjust if your mounting differs)
 # ----------------------------
-# Your sensor is rotated 90° LEFT
-# → OLD forward(+Z) becomes left(-X)
-# → OLD up(+Y) stays the same
+UP_VEC = (0, 1, 0)        # device "up"
+FORWARD_VEC = (0, 0, 1)  # device "forward" after your 90° left mounting
 
-UP_VEC = (0, 1, 0)
-FORWARD_VEC = (-1, 0, 0)   # rotated 90° left
-
+# Calibration state
 lat_offset = 0.0
 lon_offset = 0.0
 calibration_quat = (0, 0, 0, 1)
 
 # ----------------------------
-# Convert vectors → lat/lon
+# Convert world up/forward vectors -> lat/lon (un-offset)
 # ----------------------------
 def vectors_to_lat_lon(up, forward):
     ux, uy, uz = up
     fx, fy, fz = forward
 
-    uz = max(-1, min(1, uz))
-    latitude = math.degrees(math.asin(-uz))
+    uz = max(-1.0, min(1.0, uz))
+    lat = math.degrees(math.asin(-uz))
 
     lon_rad = math.atan2(fy, fx)
-    longitude = -math.degrees(lon_rad)
+    lon = -math.degrees(lon_rad)
 
-    if longitude > 180: longitude -= 360
-    if longitude < -180: longitude += 360
+    # normalize lon to [-180, 180)
+    lon = (lon + 180.0) % 360.0 - 180.0
 
-    return latitude, longitude
+    return lat, lon
 
 # ----------------------------
-# Calibration
+# Calibration (uses corrected quaternion and un-offset lat/lon)
 # ----------------------------
 def calibrate(q_current, lat_unoffset, lon_unoffset):
     global calibration_quat, lat_offset, lon_offset
-
-    # Make current orientation be identity
+    # make current orientation identity (so quat_mul(calibration_quat, q_current) ~= identity)
     calibration_quat = quat_conjugate(q_current)
-
-    # Adjust offsets so current pointing becomes (0,0)
+    # coordinate offsets so the present un-offset lat/lon become (0,0)
     lat_offset = -lat_unoffset
     lon_offset = -lon_unoffset
-
+    # normalize lon_offset into [-180,180)
+    lon_offset = (lon_offset + 180.0) % 360.0 - 180.0
     print("\n🎯 Calibration complete!")
-    print(f"lat_offset={lat_offset}, lon_offset={lon_offset}\n")
+    print(f"lat_offset={lat_offset:.6f}, lon_offset={lon_offset:.6f}\n")
 
 # ----------------------------
 # Keyboard helper
@@ -123,42 +120,50 @@ def key_pressed():
 # Main loop
 # ----------------------------
 async def send_coordinates():
-    global sensor
-
+    global sensor, lat_offset, lon_offset, calibration_quat
     async with websockets.connect(WS_URI) as websocket:
         print("Connected to WebSocket server!")
 
         while True:
             try:
+                # read quaternion from sensor (x,y,z,w)
                 x, y, z, w = sensor.quaternion
                 if (x, y, z, w) == (0, 0, 0, 0):
                     await asyncio.sleep(0.01)
                     continue
-
                 raw_q = (x, y, z, w)
 
-                # Apply calibration quaternion
+                # apply calibration quaternion to bring current orientation to our reference frame
                 corrected_q = quat_mul(calibration_quat, raw_q)
 
-                # Rotate the UP and FORWARD vectors into world space
-                up_w = rotate_vector(corrected_q, UP_VEC)
-                forward_w = rotate_vector(corrected_q, FORWARD_VEC)
+                # rotate device reference vectors into world
+                up_world = rotate_vector(corrected_q, UP_VEC)
+                forward_world = rotate_vector(corrected_q, FORWARD_VEC)
 
-                # Convert to lat/lon
-                lat, lon = vectors_to_lat_lon(up_w, forward_w)
+                # compute un-offset lat/lon
+                lat_unoffset, lon_unoffset = vectors_to_lat_lon(up_world, forward_world)
 
-                # Apply zero-point offsets
-                lat_unoffset = lat
-                lon_unoffset = lon
-                lat += lat_offset
-                lon += lon_offset
-
-                # Handle calibration key AFTER computing coords
+                # BEFORE applying offsets, allow calibration if user pressed C
                 if key_pressed():
                     ch = sys.stdin.read(1)
                     if ch.lower() == "c":
+                        # debug info printed for you
+                        print("DEBUG (pre-cal): up_world =", [round(v,4) for v in up_world],
+                              "forward_world =", [round(v,4) for v in forward_world])
+                        print("DEBUG (pre-cal): lat_unoffset =", round(lat_unoffset,6),
+                              "lon_unoffset =", round(lon_unoffset,6))
                         calibrate(corrected_q, lat_unoffset, lon_unoffset)
-                        continue
+                        continue  # skip sending this sample
+
+                # apply offsets
+                lat = lat_unoffset + lat_offset
+                lon = lon_unoffset + lon_offset
+
+                # normalize longitude after applying offsets to avoid large values
+                lon = (lon + 180.0) % 360.0 - 180.0
+
+                # clamp latitude strictly to [-90,90] for safety
+                lat = max(-90.0, min(90.0, lat))
 
                 msg = json.dumps({
                     "lat": round(lat, 3),
@@ -174,7 +179,6 @@ async def send_coordinates():
                 print("\n⚠️ I2C error — resetting sensor…")
                 sensor = init_sensor()
                 await asyncio.sleep(0.2)
-
             except Exception as e:
                 print("Unexpected error:", e)
                 await asyncio.sleep(0.2)
