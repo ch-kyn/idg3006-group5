@@ -61,34 +61,6 @@ def quat_mul(q1, q2):
         w1*w2 - x1*x2 - y1*y2 - z1*z2,
     )
 
-def rotate_vector_by_quat(v, q):
-    vx, vy, vz = v
-    vq = (vx, vy, vz, 0.0)
-    qc = quat_conjugate(q)
-    return quat_mul(quat_mul(q, vq), qc)[:3]
-
-# ----------------------------
-# Device-space reference vectors
-# ----------------------------
-UP_VEC = (0, 1, 0)       # points "up" on device
-FORWARD_VEC = (0, 0, 1)  # points "forward" on device
-
-# ----------------------------
-# Calibration offsets
-# ----------------------------
-lat_offset = 0.0
-lon_offset = 0.0
-
-def calibrate(lat_measured, lon_measured):
-    """Set current lat/lon as 0,0 for future readings"""
-    global lat_offset, lon_offset
-    lat_offset = -lat_measured
-    lon_offset = -lon_measured
-    print(f"\n🎯 Calibration complete! lat_offset={lat_offset}, lon_offset={lon_offset}\n")
-
-# ----------------------------
-# Rotate vector by quaternion
-# ----------------------------
 def rotate_vector(quat, v):
     w, x, y, z = quat
     vx, vy, vz = v
@@ -98,7 +70,13 @@ def rotate_vector(quat, v):
     return rx, ry, rz
 
 # ----------------------------
-# Compute lat/lon from up/forward vectors
+# Device reference vectors
+# ----------------------------
+UP_VEC = (0, 1, 0)       # points "up" on device
+FORWARD_VEC = (0, 0, 1)  # points "forward" on device
+
+# ----------------------------
+# Lat/Lon calculation
 # ----------------------------
 def vectors_to_lat_lon(up, forward):
     ux, uy, uz = up
@@ -123,16 +101,31 @@ def vectors_to_lat_lon(up, forward):
     return latitude, longitude
 
 # ----------------------------
-# Orientation calibration quaternion
+# Calibration
 # ----------------------------
-calibration_quat = (0, 0, 0, 1)  # identity
+calibration_quat = (0, 0, 0, 1)
+lat_offset = 0.0
+lon_offset = 0.0
 
-def calibrate_orientation(q_current):
-    """Calibrate device orientation to zero rotation"""
-    global calibration_quat
-    q_target = (0, 0, 0, 1)
-    calibration_quat = quat_mul(invert_quat(q_current), q_target)
-    print("\n🎯 Orientation calibration complete!\n")
+def calibrate(q_current, lat, lon):
+    global calibration_quat, lat_offset, lon_offset
+    # Orientation calibration
+    calibration_quat = quat_mul(invert_quat(q_current), (0, 0, 0, 1))
+    # Coordinate offsets: set current point to 0,0
+    lat_offset = -lat
+    lon_offset = -lon
+    print("\n🎯 Calibration complete! lat_offset={:.6f}, lon_offset={:.6f}\n".format(lat_offset, lon_offset))
+
+def apply_offsets(lat, lon):
+    """Apply lat/lon offsets and wrap longitude properly"""
+    lat += lat_offset
+    lon += lon_offset
+    # Wrap longitude to -180..180
+    while lon > 180:
+        lon -= 360
+    while lon < -180:
+        lon += 360
+    return lat, lon
 
 # ----------------------------
 # Keyboard helper
@@ -142,7 +135,7 @@ def key_pressed():
     return dr != []
 
 # ----------------------------
-# Main loop
+# Main async loop
 # ----------------------------
 async def send_coordinates():
     global sensor
@@ -156,39 +149,30 @@ async def send_coordinates():
                 if (x, y, z, w) == (0, 0, 0, 0):
                     await asyncio.sleep(0.01)
                     continue
-
                 raw_q = (x, y, z, w)
 
-                # Apply orientation calibration
+                # Apply calibration quaternion
                 corrected_q = quat_mul(calibration_quat, raw_q)
 
-                # Get world vectors
+                # Rotate reference vectors
                 up_world = rotate_vector(corrected_q, UP_VEC)
                 forward_world = rotate_vector(corrected_q, FORWARD_VEC)
 
-                # Compute latitude and longitude
+                # Compute lat/lon
                 lat, lon = vectors_to_lat_lon(up_world, forward_world)
 
-                # Apply calibration offsets
-                lat += lat_offset
-                lon += lon_offset
+                # Apply offsets with proper longitude wrapping
+                lat, lon = apply_offsets(lat, lon)
 
-                # ----------------------------
-                # Handle calibration key AFTER computing lat/lon
-                # ----------------------------
+                # Handle calibration key
                 if key_pressed():
                     ch = sys.stdin.read(1)
                     if ch.lower() == "c":
-                        calibrate_orientation(raw_q)  # keep current orientation as zero
-                        calibrate(lat, lon)           # set current lat/lon as zero
-                        continue  # skip sending current sample
-                # ----------------------------
+                        calibrate(raw_q, lat, lon)
+                        continue  # skip sending this sample
 
-                msg = json.dumps({
-                    "lat": round(lat, 3),
-                    "lon": round(lon, 3),
-                })
-
+                # Send coordinates
+                msg = json.dumps({"lat": round(lat, 3), "lon": round(lon, 3)})
                 await websocket.send(msg)
                 print("Sent:", msg)
 
