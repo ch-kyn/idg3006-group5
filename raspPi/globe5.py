@@ -144,12 +144,13 @@ async def send_coordinates():
                 # -------------------------------------
                 # ⭐ TEST OFFSET — force lat + 65 degrees
                 # -------------------------------------
+           # Force lat + 65 degrees with proper polar wrap
                 lat = lat + 65
-                if lat > 65:
-                    lat = lat - (lat + 65)
-                if lat > 180: lat -= 360
-                if lat < -180: lat += 360
                 
+                if lat > 90:
+                    lat = 180 - lat
+                elif lat < -90:
+                    lat = -180 - lat
                 # -------------------------------------
 
                 msg = json.dumps({
