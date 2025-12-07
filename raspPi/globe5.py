@@ -34,6 +34,7 @@ def init_sensor():
     time.sleep(0.01)
     reset_pin.value = True
     time.sleep(0.25)
+
     sensor = BNO08X_I2C(i2c, address=0x4A)
     sensor.enable_feature(BNO_REPORT_ROTATION_VECTOR)
     return sensor
@@ -41,8 +42,15 @@ def init_sensor():
 sensor = init_sensor()
 
 # ----------------------------
-# Quaternion helpers (q = (x,y,z,w))
+# Quaternion helpers
 # ----------------------------
+def quat_conjugate(q):
+    x, y, z, w = q
+    return (-x, -y, -z, w)
+
+def invert_quat(q):
+    return quat_conjugate(q)
+
 def quat_mul(q1, q2):
     x1, y1, z1, w1 = q1
     x2, y2, z2, w2 = q2
@@ -53,123 +61,126 @@ def quat_mul(q1, q2):
         w1*w2 - x1*x2 - y1*y2 - z1*z2,
     )
 
-def quat_conjugate(q):
-    x, y, z, w = q
-    return (-x, -y, -z, w)
-
-def rotate_vector(q, v):
-    # rotate vector v by quaternion q (q is x,y,z,w)
+def rotate_vector(quat, v):
+    x, y, z, w = quat
     vx, vy, vz = v
-    vq = (vx, vy, vz, 0.0)
-    tmp = quat_mul(q, vq)
-    res = quat_mul(tmp, quat_conjugate(q))
-    return res[:3]
+    rx = (1 - 2*(y*y + z*z))*vx + 2*(x*y - w*z)*vy + 2*(x*z + w*y)*vz
+    ry = 2*(x*y + w*z)*vx + (1 - 2*(x*x + z*z))*vy + 2*(y*z - w*x)*vz
+    rz = 2*(x*z - w*y)*vx + 2*(y*z + w*x)*vy + (1 - 2*(x*x + y*y))*vz
+    return rx, ry, rz
+
+def dot(a, b):
+    return a[0]*b[0] + a[1]*b[1] + a[2]*b[2]
+
+def cross(a, b):
+    return (
+        a[1]*b[2] - a[2]*b[1],
+        a[2]*b[0] - a[0]*b[2],
+        a[0]*b[1] - a[1]*b[0],
+    )
+
+def normalize(v):
+    mag = math.sqrt(v[0]**2 + v[1]**2 + v[2]**2)
+    if mag == 0:
+        return (0,0,0)
+    return (v[0]/mag, v[1]/mag, v[2]/mag)
 
 # ----------------------------
-# Device vectors (adjust if your mounting differs)
+# Reference vectors
 # ----------------------------
-UP_VEC = (0, 1, 0)        # device "up"
-FORWARD_VEC = (0, 0, 1)  # device "forward" after your 90° left mounting
+UP_VEC = (0, 1, 0)       # up on device
+FORWARD_VEC = (0, 0, 1)  # forward on device
 
-# Calibration state
+# Calibration offsets
+calibration_quat = (0,0,0,1)
 lat_offset = 0.0
 lon_offset = 0.0
-calibration_quat = (0, 0, 0, 1)
 
 # ----------------------------
-# Convert world up/forward vectors -> lat/lon (un-offset)
+# Stable lat/lon computation
 # ----------------------------
-def vectors_to_lat_lon(up, forward):
-    ux, uy, uz = up
-    fx, fy, fz = forward
+def compute_lat_lon(up_world, forward_world):
+    # latitude from up vector
+    lat = math.degrees(math.asin(up_world[2]))
 
-    uz = max(-1.0, min(1.0, uz))
-    lat = math.degrees(math.asin(-uz))
+    # define east/north in plane perpendicular to up_world
+    world_up = (0,0,1)
+    east = normalize(cross(world_up, up_world))
+    north = cross(up_world, east)
 
-    lon_rad = math.atan2(fy, fx)
-    lon = -math.degrees(lon_rad)
+    # longitude = angle of forward in north/east plane
+    lon = math.degrees(math.atan2(dot(forward_world, east), dot(forward_world, north)))
 
-    # normalize lon to [-180, 180)
-    lon = (lon + 180.0) % 360.0 - 180.0
+    # normalize longitude
+    if lon > 180: lon -= 360
+    if lon < -180: lon += 360
 
     return lat, lon
 
 # ----------------------------
-# Calibration (uses corrected quaternion and un-offset lat/lon)
+# Calibration
 # ----------------------------
-def calibrate(q_current, lat_unoffset, lon_unoffset):
+def calibrate(raw_q, lat_measured, lon_measured):
     global calibration_quat, lat_offset, lon_offset
-    # make current orientation identity (so quat_mul(calibration_quat, q_current) ~= identity)
-    calibration_quat = quat_conjugate(q_current)
-    # coordinate offsets so the present un-offset lat/lon become (0,0)
-    lat_offset = -lat_unoffset
-    lon_offset = -lon_unoffset
-    # normalize lon_offset into [-180,180)
-    lon_offset = (lon_offset + 180.0) % 360.0 - 180.0
+
+    # orientation calibration
+    calibration_quat = quat_mul(invert_quat(raw_q), (0,0,0,1))
+
+    # lat/lon offset calibration
+    lat_offset = -lat_measured
+    lon_offset = -lon_measured
+
     print("\n🎯 Calibration complete!")
-    print(f"lat_offset={lat_offset:.6f}, lon_offset={lon_offset:.6f}\n")
+    print(f"lat_offset={lat_offset}, lon_offset={lon_offset}\n")
 
 # ----------------------------
 # Keyboard helper
 # ----------------------------
 def key_pressed():
-    dr, _, _ = select.select([sys.stdin], [], [], 0)
-    return bool(dr)
+    dr, dw, de = select.select([sys.stdin], [], [], 0)
+    return dr != []
 
 # ----------------------------
 # Main loop
 # ----------------------------
 async def send_coordinates():
-    global sensor, lat_offset, lon_offset, calibration_quat
+    global sensor, lat_offset, lon_offset
     async with websockets.connect(WS_URI) as websocket:
         print("Connected to WebSocket server!")
 
         while True:
             try:
-                # read quaternion from sensor (x,y,z,w)
                 x, y, z, w = sensor.quaternion
-                if (x, y, z, w) == (0, 0, 0, 0):
+                if (x, y, z, w) == (0,0,0,0):
                     await asyncio.sleep(0.01)
                     continue
-                raw_q = (x, y, z, w)
+                raw_q = (x,y,z,w)
 
-                # apply calibration quaternion to bring current orientation to our reference frame
+                # apply calibration quaternion
                 corrected_q = quat_mul(calibration_quat, raw_q)
 
-                # rotate device reference vectors into world
+                # rotate reference vectors
                 up_world = rotate_vector(corrected_q, UP_VEC)
                 forward_world = rotate_vector(corrected_q, FORWARD_VEC)
 
-                # compute un-offset lat/lon
-                lat_unoffset, lon_unoffset = vectors_to_lat_lon(up_world, forward_world)
+                # compute lat/lon
+                lat_unoffset, lon_unoffset = compute_lat_lon(up_world, forward_world)
 
-                # BEFORE applying offsets, allow calibration if user pressed C
-                if key_pressed():
-                    ch = sys.stdin.read(1)
-                    if ch.lower() == "c":
-                        # debug info printed for you
-                        print("DEBUG (pre-cal): up_world =", [round(v,4) for v in up_world],
-                              "forward_world =", [round(v,4) for v in forward_world])
-                        print("DEBUG (pre-cal): lat_unoffset =", round(lat_unoffset,6),
-                              "lon_unoffset =", round(lon_unoffset,6))
-                        calibrate(corrected_q, lat_unoffset, lon_unoffset)
-                        continue  # skip sending this sample
-
-                # apply offsets
+                # apply calibration offsets
                 lat = lat_unoffset + lat_offset
                 lon = lon_unoffset + lon_offset
 
-                # normalize longitude after applying offsets to avoid large values
-                lon = (lon + 180.0) % 360.0 - 180.0
-
-                # clamp latitude strictly to [-90,90] for safety
-                lat = max(-90.0, min(90.0, lat))
+                # handle calibration key after computing lat/lon
+                if key_pressed():
+                    ch = sys.stdin.read(1)
+                    if ch.lower() == "c":
+                        calibrate(raw_q, lat, lon)
+                        continue  # skip sending this sample
 
                 msg = json.dumps({
                     "lat": round(lat, 3),
                     "lon": round(lon, 3),
                 })
-
                 await websocket.send(msg)
                 print("Sent:", msg)
 
