@@ -141,58 +141,45 @@ def offset_lat(lat, offset, moving_north=True):
 # ----------------------------
 # Main loop
 # ----------------------------
+# Set once at start
+LAT_OFFSET = 65
+start_lat = None
+
 async def send_coordinates():
-    global sensor
+    global sensor, start_lat
+
     async with websockets.connect(WS_URI) as websocket:
-        print("Connected to WebSocket server!")
-        prev_lat = 0
+        print("Connected!")
+
         while True:
-            if key_pressed():
-                ch = sys.stdin.read(1)
-                if ch.lower() == "c":
-                    calibrate(sensor.quaternion)
+            x, y, z, w = sensor.quaternion
+            if (x, y, z, w) == (0, 0, 0, 0):
+                await asyncio.sleep(0.01)
+                continue
 
-            try:
-                x, y, z, w = sensor.quaternion
-                if (x, y, z, w) == (0, 0, 0, 0):
-                    await asyncio.sleep(0.01)
-                    continue
+            raw_q = (x, y, z, w)
+            corrected_q = quat_mul(calibration_quat, raw_q)
 
-                raw_q = (x, y, z, w)
-                corrected_q = quat_mul(calibration_quat, raw_q)
+            up_world = rotate_vector(corrected_q, UP_VEC)
+            forward_world = rotate_vector(corrected_q, FORWARD_VEC)
 
-                up_world = rotate_vector(corrected_q, UP_VEC)
-                forward_world = rotate_vector(corrected_q, FORWARD_VEC)
+            lat, lon = vectors_to_lat_lon(up_world, forward_world)
 
-                lat, lon = vectors_to_lat_lon(up_world, forward_world)
+            # Initialize start_lat once
+            if start_lat is None:
+                start_lat = lat
 
-                # -------------------------------------
-                # ⭐ TEST OFFSET — force lat + 65 degrees
-                # -------------------------------------
-           # Force lat + 65 degrees with proper polar wrap
-                moving_north = lat >= prev_lat
-                lat = offset_lat(lat, 65, moving_north)
+            # Apply offset **relative to starting point**
+            lat_corrected = lat + LAT_OFFSET
 
-                prev_lat = lat
-                # -------------------------------------
+            # Clamp within valid latitude range
+            lat_corrected = max(min(lat_corrected, 90), -90)
 
-                msg = json.dumps({
-                    "lat": round(lat, 3),
-                    "lon": round(lon, 3),
-                })
+            msg = json.dumps({"lat": round(lat_corrected, 3), "lon": round(lon, 3)})
+            await websocket.send(msg)
+            print("Sent:", msg)
 
-                await websocket.send(msg)
-                print("Sent:", msg)
-
-                await asyncio.sleep(0.1)
-
-            except OSError:
-                print("\n⚠️ I2C error — resetting sensor…")
-                sensor = init_sensor()
-                await asyncio.sleep(0.2)
-            except Exception as e:
-                print("Unexpected error:", e)
-                await asyncio.sleep(0.2)
+            await asyncio.sleep(0.1)
 
 # ----------------------------
 # Entry
