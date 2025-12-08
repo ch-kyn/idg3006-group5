@@ -15,7 +15,7 @@ from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR
 # ----------------------------
 # WebSocket config
 # ----------------------------
-WS_URI = "ws://192.168.166.154:8765"
+WS_URI = "ws://10.22.62.39:8765"
 
 # ----------------------------
 # RESET PIN
@@ -30,7 +30,6 @@ i2c = busio.I2C(board.SCL, board.SDA)
 
 def init_sensor():
     print("Initializing BNO08X...")
-
     reset_pin.value = False
     time.sleep(0.01)
     reset_pin.value = True
@@ -69,32 +68,44 @@ def rotate_vector_by_quat(v, q):
     return quat_mul(quat_mul(q, vq), qc)[:3]
 
 # ----------------------------
-# Rotate sensor vector for 90° left sensor placement
+# New: rotate and compute lat/lon using UP + FORWARD vectors
 # ----------------------------
-def rotate_z_90_left(v):
-    x, y, z = v
-    # Rotate 90° left around Z axis
-    return (-y, x, z)
+UP_VEC = (0, 1, 0)       # points "up" on device
+FORWARD_VEC = (0, 0, 1)  # points "forward" on device
 
-# ----------------------------
-# Convert vector to lat/lon
-# ----------------------------
-def vector_to_latlon(v):
+def rotate_vector(quat, v):
+    w, x, y, z = quat
     vx, vy, vz = v
-    mag = math.sqrt(vx*vx + vy*vy + vz*vz)
-    if mag == 0:
-        return None, None
-    vx /= mag
-    vy /= mag
-    vz /= mag
-    lat = math.degrees(math.asin(vz))
-    lon = math.degrees(math.atan2(vy, vx))
-    return lat, lon
+    rx = (1 - 2*(y*y + z*z))*vx + 2*(x*y - w*z)*vy + 2*(x*z + w*y)*vz
+    ry = 2*(x*y + w*z)*vx + (1 - 2*(x*x + z*z))*vy + 2*(y*z - w*x)*vz
+    rz = 2*(x*z - w*y)*vx + 2*(y*z + w*x)*vy + (1 - 2*(x*x + y*y))*vz
+    return rx, ry, rz
+
+def vectors_to_lat_lon(up, forward):
+    ux, uy, uz = up
+    fx, fy, fz = forward
+
+    # Clamp uz to [-1,1] to avoid asin domain errors
+    uz = max(-1.0, min(1.0, uz))
+
+    # Latitude: angle from equator plane (XY-plane)
+    latitude = math.degrees(math.asin(-uz))
+
+    # Longitude: projection of forward vector onto XY-plane
+    lon_rad = math.atan2(fy, fx)
+    longitude = math.degrees(-lon_rad)
+
+    # Normalize longitude to -180..180
+    if longitude > 180:
+        longitude -= 360
+    elif longitude < -180:
+        longitude += 360
+
+    return latitude, longitude
 
 # ----------------------------
 # CONFIG
 # ----------------------------
-sensor_axis = (1.0, 0.0, 0.0)  # your sensor's forward direction
 calibration_quat = (0, 0, 0, 1)  # identity
 
 # ----------------------------
@@ -102,7 +113,7 @@ calibration_quat = (0, 0, 0, 1)  # identity
 # ----------------------------
 def calibrate(q_current):
     global calibration_quat
-    q_target = (0, 0, 0, 1)  # Null Island alignment
+    q_target = (0, 0, 0, 1)
     calibration_quat = quat_mul(invert_quat(q_current), q_target)
     print("\n🎯 Calibration set! Orientation now aligns to 0° lat / 0° lon.\n")
 
@@ -114,7 +125,7 @@ def key_pressed():
     return dr != []
 
 # ----------------------------
-# Main async loop
+# Main loop
 # ----------------------------
 async def send_coordinates():
     global sensor
@@ -136,24 +147,22 @@ async def send_coordinates():
                     continue
 
                 raw_q = (x, y, z, w)
+
+                # Apply calibration
                 corrected_q = quat_mul(calibration_quat, raw_q)
 
-                # Rotate forward vector by quaternion
-                world_vec = rotate_vector_by_quat(sensor_axis, corrected_q)
+                # Rotate device-space reference vectors
+                up_world = rotate_vector(corrected_q, UP_VEC)
+                forward_world = rotate_vector(corrected_q, FORWARD_VEC)
 
-                # Apply 90° left sensor rotation
-                world_vec = rotate_z_90_left(world_vec)
-
-                # Convert to lat/lon
-                lat, lon = vector_to_latlon(world_vec)
-                if lat is None:
-                    await asyncio.sleep(0.01)
-                    continue
+                # Compute latitude and longitude
+                lat, lon = vectors_to_lat_lon(up_world, forward_world)
 
                 msg = json.dumps({
                     "lat": round(lat, 3),
                     "lon": round(lon, 3),
                 })
+
                 await websocket.send(msg)
                 print("Sent:", msg)
 

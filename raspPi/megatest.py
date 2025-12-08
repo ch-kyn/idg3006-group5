@@ -15,10 +15,10 @@ from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR
 # ----------------------------
 # WebSocket config
 # ----------------------------
-WS_URI = "ws://192.168.166.154:8765"
+WS_URI = "ws://10.22.62.39:8765"
 
 # ----------------------------
-# RESET PIN (REQUIRED)
+# RESET PIN
 # ----------------------------
 reset_pin = digitalio.DigitalInOut(board.D17)
 reset_pin.direction = digitalio.Direction.OUTPUT
@@ -30,7 +30,6 @@ i2c = busio.I2C(board.SCL, board.SDA)
 
 def init_sensor():
     print("Initializing BNO08X...")
-
     reset_pin.value = False
     time.sleep(0.01)
     reset_pin.value = True
@@ -49,6 +48,9 @@ def quat_conjugate(q):
     x, y, z, w = q
     return (-x, -y, -z, w)
 
+def invert_quat(q):
+    return quat_conjugate(q)
+
 def quat_mul(q1, q2):
     x1, y1, z1, w1 = q1
     x2, y2, z2, w2 = q2
@@ -56,114 +58,87 @@ def quat_mul(q1, q2):
         w1*x2 + x1*w2 + y1*z2 - z1*y2,
         w1*y2 - x1*z2 + y1*w2 + z1*x2,
         w1*z2 + x1*y2 - y1*x2 + z1*w2,
-        w1*w2 - x1*x2 - y1*y2 - z1*z2
+        w1*w2 - x1*x2 - y1*y2 - z1*z2,
     )
 
-def normalize_quat(q):
-    x, y, z, w = q
-    mag = math.sqrt(x*x + y*y + z*z + w*w)
-    if mag == 0: 
-        return (0, 0, 0, 1)
-    return (x/mag, y/mag, z/mag, w/mag)
-
-def slerp(q1, q2, alpha):
-    """Spherical linear interpolation of two quaternions."""
-    if q1 is None:
-        return q2  # first sample
-
-    x1, y1, z1, w1 = q1
-    x2, y2, z2, w2 = q2
-
-    dot = x1*x2 + y1*y2 + z1*z2 + w1*w2
-
-    # If dot < 0, invert q2 for shortest path
-    if dot < 0:
-        dot = -dot
-        q2 = (-x2, -y2, -z2, -w2)
-
-    # If quaternions are very close, use linear interpolation
-    if dot > 0.9995:
-        lerped = (
-            x1 + alpha*(x2 - x1),
-            y1 + alpha*(y2 - y1),
-            z1 + alpha*(z2 - z1),
-            w1 + alpha*(w2 - w1),
-        )
-        return normalize_quat(lerped)
-
-    theta = math.acos(dot)
-    sin_theta = math.sin(theta)
-
-    w1 = math.sin((1 - alpha) * theta) / sin_theta
-    w2 = math.sin(alpha * theta) / sin_theta
-
-    return (
-        x1*w1 + x2*w2,
-        y1*w1 + y2*w2,
-        z1*w1 + z2*w2,
-        w1*w1 + w2*w2  # careful: w-component is similar form
-    )
-
-def rotate_vector_by_quat(v, q):
+def rotate_vector(quat, v):
+    w, x, y, z = quat
     vx, vy, vz = v
-    vq = (vx, vy, vz, 0.0)
-    qc = quat_conjugate(q)
-    return quat_mul(quat_mul(q, vq), qc)[:3]
+    rx = (1 - 2*(y*y + z*z))*vx + 2*(x*y - w*z)*vy + 2*(x*z + w*y)*vz
+    ry = 2*(x*y + w*z)*vx + (1 - 2*(x*x + z*z))*vy + 2*(y*z - w*x)*vz
+    rz = 2*(x*z - w*y)*vx + 2*(y*z + w*x)*vy + (1 - 2*(x*x + y*y))*vz
+    return rx, ry, rz
 
-def vector_to_latlon(v):
-    vx, vy, vz = v
-    mag = math.sqrt(vx*vx + vy*vy + vz*vz)
-    if mag == 0:
-        return None, None
-
-    vx /= mag
-    vy /= mag
-    vz /= mag
-
-    lat = math.degrees(math.asin(vz))
-    lon = math.degrees(math.atan2(vy, vx))
-
-    if lon >= 180: lon -= 360
-    if lon < -180: lon += 360
-
-    return lat, lon
+def quat_from_axis_angle(axis, angle_deg):
+    angle_rad = math.radians(angle_deg) / 2
+    x, y, z = axis
+    s = math.sin(angle_rad)
+    w = math.cos(angle_rad)
+    return (x*s, y*s, z*s, w)
 
 # ----------------------------
-# CONFIG
+# Reference vectors
 # ----------------------------
-sensor_axis = (1.0, 0.0, 0.0)
-calibration_quat = (0.0, 0.0, 0.0, 1.0)
+UP_VEC = (0, 1, 0)       # "up" on device
+FORWARD_VEC = (0, 0, 1)  # "forward" on device
 
-def calibrate(q):
+# Sensor tilt (degrees)
+SENSOR_TILT_DEG = 70
+TILT_QUAT = quat_from_axis_angle((1, 0, 0), -SENSOR_TILT_DEG)  # negative tilt forward
+
+# ----------------------------
+# Convert vectors to lat/lon
+# ----------------------------
+def vectors_to_lat_lon(up, forward):
+    ux, uy, uz = up
+    fx, fy, fz = forward
+
+    # Clamp uz to [-1,1] to avoid asin domain errors
+    uz = max(-1.0, min(1.0, uz))
+
+    # Latitude: angle from equator plane (XY-plane)
+    latitude = math.degrees(math.asin(uz))
+
+    # Longitude: projection of forward vector onto XY-plane
+    lon_rad = math.atan2(fy, fx)
+    longitude = math.degrees(-lon_rad)
+
+    # Normalize longitude to -180..180
+    if longitude > 180:
+        longitude -= 360
+    elif longitude < -180:
+        longitude += 360
+
+    return latitude, longitude
+
+# ----------------------------
+# Calibration
+# ----------------------------
+calibration_quat = (0, 0, 0, 1)
+
+def calibrate(q_current):
     global calibration_quat
-    calibration_quat = quat_conjugate(q)
-    print("\n🎯 Calibration updated!\n")
+    q_target = (0, 0, 0, 1)
+    calibration_quat = quat_mul(invert_quat(q_current), q_target)
+    print("\n🎯 Calibration set! Orientation now aligns to 0° lat / 0° lon.\n")
 
 # ----------------------------
-# Quaternion filter state
-# ----------------------------
-filtered_q = None
-ALPHA = 0.15   # smoothing factor for SLERP
-
-# ----------------------------
-# Keyboard input helper
+# Keyboard helper
 # ----------------------------
 def key_pressed():
     dr, dw, de = select.select([sys.stdin], [], [], 0)
     return dr != []
 
 # ----------------------------
-# Main async loop
+# Main loop
 # ----------------------------
 async def send_coordinates():
-    global sensor, filtered_q
-
+    global sensor
     async with websockets.connect(WS_URI) as websocket:
         print("Connected to WebSocket server!")
 
         while True:
-
-            # Check for "c" key
+            # Calibration trigger
             if key_pressed():
                 ch = sys.stdin.read(1)
                 if ch.lower() == "c":
@@ -171,56 +146,54 @@ async def send_coordinates():
 
             try:
                 # Read quaternion
-                q = sensor.quaternion
-                if q == (0.0, 0.0, 0.0, 0.0):
+                x, y, z, w = sensor.quaternion
+                if (x, y, z, w) == (0, 0, 0, 0):
                     await asyncio.sleep(0.01)
                     continue
 
-                raw_q = normalize_quat(q)
+                raw_q = (x, y, z, w)
+
+                # Apply calibration
                 corrected_q = quat_mul(calibration_quat, raw_q)
-                corrected_q = normalize_quat(corrected_q)
 
-                # ----------------------------
-                # Apply SLERP quaternion smoothing
-                # ----------------------------
-                filtered_q = slerp(filtered_q, corrected_q, ALPHA)
-                filtered_q = normalize_quat(filtered_q)
+                # --- Apply tilt in local device frame ---
+                up_tilted = rotate_vector(TILT_QUAT, UP_VEC)
+                forward_tilted = rotate_vector(TILT_QUAT, FORWARD_VEC)
 
-                # Compute pointing direction
-                world_vec = rotate_vector_by_quat(sensor_axis, filtered_q)
-                lat, lon = vector_to_latlon(world_vec)
-                if lat is None:
-                    await asyncio.sleep(0.01)
-                    continue
+                # Rotate into world coordinates
+                up_world = rotate_vector(corrected_q, up_tilted)
+                forward_world = rotate_vector(corrected_q, forward_tilted)
 
-                # Send filtered result
+                # Compute latitude and longitude
+                lat, lon = vectors_to_lat_lon(up_world, forward_world)
+
                 msg = json.dumps({
                     "lat": round(lat, 3),
-                    "lon": round(lon, 3)
+                    "lon": round(lon, 3),
                 })
+
                 await websocket.send(msg)
                 print("Sent:", msg)
 
-                await asyncio.sleep(0.1)
+                await asyncio.sleep(1)  # ~10 Hz
 
             except OSError:
-                print("\n⚠️ I2C hiccup — resetting sensor...")
+                print("\n⚠️ I2C error — resetting sensor…")
                 sensor = init_sensor()
                 await asyncio.sleep(0.2)
-
             except Exception as e:
                 print("Unexpected error:", e)
                 await asyncio.sleep(0.2)
 
 # ----------------------------
-# Entry point
+# Entry
 # ----------------------------
 if __name__ == "__main__":
     import tty, termios
     fd = sys.stdin.fileno()
-    old_settings = termios.tcgetattr(fd)
+    old = termios.tcgetattr(fd)
     try:
         tty.setcbreak(fd)
         asyncio.run(send_coordinates())
     finally:
-        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+        termios.tcsetattr(fd, termios.TCSADRAIN, old)
