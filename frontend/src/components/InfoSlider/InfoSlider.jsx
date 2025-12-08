@@ -66,7 +66,7 @@ const InfoSlider = ({ data }) => {
     return (
         <div className={styles.sliderWrapper}>
 
-            <button className={`${styles.arrow} ${styles.right} controller-target`} data-nav="left right select" onClick={nextSlide}>
+            <button className={`${styles.arrow} ${styles.right} controller-target`} data-nav="select" onClick={nextSlide}>
                 &#10095;
             </button>
 
@@ -86,7 +86,7 @@ const InfoSlider = ({ data }) => {
                 </div>
             </div>
 
-            <button className={`${styles.arrow} ${styles.left} controller-target`} data-nav="left right select" onClick={prevSlide}>
+            <button className={`${styles.arrow} ${styles.left} controller-target`} data-nav="select" onClick={prevSlide}>
                 &#10094;
             </button>
 

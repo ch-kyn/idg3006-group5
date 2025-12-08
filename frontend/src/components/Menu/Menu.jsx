@@ -5,13 +5,13 @@ const Menu = () => {
 	return (
 		<ul className={styles.menu}>
 			<li>
-				<Link to="/invention" className={`${styles.menu__btn} controller-target`} data-nav="up down select">💡 Invention</Link>
+				<Link to="/invention" className={`${styles.menu__btn} controller-target`} data-nav="select">💡 Invention</Link>
 			</li>
 			<li>
-				<Link to="/quiz" className={`${styles.menu__btn} controller-target`} data-nav="up down select">📝 Quiz</Link>
+				<Link to="/quiz" className={`${styles.menu__btn} controller-target`} data-nav="select">📝 Quiz</Link>
 			</li>
 			<li>
-				<Link to="/about" className={`${styles.menu__btn} controller-target`} data-nav="up down select">🏳️ About</Link>
+				<Link to="/about" className={`${styles.menu__btn} controller-target`} data-nav="select">🏳️ About</Link>
 			</li>
 		</ul>
 	);
