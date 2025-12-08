@@ -1,0 +1,248 @@
+import time
+import math
+import board
+import busio
+import digitalio
+import sys
+import select
+
+from adafruit_bno08x.i2c import BNO08X_I2C
+from adafruit_bno08x import BNO_REPORT_ROTATION_VECTOR
+
+# ----------------------------
+# RESET PIN
+# ----------------------------
+reset_pin = digitalio.DigitalInOut(board.D17)
+reset_pin.direction = digitalio.Direction.OUTPUT
+
+# ----------------------------
+# I2C INIT
+# ----------------------------
+i2c = busio.I2C(board.SCL, board.SDA)
+
+
+def init_sensor():
+    print("Initializing BNO08X...")
+
+    reset_pin.value = False
+    time.sleep(0.01)
+    reset_pin.value = True
+    time.sleep(0.25)
+
+    sensor = BNO08X_I2C(i2c, address=0x4A)
+    sensor.enable_feature(BNO_REPORT_ROTATION_VECTOR)
+    return sensor
+
+
+sensor = init_sensor()
+
+# ======================================================
+#               Quaternion Helpers
+# ======================================================
+
+def quat_conjugate(q):
+    x, y, z, w = q
+    return (-x, -y, -z, w)
+
+
+def quat_norm(q):
+    x, y, z, w = q
+    n = math.sqrt(x * x + y * y + z * z + w * w)
+    if n == 0:
+        return (0.0, 0.0, 0.0, 1.0)
+    return (x / n, y / n, z / n, w / n)
+
+
+def quat_mul(q1, q2):
+    x1, y1, z1, w1 = q1
+    x2, y2, z2, w2 = q2
+
+    return (
+        w1 * x2 + x1 * w2 + y1 * z2 - z1 * y2,
+        w1 * y2 - x1 * z2 + y1 * w2 + z1 * x2,
+        w1 * z2 + x1 * y2 - y1 * x2 + z1 * w2,
+        w1 * w2 - x1 * x2 - y1 * y2 - z1 * z2,
+    )
+
+
+def rotate_vector_by_quat(v, q):
+    """
+    Rotate vector v by quaternion q.
+    """
+    qn = quat_norm(q)
+    vx, vy, vz = v
+    vq = (vx, vy, vz, 0.0)
+    qc = quat_conjugate(qn)
+    r = quat_mul(quat_mul(qn, vq), qc)
+    return r[:3]
+
+
+# ======================================================
+#       Vector -> latitude/longitude on globe
+# ======================================================
+# Board mounting:
+#   +Y axis points toward SOUTH pole
+#   -Y axis points toward NORTH pole
+#   +Z axis points outward through globe surface (the "ray")
+#
+# After calibration, we treat the calibrated vector as:
+#   gx, gy, gz in "globe frame"
+# ======================================================
+
+def vector_to_latlon(globe_vec):
+    gx, gy, gz = globe_vec
+
+    mag = math.sqrt(gx * gx + gy * gy + gz * gz)
+    if mag == 0:
+        return None, None
+
+    gx /= mag
+    gy /= mag
+    gz /= mag
+
+    # Latitude:
+    #  gy < 0  -> pointing toward NORTH pole  (positive latitude)
+    #  gy > 0  -> pointing toward SOUTH pole  (negative latitude)
+    lat = math.degrees(math.asin(-gy))
+
+    # Longitude:
+    #  atan2(X, Z) -> 0° at +Z, +90° at +X
+    lon = math.degrees(math.atan2(gx, gz))
+
+    return lat, lon
+
+
+# ======================================================
+#           Calibration via quaternion
+# ======================================================
+
+# The sensor's +Z is the "outward ray" from globe center
+sensor_axis = (0.0, 0.0, 1.0)
+
+# This quaternion rotates raw vectors into the calibrated frame
+calibration_quat = (0.0, 0.0, 0.0, 1.0)  # identity
+
+
+def quat_from_two_vectors(v_from, v_to):
+    fx, fy, fz = v_from
+    tx, ty, tz = v_to
+
+    cross = (
+        fy * tz - fz * ty,
+        fz * tx - fx * tz,
+        fx * ty - fy * tx,
+    )
+    dot = fx * tx + fy * ty + fz * tz
+
+    w = math.sqrt(
+        (fx * fx + fy * fy + fz * fz) *
+        (tx * tx + ty * ty + tz * tz)
+    ) + dot
+
+    q = (cross[0], cross[1], cross[2], w)
+    return quat_norm(q)
+
+
+def calibrate(q_current):
+    """
+    Make CURRENT pointing direction become (lat=0°, lon=0°).
+
+    We do this by:
+      1) Get the current outward vector (sensor +Z rotated by q_current)
+      2) Compute a quaternion that rotates that vector to (0,0,1)
+      3) Store that quaternion as calibration_quat
+    """
+    global calibration_quat
+
+    qc = quat_norm(q_current)
+
+    # Step 1: current outward ray from globe
+    fwd = rotate_vector_by_quat(sensor_axis, qc)
+
+    mag = math.sqrt(fwd[0] * fwd[0] + fwd[1] * fwd[1] + fwd[2] * fwd[2])
+    if mag == 0:
+        print("Calibration failed (zero vector)")
+        return
+
+    fwd_norm = (fwd[0] / mag, fwd[1] / mag, fwd[2] / mag)
+
+    # Step 2: define (0°,0°) as outward along +Z in calibrated frame
+    target = (0.0, 0.0, 1.0)
+
+    # Step 3: build rotation that sends fwd_norm -> target
+    q_align = quat_from_two_vectors(fwd_norm, target)
+
+    calibration_quat = q_align
+
+    print("\n🎯 Calibration OK — this direction is now (0°,0°)\n")
+
+
+# ----------------------------
+# Keyboard Helper
+# ----------------------------
+def key_pressed():
+    dr, _, _ = select.select([sys.stdin], [], [], 0)
+    return dr != []
+
+
+# ----------------------------
+# Main Loop
+# ----------------------------
+def main_loop():
+    global sensor
+    print("Running.")
+    print("Point your chosen (0°,0°) spot at the fixed target, then press 'c' to calibrate.")
+
+    while True:
+        if key_pressed():
+            ch = sys.stdin.read(1)
+            if ch.lower() == "c":
+                calibrate(sensor.quaternion)
+
+        try:
+            x, y, z, w = sensor.quaternion
+            if (x, y, z, w) == (0.0, 0.0, 0.0, 0.0):
+                time.sleep(0.01)
+                continue
+
+            raw_q = quat_norm((x, y, z, w))
+
+            # 1) Outward ray in some global reference
+            world_vec = rotate_vector_by_quat(sensor_axis, raw_q)
+
+            # 2) Apply calibration rotation (rigid 3D rotation of sphere)
+            world_vec_calibrated = rotate_vector_by_quat(world_vec, calibration_quat)
+
+            # 3) Convert calibrated vector to lat/lon
+            lat, lon = vector_to_latlon(world_vec_calibrated)
+            if lat is None:
+                time.sleep(0.01)
+                continue
+
+            print(f"lat: {lat:.3f}, lon: {lon:.3f}")
+
+            time.sleep(0.1)
+
+        except OSError:
+            print("\n⚠️ I2C error — resetting sensor…")
+            sensor = init_sensor()
+            time.sleep(0.2)
+
+        except Exception as e:
+            print("Unexpected error:", e)
+            time.sleep(0.2)
+
+
+# ----------------------------
+# Entry
+# ----------------------------
+if __name__ == "__main__":
+    import tty
+    import termios
+    fd = sys.stdin.fileno()
+    old = termios.tcgetattr(fd)
+    try:
+        tty.setcbreak(fd)
+        main_loop()
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old)
