@@ -1,86 +1,72 @@
 import asyncio
-import socketio
-import math
+import websockets
+import json
 import time
+import math
+import requests
 
-# ----------------------------
-# Socket.IO server
-# ----------------------------
-sio = socketio.AsyncServer(
-    async_mode='asgi',
-    cors_allowed_origins='*'
-    )
-app = socketio.ASGIApp(sio)
+HOST = "0.0.0.0"
+PORT = 8765
 
-# ----------------------------
-# Stability config
-# ----------------------------
-STABILITY_ROOM = 3  # degrees
-STABILITY_TIME = 3  # seconds
+RED_URI= "http://127.0.0.1:1880/coords"
 
-# ----------------------------
-# State for the single client
-# ----------------------------
-last_coords = None
-stable_since = None
+# stability configs
+stability_room = 3  # degrees
+stability_time = 3  # seconds
 request_sent = False
 
-# ----------------------------
-# Helper function
-# ----------------------------
+# store last coordinates and timestamp
+last_coords = None
+stable_since = None
+
 def coords_within_room(c1, c2, room):
-    """Check if two (lat, lon) coordinates are within `room` degrees."""
+    """Check if coordinates c1 and c2 are within `room` degrees"""
     return math.isclose(c1[0], c2[0], abs_tol=room) and math.isclose(c1[1], c2[1], abs_tol=room)
 
-# ----------------------------
-# Socket.IO events
-# ----------------------------
-@sio.event
-async def connect(sid, environ):
-    global last_coords, stable_since, request_sent
-    print(f"Client connected: {sid}")
-    last_coords = None
-    stable_since = None
-    request_sent = False
+async def handle_client(websocket):
+    global request_sent, last_coords, stable_since
 
-@sio.event
-async def disconnect(sid):
-    print(f"Client disconnected: {sid}")
+    print(f"New client connected: {websocket.remote_address}")
+    try:
+        async for message in websocket:
+            try:
+                data = json.loads(message)
+                lat = data.get("lat")
+                lon = data.get("lon")
+                if lat is not None and lon is not None:
+                    print(f"Received: lat={lat:.6f}, lon={lon:.6f}")
 
-@sio.on("coords")
-async def coords(sid, data):
-    global last_coords, stable_since, request_sent
+                    if last_coords is None:
+                        last_coords = (lat, lon)
+                        stable_since = time.time()
+                    else:
+                        if coords_within_room((lat, lon), last_coords, stability_room):
+                            # coordinates are stable
+                            if time.time() - stable_since >= stability_time and not request_sent:
+                                print("Coordinates stable, sending request...")
+                                payload = {
+                                    "lat": lat,
+                                    "long": lon
+                                }
+                                response = requests.post(RED_URI, json=payload)
+                                print("response:", response.text)
+                                request_sent = True
+                                # here you can send a request or trigger an action
+                        else:
+                            # reset if coordinates moved
+                            last_coords = (lat, lon)
+                            stable_since = time.time()
+                            request_sent = False
 
-    lat = data.get("lat")
-    lon = data.get("lon")
-    if lat is None or lon is None:
-        return
+            except json.JSONDecodeError:
+                print("Received invalid JSON:", message)
+    except websockets.ConnectionClosed:
+        print("Client disconnected.")
 
-    print(f"Received coords: lat={lat}, lon={lon}")
+async def main():
+    async with websockets.serve(handle_client, HOST, PORT):
+        print(f"WebSocket server running on ws://{HOST}:{PORT}")
+        await asyncio.Future()  # run forever
 
-
-    # Stability check
-    if last_coords is None:
-        last_coords = (lat, lon)
-        stable_since = time.time()
-        request_sent = False
-    else:
-        if coords_within_room((lat, lon), last_coords, STABILITY_ROOM):
-            # Coordinates are stable
-            if time.time() - stable_since >= STABILITY_TIME and not request_sent:
-                print(f"Coordinates stable for {STABILITY_TIME} seconds! ✅")
-                request_sent = True
-                await sio.emit("stable", {"lat": lat, "lon": lon}, to=sid)
-        else:
-            # Reset if moved outside the room
-            last_coords = (lat, lon)
-            stable_since = time.time()
-            request_sent = False
-
-# ----------------------------
-# Run server
-# ----------------------------
 if __name__ == "__main__":
-    import uvicorn
-    print("Starting Socket.IO server on 0.0.0.0:8765...")
-    uvicorn.run(app, host="0.0.0.0", port=8765)
+    asyncio.run(main())
