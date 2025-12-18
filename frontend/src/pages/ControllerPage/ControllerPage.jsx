@@ -69,7 +69,7 @@ const ControllerPage = () => {
                 </div>
                 <div className={styles.btm}>
                     <div className={styles.arrows}>
-                        <div className={styles.row}>
+                        {/* <div className={styles.row}>
                             <button className={styles.arrow} onClick={() => send("up")}>
                                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-160v-487L216-423l-56-57 320-320 320 320-56 57-224-224v487h-80Z" /></svg>
                             </button>
@@ -87,8 +87,8 @@ const ControllerPage = () => {
                             <button className={styles.arrow} onClick={() => send("down")}>
                                 <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-800v487L216-537l-56 57 320 320 320-320-56-57-224 224v-487h-80Z" /></svg>
                             </button>
-                        </div>
-                        <button className={styles.select} onClick={() => send("select")}>SELECT</button>
+                        </div> */}
+                        <button className={styles.select} onClick={() => send("select")}>CONTINUE</button>
                     </div>
 
                     <div className={styles.nav}>

@@ -47,12 +47,7 @@ export default function InfoButton() {
                         <h2>Controller Guide</h2>
 
                         <div className={styles.section}>
-                            <h3>Arrow Buttons</h3>
-                            <p>Move between options on the page</p>
-                        </div>
-
-                        <div className={styles.section}>
-                            <h3>Select</h3>
+                            <h3>Continue</h3>
                             <p>Confirms the currently highlighted option</p>
                         </div>
 

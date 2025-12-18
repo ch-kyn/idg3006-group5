@@ -5,7 +5,7 @@
     // flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: calc(1rem + 4vw);
+    gap: calc(1rem + 3vw);
     flex-flow: wrap;
 }
 
@@ -37,9 +37,10 @@
 .arrows {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     gap: 0.5rem;
-
+    justify-content: center;
+    
     .row {
         display: flex;
         justify-content: center;
@@ -81,7 +82,7 @@
 
 .select {
     height: 3rem;
-    width: 7rem;
+    width: 9rem;
     border-radius: 0.4rem;
     margin-top: 1rem;
     font-size: 1.1rem;
